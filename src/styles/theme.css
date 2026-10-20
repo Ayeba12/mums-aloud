@@ -1,0 +1,181 @@
+/* Mums Aloud design system v0.6 - Tailwind CSS v4 theme.
+   Use in app/globals.css:  @import "tailwindcss";  @import "./tailwind-theme.css";
+   Generated from palette.json and tokens.css. Edit those sources, then regenerate. */
+
+@theme {
+  /* Remove Tailwind's default colours so only approved colours exist. */
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  /* Primitive palette: all 44 original HEX values, unchanged. */
+  --color-berry-lipstick-50: #fde8f1;
+  --color-berry-lipstick-100: #fad1e2;
+  --color-berry-lipstick-200: #f6a2c5;
+  --color-berry-lipstick-300: #f174a8;
+  --color-berry-lipstick-400: #ed458b;
+  --color-berry-lipstick-500: #e8176e;
+  --color-berry-lipstick-600: #ba1258;
+  --color-berry-lipstick-700: #8b0e42;
+  --color-berry-lipstick-800: #5d092c;
+  --color-berry-lipstick-900: #2e0516;
+  --color-berry-lipstick-950: #20030f;
+  --color-black-50: #f1f1f4;
+  --color-black-100: #e3e3e8;
+  --color-black-200: #c6c6d2;
+  --color-black-300: #aaaabb;
+  --color-black-400: #8e8ea4;
+  --color-black-500: #71718e;
+  --color-black-600: #5b5b71;
+  --color-black-700: #444455;
+  --color-black-800: #2d2d39;
+  --color-black-900: #17171c;
+  --color-black-950: #101014;
+  --color-pastel-petal-50: #fce8f1;
+  --color-pastel-petal-100: #f9d2e3;
+  --color-pastel-petal-200: #f3a5c7;
+  --color-pastel-petal-300: #ed78ab;
+  --color-pastel-petal-400: #e84a8f;
+  --color-pastel-petal-500: #e21d72;
+  --color-pastel-petal-600: #b5175c;
+  --color-pastel-petal-700: #871245;
+  --color-pastel-petal-800: #5a0c2e;
+  --color-pastel-petal-900: #2d0617;
+  --color-pastel-petal-950: #200410;
+  --color-lavender-blush-50: #fbe9f2;
+  --color-lavender-blush-100: #f8d3e4;
+  --color-lavender-blush-200: #f0a8ca;
+  --color-lavender-blush-300: #e97caf;
+  --color-lavender-blush-400: #e15194;
+  --color-lavender-blush-500: #da2579;
+  --color-lavender-blush-600: #ae1e61;
+  --color-lavender-blush-700: #831649;
+  --color-lavender-blush-800: #570f31;
+  --color-lavender-blush-900: #2c0718;
+  --color-lavender-blush-950: #1f0511;
+  --color-soft-pink-canvas: #fff8fb;
+
+  /* Semantic colours. Components use these, not primitives. */
+  --color-surface: var(--color-soft-pink-canvas);
+  --color-surface-tinted: var(--color-lavender-blush-50);
+  --color-surface-card: var(--color-black-50);
+  --color-surface-warm: var(--color-pastel-petal-50);
+  --color-surface-dark: var(--color-berry-lipstick-900);
+  --color-ink: var(--color-black-900);
+  --color-text: var(--color-black-800);
+  --color-text-secondary: var(--color-black-700);
+  --color-action: var(--color-berry-lipstick-700);
+  --color-action-hover: var(--color-berry-lipstick-800);
+  --color-action-pressed: var(--color-berry-lipstick-900);
+  --color-on-action: var(--color-black-50);
+  --color-border-control: var(--color-black-500);
+  --color-border-decoration: var(--color-black-100);
+  --color-error: var(--color-berry-lipstick-800);
+  --color-focus: var(--color-black-900);
+
+  /* Fonts (loaded with next/font, which sets these variables). */
+  --font-body: var(--font-urbanist), Arial, Helvetica, sans-serif;
+  --font-heading: var(--font-libre-caslon), Georgia, 'Times New Roman', serif;
+
+  /* Fluid type scale: clamp() between 320px and 1440px. Values unchanged from v0.5. */
+  --text-caption: clamp(.875rem, .857143rem + .089286vw, .9375rem);
+  --text-caption--line-height: 1.6;
+  --text-body: clamp(1rem, .964286rem + .178571vw, 1.125rem);
+  --text-body--line-height: 1.6;
+  --text-lead: clamp(1.125rem, 1.053571rem + .357143vw, 1.375rem);
+  --text-lead--line-height: 1.6;
+  --text-h4: clamp(1.25rem, 1.178571rem + .357143vw, 1.5rem);
+  --text-h4--line-height: 1.4;
+  --text-h3: clamp(1.5rem, 1.357143rem + .714286vw, 2rem);
+  --text-h3--line-height: 1.4;
+  --text-h2: clamp(1.75rem, 1.464286rem + 1.428571vw, 2.75rem);
+  --text-h2--line-height: 1.2;
+  --text-h1: clamp(2.25rem, 1.821429rem + 2.142857vw, 3.75rem);
+  --text-h1--line-height: 1.15;
+  --text-display: clamp(2.5rem, 1.928571rem + 2.857143vw, 4.5rem);
+  --text-display--line-height: 1.1;
+  --leading-tight: 1.1;
+  --leading-snug: 1.2;
+  --leading-heading: 1.4;
+  --leading-body: 1.6;
+  --tracking-tight: -0.01em;
+  --tracking-wide: 0.08em;
+
+  /* 4pt base: p-1 = 4px, p-2 = 8px, p-6 = 24px, p-24 = 96px. */
+  --spacing: 0.25rem;
+
+  /* Breakpoints. md = 8-column grid, lg = 12-column grid. */
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 90rem;
+
+  /* Widths: max-w-content, max-w-reading, max-w-form. */
+  --container-content: 75rem;
+  --container-reading: 65ch;
+  --container-form: 40rem;
+
+  --radius-control: 0.5rem;
+  --radius-card: 1rem;
+  --radius-panel: 1.5rem;
+
+  --shadow-raised: 0 1px 2px rgb(23 23 28 / 0.06), 0 4px 12px rgb(23 23 28 / 0.06);
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  --aspect-portrait: 4 / 5;
+  --aspect-tall: 3 / 4;
+  --aspect-card: 3 / 2;
+}
+
+/* Dark berry sections: <section class="surface-dark">. Utilities read the
+   semantic variables, so text, links and focus flip automatically. */
+@utility surface-dark {
+  --color-surface: var(--color-berry-lipstick-900);
+  --color-ink: var(--color-black-50);
+  --color-text: var(--color-black-50);
+  --color-text-secondary: var(--color-black-50);
+  --color-action: var(--color-black-50);
+  --color-action-hover: var(--color-berry-lipstick-100);
+  --color-focus: var(--color-black-50);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* 4 / 8 / 12-column layout grid with responsive gutters. */
+@utility layout-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: --spacing(4);
+  @variant md { grid-template-columns: repeat(8, minmax(0, 1fr)); gap: --spacing(6); }
+  @variant lg { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: --spacing(8); }
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: calc(var(--container-content) + 2 * --spacing(4));
+  margin-inline: auto;
+  padding-inline: --spacing(4);
+  @variant md { max-width: calc(var(--container-content) + 2 * --spacing(6)); padding-inline: --spacing(6); }
+  @variant lg { max-width: calc(var(--container-content) + 2 * --spacing(8)); padding-inline: --spacing(8); }
+}
+
+/* Section rhythm: 48 / 64 / 96px. */
+@utility section-y {
+  padding-block: --spacing(12);
+  @variant md { padding-block: --spacing(16); }
+  @variant lg { padding-block: --spacing(24); }
+}
+
+@layer base {
+  html { font-size: 100%; }
+  body { background-color: var(--color-surface); color: var(--color-text); font-family: var(--font-body); font-size: var(--text-body); line-height: 1.6; }
+  :focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; }
+  a { color: var(--color-action); text-underline-offset: 0.2em; }
+  a:hover { color: var(--color-action-hover); }
+  @media (forced-colors: active) { :focus-visible { outline-color: Highlight; } }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+}
