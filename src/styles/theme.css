@@ -169,6 +169,8 @@
 }
 
 @layer base {
+  /* Stacking order, used as z-(--z-header) etc. */
+  :root { --z-sticky: 100; --z-header: 200; --z-overlay: 300; --z-modal: 400; --z-toast: 500; }
   html { font-size: 100%; }
   body { background-color: var(--color-surface); color: var(--color-text); font-family: var(--font-body); font-size: var(--text-body); line-height: 1.6; }
   :focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; }
