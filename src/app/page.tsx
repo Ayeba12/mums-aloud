@@ -8,7 +8,8 @@ import { StoryPanel } from "@/components/sections/StoryPanel";
 
 /**
  * Homepage, following the client's Website Restructure Brief v2 (section 3),
- * laid out after the People Work Home C reference.
+ * laid out after the People Work reference. Surface rhythm: photo, olive, canvas,
+ * sage, berry panel, canvas, tinted, canvas, sage, card panel, canvas.
  */
 export default function Home() {
   return (
@@ -29,7 +30,7 @@ export default function Home() {
       />
       <HomePosts
         collection="blog"
-        tone="tinted"
+        tone="sage"
         heading={{ lead: "Practical help,", accent: "mum to mum" }}
         intro="Advice on pregnancy, babies, toddlers and growing children, from the Mums Aloud blog."
         linkLabel="View all articles"

@@ -1,52 +1,55 @@
 import Image from "next/image";
-import Link from "next/link";
-import { buttonClasses } from "@/components/ui/Button";
+import { Tag } from "@/components/layout/Section";
+import { ButtonLink } from "@/components/ui/Button";
 import { Accent } from "@/components/ui/Heading";
 import { hero, tagline } from "@/content/home";
 import { siteConfig } from "@/lib/site";
 import heroPhoto from "@/assets/photos/two-women-laughing.jpg";
 
 /**
- * Photo-led hero in a rounded inset frame. Copy sits on an opaque canvas card
- * (never directly on the photo) so text keeps AAA contrast.
+ * Photo-led hero in the page frame, pulled up under the floating header.
+ * Copy is centred on a dark scrim; the contrast of the rendered text is measured in review,
+ * because a gradient alone is not evidence of AAA.
  */
 export function Hero() {
   return (
-    <>
-      <section aria-labelledby="hero-heading" className="px-2 pt-4 lg:px-4">
-        <div className="relative">
-          <div className="relative h-[62svh] min-h-80 overflow-hidden rounded-panel lg:h-[calc(100svh-8rem)] lg:max-h-[52rem] lg:min-h-[38rem]">
-            <Image
-              src={heroPhoto}
-              alt="Three Black women laughing together outdoors in colourful dresses"
-              fill
-              priority
-              placeholder="blur"
-              sizes="100vw"
-              className="object-cover object-[60%_8%]"
-            />
-          </div>
-          <div className="relative mx-2 -mt-20 rounded-card bg-surface p-6 shadow-raised sm:mx-6 sm:p-8 lg:absolute lg:bottom-8 lg:left-8 lg:mx-0 lg:mt-0 lg:max-w-[40rem] lg:p-10">
-            <p className="text-caption font-semibold tracking-wide text-text-secondary uppercase">{hero.eyebrow}</p>
-            <h1 id="hero-heading" className="mt-2 text-display leading-tight tracking-tight">
-              <Accent {...hero.headline} />
-            </h1>
-            <p className="mt-4 text-lead">{hero.subheadline}</p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Link href={siteConfig.joinUrl} className={buttonClasses("primary", "large")}>
-                {hero.primary}
-              </Link>
-              <Link href={hero.secondary.href} className={buttonClasses("secondary", "large")}>
-                {hero.secondary.label}
-              </Link>
-            </div>
+    <section aria-labelledby="hero-heading" className="frame-x -mt-(--header-offset) pt-2 md:pt-4">
+      <div className="relative flex min-h-[36rem] flex-col justify-end overflow-hidden rounded-panel md:min-h-[40rem] lg:h-[calc(100svh-2rem)] lg:max-h-[54rem]">
+        <Image
+          src={heroPhoto}
+          alt=""
+          fill
+          priority
+          placeholder="blur"
+          sizes="100vw"
+          className="object-cover object-[65%_0%]"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-black-950)_0%,color-mix(in_srgb,var(--color-black-950)_92%,transparent)_42%,color-mix(in_srgb,var(--color-black-950)_45%,transparent)_66%,transparent_100%)]"
+        />
+        <div className="container-page relative flex flex-col items-start pt-48 pb-10 md:pb-12 lg:pb-16">
+          <Tag className="border-transparent bg-black-950 text-black-50">{hero.eyebrow}</Tag>
+          <h1 id="hero-heading" className="mt-4 max-w-[14ch] text-display tracking-tight text-black-50">
+            <Accent {...hero.headline} />
+          </h1>
+          <p className="mt-4 max-w-[44ch] text-lead text-black-50">{hero.subheadline}</p>
+          <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">
+            <ButtonLink href={siteConfig.joinUrl} variant="inverse" size="large" arrow>
+              {hero.primary}
+            </ButtonLink>
+            <ButtonLink href={hero.secondary.href} variant="inverse-outline" size="large">
+              {hero.secondary.label}
+            </ButtonLink>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section aria-label="Our tagline" className="mt-12 bg-action text-on-action lg:mt-16">
-        <p className="container-page py-8 text-center font-heading text-h2 italic lg:py-12">“{tagline}”</p>
-      </section>
-    </>
+      <div className="surface-olive mt-2 rounded-panel md:mt-4" aria-label="Our tagline">
+        <p className="container-page py-8 text-center font-heading text-h2 italic md:py-10">
+          “{tagline.lead} <span className="text-action">{tagline.accent}</span>”
+        </p>
+      </div>
+    </section>
   );
 }

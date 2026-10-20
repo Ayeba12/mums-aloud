@@ -8,7 +8,7 @@ import { buttonClasses } from "@/components/ui/Button";
 import { isGroup, type NavItem } from "@/content/navigation";
 
 const itemClasses =
-  "inline-flex min-h-12 items-center gap-1 rounded-control px-3 font-semibold text-ink no-underline transition-colors duration-150 hover:bg-surface-tinted hover:text-ink";
+  "inline-flex min-h-12 items-center gap-1 rounded-pill px-4 font-semibold text-ink no-underline transition-colors duration-150 hover:bg-surface-tinted hover:text-ink aria-[current=page]:bg-surface-tinted";
 
 /**
  * Header navigation. Desktop groups open on click (not hover) as disclosures;
@@ -88,7 +88,7 @@ export function NavMenu({ items, joinUrl, joinLabel }: { items: NavItem[]; joinU
               <div
                 id={panelId}
                 hidden={!open}
-                className="absolute top-full left-0 z-(--z-overlay) mt-2 w-80 rounded-card border border-border-decoration bg-surface p-2 shadow-raised"
+                className="absolute top-full left-0 z-(--z-overlay) mt-3 w-80 rounded-card border border-border-decoration bg-surface p-2 shadow-raised"
               >
                 <ul>
                   {item.links.map((link) => (
@@ -97,7 +97,7 @@ export function NavMenu({ items, joinUrl, joinLabel }: { items: NavItem[]; joinU
                         href={link.href}
                         aria-current={current(link.href)}
                         onClick={closeAll}
-                        className="flex min-h-12 flex-col justify-center rounded-control px-4 py-2 text-ink no-underline hover:bg-surface-tinted hover:text-ink aria-[current=page]:bg-surface-tinted"
+                        className="flex min-h-12 flex-col justify-center rounded-card px-4 py-2 text-ink no-underline hover:bg-surface-tinted hover:text-ink aria-[current=page]:bg-surface-tinted"
                       >
                         <span className="font-semibold">{link.label}</span>
                         {link.description && <span className="text-caption text-text-secondary">{link.description}</span>}
@@ -126,7 +126,7 @@ export function NavMenu({ items, joinUrl, joinLabel }: { items: NavItem[]; joinU
         aria-expanded={mobileOpen}
         aria-controls={`${baseId}-mobile`}
         onClick={() => setMobileOpen((value) => !value)}
-        className="inline-flex size-12 cursor-pointer items-center justify-center rounded-control text-ink hover:bg-surface-tinted lg:hidden"
+        className="inline-flex size-12 cursor-pointer items-center justify-center rounded-pill text-ink hover:bg-surface-tinted lg:hidden"
       >
         {mobileOpen ? <XIcon aria-hidden size={24} /> : <ListIcon aria-hidden size={24} />}
         <span className="sr-only">{mobileOpen ? "Close menu" : "Open menu"}</span>
@@ -135,7 +135,7 @@ export function NavMenu({ items, joinUrl, joinLabel }: { items: NavItem[]; joinU
       <div
         id={`${baseId}-mobile`}
         hidden={!mobileOpen}
-        className="absolute inset-x-0 top-full mt-2 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-card border border-border-decoration bg-surface p-4 shadow-raised lg:hidden"
+        className="absolute inset-x-0 top-full mt-3 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-card border border-border-decoration bg-surface p-4 shadow-raised lg:hidden"
       >
         <ul className="flex flex-col gap-6">
           {items.map((item) =>

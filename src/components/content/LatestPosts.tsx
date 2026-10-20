@@ -42,7 +42,7 @@ export async function LatestPosts({ collection, count = 3 }: { collection: Colle
               />
             )}
             <div className="flex flex-1 flex-col gap-2 p-6">
-              <p className="text-caption font-semibold tracking-wide text-text-secondary uppercase">{label}</p>
+              <p className="text-caption font-semibold tracking-wide text-sage-text uppercase">{label}</p>
               <h3 className="text-h4 font-body font-bold text-ink">
                 <Link
                   href={post.path}
@@ -54,7 +54,7 @@ export async function LatestPosts({ collection, count = 3 }: { collection: Colle
               {post.excerpt && <p className="text-text">{post.excerpt}</p>}
               <p className="mt-auto flex items-center justify-between gap-2 pt-4 text-caption text-text-secondary">
                 <time dateTime={post.date}>{dateFormat.format(new Date(post.date))}</time>
-                <ArrowRightIcon aria-hidden size={20} className="text-action" />
+                <span aria-hidden className="inline-flex size-8 items-center justify-center rounded-pill bg-accent text-on-accent transition-transform duration-150 group-hover:translate-x-1 motion-reduce:transition-none"><ArrowRightIcon size={16} weight="bold" /></span>
               </p>
             </div>
           </article>

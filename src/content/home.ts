@@ -6,7 +6,7 @@
 import { coreAreaLinks } from "./navigation";
 
 export const hero = {
-  eyebrow: "Mums Aloud",
+  eyebrow: "For Black mothers in the UK",
   headline: { lead: "Empowering Mums to", accent: "Thrive" },
   subheadline:
     "A community built for mothers, particularly those of African and Afro-Caribbean heritage, who deserve to be supported, seen and celebrated in every stage of motherhood.",
@@ -14,7 +14,7 @@ export const hero = {
   secondary: { label: "Find Out How We Help", href: "#how-we-help" },
 };
 
-export const tagline = "Empowering Mums to Thrive";
+export const tagline = { lead: "Empowering Mums to", accent: "Thrive" };
 
 export const coreAreas = {
   eyebrow: "How we help",

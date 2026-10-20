@@ -1,7 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
-import { Eyebrow } from "@/components/layout/Section";
-import { buttonClasses } from "@/components/ui/Button";
+import { SectionHeading } from "@/components/layout/Section";
+import { ButtonLink } from "@/components/ui/Button";
 import { Accent } from "@/components/ui/Heading";
 import { story } from "@/content/home";
 import circle from "@/assets/photos/women-community-circle.jpg";
@@ -15,23 +14,26 @@ const community = [
   { src: friends, alt: "Two friends smiling side by side", position: "object-[50%_30%]" },
 ];
 
-/** Dark berry panel: the founding story, then a row of community photographs. */
+/** Dark berry panel inside the page frame: the founding story, then a row of community photographs. */
 export function StoryPanel() {
   return (
-    <section aria-labelledby="story-heading" className="px-2 lg:px-4">
+    <section aria-labelledby="story-heading" className="frame-x">
       <div className="surface-dark rounded-panel">
         <div className="container-page section-y">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-5">
-              <Eyebrow>{story.eyebrow}</Eyebrow>
-              <h2 id="story-heading" className="mt-2 text-h2 tracking-tight">
-                <Accent {...story.heading} />
-              </h2>
-              <p className="mt-4 text-lead">{story.body}</p>
-              <p className="mt-6 font-heading text-h4 italic">{story.pledge}</p>
-              <Link href={story.link.href} className={buttonClasses("inverse-outline", "default", "mt-8")}>
-                {story.link.label}
-              </Link>
+              <SectionHeading
+                id="story-heading"
+                tag={story.eyebrow}
+                heading={story.heading}
+                intro={story.body}
+                action={
+                  <ButtonLink href={story.link.href} variant="inverse" arrow>
+                    {story.link.label}
+                  </ButtonLink>
+                }
+              />
+              <p className="mt-12 border-l-2 border-berry-lipstick-700 pl-6 font-heading text-h4 italic">{story.pledge}</p>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <Image
@@ -44,10 +46,10 @@ export function StoryPanel() {
             </div>
           </div>
 
-          <p className="mx-auto mt-24 max-w-[24ch] text-center font-heading text-h2 tracking-tight text-balance">
+          <h3 className="mx-auto mt-24 max-w-[24ch] text-center text-h2 text-balance">
             <Accent {...story.community} />
-          </p>
-          <ul className="mt-12 grid gap-4 sm:grid-cols-3 lg:gap-8">
+          </h3>
+          <ul className="mt-12 grid gap-4 sm:grid-cols-3 md:gap-6 lg:gap-8">
             {community.map((photo) => (
               <li key={photo.alt}>
                 <Image

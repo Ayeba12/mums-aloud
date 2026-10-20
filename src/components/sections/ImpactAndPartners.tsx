@@ -1,28 +1,23 @@
 import Link from "next/link";
 import { PlusIcon } from "@phosphor-icons/react/ssr";
-import { Eyebrow, Section } from "@/components/layout/Section";
-import { Accent } from "@/components/ui/Heading";
+import { Section, SectionHeading } from "@/components/layout/Section";
 import { impact, partners } from "@/content/home";
 
+/** Impact numbers as a ruled row: large serif figures over short labels, like the reference. */
 export function Impact() {
   return (
     <Section aria-labelledby="impact-heading">
-      <Eyebrow>{impact.eyebrow}</Eyebrow>
-      <h2 id="impact-heading" className="mt-2 max-w-[20ch] text-h2 tracking-tight">
-        <Accent {...impact.heading} />
-      </h2>
-      <ul className="mt-12 grid gap-4 md:grid-cols-3 lg:gap-8">
+      <SectionHeading id="impact-heading" tag={impact.eyebrow} heading={impact.heading} />
+      <ul className="mt-12 grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-8">
         {impact.stats.map((stat) => (
-          <li key={stat.value} className="flex min-h-64 flex-col justify-between gap-8 rounded-card bg-surface-card p-6 lg:p-8">
+          <li key={stat.value} className="flex flex-col gap-4 border-t-2 border-black-200 pt-6">
             <p className="font-heading text-display leading-tight text-action">{stat.value}</p>
-            <div>
-              <p>{stat.label}</p>
-              {"source" in stat && stat.source && (
-                <p className="mt-2 text-caption text-text-secondary">
-                  Source: <a href={stat.source.href}>{stat.source.label}</a>
-                </p>
-              )}
-            </div>
+            <p className="max-w-[32ch]">{stat.label}</p>
+            {"source" in stat && stat.source && (
+              <p className="text-caption text-text-secondary">
+                Source: <a href={stat.source.href}>{stat.source.label}</a>
+              </p>
+            )}
           </li>
         ))}
       </ul>
@@ -33,14 +28,9 @@ export function Impact() {
 /** Partner names as tiles until approved logos and permissions arrive. */
 export function Partners() {
   return (
-    <Section tone="warm" aria-labelledby="partners-heading">
-      <div className="max-w-reading">
-        <h2 id="partners-heading" className="text-h2 tracking-tight">
-          <Accent {...partners.heading} />
-        </h2>
-        <p className="mt-4 text-lead">{partners.intro}</p>
-      </div>
-      <ul className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+    <Section tone="tinted" aria-labelledby="partners-heading">
+      <SectionHeading id="partners-heading" tag="Partners" heading={partners.heading} intro={partners.intro} />
+      <ul className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
         {partners.names.map((name) => (
           <li
             key={name}
@@ -52,7 +42,7 @@ export function Partners() {
         <li>
           <Link
             href={partners.invite.href}
-            className="flex h-full min-h-24 items-center justify-center gap-2 rounded-card border-2 border-dashed border-action px-4 py-6 text-center font-semibold no-underline"
+            className="flex h-full min-h-24 items-center justify-center gap-2 rounded-card border-2 border-dashed border-action px-4 py-6 text-center font-semibold no-underline hover:bg-surface"
           >
             <PlusIcon aria-hidden size={20} />
             {partners.invite.label}
