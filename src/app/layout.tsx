@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Libre_Caslon_Text, Urbanist } from "next/font/google";
+import { SiteFooter } from "@/components/navigation/SiteFooter";
+import { SiteHeader } from "@/components/navigation/SiteHeader";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -41,7 +43,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );
