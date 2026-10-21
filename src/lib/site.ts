@@ -5,8 +5,17 @@ export const siteConfig = {
   description:
     "Mums Aloud is a community built by mothers, for Black mothers in the UK. Join Mama's Escape to be understood without having to explain.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  /** The join destination. Must point to an open form; set it per environment. */
-  joinUrl: process.env.NEXT_PUBLIC_JOIN_URL || "/mamas-escape/",
-  /** Newsletter sign-up page. No platform is chosen yet, so it defaults to the Mama's Escape page. */
+  /** Where every "Join" button on the site goes: the joining section of the Mama's Escape page. */
+  joinUrl: "/mamas-escape/#join",
+  /** Newsletter sign-up. No platform is chosen yet, so it defaults to the stay-close section. */
   newsletterUrl: process.env.NEXT_PUBLIC_NEWSLETTER_URL || "/mamas-escape/#newsletter",
+} as const;
+
+/**
+ * The joining form itself (owner decision: a Google Form). It is only linked when the
+ * URL is set, so the site never shows a join button that leads to a closed form.
+ */
+export const joinForm = {
+  open: Boolean(process.env.NEXT_PUBLIC_JOIN_URL),
+  href: process.env.NEXT_PUBLIC_JOIN_URL || "/mamas-escape/#join",
 } as const;
