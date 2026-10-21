@@ -26,14 +26,14 @@ const semantic = [
 ] as const;
 
 const typeScale = [
-  ["Display", "text-display font-heading leading-tight tracking-tight", "Libre Caslon Text · 40 → 72px"],
-  ["Heading 1", "text-h1 font-heading tracking-tight", "Libre Caslon Text · 36 → 60px"],
-  ["Heading 2", "text-h2 font-heading", "Libre Caslon Text · 28 → 44px"],
-  ["Heading 3", "text-h3 font-heading", "Libre Caslon Text · 24 → 32px"],
-  ["Heading 4", "text-h4 font-body font-bold", "Urbanist bold · 20 → 24px"],
-  ["Lead text for introductions", "text-lead", "Urbanist · 18 → 22px"],
-  ["Body text for reading", "text-body", "Urbanist · 16 → 18px"],
-  ["Caption and metadata", "text-caption text-text-secondary", "Urbanist · 14 → 15px"],
+  ["Display", "text-display font-heading tracking-tight", "Libre Caslon Text · 40 → 64px · line 48 → 72"],
+  ["Heading 1", "text-h1 font-heading tracking-tight", "Libre Caslon Text · 36 → 52px · line 44 → 60"],
+  ["Heading 2", "text-h2 font-heading", "Libre Caslon Text · 28 → 40px · line 36 → 48"],
+  ["Heading 3", "text-h3 font-heading", "Libre Caslon Text · 24 → 32px · line 32 → 40"],
+  ["Heading 4", "text-h4 font-body font-bold", "Urbanist bold · 20 → 24px · line 28 → 32"],
+  ["Lead text for introductions", "text-lead", "Urbanist · 18 → 20px · line 28 → 32"],
+  ["Body text for reading", "text-body", "Urbanist · 16px · line 24"],
+  ["Caption and metadata", "text-caption text-text-secondary", "Urbanist · 14px · line 20"],
 ] as const;
 
 const spacing = [1, 2, 3, 4, 6, 8, 12, 16, 24] as const;
@@ -79,7 +79,7 @@ export default function StyleGuide() {
       </Section>
 
       <Section aria-labelledby="type">
-        <SectionHeading id="type" tag="Typography" heading={{ lead: "Fluid scale with", accent: "clamp()" }} />
+        <SectionHeading id="type" tag="Typography" heading={{ lead: "Major Third scale on the", accent: "4px grid" }} />
         <ul className="mt-12 flex flex-col gap-8">
           {typeScale.map(([sample, classes, spec]) => (
             <li key={sample} className="grid gap-2 border-b border-border-decoration pb-6 md:grid-cols-[1fr_16rem]">

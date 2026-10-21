@@ -90,27 +90,31 @@
   --font-body: var(--font-urbanist), Arial, Helvetica, sans-serif;
   --font-heading: var(--font-libre-caslon), Georgia, 'Times New Roman', serif;
 
-  /* Fluid type scale: clamp() between 320px and 1440px. */
-  --text-caption: clamp(.875rem, .857143rem + .089286vw, .9375rem);
-  --text-caption--line-height: 1.6;
-  --text-body: clamp(1rem, .964286rem + .178571vw, 1.125rem);
-  --text-body--line-height: 1.6;
-  --text-lead: clamp(1.125rem, 1.053571rem + .357143vw, 1.375rem);
-  --text-lead--line-height: 1.6;
-  --text-h4: clamp(1.25rem, 1.178571rem + .357143vw, 1.5rem);
-  --text-h4--line-height: 1.4;
-  --text-h3: clamp(1.5rem, 1.357143rem + .714286vw, 2rem);
-  --text-h3--line-height: 1.4;
-  --text-h2: clamp(1.75rem, 1.464286rem + 1.428571vw, 2.75rem);
-  --text-h2--line-height: 1.2;
-  --text-h1: clamp(2.25rem, 1.821429rem + 2.142857vw, 3.75rem);
-  --text-h1--line-height: 1.15;
-  --text-display: clamp(2.5rem, 1.928571rem + 2.857143vw, 4.5rem);
-  --text-display--line-height: 1.1;
-  --leading-tight: 1.1;
-  --leading-snug: 1.2;
-  --leading-heading: 1.4;
-  --leading-body: 1.6;
+  /* Fluid type scale: clamp() between 320px and 1440px; sizes and line-heights sit on the 4px grid at both ends. */
+  --text-caption: 0.875rem;
+  --leading-caption: 1.25rem;
+  --text-caption--line-height: var(--leading-caption);
+  --text-body: 1rem;
+  --leading-body: 1.5rem;
+  --text-body--line-height: var(--leading-body);
+  --text-lead: 1.25rem;
+  --leading-lead: clamp(1.75rem, 1.67857rem + 0.357143vw, 2rem);
+  --text-lead--line-height: var(--leading-lead);
+  --text-h4: clamp(1.25rem, 1.17857rem + 0.357143vw, 1.5rem);
+  --leading-h4: clamp(1.75rem, 1.67857rem + 0.357143vw, 2rem);
+  --text-h4--line-height: var(--leading-h4);
+  --text-h3: clamp(1.5rem, 1.35714rem + 0.714286vw, 2rem);
+  --leading-h3: clamp(2rem, 1.85714rem + 0.714286vw, 2.5rem);
+  --text-h3--line-height: var(--leading-h3);
+  --text-h2: clamp(1.75rem, 1.53571rem + 1.07143vw, 2.5rem);
+  --leading-h2: clamp(2.25rem, 2.03571rem + 1.07143vw, 3rem);
+  --text-h2--line-height: var(--leading-h2);
+  --text-h1: clamp(2.25rem, 1.96429rem + 1.42857vw, 3.25rem);
+  --leading-h1: clamp(2.75rem, 2.46429rem + 1.42857vw, 3.75rem);
+  --text-h1--line-height: var(--leading-h1);
+  --text-display: clamp(2.5rem, 2.07143rem + 2.14286vw, 4rem);
+  --leading-display: clamp(3rem, 2.57143rem + 2.14286vw, 4.5rem);
+  --text-display--line-height: var(--leading-display);
   --tracking-tight: -0.01em;
   --tracking-wide: 0.08em;
 
@@ -194,11 +198,10 @@
 @layer base {
   /* Stacking order, used as z-(--z-header) etc. */
   :root { --z-sticky: 100; --z-header: 200; --z-overlay: 300; --z-modal: 400; --z-toast: 500; }
-  /* Height of the floating header plus its top inset; the hero pulls up under it with -mt-(--header-offset). */
-  :root { --header-offset: 4.5rem; }
-  @media (min-width: 48rem) { :root { --header-offset: 5rem; } }
+  /* Height of the floating header; the hero pulls up under it with -mt-(--header-offset) and keeps the frame inset as its top gap. */
+  :root { --header-offset: 4rem; }
   html { font-size: 100%; }
-  body { background-color: var(--color-surface); color: var(--color-text); font-family: var(--font-body); font-size: var(--text-body); line-height: 1.6; }
+  body { background-color: var(--color-surface); color: var(--color-text); font-family: var(--font-body); font-size: var(--text-body); line-height: var(--leading-body); }
   :focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; }
   a { color: var(--color-action); text-underline-offset: 0.2em; }
   a:hover { color: var(--color-action-hover); }

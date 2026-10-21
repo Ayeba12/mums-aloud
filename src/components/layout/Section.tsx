@@ -29,7 +29,7 @@ export function Section({
 export function Tag({ className = "", ...props }: ComponentProps<"p">) {
   return (
     <p
-      className={`inline-flex min-h-8 items-center gap-2 rounded-pill bg-surface-card px-3 py-2 text-caption leading-none font-semibold tracking-wide text-text uppercase ${className}`}
+      className={`inline-flex min-h-8 items-center gap-2 rounded-pill bg-surface-card px-3 py-1 text-caption font-semibold tracking-wide text-text uppercase ${className}`}
       {...props}
     />
   );

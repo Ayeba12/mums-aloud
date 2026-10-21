@@ -79,7 +79,7 @@ export default function MamasEscapePage() {
               <p className="mt-6 border-l-2 border-accent pl-6 font-heading text-h4 italic">{why.pledge}</p>
             </div>
             <div className="rounded-card border border-border-decoration p-6 lg:col-span-4 lg:col-start-9 lg:p-8">
-              <p className="font-heading text-display leading-tight">{why.stat.value}</p>
+              <p className="font-heading text-display">{why.stat.value}</p>
               <p className="mt-4">Black women in the UK are around {why.stat.label} than white women.</p>
               <p className="mt-2 text-caption text-text-secondary">
                 Source: <a href={why.stat.source.href}>{why.stat.source.label}</a>
@@ -161,7 +161,7 @@ export default function MamasEscapePage() {
             <ul className="mt-6 flex flex-col gap-2">
               {join.asks.map((ask) => (
                 <li key={ask} className="flex items-start gap-3">
-                  <span aria-hidden className="mt-2.5 size-2 shrink-0 rounded-pill bg-action" />
+                  <span aria-hidden className="mt-2 size-2 shrink-0 rounded-pill bg-action" />
                   {ask}
                 </li>
               ))}

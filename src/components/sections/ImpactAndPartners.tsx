@@ -17,7 +17,7 @@ export function Impact() {
       <ul className="mt-12 grid gap-4 md:grid-cols-3 md:gap-6 lg:gap-8">
         {impact.stats.map((stat) => (
           <li key={stat.value} className="flex min-h-64 flex-col justify-between gap-8 rounded-panel bg-surface-card p-7">
-            <p className="font-heading text-display leading-tight text-ink">{stat.value}</p>
+            <p className="font-heading text-display text-ink">{stat.value}</p>
             <div>
               <p className="max-w-[32ch]">{stat.label}</p>
               {"source" in stat && stat.source && (
