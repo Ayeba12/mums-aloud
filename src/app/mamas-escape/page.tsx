@@ -72,14 +72,14 @@ export default function MamasEscapePage() {
       </Section>
 
       <div className="frame-x">
-        <section aria-labelledby="why-heading" className="surface-olive rounded-panel">
+        <section aria-labelledby="why-heading" className="surface-dark rounded-panel">
           <div className="container-page section-y grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-7">
               <SectionHeading id="why-heading" tag={why.tag} heading={why.heading} intro={why.body} />
-              <p className="mt-6 font-heading text-h4 italic text-action">{why.pledge}</p>
+              <p className="mt-6 border-l-2 border-accent pl-6 font-heading text-h4 italic">{why.pledge}</p>
             </div>
             <div className="rounded-card border border-border-decoration p-6 lg:col-span-4 lg:col-start-9 lg:p-8">
-              <p className="font-heading text-display leading-tight text-action">{why.stat.value}</p>
+              <p className="font-heading text-display leading-tight">{why.stat.value}</p>
               <p className="mt-4">Black women in the UK are around {why.stat.label} than white women.</p>
               <p className="mt-2 text-caption text-text-secondary">
                 Source: <a href={why.stat.source.href}>{why.stat.source.label}</a>
@@ -109,7 +109,7 @@ export default function MamasEscapePage() {
         </ul>
       </Section>
 
-      <Section tone="sage" aria-labelledby="family-heading">
+      <Section tone="tinted" aria-labelledby="family-heading">
         <SectionHeading id="family-heading" tag={family.tag} heading={family.heading} intro={family.intro} />
         <ul className="mt-12 grid gap-4 md:grid-cols-3 md:gap-6 lg:gap-8">
           {family.tiles.map((tile) => {
@@ -117,7 +117,7 @@ export default function MamasEscapePage() {
             const href = tile.title === "The Newsletter" ? siteConfig.newsletterUrl : tile.action.href;
             return (
               <li key={tile.title} className="flex flex-col gap-4 rounded-card bg-surface p-6">
-                <IconChip className="bg-surface-sage">
+                <IconChip>
                   <Icon aria-hidden size={24} />
                 </IconChip>
                 <h3 className="mt-2 font-body text-h4 font-bold text-ink">{tile.title}</h3>
@@ -143,7 +143,7 @@ export default function MamasEscapePage() {
             <SectionHeading id="expect-heading" tag={expect.tag} heading={expect.heading} intro={expect.body} />
           </div>
           <div className="flex gap-4 rounded-card bg-surface-tinted p-6 lg:col-span-4 lg:col-start-9 lg:self-center lg:p-8">
-            <IconChip className="bg-surface">
+            <IconChip>
               <ShieldCheckIcon aria-hidden size={24} />
             </IconChip>
             <div>

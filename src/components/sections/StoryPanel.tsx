@@ -33,7 +33,7 @@ export function StoryPanel() {
                   </ButtonLink>
                 }
               />
-              <p className="mt-12 border-l-2 border-berry-lipstick-700 pl-6 font-heading text-h4 italic">{story.pledge}</p>
+              <p className="mt-12 border-l-2 border-accent pl-6 font-heading text-h4 italic">{story.pledge}</p>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <Image

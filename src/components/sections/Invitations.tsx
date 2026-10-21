@@ -48,7 +48,10 @@ export function NewsletterInvite() {
 
 export function ClosingInvite() {
   return (
-    <Section aria-labelledby="closing-heading">
+    <Section
+      aria-labelledby="closing-heading"
+      className="bg-[linear-gradient(to_bottom,var(--color-surface),var(--color-surface-tinted))]"
+    >
       <SectionHeading
         id="closing-heading"
         heading={closing.heading}

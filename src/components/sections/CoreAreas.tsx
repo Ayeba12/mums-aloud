@@ -10,7 +10,10 @@ const icons = {
   growth: PlantIcon,
 };
 
-/** The four core areas from the client brief: the spine of the homepage and navigation. */
+/**
+ * The four core areas from the client brief, as the reference's four-card row:
+ * icon chip, serif title, one-line summary, arrow circle.
+ */
 export function CoreAreas() {
   return (
     <Section id="how-we-help" aria-labelledby="how-we-help-heading" className="scroll-mt-24">
@@ -25,11 +28,11 @@ export function CoreAreas() {
                   <IconChip>
                     <Icon aria-hidden size={24} />
                   </IconChip>
-                  <span aria-hidden className="font-heading text-h3 text-text-secondary">
+                  <span aria-hidden className="font-heading text-h4 text-text-secondary">
                     {area.number}
                   </span>
                 </div>
-                <h3 className="mt-6 font-body text-h4 font-bold text-ink">
+                <h3 className="mt-6 text-h3">
                   <Link href={area.href} className="text-ink no-underline after:absolute after:inset-0 after:rounded-card">
                     {area.label}
                   </Link>

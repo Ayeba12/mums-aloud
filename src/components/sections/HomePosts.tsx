@@ -17,7 +17,7 @@ export function HomePosts({
   heading: AccentText;
   intro: string;
   linkLabel: string;
-  tone?: "sage" | "tinted";
+  tone?: "card" | "tinted";
 }) {
   const { label, listingPath } = collections[collection];
   const headingId = `${collection}-heading`;

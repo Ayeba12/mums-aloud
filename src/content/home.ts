@@ -14,7 +14,12 @@ export const hero = {
   secondary: { label: "Find Out How We Help", href: "#how-we-help" },
 };
 
-export const tagline = { lead: "Empowering Mums to", accent: "Thrive" };
+/** Centred statement under the hero, from the brief's short About section. */
+export const statement = {
+  lead: "Mums Aloud was founded because too many mothers, particularly those of African heritage, were navigating the early years of motherhood without the village they deserved.",
+  highlight: "We built what we couldn't find.",
+  trail: "And we have not stopped building since.",
+};
 
 export const coreAreas = {
   eyebrow: "How we help",
@@ -45,7 +50,7 @@ export const mamasEscape = {
 export const story = {
   eyebrow: "Our story",
   heading: { lead: "We built what we", accent: "couldn't find" },
-  body: "Mums Aloud was founded because too many mothers, particularly those of African heritage, were navigating the early years of motherhood without the village they deserved. We built what we couldn't find. And we have not stopped building since.",
+  body: "Before we were mothers, we were women full of ideas, dreams and plans. Then motherhood arrived, often far from home, far from the village that would have held us. Everyone gathered round the baby. Few asked how we were. So we learned to appear okay while running on empty.",
   pledge: "We speak with you. We speak for you. We are you.",
   link: { label: "Read our story", href: "/about-mums-aloud/" },
   community: { lead: "A room of women who will look at you and say,", accent: "me too" },

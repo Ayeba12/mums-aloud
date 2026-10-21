@@ -1,16 +1,14 @@
 import type { ComponentProps, ReactNode } from "react";
 import { Accent, type AccentText } from "@/components/ui/Heading";
 
-type Tone = "default" | "tinted" | "warm" | "card" | "sage" | "dark" | "olive";
+type Tone = "default" | "tinted" | "warm" | "card" | "dark";
 
 const tones: Record<Tone, string> = {
   default: "",
   tinted: "bg-surface-tinted",
   warm: "bg-surface-warm",
   card: "bg-surface-card",
-  sage: "bg-surface-sage",
   dark: "surface-dark",
-  olive: "surface-olive",
 };
 
 /** A page section with the 48 / 64 / 96px rhythm and a centred 1200px container. */
@@ -27,11 +25,11 @@ export function Section({
   );
 }
 
-/** Section label: a small pill. One per section, 8px above the heading. */
+/** Section label: a solid pill, no border. One per section, 8px above the heading. */
 export function Tag({ className = "", ...props }: ComponentProps<"p">) {
   return (
     <p
-      className={`inline-flex min-h-8 items-center gap-2 rounded-pill border border-current/40 px-3 py-1 text-caption font-semibold tracking-wide text-text uppercase ${className}`}
+      className={`inline-flex min-h-8 items-center gap-2 rounded-pill bg-surface-card px-3 py-2 text-caption leading-none font-semibold tracking-wide text-text uppercase ${className}`}
       {...props}
     />
   );
@@ -73,13 +71,25 @@ export function SectionHeading({
   );
 }
 
-/** Round icon holder, 48px, for benefit lists and feature cards. */
+/** Round icon holder, 48px, in the accent tint. */
 export function IconChip({ className = "", children }: { className?: string; children: ReactNode }) {
   return (
-    <span
-      className={`inline-flex size-12 shrink-0 items-center justify-center rounded-pill bg-surface-sage text-sage-text ${className}`}
-    >
+    <span className={`inline-flex size-12 shrink-0 items-center justify-center rounded-pill bg-accent-soft text-ink ${className}`}>
       {children}
     </span>
+  );
+}
+
+/**
+ * Centred editorial statement, as on the People Work reference: a narrow serif H2 with one
+ * highlighted phrase. No tag, no button.
+ */
+export function Statement({ id, lead, highlight, trail }: { id: string; lead: string; highlight: string; trail?: string }) {
+  return (
+    <Section aria-labelledby={id}>
+      <h2 id={id} className="mx-auto max-w-[30ch] text-center text-h2 text-balance">
+        {lead} <mark className="rounded-control bg-accent-soft px-2 text-ink">{highlight}</mark> {trail}
+      </h2>
+    </Section>
   );
 }

@@ -8,23 +8,20 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const ramps = ["berry-lipstick", "black", "pastel-petal", "lavender-blush", "sage", "marigold"] as const;
+const ramps = ["berry-lipstick", "black", "pastel-petal", "lavender-blush", "marigold"] as const;
 const steps = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] as const;
 
 const semantic = [
   ["surface", "Website background (Soft Pink Canvas)"],
   ["surface-tinted", "Tinted section"],
-  ["surface-sage", "Sage section (v0.7)"],
   ["surface-card", "Card surface"],
-  ["surface-olive", "Deep olive panel (v0.7)"],
-  ["surface-dark", "Berry panel"],
+  ["surface-dark", "Dark panel (berry 700)"],
   ["ink", "Headings"],
   ["text", "Body text"],
   ["text-secondary", "Supporting text"],
   ["action", "Links and primary action"],
   ["accent", "Highlight accent (v0.7)"],
   ["accent-soft", "Accent tint (v0.7)"],
-  ["sage-text", "Sage text (v0.7)"],
   ["border-control", "Control border"],
 ] as const;
 
@@ -48,7 +45,7 @@ export default function StyleGuide() {
         <SectionHeading
           id="style-guide-heading"
           level="h1"
-          tag="Mums Aloud · v0.7"
+          tag="Mums Aloud · v0.8"
           heading={{ lead: "Design", accent: "system" }}
           intro="Tokens from the brand guidelines, rendered with Tailwind CSS v4. Resize the window to see the fluid type and the 4 / 8 / 12-column grid respond."
         />
@@ -93,7 +90,7 @@ export default function StyleGuide() {
         </ul>
       </Section>
 
-      <Section tone="sage" aria-labelledby="spacing">
+      <Section tone="tinted" aria-labelledby="spacing">
         <SectionHeading id="spacing" tag="Spacing" heading={{ lead: "8pt for layout,", accent: "4pt for detail" }} />
         <ul className="mt-12 flex flex-col gap-3">
           {spacing.map((step) => (
@@ -109,7 +106,7 @@ export default function StyleGuide() {
           {Array.from({ length: 12 }, (_, index) => (
             <span
               key={index}
-              className={`h-16 rounded-control bg-sage-200 ${index >= 4 ? "hidden md:block" : ""} ${index >= 8 ? "md:hidden lg:block" : ""}`}
+              className={`h-16 rounded-control bg-berry-lipstick-100 ${index >= 4 ? "hidden md:block" : ""} ${index >= 8 ? "md:hidden lg:block" : ""}`}
             />
           ))}
         </div>
@@ -143,27 +140,12 @@ export default function StyleGuide() {
         </div>
       </Section>
 
-      <Section tone="olive" aria-labelledby="olive">
-        <SectionHeading
-          id="olive"
-          tag="Deep olive"
-          heading={{ lead: "Sage 900 with", accent: "marigold accents" }}
-          intro="The complementary dark surface. Accent words, links and focus rings take marigold automatically."
-          action={
-            <div className="flex flex-wrap gap-4">
-              <Button variant="accent">Join Mama&apos;s Escape</Button>
-              <Button variant="inverse-outline">Listen to the podcast</Button>
-            </div>
-          }
-        />
-      </Section>
-
       <Section tone="dark" aria-labelledby="dark">
         <SectionHeading
           id="dark"
-          tag="Berry panel"
-          heading={{ lead: "Berry 900 with", accent: "inverse actions" }}
-          intro="Text, links and focus rings flip to black 50 inside berry sections."
+          tag="Dark panel"
+          heading={{ lead: "Berry 700 with", accent: "inverse actions" }}
+          intro="Text, tags, links and focus rings flip automatically inside dark panels; links take marigold 100."
           action={
             <div className="flex flex-wrap gap-4">
               <Button variant="inverse" arrow>

@@ -1,3 +1,4 @@
+import { Statement } from "@/components/layout/Section";
 import { CoreAreas } from "@/components/sections/CoreAreas";
 import { Hero } from "@/components/sections/Hero";
 import { HomePosts } from "@/components/sections/HomePosts";
@@ -5,16 +6,18 @@ import { Impact, Partners } from "@/components/sections/ImpactAndPartners";
 import { ClosingInvite, NewsletterInvite } from "@/components/sections/Invitations";
 import { MamasEscapeFeature } from "@/components/sections/MamasEscapeFeature";
 import { StoryPanel } from "@/components/sections/StoryPanel";
+import { statement } from "@/content/home";
 
 /**
- * Homepage, following the client's Website Restructure Brief v2 (section 3),
- * laid out after the People Work reference. Surface rhythm: photo, olive, canvas,
- * sage, berry panel, canvas, tinted, canvas, sage, card panel, canvas.
+ * Homepage, following the client's Website Restructure Brief v2 (section 3), laid out
+ * after the People Work Home C reference: hero, centred statement, four cards, list + portrait,
+ * dark panel, stat cards on a gradient, partners, editorial sections, split panel, closing.
  */
 export default function Home() {
   return (
     <main id="main">
       <Hero />
+      <Statement id="statement-heading" {...statement} />
       <CoreAreas />
       <MamasEscapeFeature />
       <div className="section-y">
@@ -30,7 +33,7 @@ export default function Home() {
       />
       <HomePosts
         collection="blog"
-        tone="sage"
+        tone="card"
         heading={{ lead: "Practical help,", accent: "mum to mum" }}
         intro="Advice on pregnancy, babies, toddlers and growing children, from the Mums Aloud blog."
         linkLabel="View all articles"

@@ -42,7 +42,7 @@ export async function LatestPosts({ collection, count = 3 }: { collection: Colle
               />
             )}
             <div className="flex flex-1 flex-col gap-2 p-6">
-              <p className="text-caption font-semibold tracking-wide text-sage-text uppercase">{label}</p>
+              <p className="text-caption font-semibold tracking-wide text-text-secondary uppercase">{label}</p>
               <h3 className="text-h4 font-body font-bold text-ink">
                 <Link
                   href={post.path}
