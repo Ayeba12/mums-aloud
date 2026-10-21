@@ -53,7 +53,12 @@ export const story = {
   body: "Before we were mothers, we were women full of ideas, dreams and plans. Then motherhood arrived, often far from home, far from the village that would have held us. Everyone gathered round the baby. Few asked how we were. So we learned to appear okay while running on empty.",
   pledge: "We speak with you. We speak for you. We are you.",
   link: { label: "Read our story", href: "/about-mums-aloud/" },
-  community: { lead: "A room of women who will look at you and say,", accent: "me too" },
+  voices: {
+    tag: "Community voices",
+    heading: { lead: "A room of women who will look at you and say,", accent: "me too" },
+    // confirm: replace the stock portraits with consented member photos and quotes.
+    note: "Photographs are illustrative. Member voices are shared only with their consent.",
+  },
 };
 
 export const impact = {

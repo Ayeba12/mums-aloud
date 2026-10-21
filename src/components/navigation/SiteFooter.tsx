@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cacheLife } from "next/cache";
 import { ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
+import { NewsletterForm } from "./NewsletterForm";
 import { footerGroups, legalLinks } from "@/content/navigation";
 import { ButtonLink } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site";
@@ -14,73 +15,93 @@ async function Year() {
   return new Date().getFullYear();
 }
 
-/** Light footer on the canvas: photo tile, link columns, newsletter, legal bar. */
+/**
+ * The reference footer: a light card inside the page frame holding a media tile with a
+ * caption and action, link columns, the email field and a legal bar.
+ */
 export function SiteFooter() {
   return (
-    <footer className="frame-x pb-2 md:pb-4">
-      <div className="container-page border-t border-border-decoration pt-12 pb-6 md:pt-16">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
-          <div className="relative min-h-72 overflow-hidden rounded-card lg:col-span-4">
+    <footer className="frame-x pt-8 pb-2 md:pb-4">
+      <div className="rounded-panel bg-surface-card p-4">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-12">
+          <div className="relative flex min-h-[28rem] flex-col justify-end overflow-hidden rounded-card lg:col-span-4 lg:min-h-[40rem]">
             <Image
               src={photo}
-              alt="A mother laughing as she lifts her young daughter in a park"
+              alt=""
               fill
               placeholder="blur"
               sizes="(min-width: 64rem) 33vw, 100vw"
               className="object-cover object-[50%_30%]"
             />
-            <p className="absolute right-4 bottom-4 left-4 rounded-card bg-surface/95 p-4 font-heading text-h4 italic text-ink">
-              Empowering Mums to Thrive
-            </p>
+            <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-black-950)_0%,color-mix(in_srgb,var(--color-black-950)_70%,transparent)_30%,transparent_60%)]" />
+            <span className="absolute top-4 left-4 rounded-control bg-surface p-2">
+              <Image src="/brand/mumsaloud-logo.webp" alt="Mums Aloud" width={92} height={48} className="h-8 w-auto" />
+            </span>
+            <div className="relative flex flex-wrap items-end justify-between gap-4 p-6">
+              <p className="max-w-[14ch] font-heading text-h3 italic text-black-50">Empowering Mums to Thrive</p>
+              <ButtonLink href={siteConfig.joinUrl} variant="inverse-outline">
+                Join Mama&apos;s Escape
+              </ButtonLink>
+            </div>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-3 lg:col-span-5">
-            {footerGroups.map((group) => (
-              <nav key={group.label} aria-label={group.label}>
-                <p className="text-caption font-semibold tracking-wide text-text-secondary uppercase">{group.label}</p>
+          <div className="flex flex-col gap-12 py-2 lg:col-span-8 lg:pr-4">
+            <div className="max-w-form">
+              <NewsletterForm />
+            </div>
+
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {footerGroups.map((group) => (
+                <nav key={group.label} aria-label={group.label}>
+                  <p className="text-caption font-semibold tracking-wide text-text-secondary uppercase">{group.label}</p>
+                  <ul className="mt-2 flex flex-col">
+                    {group.links.map((link) => (
+                      <li key={link.href}>
+                        <Link href={link.href} className="inline-flex min-h-12 items-center text-ink no-underline hover:underline">
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              ))}
+              <nav aria-label="Listen and contact">
+                <p className="text-caption font-semibold tracking-wide text-text-secondary uppercase">Listen</p>
                 <ul className="mt-2 flex flex-col">
-                  {group.links.map((link) => (
-                    <li key={link.href}>
-                      <Link href={link.href} className="inline-flex min-h-12 items-center text-ink no-underline hover:underline">
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
+                  <li>
+                    <a
+                      href="https://creators.spotify.com/pod/show/mamasescape"
+                      className="inline-flex min-h-12 items-center gap-1 text-ink no-underline hover:underline"
+                    >
+                      Mama&apos;s Escape podcast
+                      <ArrowUpRightIcon aria-hidden size={16} />
+                      <span className="sr-only">(opens Spotify)</span>
+                    </a>
+                  </li>
+                  <li>
+                    <Link href="/contact/" className="inline-flex min-h-12 items-center text-ink no-underline hover:underline">
+                      Contact us
+                    </Link>
+                  </li>
                 </ul>
               </nav>
-            ))}
-          </div>
+            </div>
 
-          <div className="flex flex-col items-start gap-4 lg:col-span-3">
-            <Image src="/brand/mumsaloud-logo.webp" alt="Mums Aloud" width={92} height={48} className="h-12 w-auto" />
-            <p>Mama&apos;s Escape is part of Mums Aloud. Real stories and real support, straight to your inbox.</p>
-            <ButtonLink href={siteConfig.newsletterUrl} variant="secondary">
-              Get the newsletter
-            </ButtonLink>
-            <a
-              href="https://creators.spotify.com/pod/show/mamasescape"
-              className="inline-flex min-h-12 items-center gap-1 font-semibold"
-            >
-              Mama&apos;s Escape podcast
-              <ArrowUpRightIcon aria-hidden size={16} />
-              <span className="sr-only">(opens Spotify)</span>
-            </a>
+            <div className="mt-auto flex flex-col gap-2 border-t border-border-decoration pt-6 text-caption text-text-secondary sm:flex-row sm:items-center sm:justify-between">
+              <p>
+                © <Year /> Mums Aloud. All rights reserved.
+              </p>
+              <ul className="flex flex-wrap gap-x-6">
+                {legalLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="inline-flex min-h-12 items-center">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
-
-        <div className="mt-12 flex flex-col gap-2 border-t border-border-decoration pt-6 text-caption text-text-secondary sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © <Year /> Mums Aloud. All rights reserved.
-          </p>
-          <ul className="flex flex-wrap gap-x-6">
-            {legalLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="inline-flex min-h-12 items-center">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </footer>

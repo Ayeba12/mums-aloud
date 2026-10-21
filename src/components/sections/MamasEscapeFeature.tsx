@@ -1,59 +1,49 @@
-import Image from "next/image";
 import Link from "next/link";
 import { BookOpenTextIcon, CalendarHeartIcon, HandHeartIcon, LightbulbIcon } from "@phosphor-icons/react/ssr";
-import { IconChip, Section, SectionHeading } from "@/components/layout/Section";
+import { Section, SectionHeading } from "@/components/layout/Section";
+import { FeatureTabs } from "@/components/sections/FeatureTabs";
 import { ButtonLink } from "@/components/ui/Button";
 import { mamasEscape } from "@/content/home";
 import { siteConfig } from "@/lib/site";
-import photo from "@/assets/photos/mother-kissing-baby.jpg";
+import mentorPhoto from "@/assets/photos/mother-kissing-baby.jpg";
+import expertPhoto from "@/assets/photos/women-community-circle.jpg";
+import resourcesPhoto from "@/assets/photos/mother-baby-smiling.jpg";
+import eventsPhoto from "@/assets/photos/two-friends-smiling.jpg";
 
-const icons = { mentor: HandHeartIcon, expert: LightbulbIcon, resources: BookOpenTextIcon, events: CalendarHeartIcon };
+const media = {
+  mentor: { icon: <HandHeartIcon aria-hidden size={24} />, photo: mentorPhoto, alt: "A mother kissing her smiling baby on the cheek", position: "object-[50%_35%]" },
+  expert: { icon: <LightbulbIcon aria-hidden size={24} />, photo: expertPhoto, alt: "Three women in bright African-print clothing chatting over tea", position: "object-[40%_50%]" },
+  resources: { icon: <BookOpenTextIcon aria-hidden size={24} />, photo: resourcesPhoto, alt: "A smiling mother holding her baby at home", position: "object-[65%_40%]" },
+  events: { icon: <CalendarHeartIcon aria-hidden size={24} />, photo: eventsPhoto, alt: "Two friends smiling side by side", position: "object-[50%_30%]" },
+};
 
 /**
  * As the reference's "Built for real teams" section: heading with the action top-right,
- * a divided feature list under it, and a tall portrait in the other column.
+ * then the feature tabs (expanded card + changing portrait).
  */
 export function MamasEscapeFeature() {
   return (
     <Section aria-labelledby="mamas-escape-heading">
-      <div className="flex flex-wrap items-end justify-between gap-6">
+      <div className="flex flex-wrap items-center justify-between gap-6">
         <SectionHeading id="mamas-escape-heading" tag={mamasEscape.eyebrow} heading={mamasEscape.heading} />
-        <ButtonLink href={siteConfig.joinUrl} arrow>
+        <ButtonLink href={siteConfig.joinUrl} size="large" arrow>
           {mamasEscape.primary}
         </ButtonLink>
       </div>
-      <div className="mt-12 grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
-        <div className="lg:col-span-6">
-          <p className="max-w-[46ch] text-lead">{mamasEscape.body}</p>
-          <ul className="mt-8 divide-y divide-border-decoration border-y border-border-decoration">
-            {mamasEscape.items.map((item) => {
-              const Icon = icons[item.icon];
-              return (
-                <li key={item.title} className="flex gap-4 py-4">
-                  <IconChip>
-                    <Icon aria-hidden size={24} />
-                  </IconChip>
-                  <p className="self-center">
-                    <strong className="font-bold text-ink">{item.title}.</strong> {item.text}
-                  </p>
-                </li>
-              );
-            })}
-          </ul>
-          <Link href={mamasEscape.quiet.href} className="mt-6 inline-flex min-h-12 items-center font-semibold">
-            {mamasEscape.quiet.label}
-          </Link>
-        </div>
-        <div className="lg:col-span-5 lg:col-start-8">
-          <Image
-            src={photo}
-            alt="A mother kissing her smiling baby on the cheek"
-            placeholder="blur"
-            sizes="(min-width: 64rem) 42vw, 100vw"
-            className="aspect-[4/5] w-full rounded-card object-cover object-[50%_35%]"
-          />
-        </div>
+      <p className="mt-6 max-w-[46ch] text-lead">{mamasEscape.body}</p>
+      <div className="mt-12">
+        <FeatureTabs
+          items={mamasEscape.items.map((item) => ({
+            id: item.icon,
+            title: item.title,
+            text: item.text,
+            ...media[item.icon],
+          }))}
+        />
       </div>
+      <Link href={mamasEscape.quiet.href} className="mt-6 inline-flex min-h-12 items-center font-semibold">
+        {mamasEscape.quiet.label}
+      </Link>
     </Section>
   );
 }

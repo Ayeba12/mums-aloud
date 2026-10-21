@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Tag } from "@/components/layout/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { Accent } from "@/components/ui/Heading";
 import { hero } from "@/content/home";
@@ -29,8 +28,7 @@ export function Hero() {
           className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-black-950)_0%,color-mix(in_srgb,var(--color-black-950)_92%,transparent)_44%,color-mix(in_srgb,var(--color-black-950)_45%,transparent)_68%,transparent_100%)]"
         />
         <div className="container-page relative flex flex-col items-center pt-48 pb-12 text-center md:pb-16 lg:pb-20">
-          <Tag className="bg-black-950 text-black-50">{hero.eyebrow}</Tag>
-          <h1 id="hero-heading" className="mt-4 max-w-[14ch] text-display tracking-tight text-black-50">
+          <h1 id="hero-heading" className="max-w-[14ch] text-display tracking-tight text-black-50">
             <Accent {...hero.headline} />
           </h1>
           <p className="mt-4 max-w-[44ch] text-lead text-black-50">{hero.subheadline}</p>

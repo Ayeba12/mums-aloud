@@ -94,7 +94,7 @@ spacing:
   section-sm: 3rem
   section-md: 4rem
   section-lg: 6rem
-  content-max: 75rem
+  content-max: 90rem
   reading-max: 65ch
   form-max: 40rem
 components:
@@ -157,7 +157,7 @@ The grid is 4 columns under 768px, 8 to 1024px, 12 above, with gaps equal to the
 
 Vertical rhythm uses `section-sm`, `section-md` and `section-lg` between sections. Inside a section the opening block is fixed: tag, 8px, heading, 16px, intro, 24px, action, then 48px to the section's content. Spacing is stepped on the 4px base (8px for layout, 4px for detail); only typography is fluid.
 
-The hero is a full-frame photo pulled up under the sticky pill header, copy centred in this order: tag, display heading, lead, two pill buttons (inverse with the arrow circle, then inverse outline). Inner-page heroes use the same frame at a shorter height with copy bottom-left.
+The hero is a full-frame photo pulled up under the sticky pill header, copy centred in this order: display heading, lead, two pill buttons (inverse with the arrow circle, then inverse outline). Inner-page heroes use the same frame at a shorter height with copy bottom-left.
 
 ## Elevation & Depth
 

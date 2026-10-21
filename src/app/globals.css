@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @import "../styles/theme.css";
 
+@theme {
+  /* Voices strip: the track is duplicated, so -50% is one full loop. Paused on hover; off under reduced motion. */
+  --animate-marquee: marquee 56s linear infinite;
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
 /* Global styles beyond the theme. Keep component styling in components. */
 @layer base {
   h1, h2, h3 {
