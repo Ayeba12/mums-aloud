@@ -36,9 +36,12 @@ export function Hero() {
           <h1 id="hero-heading" className="max-w-[14ch] text-display tracking-tight text-black-50">
             <Accent {...hero.headline} />
           </h1>
-          <p className="mt-4 max-w-[48ch] text-body text-black-50 transition-opacity duration-300 ease-standard group-focus-within:opacity-100 group-hover:opacity-100 motion-reduce:transition-none md:text-lead lg:[@media(hover:hover)]:opacity-0">
-            {hero.subheadline}
-          </p>
+          {/* Collapses to nothing on hover-capable desktops, so heading and buttons sit together until the copy is hovered or focused. */}
+          <div className="grid w-full justify-items-center transition-[grid-template-rows] duration-300 ease-standard motion-reduce:transition-none [grid-template-rows:1fr] lg:[@media(hover:hover)]:[grid-template-rows:0fr] lg:group-focus-within:[grid-template-rows:1fr] lg:group-hover:[grid-template-rows:1fr]">
+            <p className="min-h-0 max-w-[48ch] overflow-hidden text-body text-black-50 transition-opacity duration-300 ease-standard group-focus-within:opacity-100 group-hover:opacity-100 motion-reduce:transition-none md:text-lead lg:[@media(hover:hover)]:opacity-0">
+              <span className="block pt-4">{hero.subheadline}</span>
+            </p>
+          </div>
           <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">
             <ButtonLink href={siteConfig.joinUrl} variant="inverse" size="large" arrow>
               {hero.primary}
