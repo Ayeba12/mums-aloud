@@ -33,30 +33,30 @@ typography:
     fontWeight: 400
   display:
     fontFamily: Libre Caslon Text
-    fontSize: clamp(2.5rem, 2.07143rem + 2.14286vw, 4rem)
-    lineHeight: clamp(3rem, 2.57143rem + 2.14286vw, 4.5rem)
+    fontSize: clamp(3rem, 2.35714rem + 3.21429vw, 5.25rem)
+    lineHeight: clamp(3.5rem, 2.92857rem + 2.85714vw, 5.5rem)
     fontWeight: 400
     letterSpacing: -0.01em
   h1:
     fontFamily: Libre Caslon Text
-    fontSize: clamp(2.25rem, 1.96429rem + 1.42857vw, 3.25rem)
-    lineHeight: clamp(2.75rem, 2.46429rem + 1.42857vw, 3.75rem)
+    fontSize: clamp(2.5rem, 2.07143rem + 2.14286vw, 4rem)
+    lineHeight: clamp(3rem, 2.57143rem + 2.14286vw, 4.5rem)
     fontWeight: 400
     letterSpacing: -0.01em
   h2:
     fontFamily: Libre Caslon Text
-    fontSize: clamp(1.75rem, 1.53571rem + 1.07143vw, 2.5rem)
-    lineHeight: clamp(2.25rem, 2.03571rem + 1.07143vw, 3rem)
+    fontSize: clamp(2rem, 1.71429rem + 1.42857vw, 3rem)
+    lineHeight: clamp(2.5rem, 2.21429rem + 1.42857vw, 3.5rem)
     fontWeight: 400
   h3:
     fontFamily: Libre Caslon Text
-    fontSize: clamp(1.5rem, 1.35714rem + 0.714286vw, 2rem)
-    lineHeight: clamp(2rem, 1.85714rem + 0.714286vw, 2.5rem)
+    fontSize: clamp(1.5rem, 1.28571rem + 1.07143vw, 2.25rem)
+    lineHeight: clamp(2rem, 1.78571rem + 1.07143vw, 2.75rem)
     fontWeight: 400
   h4:
     fontFamily: Urbanist
-    fontSize: clamp(1.25rem, 1.17857rem + 0.357143vw, 1.5rem)
-    lineHeight: clamp(1.75rem, 1.67857rem + 0.357143vw, 2rem)
+    fontSize: clamp(1.25rem, 1.10714rem + 0.714286vw, 1.75rem)
+    lineHeight: clamp(1.75rem, 1.60714rem + 0.714286vw, 2.25rem)
     fontWeight: 700
   lead:
     fontFamily: Urbanist
@@ -145,7 +145,7 @@ Routine text must measure 7:1 against its background; large text (24px regular o
 
 ## Typography
 
-Headings H1 to H3 use `heading`; H4 and below use `h4` (Urbanist bold) so interface headings stay distinct from editorial ones. Every section heading carries one italic accent phrase (an `em`), and no more. Every size and line-height is a multiple of 4px at 320px and 1440px (Major Third on desktop, Minor Third on small screens); body stays 16px. Letter-spacing tightens only on `display` and `h1`; H2 and below use normal tracking. Reading copy is capped at `reading-max`; headings at 22ch; section intros at 46ch.
+Headings H1 to H3 use `heading`; H4 and below use `h4` (Urbanist bold) so interface headings stay distinct from editorial ones. Every section heading carries one italic accent phrase (an `em`), and no more. Every size and line-height is a multiple of 4px at 320px and 1440px (Perfect Fourth on desktop: 16, 20, 28, 36, 48, 64, 84; restrained on small screens); body stays 16px. Letter-spacing tightens only on `display` and `h1`; H2 and below use normal tracking. Reading copy is capped at `reading-max`; headings at 22ch; section intros at 46ch.
 
 `tag` is uppercase and used once per section, directly above the heading. `label` is for buttons, form labels and navigation.
 
