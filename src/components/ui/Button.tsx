@@ -6,7 +6,7 @@ type Variant = "primary" | "secondary" | "accent" | "inverse" | "inverse-outline
 type Size = "default" | "large";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-pill border-2 px-6 py-2 text-center text-base leading-normal font-bold no-underline transition-colors duration-150 ease-standard cursor-pointer";
+  "inline-flex items-center justify-center gap-2 rounded-pill border-2 px-6 py-2 text-center text-base leading-normal font-bold no-underline transition-[color,background-color,border-color,scale] duration-150 ease-standard cursor-pointer active:scale-[0.96] motion-reduce:active:scale-100";
 
 const variants: Record<Variant, string> = {
   primary:

@@ -21,4 +21,5 @@
   }
   img { max-width: 100%; height: auto; }
   ::selection { background-color: var(--color-berry-lipstick-100); color: var(--color-black-900); }
+  input, textarea { caret-color: var(--color-action); }
 }

@@ -12,29 +12,29 @@ export const page = {
 export const hero = {
   tag: "Mama's Escape",
   heading: { lead: "There's a place for you", accent: "here." },
-  intro: "This is the door to Mama's Escape, the community for Black mothers ready to stop doing it all alone.",
+  intro: "The community for Black mothers ready to stop doing it all alone.",
   primary: "Join Mama's Escape",
   secondary: { label: "What to expect", href: "#what-to-expect" },
-};
-
-export const about = {
-  tag: "About",
-  heading: { lead: "A mother deserves to be", accent: "looked after too." },
-  body: "Before we were mothers, we were women full of ideas, dreams, and plans. Then motherhood arrived, often far from home, far from the village that would have held us. Everyone gathered round the baby. Few asked how we were. So we learned to appear okay while running on empty. It cost us in our bodies and in our minds.",
-  pledge: "We know, because it is our story too. A baby is born, but a mother is born too. She needs care too.",
+  /** Floating card over the hero portrait, as the reference's case-study card. */
+  card: {
+    tag: "Our covenant",
+    text: "What is shared here stays here. No mother becomes anyone's story.",
+    link: { label: "See what's inside", href: "#inside" },
+  },
 };
 
 export const why = {
   tag: "Why we exist",
   heading: { lead: "To be understood without", accent: "having to explain." },
-  body: "For Black mothers in the UK, the gap is not only loneliness. We are around three times more likely to die in and around pregnancy than white women, and too often our concerns go unheard. We were also raised, in our own cultures, not to talk about the struggle. Mama's Escape exists to change both. To break the silence, together.",
-  pledge: "We speak with you. We speak for you. We are you.",
+  body: "For Black mothers in the UK, the gap is not only loneliness. We are around three times more likely to die in and around pregnancy than white women, and too often our concerns go unheard. We were also raised, in our own cultures, not to talk about the struggle. Mama's Escape exists to change both.",
   stat: { value: "3×", label: "more likely to die in and around pregnancy", source: { label: "MBRRACE-UK", href: "https://www.npeu.ox.ac.uk/mbrrace-uk" } },
 };
 
 export const experience = {
   tag: "What you will experience",
-  heading: { lead: "Not a rulebook. A few of the ways", accent: "we hold each other." },
+  heading: { lead: "A mother deserves to be", accent: "looked after too." },
+  body: "Before we were mothers, we were women full of ideas, dreams, and plans. Then motherhood arrived, often far from home, far from the village that would have held us. Everyone gathered round the baby. Few asked how we were.",
+  pledge: "We know, because it is our story too. A baby is born, but a mother is born too. She needs care too.",
   items: [
     { icon: "mentor", title: "Mentor Mums", text: "A woman who has walked ahead of you and is reaching back. Someone to answer the questions you would only ask another mum, and to hold what you share in confidence." },
     { icon: "expert", title: "Expert Series and Training", text: "Sessions with people who understand, giving you practical tools for your recovery, in body and in mind." },
@@ -42,6 +42,8 @@ export const experience = {
     { icon: "events", title: "Community Events", text: "Reasons to leave isolation and come into a room of women who already understand." },
   ],
 } as const;
+
+export const marquee = "We speak with you. We speak for you. We are you.";
 
 export const family = {
   tag: "Where Mama's Escape sits",
@@ -57,7 +59,13 @@ export const family = {
 export const expect = {
   tag: "What to expect",
   heading: { lead: "Not Mum. Not wife.", accent: "You." },
-  body: "Here is what stepping in feels like: women who have lived what you are living. Honest conversation. Mentor mums a few steps ahead. Sessions and resources you can actually use. And a circle that will know you by your name.",
+  body: "Here is what stepping in feels like.",
+  moments: [
+    "Women who have lived what you are living.",
+    "Honest conversation, and mentor mums a few steps ahead.",
+    "Sessions and resources you can actually use, and a circle that will know you by your name.",
+  ],
+  note: "Photographs are illustrative. Member voices are shared only with their consent.",
   covenant: {
     title: "Our covenant",
     body: "What is shared here stays here. No mother becomes anyone's story. We keep this space protected, so you come in through a simple form.",
@@ -68,6 +76,7 @@ export const join = {
   tag: "How to join",
   heading: { lead: "You do not need to have it all together first.", accent: "You just need to come." },
   body: "Fill in the short form and we will welcome you in. It takes a couple of minutes.",
+  asksTitle: "What we ask",
   asks: [
     "Your name, and what we can call you",
     "Where you are right now: expecting, newborn, under five, or other",
@@ -78,10 +87,41 @@ export const join = {
   pending: "The joining form is being set up. Get the newsletter and we will tell you the moment it opens.",
 };
 
+/** Grounded in the client's copy only. Cost and eligibility details are still to confirm with the owner. */
+export const faq = {
+  heading: { lead: "Questions?", accent: "Glad you asked." },
+  items: [
+    {
+      q: "Who is Mama's Escape for?",
+      a: "Black mothers in the UK, particularly of African and Afro-Caribbean heritage, who are ready to stop doing it all alone. Expecting, newly a mum, raising under-fives, or somewhere else on the road: there is a place for you here.",
+    },
+    {
+      q: "What happens after I join?",
+      a: "You fill in the short form and we welcome you in. You do not need to have it all together first. The Welcome Book and the real depth of the community wait for you inside.",
+    },
+    {
+      q: "Is what I share private?",
+      a: "Yes. What is shared here stays here, and no mother becomes anyone's story. We keep the space protected, which is why you come in through a simple form.",
+    },
+    {
+      q: "What is inside?",
+      a: "Mentor mums who have walked a few steps ahead. Expert sessions and training. Resources that make the systems easier to face. Community events with women who already understand.",
+    },
+    {
+      q: "I'm not ready to join. Can I still stay close?",
+      a: "Of course. Listen to the podcast, get the newsletter, or reach out to Work With Us for a closer conversation with Bokun.",
+    },
+    {
+      q: "How is this different from Work With Us?",
+      a: "Mama's Escape is the community: a room of women. Work With Us is a closer path with Bokun for a mother who wants support that is just hers.",
+    },
+  ],
+};
+
 export const stayClose = {
   tag: "Not ready to join yet?",
-  heading: { lead: "Stay close,", accent: "Mama." },
-  body: "Listen to the podcast, get the newsletter, or reach out to Work With Me for a closer conversation with Bokun.",
+  heading: { lead: "This is the place we wished we had.", accent: "Come in, Mama." },
+  body: "Or stay close: listen to the podcast, get the newsletter, or reach out to Work With Us for a closer conversation with Bokun.",
   actions: [
     { label: "Listen to the podcast", href: "https://creators.spotify.com/pod/show/mamasescape", external: true },
     { label: "Get the newsletter", href: "", newsletter: true },
