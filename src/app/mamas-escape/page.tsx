@@ -49,11 +49,9 @@ const expectPhotos = [
   { src: circlePhoto, alt: "Three women talking together on a sofa", position: "object-[50%_40%]" },
 ];
 const imageRing = "ring-1 ring-black-950/10 ring-inset";
-/** Scrims under text on photos: the world's own dark (berry 900), not a neutral black. */
+/** Scrim under the portrait captions: the world's own dark (berry 900), not a neutral black. */
 const portraitScrim =
   "bg-[linear-gradient(to_top,var(--color-berry-lipstick-900)_0%,color-mix(in_srgb,var(--color-berry-lipstick-900)_85%,transparent)_45%,transparent_100%)]";
-const captionScrim =
-  "lg:bg-[linear-gradient(to_top,var(--color-berry-lipstick-900)_0%,color-mix(in_srgb,var(--color-berry-lipstick-900)_85%,transparent)_55%,transparent_100%)]";
 
 export default function MamasEscapePage() {
   return (
@@ -83,6 +81,7 @@ export default function MamasEscapePage() {
       <Statement
         id="podcast-heading"
         {...podcast.statement}
+        body={podcast.body}
         action={
           <a href={podcast.action.href} className="inline-flex min-h-12 items-center gap-2 font-semibold">
             {podcast.action.label}
@@ -103,9 +102,7 @@ export default function MamasEscapePage() {
               hero copy, so the page zigzags: hero photo left, this one right, the experience portrait
               left, the join photo right. From lg the photo spans two rows and the heading and figure sit
               either side of the row boundary, so the pair stays centred beside it. On phones the photo
-              leads, pressed into the top of the panel, then the heading, the paragraph and the figure
-              that it explains; the photo wrapper dissolves (display: contents) so each piece can take
-              its place in that order. */}
+              leads, pressed into the top of the panel, then the heading and the figure. */}
           <div className="grid gap-8 px-2 pt-2 md:px-4 md:pt-4 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-6 lg:p-2">
             <div className="px-2 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:self-end lg:pr-0 lg:pl-6">
               <Tag>{why.tag}</Tag>
@@ -113,15 +110,10 @@ export default function MamasEscapePage() {
                 <Accent {...why.heading} />
               </h2>
             </div>
-            <div className="contents lg:relative lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 lg:block">
-              <div className={`order-first overflow-hidden rounded-card lg:order-none ${imageRing}`}>
-                <Image src={embracePhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 50vw, 100vw" className="aspect-square w-full object-cover object-[50%_30%]" />
-              </div>
-              <p className={`order-1 max-w-[46ch] px-2 lg:absolute lg:inset-x-0 lg:bottom-0 lg:order-none lg:max-w-none lg:rounded-b-card lg:px-6 lg:pt-24 lg:pb-6 ${captionScrim}`}>
-                <span className="block max-w-[46ch]">{why.body}</span>
-              </p>
+            <div className={`order-first overflow-hidden rounded-card lg:order-none lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 ${imageRing}`}>
+              <Image src={embracePhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 50vw, 100vw" className="aspect-square w-full object-cover object-[50%_30%]" />
             </div>
-            <p className="order-2 max-w-[36ch] px-2 lg:order-none lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-start lg:pr-0 lg:pl-6">
+            <p className="max-w-[36ch] px-2 lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-start lg:pr-0 lg:pl-6">
               <span className="font-heading text-h3 leading-none">{why.stat.value}</span> {why.stat.label} ·{" "}
               <a href={why.stat.source.href}>Source: {why.stat.source.label}</a>
             </p>

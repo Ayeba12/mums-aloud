@@ -82,20 +82,22 @@ export function IconChip({ className = "", children }: { className?: string; chi
 
 /**
  * Centred editorial statement, as on the People Work reference: a narrow serif H2 with one
- * highlighted phrase. No tag; at most one quiet link beneath it. A trail that starts with
- * punctuation closes up against the highlight.
+ * highlighted phrase. No tag; at most a supporting paragraph and one quiet link beneath it.
+ * A trail that starts with punctuation closes up against the highlight.
  */
 export function Statement({
   id,
   lead,
   highlight,
   trail,
+  body,
   action,
 }: {
   id: string;
   lead: string;
   highlight: string;
   trail?: string;
+  body?: string;
   action?: ReactNode;
 }) {
   const closeUp = trail !== undefined && /^[,.:;!?]/.test(trail);
@@ -105,6 +107,7 @@ export function Statement({
         {lead} <mark className="rounded-control bg-accent-soft px-2 text-ink">{highlight}</mark>
         {trail && (closeUp ? trail : ` ${trail}`)}
       </h2>
+      {body && <p className="mx-auto mt-6 max-w-[56ch] text-center text-lead">{body}</p>}
       {action && <div className="mt-6 flex justify-center">{action}</div>}
     </Section>
   );
