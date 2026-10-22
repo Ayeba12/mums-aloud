@@ -45,7 +45,7 @@ const familyMedia = {
 };
 const expectPhotos = [
   { src: friendsPhoto, alt: "Two friends smiling side by side", position: "object-[55%_30%]" },
-  { src: embracePhoto, alt: "A mother and daughter embracing, foreheads touching", position: "object-[50%_30%]" },
+  { src: podcastPhoto, alt: "A mother and her baby smiling, cheek to cheek", position: "object-[60%_40%]" },
   { src: circlePhoto, alt: "Three women talking together on a sofa", position: "object-[50%_40%]" },
 ];
 const imageRing = "ring-1 ring-black-950/10 ring-inset";
@@ -84,18 +84,17 @@ export default function MamasEscapePage() {
       <div className="frame-x section-y">
         <section id="inside" aria-labelledby="why-heading" className="surface-dark rounded-panel scroll-mt-24">
           <div className="container-page section-y">
-            <div className="grid gap-8 lg:grid-cols-12 lg:gap-x-8">
-              <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:self-center">
+            {/* From lg the photo spans two rows and the heading and figure sit either side of the row
+                boundary, so the pair stays centred beside it. On phones the figure follows the paragraph
+                that explains it. */}
+            <div className="grid gap-8 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-6">
+              <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:self-end">
                 <Tag>{why.tag}</Tag>
-                <h2 id="why-heading" className="mt-4 max-w-[12ch] text-h1">
+                <h2 id="why-heading" className="mt-4 max-w-[12ch] text-h2">
                   <Accent {...why.heading} />
                 </h2>
-                <p className="mt-6 max-w-[36ch]">
-                  <span className="font-heading text-h3">{why.stat.value}</span> {why.stat.label} ·{" "}
-                  <a href={why.stat.source.href}>Source: {why.stat.source.label}</a>
-                </p>
               </div>
-              <div className="relative lg:col-span-6 lg:col-start-1 lg:row-start-1">
+              <div className="relative lg:col-span-6 lg:col-start-1 lg:row-span-2 lg:row-start-1">
                 <div className={`overflow-hidden rounded-card ${imageRing}`}>
                   <Image src={embracePhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 50vw, 100vw" className="aspect-square w-full object-cover object-[50%_30%]" />
                 </div>
@@ -103,6 +102,10 @@ export default function MamasEscapePage() {
                   <span className="block max-w-[46ch]">{why.body}</span>
                 </p>
               </div>
+              <p className="max-w-[36ch] lg:col-span-5 lg:col-start-8 lg:row-start-2 lg:self-start">
+                <span className="font-heading text-h3 leading-none">{why.stat.value}</span> {why.stat.label} ·{" "}
+                <a href={why.stat.source.href}>Source: {why.stat.source.label}</a>
+              </p>
             </div>
 
             <h3 className="mx-auto mt-16 max-w-[24ch] text-center text-h2 lg:mt-24">
@@ -113,7 +116,7 @@ export default function MamasEscapePage() {
                 const Icon = experienceIcons[item.icon];
                 return (
                   <li key={item.title} className="flex flex-col rounded-card border border-border-decoration p-6 lg:min-h-[22rem]">
-                    <span className="inline-flex size-12 shrink-0 items-center justify-center rounded-control bg-surface-card text-accent">
+                    <span className="inline-flex size-12 shrink-0 items-center justify-center rounded-pill bg-surface-card text-accent">
                       <Icon aria-hidden size={24} />
                     </span>
                     <h4 className="mt-6 font-heading text-h4 text-ink">{item.title}</h4>
