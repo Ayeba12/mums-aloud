@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { experience, family, hero, join, stayClose } from "./mamas-escape";
+import { experience, family, hero, join, podcast, stayClose } from "./mamas-escape";
 
 describe("Mama's Escape content", () => {
   it("keeps the four ways the community holds each other, in the client's order", () => {
@@ -31,6 +31,11 @@ describe("Mama's Escape content", () => {
     const linked = stayClose.body.filter((part) => typeof part !== "string").map((part) => part.label);
     expect(linked).toEqual(["listen to the podcast", "Work With Us"]);
     expect(stayClose.newsletter).toBe("Get the newsletter");
+  });
+
+  it("sends podcast listeners to the show on Spotify, with the brief's own line as the heading", () => {
+    expect(podcast.action.href).toBe(family.tiles[1].action.href);
+    expect(`${podcast.heading.lead} ${podcast.heading.accent}`).toBe("Real conversations, real mothers.");
   });
 
   it("explains the closed joining form instead of promising it", () => {
