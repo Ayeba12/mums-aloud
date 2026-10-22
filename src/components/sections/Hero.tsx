@@ -26,7 +26,9 @@ const photos: HeroPhoto[] = [
 export function Hero() {
   return (
     <section aria-labelledby="hero-heading" className="frame-x -mt-(--header-offset) pt-2 md:pt-4">
-      <div className="relative flex min-h-[40rem] flex-col justify-end overflow-hidden rounded-panel md:min-h-[48rem] lg:h-[calc(100svh-2rem)] lg:min-h-[52rem] lg:max-h-[60rem]">
+      {/* Fills the first screen (less the frame gap) on phones and tablets, between a floor for short
+          viewports and a ceiling for very tall ones; on desktop it is the viewport height within 56 to 64rem. */}
+      <div className="relative flex min-h-[min(max(44rem,100svh_-_1rem),56rem)] flex-col justify-end overflow-hidden rounded-panel md:min-h-[min(max(52rem,100svh_-_2rem),60rem)] lg:h-[calc(100svh-2rem)] lg:min-h-[56rem] lg:max-h-[64rem]">
         <HeroSlideshow photos={photos} />
         <div
           aria-hidden

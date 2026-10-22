@@ -26,7 +26,10 @@ export function PageHero({
 }) {
   return (
     <section aria-labelledby="page-heading" className="frame-x -mt-(--header-offset) pt-2 md:pt-4">
-      <div className="relative flex min-h-[30rem] flex-col justify-end overflow-hidden rounded-panel md:min-h-[34rem] lg:min-h-[38rem]">
+      {/* Taller than before (owner, 22 Oct 2026): the first screen on phones, like the homepage hero,
+          then at least 44rem or 80% of the viewport on tablets and 48rem or 75% on desktop, never
+          more than 52 / 56rem so very tall screens keep a sane frame. */}
+      <div className="relative flex min-h-[min(100svh_-_1rem,52rem)] flex-col justify-end overflow-hidden rounded-panel md:min-h-[min(max(44rem,80svh),56rem)] lg:min-h-[min(max(48rem,75svh),56rem)]">
         <Image src={photo} alt={alt} fill priority placeholder="blur" sizes="100vw" className={`object-cover ${position}`} />
         <div
           aria-hidden
