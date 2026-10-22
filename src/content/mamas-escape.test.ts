@@ -33,9 +33,10 @@ describe("Mama's Escape content", () => {
     expect(stayClose.newsletter).toBe("Get the newsletter");
   });
 
-  it("sends podcast listeners to the show on Spotify, with the brief's own line as the heading", () => {
+  it("sends podcast listeners to the same Spotify show as the podcast card, with one highlighted phrase", () => {
     expect(podcast.action.href).toBe(family.tiles[1].action.href);
-    expect(`${podcast.heading.lead} ${podcast.heading.accent}`).toBe("Real conversations, real mothers.");
+    expect(podcast.statement.highlight).toBe("the masks come off");
+    expect(podcast.statement.trail.startsWith(":")).toBe(true);
   });
 
   it("explains the closed joining form instead of promising it", () => {

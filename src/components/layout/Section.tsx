@@ -82,14 +82,30 @@ export function IconChip({ className = "", children }: { className?: string; chi
 
 /**
  * Centred editorial statement, as on the People Work reference: a narrow serif H2 with one
- * highlighted phrase. No tag, no button.
+ * highlighted phrase. No tag; at most one quiet link beneath it. A trail that starts with
+ * punctuation closes up against the highlight.
  */
-export function Statement({ id, lead, highlight, trail }: { id: string; lead: string; highlight: string; trail?: string }) {
+export function Statement({
+  id,
+  lead,
+  highlight,
+  trail,
+  action,
+}: {
+  id: string;
+  lead: string;
+  highlight: string;
+  trail?: string;
+  action?: ReactNode;
+}) {
+  const closeUp = trail !== undefined && /^[,.:;!?]/.test(trail);
   return (
     <Section aria-labelledby={id}>
       <h2 id={id} className="mx-auto max-w-[30ch] text-center text-h2 text-balance">
-        {lead} <mark className="rounded-control bg-accent-soft px-2 text-ink">{highlight}</mark> {trail}
+        {lead} <mark className="rounded-control bg-accent-soft px-2 text-ink">{highlight}</mark>
+        {trail && (closeUp ? trail : ` ${trail}`)}
       </h2>
+      {action && <div className="mt-6 flex justify-center">{action}</div>}
     </Section>
   );
 }

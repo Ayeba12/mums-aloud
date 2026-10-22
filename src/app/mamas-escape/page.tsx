@@ -14,7 +14,7 @@ import {
   UsersThreeIcon,
 } from "@phosphor-icons/react/ssr";
 import { Faq } from "@/components/content/Faq";
-import { IconChip, Section, SectionHeading, Tag } from "@/components/layout/Section";
+import { Section, SectionHeading, Statement, Tag } from "@/components/layout/Section";
 import { SplitHero } from "@/components/sections/SplitHero";
 import { TextMarquee } from "@/components/sections/TextMarquee";
 import { ButtonLink } from "@/components/ui/Button";
@@ -78,32 +78,19 @@ export default function MamasEscapePage() {
         }
       />
 
-      {/* The podcast: the quiet path the client's copy puts under the hero ("Not ready yet? Listen to the
-          podcast"). A warm band one frame gap below the hero, copy left and the link right. */}
-      <section aria-labelledby="podcast-heading" className="frame-x mt-2 md:mt-4">
-        <div className="rounded-panel bg-surface-warm">
-          <div className="container-page grid gap-6 py-8 lg:grid-cols-12 lg:items-center lg:gap-8 lg:py-10">
-            <div className="flex gap-4 lg:col-span-8">
-              <IconChip>
-                <MicrophoneIcon aria-hidden size={24} />
-              </IconChip>
-              <div>
-                <Tag>{podcast.tag}</Tag>
-                <h2 id="podcast-heading" className="mt-2 text-h3">
-                  <Accent {...podcast.heading} />
-                </h2>
-                <p className="mt-2 max-w-[56ch]">{podcast.body}</p>
-              </div>
-            </div>
-            <div className="lg:col-span-4 lg:justify-self-end">
-              <ButtonLink href={podcast.action.href} variant="secondary" size="large" icon={<ArrowUpRightIcon aria-hidden size={16} weight="bold" />}>
-                {podcast.action.label}
-                <span className="sr-only">(opens Spotify)</span>
-              </ButtonLink>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* The podcast: the reference's centred statement with one highlighted phrase, carrying the quiet
+          path the client's copy puts under the hero ("Not ready yet? Listen to the podcast"). */}
+      <Statement
+        id="podcast-heading"
+        {...podcast.statement}
+        action={
+          <a href={podcast.action.href} className="inline-flex min-h-12 items-center gap-2 font-semibold">
+            {podcast.action.label}
+            <ArrowUpRightIcon aria-hidden size={16} weight="bold" />
+            <span className="sr-only">(opens Spotify)</span>
+          </a>
+        }
+      />
 
       {/* Why we exist: the page's one dark panel, after the reference's dark section. A portrait carrying
           the reason as its caption, the heading set tall beside it; then a statement, four outlined cards

@@ -25,13 +25,16 @@ export const hero = {
 
 /**
  * The quiet path under the hero, where the client's Home copy puts "Not ready yet? Listen to the
- * podcast". Description condensed from the live Podcast page (mumsaloud.com/podcast, 22 Oct 2026).
+ * podcast": one centred statement with a highlighted phrase, as the reference sets it. Wording
+ * condensed from the live Podcast page (mumsaloud.com/podcast, 22 Oct 2026).
  */
 export const podcast = {
-  tag: "Not ready yet?",
-  heading: { lead: "Real conversations,", accent: "real mothers." },
-  body: "Motherhood is beautiful, messy and overwhelming. On the Mama's Escape Podcast the masks come off: honest conversations about loss, mum guilt and the pressures Black mums carry, with connection and practical ways to thrive.",
-  action: { label: "Listen on Spotify", href: "https://creators.spotify.com/pod/show/mamasescape" },
+  statement: {
+    lead: "On the Mama's Escape Podcast",
+    highlight: "the masks come off",
+    trail: ": real mothers talking about loss, mum guilt and the pressures we carry.",
+  },
+  action: { label: "Not ready to join yet? Listen on Spotify", href: "https://creators.spotify.com/pod/show/mamasescape" },
 };
 
 export const why = {
