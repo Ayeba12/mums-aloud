@@ -34,7 +34,7 @@ export function FeatureTabs({ items }: { items: FeatureTab[] }) {
   };
 
   return (
-    <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-8">
+    <div className="grid items-stretch gap-12 lg:grid-cols-12 lg:gap-8">
       <ul className="flex flex-col gap-2 lg:col-span-5">
         {items.map((item, index) => {
           const isOpen = index === openIndex;
@@ -74,7 +74,7 @@ export function FeatureTabs({ items }: { items: FeatureTab[] }) {
             alt={index === openIndex ? item.alt : ""}
             placeholder="blur"
             sizes="(min-width: 64rem) 50vw, 100vw"
-            className={`aspect-[3/4] w-full rounded-card object-cover ${item.position ?? "object-center"} ${index === openIndex ? "" : "hidden"}`}
+            className={`aspect-[3/4] w-full rounded-card object-cover md:aspect-auto md:h-[32rem] lg:h-[36rem] ${item.position ?? "object-center"} ${index === openIndex ? "" : "hidden"}`}
           />
         ))}
       </div>
