@@ -102,24 +102,26 @@ export default function MamasEscapePage() {
               the copy beside it on the container's own gutter. The photo sits on the right, under the
               hero copy, so the page zigzags: hero photo left, this one right, the experience portrait
               left, the join photo right. From lg the photo spans two rows and the heading and figure sit
-              either side of the row boundary, so the pair stays centred beside it. On phones the figure
-              follows the paragraph that explains it. */}
-          <div className="grid gap-8 px-2 pt-12 md:px-4 md:pt-16 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-6 lg:p-2">
+              either side of the row boundary, so the pair stays centred beside it. On phones the photo
+              leads, pressed into the top of the panel, then the heading, the paragraph and the figure
+              that it explains; the photo wrapper dissolves (display: contents) so each piece can take
+              its place in that order. */}
+          <div className="grid gap-8 px-2 pt-2 md:px-4 md:pt-4 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-6 lg:p-2">
             <div className="px-2 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:self-end lg:pr-0 lg:pl-6">
               <Tag>{why.tag}</Tag>
               <h2 id="why-heading" className="mt-4 max-w-[12ch] text-h2">
                 <Accent {...why.heading} />
               </h2>
             </div>
-            <div className="relative lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1">
-              <div className={`overflow-hidden rounded-card ${imageRing}`}>
+            <div className="contents lg:relative lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 lg:block">
+              <div className={`order-first overflow-hidden rounded-card lg:order-none ${imageRing}`}>
                 <Image src={embracePhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 50vw, 100vw" className="aspect-square w-full object-cover object-[50%_30%]" />
               </div>
-              <p className={`mt-4 max-w-[46ch] px-2 lg:absolute lg:inset-x-0 lg:bottom-0 lg:m-0 lg:max-w-none lg:rounded-b-card lg:px-6 lg:pt-24 lg:pb-6 ${captionScrim}`}>
+              <p className={`order-1 max-w-[46ch] px-2 lg:absolute lg:inset-x-0 lg:bottom-0 lg:order-none lg:max-w-none lg:rounded-b-card lg:px-6 lg:pt-24 lg:pb-6 ${captionScrim}`}>
                 <span className="block max-w-[46ch]">{why.body}</span>
               </p>
             </div>
-            <p className="max-w-[36ch] px-2 lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-start lg:pr-0 lg:pl-6">
+            <p className="order-2 max-w-[36ch] px-2 lg:order-none lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-start lg:pr-0 lg:pl-6">
               <span className="font-heading text-h3 leading-none">{why.stat.value}</span> {why.stat.label} ·{" "}
               <a href={why.stat.source.href}>Source: {why.stat.source.label}</a>
             </p>
