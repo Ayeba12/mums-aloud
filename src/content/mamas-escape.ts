@@ -66,16 +66,15 @@ export const expect = {
     "Sessions and resources you can actually use, and a circle that will know you by your name.",
   ],
   note: "Photographs are illustrative. Member voices are shared only with their consent.",
-  covenant: {
-    title: "Our covenant",
-    body: "What is shared here stays here. No mother becomes anyone's story. We keep this space protected, so you come in through a simple form.",
-  },
 };
 
 export const join = {
   tag: "How to join",
   heading: { lead: "You do not need to have it all together first.", accent: "You just need to come." },
+  /** Shown while the joining form is linked (NEXT_PUBLIC_JOIN_URL set). */
   body: "Fill in the short form and we will welcome you in. It takes a couple of minutes.",
+  /** Shown until then, so the page never promises a form it cannot offer. */
+  bodyClosed: "The short joining form is being set up. When it opens, joining takes a couple of minutes.",
   asksTitle: "What we ask",
   asks: [
     "Your name, and what we can call you",
@@ -84,7 +83,7 @@ export const join = {
     "One line on what brought you here today",
   ],
   primary: "Join Mama's Escape",
-  pending: "The joining form is being set up. Get the newsletter and we will tell you the moment it opens.",
+  pending: { link: "Get the newsletter", after: " and we will tell you the moment the form opens." },
 };
 
 /** Grounded in the client's copy only. Cost and eligibility details are still to confirm with the owner. */
@@ -104,10 +103,6 @@ export const faq = {
       a: "Yes. What is shared here stays here, and no mother becomes anyone's story. We keep the space protected, which is why you come in through a simple form.",
     },
     {
-      q: "What is inside?",
-      a: "Mentor mums who have walked a few steps ahead. Expert sessions and training. Resources that make the systems easier to face. Community events with women who already understand.",
-    },
-    {
       q: "I'm not ready to join. Can I still stay close?",
       a: "Of course. Listen to the podcast, get the newsletter, or reach out to Work With Us for a closer conversation with Bokun.",
     },
@@ -121,11 +116,14 @@ export const faq = {
 export const stayClose = {
   tag: "Not ready to join yet?",
   heading: { lead: "This is the place we wished we had.", accent: "Come in, Mama." },
-  body: "Or stay close: listen to the podcast, get the newsletter, or reach out to Work With Us for a closer conversation with Bokun.",
-  actions: [
-    { label: "Listen to the podcast", href: "https://creators.spotify.com/pod/show/mamasescape", external: true },
-    { label: "Get the newsletter", href: "", newsletter: true },
-    { label: "Work With Me · book a call", href: "/work-with-us/" },
+  /** The sentence carries the two quieter routes as links; the pills below are Join and the newsletter. */
+  body: [
+    "Or stay close: ",
+    { label: "listen to the podcast", href: "https://creators.spotify.com/pod/show/mamasescape", external: true },
+    ", get the newsletter, or reach out to ",
+    { label: "Work With Us", href: "/work-with-us/" },
+    " for a closer conversation with Bokun.",
   ],
+  newsletter: "Get the newsletter",
   closing: "You don't have to do it all alone.",
 } as const;

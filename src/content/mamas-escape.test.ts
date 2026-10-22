@@ -28,10 +28,13 @@ describe("Mama's Escape content", () => {
   });
 
   it("offers the three stay-close routes from the copy", () => {
-    expect(stayClose.actions.map((action) => action.label)).toEqual([
-      "Listen to the podcast",
-      "Get the newsletter",
-      "Work With Me · book a call",
-    ]);
+    const linked = stayClose.body.filter((part) => typeof part !== "string").map((part) => part.label);
+    expect(linked).toEqual(["listen to the podcast", "Work With Us"]);
+    expect(stayClose.newsletter).toBe("Get the newsletter");
+  });
+
+  it("explains the closed joining form instead of promising it", () => {
+    expect(join.bodyClosed).toMatch(/being set up/);
+    expect(join.pending.link).toBe("Get the newsletter");
   });
 });

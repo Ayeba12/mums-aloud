@@ -46,7 +46,8 @@ export function SiteFooter() {
           </div>
 
           <div className="flex flex-col gap-12 py-2 lg:col-span-8 lg:pr-4">
-            <div className="max-w-form">
+            {/* "Get the newsletter" links across the site land here, on the field itself. */}
+            <div id="newsletter" className="max-w-form scroll-mt-24">
               <NewsletterForm />
             </div>
 

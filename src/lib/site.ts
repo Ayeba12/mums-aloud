@@ -7,8 +7,8 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   /** Where every "Join" button on the site goes: the joining section of the Mama's Escape page. */
   joinUrl: "/mamas-escape/#join",
-  /** Newsletter sign-up. No platform is chosen yet, so it defaults to the stay-close section. */
-  newsletterUrl: process.env.NEXT_PUBLIC_NEWSLETTER_URL || "/mamas-escape/#newsletter",
+  /** Newsletter sign-up. No platform is chosen yet, so it defaults to the email field in the footer of the current page. */
+  newsletterUrl: process.env.NEXT_PUBLIC_NEWSLETTER_URL || "#newsletter",
 } as const;
 
 /**

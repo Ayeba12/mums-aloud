@@ -16,6 +16,6 @@ Direction pinned by the owner: People Work Home B (split hero with floating card
 THESIS: The covenant leads. The page refuses the category's photo-banner-plus-form arrangement; the first thing a mother reads is that what she shares stays here.
 OWN-WORLD: Soft pink canvas in an 8/16px frame, one berry 700 panel, marigold only as small marks, Libre Caslon italic accents, pill controls, 16px cards inside 24px panels.
 STORY: She sees herself, learns why the community exists, sees what she will get, sees what joining asks, has her questions answered, and joins or stays close.
-FIRST VIEWPORT: Two columns under the floating header: a tall portrait with the covenant card bottom-left; centred H1 "There's a place for you *here*.", one line, Join (arrow) and What to expect.
+FIRST VIEWPORT: Two columns under the floating header: a tall portrait with the covenant card bottom-left; centred H1 "There's a place for you *here*." on two lines, Join (arrow) and What to expect.
 FORM: Home B split hero within Home C's frame; owner-pinned, so no roll was run (seed: pinned-by-owner).
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.
