@@ -97,32 +97,35 @@ export default function MamasEscapePage() {
           with their text at the foot, and one pill. */}
       <div className="frame-x section-y">
         <section id="inside" aria-labelledby="why-heading" className="surface-dark rounded-panel scroll-mt-24">
-          <div className="container-page section-y">
-            {/* The photo sits on the right, under the hero copy, so the page zigzags: hero photo left,
-                this one right, the experience portrait left, the join photo right. From lg the photo
-                spans two rows and the heading and figure sit either side of the row boundary, so the
-                pair stays centred beside it. On phones the figure follows the paragraph that explains it. */}
-            <div className="grid gap-8 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-6">
-              <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:self-end">
-                <Tag>{why.tag}</Tag>
-                <h2 id="why-heading" className="mt-4 max-w-[12ch] text-h2">
-                  <Accent {...why.heading} />
-                </h2>
+          {/* Top row, as the reference sets it: the photo pressed into the panel's corner with only the
+              frame gap around it (8px inside the 24px panel, so the 16px corners stay concentric), and
+              the copy beside it on the container's own gutter. The photo sits on the right, under the
+              hero copy, so the page zigzags: hero photo left, this one right, the experience portrait
+              left, the join photo right. From lg the photo spans two rows and the heading and figure sit
+              either side of the row boundary, so the pair stays centred beside it. On phones the figure
+              follows the paragraph that explains it. */}
+          <div className="grid gap-8 px-2 pt-12 md:px-4 md:pt-16 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-6 lg:p-2">
+            <div className="px-2 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:self-end lg:pr-0 lg:pl-6">
+              <Tag>{why.tag}</Tag>
+              <h2 id="why-heading" className="mt-4 max-w-[12ch] text-h2">
+                <Accent {...why.heading} />
+              </h2>
+            </div>
+            <div className="relative lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1">
+              <div className={`overflow-hidden rounded-card ${imageRing}`}>
+                <Image src={embracePhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 50vw, 100vw" className="aspect-square w-full object-cover object-[50%_30%]" />
               </div>
-              <div className="relative lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1">
-                <div className={`overflow-hidden rounded-card ${imageRing}`}>
-                  <Image src={embracePhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 50vw, 100vw" className="aspect-square w-full object-cover object-[50%_30%]" />
-                </div>
-                <p className={`mt-4 max-w-[46ch] lg:absolute lg:inset-x-0 lg:bottom-0 lg:m-0 lg:max-w-none lg:rounded-b-card lg:p-6 lg:pt-24 ${captionScrim}`}>
-                  <span className="block max-w-[46ch]">{why.body}</span>
-                </p>
-              </div>
-              <p className="max-w-[36ch] lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-start">
-                <span className="font-heading text-h3 leading-none">{why.stat.value}</span> {why.stat.label} ·{" "}
-                <a href={why.stat.source.href}>Source: {why.stat.source.label}</a>
+              <p className={`mt-4 max-w-[46ch] px-2 lg:absolute lg:inset-x-0 lg:bottom-0 lg:m-0 lg:max-w-none lg:rounded-b-card lg:px-6 lg:pt-24 lg:pb-6 ${captionScrim}`}>
+                <span className="block max-w-[46ch]">{why.body}</span>
               </p>
             </div>
+            <p className="max-w-[36ch] px-2 lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-start lg:pr-0 lg:pl-6">
+              <span className="font-heading text-h3 leading-none">{why.stat.value}</span> {why.stat.label} ·{" "}
+              <a href={why.stat.source.href}>Source: {why.stat.source.label}</a>
+            </p>
+          </div>
 
+          <div className="container-page pb-12 md:pb-16 lg:pb-24">
             <h3 className="mx-auto mt-16 max-w-[24ch] text-center text-h2 lg:mt-24">
               <Accent {...why.inside} />
             </h3>
