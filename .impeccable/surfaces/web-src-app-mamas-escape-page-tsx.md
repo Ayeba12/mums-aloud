@@ -9,7 +9,7 @@ related_targets: []
 
 Scope: `/mamas-escape/`, Persuade. Audience: a Black mother in the UK, often on her phone at night, deciding whether to join. Action: Join Mama's Escape (the Google Form when set; otherwise an honest notice). Proof: the covenant, the four experiences, the MBRRACE-UK figure, the founder's story. Constraints: stock photos stay illustrative; no quotes without consent; AAA text contrast.
 
-Direction pinned by the owner: People Work Home B (split hero with floating card, dark statement with tiles, portrait-and-list split, running text line, photo cards, portrait row, conversation split, FAQ) combined with Home C (page frame, berry panel, closing). Visual system fixed in DESIGN.md.
+Direction pinned by the owner: People Work Home B (split hero with floating card, portrait-and-list split, running text line, photo cards, portrait row, conversation split, FAQ) combined with Home C (page frame, berry panel, closing). The berry panel follows the reference's dark "who we work best with" section (owner, 22 Oct 2026): a portrait carrying the reason as its caption, tag and heading set tall beside it, a centred statement, four outlined cards with their text at the foot, one light pill. Visual system fixed in DESIGN.md.
 
 ## Direction contract
 

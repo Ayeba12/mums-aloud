@@ -28,6 +28,8 @@ export const why = {
   heading: { lead: "To be understood without", accent: "having to explain." },
   body: "For Black mothers in the UK, the gap is not only loneliness. We are around three times more likely to die in and around pregnancy than white women, and too often our concerns go unheard. We were also raised, in our own cultures, not to talk about the struggle. Mama's Escape exists to change both.",
   stat: { value: "3×", label: "more likely to die in and around pregnancy", source: { label: "MBRRACE-UK", href: "https://www.npeu.ox.ac.uk/mbrrace-uk" } },
+  /** Statement above the four cards; the hero card's "See what's inside" lands on this panel. */
+  inside: { lead: "Here is what's", accent: "inside." },
 };
 
 export const experience = {

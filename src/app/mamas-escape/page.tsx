@@ -23,7 +23,7 @@ import { Accent } from "@/components/ui/Heading";
 import { experience, expect, family, faq, hero, join, marquee, page, stayClose, why } from "@/content/mamas-escape";
 import { joinForm, siteConfig } from "@/lib/site";
 import heroPhoto from "@/assets/photos/mother-daughter-park.jpg";
-import experiencePhoto from "@/assets/photos/mother-daughter-embrace.jpg";
+import embracePhoto from "@/assets/photos/mother-daughter-embrace.jpg";
 import circlePhoto from "@/assets/photos/women-community-circle.jpg";
 import podcastPhoto from "@/assets/photos/mother-baby-smiling.jpg";
 import newsletterPhoto from "@/assets/photos/hero-mother-baby-golden-hour.jpg";
@@ -45,13 +45,15 @@ const familyMedia = {
 };
 const expectPhotos = [
   { src: friendsPhoto, alt: "Two friends smiling side by side", position: "object-[55%_30%]" },
-  { src: kissingPhoto, alt: "A mother kissing her smiling baby on the cheek", position: "object-[50%_35%]" },
+  { src: embracePhoto, alt: "A mother and daughter embracing, foreheads touching", position: "object-[50%_30%]" },
   { src: circlePhoto, alt: "Three women talking together on a sofa", position: "object-[50%_40%]" },
 ];
 const imageRing = "ring-1 ring-black-950/10 ring-inset";
-/** Scrim under the portrait captions: the world's own dark (berry 900), not a neutral black. */
+/** Scrims under text on photos: the world's own dark (berry 900), not a neutral black. */
 const portraitScrim =
   "bg-[linear-gradient(to_top,var(--color-berry-lipstick-900)_0%,color-mix(in_srgb,var(--color-berry-lipstick-900)_85%,transparent)_45%,transparent_100%)]";
+const captionScrim =
+  "lg:bg-[linear-gradient(to_top,var(--color-berry-lipstick-900)_0%,color-mix(in_srgb,var(--color-berry-lipstick-900)_85%,transparent)_55%,transparent_100%)]";
 
 export default function MamasEscapePage() {
   return (
@@ -76,36 +78,55 @@ export default function MamasEscapePage() {
         }
       />
 
-      {/* Why we exist: the page's one dark panel. Copy left, the one figure right, then what is inside. */}
+      {/* Why we exist: the page's one dark panel, after the reference's dark section. A portrait carrying
+          the reason as its caption, the heading set tall beside it; then a statement, four outlined cards
+          with their text at the foot, and one pill. */}
       <div className="frame-x section-y">
         <section id="inside" aria-labelledby="why-heading" className="surface-dark rounded-panel scroll-mt-24">
           <div className="container-page section-y">
-            <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-7">
-                <SectionHeading id="why-heading" tag={why.tag} heading={why.heading} intro={why.body} />
+            <div className="grid gap-8 lg:grid-cols-12 lg:gap-x-8">
+              <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:self-center">
+                <Tag>{why.tag}</Tag>
+                <h2 id="why-heading" className="mt-4 max-w-[12ch] text-h1">
+                  <Accent {...why.heading} />
+                </h2>
+                <p className="mt-6 max-w-[36ch]">
+                  <span className="font-heading text-h3">{why.stat.value}</span> {why.stat.label} ·{" "}
+                  <a href={why.stat.source.href}>Source: {why.stat.source.label}</a>
+                </p>
               </div>
-              <div className="rounded-card bg-surface-card p-6 lg:col-span-4 lg:col-start-9 lg:p-8">
-                <p className="font-heading text-display leading-none">{why.stat.value}</p>
-                <p className="mt-2 max-w-[24ch] font-semibold">{why.stat.label}</p>
-                <p className="mt-4 text-caption">
-                  Source: <a href={why.stat.source.href}>{why.stat.source.label}</a>
+              <div className="relative lg:col-span-6 lg:col-start-1 lg:row-start-1">
+                <div className={`overflow-hidden rounded-card ${imageRing}`}>
+                  <Image src={embracePhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 50vw, 100vw" className="aspect-square w-full object-cover object-[50%_30%]" />
+                </div>
+                <p className={`mt-4 max-w-[46ch] lg:absolute lg:inset-x-0 lg:bottom-0 lg:m-0 lg:max-w-none lg:rounded-b-card lg:p-6 lg:pt-24 ${captionScrim}`}>
+                  <span className="block max-w-[46ch]">{why.body}</span>
                 </p>
               </div>
             </div>
-            <ul className="mt-12 grid gap-2 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
+
+            <h3 className="mx-auto mt-16 max-w-[24ch] text-center text-h2 lg:mt-24">
+              <Accent {...why.inside} />
+            </h3>
+            <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {experience.items.map((item) => {
                 const Icon = experienceIcons[item.icon];
                 return (
-                  <li key={item.title} className="flex flex-col gap-4 rounded-card bg-surface-card p-6">
-                    <Icon aria-hidden size={24} className="text-accent" />
-                    <div>
-                      <h3 className="font-body text-h4 font-bold">{item.title}</h3>
-                      <p className="mt-2">{item.text}</p>
-                    </div>
+                  <li key={item.title} className="flex flex-col rounded-card border border-border-decoration p-6 lg:min-h-[22rem]">
+                    <span className="inline-flex size-12 shrink-0 items-center justify-center rounded-control bg-surface-card text-accent">
+                      <Icon aria-hidden size={24} />
+                    </span>
+                    <h4 className="mt-6 font-heading text-h4 text-ink">{item.title}</h4>
+                    <p className="mt-4 lg:mt-auto lg:pt-8">{item.text}</p>
                   </li>
                 );
               })}
             </ul>
+            <div className="mt-12 flex justify-center">
+              <ButtonLink href={joinForm.href} variant="inverse" size="large" arrow>
+                {hero.primary}
+              </ButtonLink>
+            </div>
           </div>
         </section>
       </div>
@@ -122,11 +143,11 @@ export default function MamasEscapePage() {
           </div>
           <div className="lg:col-span-5 lg:col-start-8">
             <Image
-              src={experiencePhoto}
-              alt="A mother and daughter embracing, foreheads touching"
+              src={kissingPhoto}
+              alt="A mother kissing her smiling baby on the cheek"
               placeholder="blur"
               sizes="(min-width: 64rem) 42vw, 100vw"
-              className={`aspect-[4/5] w-full rounded-card object-cover object-[50%_30%] ${imageRing}`}
+              className={`aspect-[4/5] w-full rounded-card object-cover object-[50%_35%] ${imageRing}`}
             />
           </div>
         </div>
