@@ -84,17 +84,18 @@ export default function MamasEscapePage() {
       <div className="frame-x section-y">
         <section id="inside" aria-labelledby="why-heading" className="surface-dark rounded-panel scroll-mt-24">
           <div className="container-page section-y">
-            {/* From lg the photo spans two rows and the heading and figure sit either side of the row
-                boundary, so the pair stays centred beside it. On phones the figure follows the paragraph
-                that explains it. */}
+            {/* The photo sits on the right, under the hero copy, so the page zigzags: hero photo left,
+                this one right, the experience portrait left, the join photo right. From lg the photo
+                spans two rows and the heading and figure sit either side of the row boundary, so the
+                pair stays centred beside it. On phones the figure follows the paragraph that explains it. */}
             <div className="grid gap-8 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-6">
-              <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:self-end">
+              <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:self-end">
                 <Tag>{why.tag}</Tag>
                 <h2 id="why-heading" className="mt-4 max-w-[12ch] text-h2">
                   <Accent {...why.heading} />
                 </h2>
               </div>
-              <div className="relative lg:col-span-6 lg:col-start-1 lg:row-span-2 lg:row-start-1">
+              <div className="relative lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1">
                 <div className={`overflow-hidden rounded-card ${imageRing}`}>
                   <Image src={embracePhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 50vw, 100vw" className="aspect-square w-full object-cover object-[50%_30%]" />
                 </div>
@@ -102,7 +103,7 @@ export default function MamasEscapePage() {
                   <span className="block max-w-[46ch]">{why.body}</span>
                 </p>
               </div>
-              <p className="max-w-[36ch] lg:col-span-5 lg:col-start-8 lg:row-start-2 lg:self-start">
+              <p className="max-w-[36ch] lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-start">
                 <span className="font-heading text-h3 leading-none">{why.stat.value}</span> {why.stat.label} ·{" "}
                 <a href={why.stat.source.href}>Source: {why.stat.source.label}</a>
               </p>
@@ -134,17 +135,17 @@ export default function MamasEscapePage() {
         </section>
       </div>
 
-      {/* What you will experience: the story beside a portrait, closing on the pledge. Photo on the right, so the splits alternate. */}
+      {/* What you will experience: the story beside a portrait, closing on the pledge. Photo on the left this time, so the splits keep alternating. */}
       <Section aria-labelledby="experience-heading">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-6 lg:col-start-7 lg:row-start-1">
             <SectionHeading id="experience-heading" tag={experience.tag} heading={experience.heading} intro={experience.body} />
             <blockquote className="mt-8 max-w-[40ch]">
               <QuotesIcon aria-hidden size={24} weight="fill" className="text-accent" />
               <p className="mt-2 font-heading text-h3 italic text-ink">{experience.pledge}</p>
             </blockquote>
           </div>
-          <div className="lg:col-span-5 lg:col-start-8">
+          <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1">
             <Image
               src={kissingPhoto}
               alt="A mother kissing her smiling baby on the cheek"
@@ -223,7 +224,7 @@ export default function MamasEscapePage() {
         <p className="mt-6 text-center text-caption text-text-secondary">{expect.note}</p>
       </Section>
 
-      {/* How to join: the reference's "start with a conversation" split, photo beside a warm card. */}
+      {/* How to join: the reference's "start with a conversation" split, a warm card beside the photo. Photo on the right, completing the zigzag. */}
       <Section id="join" aria-labelledby="join-heading" className="scroll-mt-24">
         <SectionHeading
           id="join-heading"
@@ -233,10 +234,10 @@ export default function MamasEscapePage() {
           align="center"
         />
         <div className="mt-12 grid gap-2 lg:grid-cols-3 lg:gap-4">
-          <div className={`relative min-h-72 overflow-hidden rounded-panel lg:col-span-2 ${imageRing}`}>
+          <div className={`relative min-h-72 overflow-hidden rounded-panel lg:col-span-2 lg:col-start-2 lg:row-start-1 ${imageRing}`}>
             <Image src={laughingPhoto} alt="" fill placeholder="blur" sizes="(min-width: 64rem) 66vw, 100vw" className="object-cover object-[60%_20%]" />
           </div>
-          <div className="rounded-panel bg-surface-warm p-6 lg:p-8">
+          <div className="rounded-panel bg-surface-warm p-6 lg:col-start-1 lg:row-start-1 lg:p-8">
             <h3 className="font-body text-h4 font-bold text-ink">{join.asksTitle}</h3>
             <ol className="mt-4 flex flex-col gap-3">
               {join.asks.map((ask, index) => (
