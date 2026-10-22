@@ -81,6 +81,7 @@ export default function MamasEscapePage() {
       <Statement
         id="podcast-heading"
         {...podcast.statement}
+        wide
         body={podcast.body}
         action={
           <a href={podcast.action.href} className="inline-flex min-h-12 items-center gap-2 font-semibold">

@@ -35,8 +35,9 @@ describe("Mama's Escape content", () => {
 
   it("sends podcast listeners to the same Spotify show as the podcast card, with one highlighted phrase", () => {
     expect(podcast.action.href).toBe(family.tiles[1].action.href);
-    expect(podcast.statement.highlight).toBe("the masks come off");
-    expect(podcast.statement.trail.startsWith(":")).toBe(true);
+    expect(podcast.statement.highlight).toBe("not only loneliness");
+    expect(podcast.statement.trail.startsWith(".")).toBe(true);
+    expect(podcast.body).toMatch(/masks come off/);
   });
 
   it("explains the closed joining form instead of promising it", () => {

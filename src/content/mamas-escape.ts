@@ -29,13 +29,14 @@ export const hero = {
  * condensed from the live Podcast page (mumsaloud.com/podcast, 22 Oct 2026).
  */
 export const podcast = {
+  /** The reason leads as the statement (moved here from the berry panel at the owner's request, 22 Oct 2026). */
   statement: {
-    lead: "On the Mama's Escape Podcast",
-    highlight: "the masks come off",
-    trail: ": real mothers talking about loss, mum guilt and the pressures we carry.",
+    lead: "For Black mothers in the UK, the gap is",
+    highlight: "not only loneliness",
+    trail:
+      ". We are around three times more likely to die in and around pregnancy than white women, and too often our concerns go unheard. We were also raised, in our own cultures, not to talk about the struggle. Mama's Escape exists to change both.",
   },
-  /** The reason, moved here from the berry panel at the owner's request (22 Oct 2026). */
-  body: "For Black mothers in the UK, the gap is not only loneliness. We are around three times more likely to die in and around pregnancy than white women, and too often our concerns go unheard. We were also raised, in our own cultures, not to talk about the struggle. Mama's Escape exists to change both.",
+  body: "On the Mama's Escape Podcast the masks come off: real mothers talking about loss, mum guilt and the pressures we carry.",
   action: { label: "Not ready to join yet? Listen on Spotify", href: "https://creators.spotify.com/pod/show/mamasescape" },
 };
 
