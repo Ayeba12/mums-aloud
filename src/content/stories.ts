@@ -13,6 +13,12 @@ export type ListingCopy = {
   intro: string;
   /** Label on each card and on the post page. */
   cardLabel: string;
+  /** Tag on the newest item's wide card at the top of the listing. */
+  featuredLabel: string;
+  /** Pill on the featured card; the whole card is the link. */
+  readLabel: string;
+  /** Heading over the grid below the featured item. */
+  latestHeading: string;
   /** Link text back to the listing, used on post pages. */
   allLabel: string;
   /** Heading for the related-posts row on a post page. */
@@ -28,6 +34,9 @@ export const storyLounge: ListingCopy = {
   // confirm
   intro: "Accounts of motherhood from women in our community: the journey, the hard days and the small wins.",
   cardLabel: "Story",
+  featuredLabel: "Featured story",
+  readLabel: "Read the story",
+  latestHeading: "Latest stories",
   allLabel: "All stories",
   moreHeading: { lead: "More from the", accent: "Story Lounge" },
   empty: "No stories have been published yet. Come back soon.",
@@ -41,6 +50,9 @@ export const blog: ListingCopy = {
   // confirm
   intro: "Practical pieces on pregnancy, babies, toddlers and family life, written for mothers like us.",
   cardLabel: "Article",
+  featuredLabel: "Featured article",
+  readLabel: "Read the article",
+  latestHeading: "Latest articles",
   allLabel: "All articles",
   moreHeading: { lead: "More from the", accent: "Blog" },
   empty: "No articles have been published yet. Come back soon.",
