@@ -5,12 +5,12 @@ import { Suspense } from "react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react/ssr";
 import { dateFormat } from "@/components/content/PostCard";
 import { PostTile } from "@/components/content/PostTile";
-import { Section, SectionHeading, Tag } from "@/components/layout/Section";
+import { Section, Tag } from "@/components/layout/Section";
+import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { buttonClasses, ButtonLink } from "@/components/ui/Button";
 import { Accent } from "@/components/ui/Heading";
 import { postInvite, type ListingCopy } from "@/content/stories";
 import { pageCount, pageHref, pageSlice } from "@/lib/paging";
-import { joinForm } from "@/lib/site";
 import { getAll } from "@/lib/wordpress/client";
 import { collections, type CollectionKey } from "@/lib/wordpress/collections";
 import type { PostSummary } from "@/lib/wordpress/mapping";
@@ -57,24 +57,7 @@ export function PostListing({ collection, copy, page = 1 }: { collection: Collec
         </div>
       </Section>
 
-      <Section aria-labelledby="listing-invite" className="bg-[linear-gradient(to_bottom,var(--color-surface),var(--color-surface-tinted))]">
-        <SectionHeading
-          id="listing-invite"
-          heading={postInvite.heading}
-          intro={postInvite.body}
-          align="center"
-          action={
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href={joinForm.href} size="large" arrow>
-                {postInvite.primary.label}
-              </ButtonLink>
-              <ButtonLink href={postInvite.secondary.href} variant="secondary" size="large">
-                {postInvite.secondary.label}
-              </ButtonLink>
-            </div>
-          }
-        />
-      </Section>
+      <ClosingInvite id="listing-invite" heading={postInvite.heading} body={postInvite.body} primary={postInvite.primary} secondary={postInvite.secondary} />
     </main>
   );
 }
