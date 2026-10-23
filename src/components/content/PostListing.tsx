@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react/ssr";
 import { dateFormat } from "@/components/content/PostCard";
+import { PostTile } from "@/components/content/PostTile";
 import { Section, SectionHeading, Tag } from "@/components/layout/Section";
 import { buttonClasses, ButtonLink } from "@/components/ui/Button";
 import { Accent } from "@/components/ui/Heading";
@@ -157,36 +158,6 @@ function FeaturedPost({ post, copy }: { post: PostSummary; copy: ListingCopy }) 
           {copy.readLabel}
         </span>
       </div>
-    </article>
-  );
-}
-
-/** A grid item, as the reference's post tile: photo, tag and title, no card around them. */
-function PostTile({ post, label }: { post: PostSummary; label: string }) {
-  return (
-    <article className="group relative flex flex-col">
-      {post.image ? (
-        <div className={`overflow-hidden rounded-card ${imageRing}`}>
-          <Image
-            src={post.image.src}
-            alt={post.image.alt}
-            width={post.image.width ?? 1200}
-            height={post.image.height ?? 900}
-            sizes="(min-width: 48rem) 50vw, 100vw"
-            className="aspect-[4/3] w-full object-cover transition-transform duration-500 ease-standard group-hover:scale-[1.03] motion-reduce:transition-none"
-          />
-        </div>
-      ) : (
-        <div className="flex aspect-[4/3] items-center justify-center rounded-card bg-surface-tinted">
-          <span className="font-heading text-h3 text-text-secondary">{label}</span>
-        </div>
-      )}
-      <Tag className="mt-4 self-start">{label}</Tag>
-      <h3 className="mt-3 max-w-[40ch] font-body text-h4 font-bold text-ink">
-        <Link href={post.path} className="text-ink no-underline after:absolute after:inset-0 hover:underline">
-          {post.title}
-        </Link>
-      </h3>
     </article>
   );
 }
