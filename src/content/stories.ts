@@ -58,6 +58,23 @@ export const blog: ListingCopy = {
   empty: "No articles have been published yet. Come back soon.",
 };
 
+/** The separate `article` collection (four pieces today). Where they are listed is still to decide; until then they sit beside the Blog. */
+export const articles: ListingCopy = {
+  title: "Articles",
+  description: "Longer pieces from Mums Aloud on motherhood, identity and finding the woman inside the mother.",
+  /** The label links back to the Blog, where these sit for now. */
+  tag: "Blog",
+  heading: { lead: "Longer reads,", accent: "mum to mum." },
+  intro: "Longer pieces on motherhood, identity and finding the woman inside the mother.",
+  cardLabel: "Article",
+  featuredLabel: "Featured article",
+  readLabel: "Read the article",
+  latestHeading: "Latest articles",
+  allLabel: "Back to the Blog",
+  moreHeading: { lead: "More", accent: "articles" },
+  empty: "No articles have been published yet.",
+};
+
 /** The contextual invitation at the foot of every story and article. */
 export const postInvite = {
   heading: { lead: "There's a place for you", accent: "here." },
