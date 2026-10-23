@@ -6,6 +6,7 @@ import { ArrowRightIcon, ChartBarIcon, GlobeHemisphereWestIcon, HeartIcon, Megap
 import { PostTile } from "@/components/content/PostTile";
 import { Section, SectionHeading, Tag } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
+import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { ButtonLink } from "@/components/ui/Button";
 import { Carousel } from "@/components/ui/Carousel";
 import { Accent } from "@/components/ui/Heading";
@@ -50,6 +51,11 @@ const strandPhotos = [
   { photo: kissingPhoto, position: "object-[50%_35%]" },
   { photo: circlePhoto, position: "object-[50%_40%]" },
   { photo: laughingPhoto, position: "object-[60%_25%]" },
+];
+const stepPhotos = [
+  { photo: friendsPhoto, position: "object-[55%_30%]" },
+  { photo: goldenPhoto, position: "object-[50%_30%]" },
+  { photo: smilingPhoto, position: "object-[65%_40%]" },
 ];
 
 /**
@@ -248,38 +254,14 @@ export default function PartnershipPage() {
         </ul>
       </Section>
 
-      {/* Process: a numbered index beside three step cards, on the reference's soft gradient. */}
+      {/* Process: the reference's sticky index beside photo-and-card steps that fade up and drift as you scroll. */}
       <Section aria-labelledby="process-heading" className="bg-[linear-gradient(to_bottom,var(--color-surface-tinted),var(--color-surface))]">
         <SectionHeading id="process-heading" heading={process.heading} intro={process.intro} align="center" />
-        <div className="mt-12 grid gap-8 lg:grid-cols-12 lg:gap-8">
-          <ol className="flex flex-wrap gap-x-6 gap-y-2 lg:col-span-3 lg:flex-col lg:gap-4">
-            {process.steps.map((step, index) => (
-              <li key={step.short}>
-                <a href={`#step-${index + 1}`} className="inline-flex min-h-12 items-center gap-3 font-semibold text-ink no-underline hover:underline">
-                  <span className="text-caption text-text-secondary tabular-nums">0{index + 1}</span>
-                  {step.short}
-                </a>
-              </li>
-            ))}
-          </ol>
-          <ol className="flex flex-col gap-4 lg:col-span-9">
-            {process.steps.map((step, index) => (
-              <li key={step.title} id={`step-${index + 1}`} className="scroll-mt-24 grid gap-2 rounded-panel bg-surface-card p-2 md:grid-cols-12 md:gap-4">
-                <div className="flex items-center justify-center rounded-card bg-surface p-6 md:col-span-4 md:min-h-[16rem]">
-                  <span aria-hidden className="font-heading text-display text-ink">0{index + 1}</span>
-                </div>
-                <div className="flex flex-col p-4 md:col-span-8 md:p-6">
-                  <p className="text-caption font-semibold tracking-wide text-text-secondary uppercase">Step 0{index + 1}</p>
-                  <h3 className="mt-2 font-body text-h4 font-bold text-ink">{step.title}</h3>
-                  <p className="mt-2 max-w-[56ch]">{step.text}</p>
-                  <div className="mt-6 rounded-control bg-black-100 p-4 md:mt-auto">
-                    <p className="text-caption font-semibold tracking-wide text-text-secondary uppercase">{process.outcomeLabel}</p>
-                    <p className="mt-1 font-semibold text-ink">{step.outcome}</p>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ol>
+        <div className="mt-12">
+          <ProcessSteps
+            outcomeLabel={process.outcomeLabel}
+            steps={process.steps.map((step, index) => ({ ...step, photo: stepPhotos[index].photo, alt: "", position: stepPhotos[index].position }))}
+          />
         </div>
       </Section>
 
