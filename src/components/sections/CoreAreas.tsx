@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { ArrowRightIcon, ChalkboardTeacherIcon, HandshakeIcon, PlantIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
+import { ArrowRightIcon, HandHeartIcon, HandshakeIcon, PlantIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { IconChip, Section, SectionHeading } from "@/components/layout/Section";
 import { coreAreas } from "@/content/home";
 
 const icons = {
   community: UsersThreeIcon,
   partnership: HandshakeIcon,
-  training: ChalkboardTeacherIcon,
+  services: HandHeartIcon,
   growth: PlantIcon,
 };
 

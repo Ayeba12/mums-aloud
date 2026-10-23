@@ -1,97 +1,96 @@
 /**
- * Work With Us page copy. Sources: the live Chaos to Calm, Postpartum Transition Program and
- * TELA pages (reviewed 21 October 2026) and the Restructure Brief v2, section 4.
- * Prices, durations and "100+ mothers" are the current website's claims; items marked
- * `confirm` need the owner's sign-off before launch. Moves to WordPress in Phase 6.
+ * Work With Bokun page copy (`/work-with-us/`, the live URL). Source: the owner's "Website
+ * updates, maternal wellbeing direction" document (10 Aug 2026; `output/client-docs/`), which
+ * replaced the earlier Chaos to Calm / Postpartum Transition Program / TELA outline. The
+ * assessment forms are the live site's own links. Items marked `confirm` are drafted.
  */
+import type { AccentText } from "@/components/ui/Heading";
+
+const calendly = "https://calendly.com/bokunimoukhuede/30min";
+
 export const page = {
-  title: "Work With Us",
+  title: "Work With Bokun",
   description:
-    "1:1 coaching and personal programmes with Bokun for mothers ready to invest in themselves: Chaos to Calm, the Postpartum Transition Program and The Empowered Life Assessment.",
+    "Personalised one-to-one services from Mums Aloud's founder, Bokun: a free consultation call, assessments, postpartum support training and trusted resources.",
 };
 
 export const hero = {
-  tag: "Work With Us",
-  heading: { lead: "Support that is", accent: "just yours." },
-  intro: "A closer path with Bokun for the mother who wants support that is hers alone. One conversation starts it.",
-  primary: { label: "Book a free call", href: "https://calendly.com/bokunimoukhuede/30min", external: true },
-  secondary: { label: "See the programmes", href: "#programmes" },
+  tag: "Work With Bokun",
+  heading: { lead: "Support that is", accent: "just yours." } satisfies AccentText,
+  intro:
+    "Mums Aloud's community support remains free to all mums. These are additional, personalised services offered directly by our founder, Bokun, for those who'd like more one-to-one support.",
+  primary: { label: "Book a free consultation call", href: calendly, external: true },
+  secondary: { label: "See the services", href: "#consultation" },
 };
 
-export const intro = {
-  tag: "Why coaching",
-  heading: { lead: "Motherhood doesn't come with a manual.", accent: "You don't have to figure it out alone." },
-  body: "Mama's Escape is the community. Work With Us is for the mother who wants to go deeper, with a coach who has walked the same road. Every programme is built around your life, not a template.",
-  // confirm: "100+ mothers" is the live site's claim.
-  proof: { value: "100+", label: "mothers coached" },
+export type BokunService = {
+  id: "consultation" | "assessments" | "postpartum" | "resources";
+  icon: "call" | "assessment" | "postpartum" | "resources";
+  title: string;
+  summary: string;
+  points: readonly string[];
+  action: { label: string; href: string; external?: boolean };
+  /** The three assessment forms: one per situation. */
+  options?: readonly { label: string; href: string }[];
+  optionsLabel?: string;
 };
 
-export const programmes = {
-  tag: "Programmes",
-  heading: { lead: "Choose the path that", accent: "fits where you are" },
-  items: [
-    {
-      id: "chaos-to-calm",
-      icon: "calm",
-      title: "Chaos to Calm",
-      strap: "A 90-day coaching programme",
-      summary: "For the mum ready to move beyond survival mode: streamline your routines, free up time for what matters, and embrace your role with confidence and joy.",
-      phases: ["Discover", "Transform", "Flourish"],
-      outcomes: [
-        "A renewed sense of self and purpose",
-        "Practical tools to simplify and streamline your routines",
-        "Confidence to prioritise what matters most without guilt",
-        "A clear plan for thriving as a mum, and as an individual",
-      ],
-      action: { label: "Book my coaching session", href: "https://calendly.com/bokunimoukhuede/30min", external: true },
-      legacyPath: "/chaos-to-calm/",
-    },
-    {
-      id: "postpartum",
-      icon: "postpartum",
-      title: "Postpartum Transition Program",
-      strap: "Coaching for new mums",
-      summary: "The postpartum period is one of the most profound transitions in a woman's life. This programme offers support, guidance and empowerment to thrive beyond the challenges.",
-      areas: [
-        "Holistic support for physical and emotional change",
-        "Nutrition and lifestyle guidance for recovery and energy",
-        "Emotional wellness and identity beyond “mum”",
-        "Relationships, intimacy and communication",
-        "Personal growth and long-term fulfilment",
-      ],
-      action: { label: "Book my coaching session", href: "https://calendly.com/bokunimoukhuede/30min", external: true },
-      legacyPath: "/postpartum-transition-program/",
-    },
-    {
-      id: "tela",
-      icon: "assessment",
-      title: "The Empowered Life Assessment (TELA)",
-      strap: "Your first step",
-      summary: "Discover your strengths, identify areas for growth and receive personalised support, whether you are navigating parenthood, marriage or personal development.",
-      // confirm: the three assessment destinations and any price.
-      options: [
-        { label: "For married individuals", href: "https://forms.gle/fVDtjGSJ3vRMmVeFA" },
-        { label: "For recently single individuals", href: "https://forms.gle/fnX1AvUgFSKSMCHg8" },
-        { label: "For single individuals", href: "https://forms.gle/zKQ18pUsgUev5Lof6" },
-      ],
-      action: { label: "Start an assessment", href: "#tela-options" },
-      legacyPath: "/the-empowered-life-assessment-tela/",
-    },
-  ],
-} as const;
+const items: readonly BokunService[] = [
+  {
+    id: "consultation",
+    icon: "call",
+    title: "Book a Free Consultation Call",
+    summary: "Not sure where to start? Let's talk it through: no pressure, no obligation.",
+    points: [
+      "A relaxed, no-cost conversation about where you are right now",
+      "Space to talk through what kind of support might actually help",
+      "A chance to ask questions before deciding on anything further",
+    ],
+    action: { label: "Book your free call", href: calendly, external: true },
+  },
+  {
+    id: "assessments",
+    icon: "assessment",
+    title: "Assessments",
+    summary: "Get clarity on where you are, and what support genuinely fits your stage of motherhood.",
+    points: ["Personalised postpartum and family assessments", "Practical insight, not just a checklist", "A clear next step, whatever you decide to do with it"],
+    // confirm: the three assessment destinations (The Empowered Life Assessment forms on the live site).
+    optionsLabel: "Start an assessment",
+    options: [
+      { label: "For married individuals", href: "https://forms.gle/fVDtjGSJ3vRMmVeFA" },
+      { label: "For recently single individuals", href: "https://forms.gle/fnX1AvUgFSKSMCHg8" },
+      { label: "For single individuals", href: "https://forms.gle/zKQ18pUsgUev5Lof6" },
+    ],
+    action: { label: "Talk it through first", href: calendly, external: true },
+  },
+  {
+    id: "postpartum",
+    icon: "postpartum",
+    title: "Postpartum Support Training",
+    summary: "For mums who want deeper, personalised support through their postpartum journey.",
+    points: ["1:1 postpartum transition coaching", "Guidance tailored to where you are right now", "Practical, experience-led guidance, not generic theory"],
+    action: { label: "Book a session", href: calendly, external: true },
+  },
+  {
+    id: "resources",
+    icon: "resources",
+    title: "Trusted Resources",
+    summary: "Recommended programmes and resources we endorse that can support you on this journey.",
+    points: ["Curated parenting programmes and resources", "Chosen based on what's actually helped mums in this community"],
+    action: { label: "See trusted resources", href: "/trusted-resources/" },
+  },
+];
 
-export const howItWorks = {
-  tag: "How it works",
-  heading: { lead: "Three steps, at", accent: "your pace" },
-  steps: [
-    { title: "Book a free call", text: "Thirty minutes with Bokun to talk about where you are and what you need. No pressure, no preparation." },
-    { title: "Choose your path", text: "Together you pick the programme, or the assessment, that fits your season of motherhood." },
-    { title: "Walk it with someone", text: "Regular sessions, practical tools and a coach who understands the cultural weight you carry." },
-  ],
+export const services = {
+  tag: "One to one with Bokun",
+  heading: { lead: "Choose the support that fits", accent: "where you are." } satisfies AccentText,
+  items,
 };
 
 export const closing = {
-  heading: { lead: "Because you deserve to thrive,", accent: "not just survive." },
-  primary: { label: "Book a free call", href: "https://calendly.com/bokunimoukhuede/30min", external: true },
+  heading: { lead: "Ready to", accent: "talk?" } satisfies AccentText,
+  // confirm: drafted line under the owner's "Ready to Talk?" heading.
+  body: "One free conversation is the first step. Bring whatever is on your mind.",
+  primary: { label: "Book Your Free Consultation Call", href: calendly, external: true },
   secondary: { label: "Join Mama's Escape instead", href: "/mamas-escape/#join" },
 };

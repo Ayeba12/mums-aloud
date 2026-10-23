@@ -12,6 +12,7 @@ import { Carousel } from "@/components/ui/Carousel";
 import { Accent } from "@/components/ui/Heading";
 import { impact, partners as partnerNames } from "@/content/home";
 import { enquiry, hero, network, offer, page, process, routes, voices, ways, why } from "@/content/partnership";
+import { siteConfig } from "@/lib/site";
 import { getLatest } from "@/lib/wordpress/client";
 import type { PostSummary } from "@/lib/wordpress/mapping";
 import circlePhoto from "@/assets/photos/women-community-circle.jpg";
@@ -289,7 +290,14 @@ export default function PartnershipPage() {
             heading={enquiry.heading}
             intro={enquiry.intro}
             className="lg:col-span-5"
-            action={<p className="max-w-[46ch] text-text-secondary">{enquiry.note}</p>}
+            action={
+              <div className="flex flex-col gap-2 text-text-secondary">
+                <p className="max-w-[46ch]">{enquiry.note}</p>
+                <p>
+                  {enquiry.emailLead} <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+                </p>
+              </div>
+            }
           />
           <div className="rounded-panel bg-surface-card p-6 lg:col-span-6 lg:col-start-7 lg:p-8">
             <PartnershipForm />

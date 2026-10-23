@@ -2,6 +2,7 @@
 
 import { useActionState, useId } from "react";
 import { sendContactMessage, type ContactState } from "@/app/actions/contact";
+import { FormStatus } from "@/components/forms/FormStatus";
 import { Button } from "@/components/ui/Button";
 import { contact } from "@/content/contact";
 import { contactTopics, type ContactFields } from "@/lib/contact";
@@ -27,7 +28,7 @@ export function ContactForm() {
 
   if (state.status === "success") {
     return (
-      <p role="status" className="rounded-card bg-surface-card p-6 text-ink">
+      <p role="status" className="rounded-card bg-surface p-6 text-ink">
         {state.message}
       </p>
     );
@@ -122,14 +123,7 @@ export function ContactForm() {
         <p className="text-caption text-text-secondary">{contact.form.privacy}</p>
       </div>
 
-      {state.status !== "idle" && state.message && (
-        <p
-          role="status"
-          className={`rounded-card p-4 ${state.status === "error" ? "bg-surface-card font-semibold text-error" : "bg-surface-card text-ink"}`}
-        >
-          {state.message}
-        </p>
-      )}
+      <FormStatus status={state.status} message={state.message} fallback={state.fallback} />
     </form>
   );
 }

@@ -11,7 +11,7 @@ describe("About content", () => {
   it("keeps the founder letter in her words, ending with her sign-off", () => {
     expect(founder.letter.paragraphs[1]).toEqual({ text: "Then I became a mother.", emphasis: true });
     expect(founder.letter.paragraphs.at(-1)?.text).toMatch(/Welcome to MumsAloud/);
-    expect(founder.letter.signoff).toEqual({ name: "Bokun", role: "Founder, MumsAloud" });
+    expect(founder.letter.signoff).toEqual({ name: "Bokun Imoukhuede", role: "Founder, MumsAloud" });
   });
 
   it("uses Bokun's own portrait from the live site, not a stock photo", () => {

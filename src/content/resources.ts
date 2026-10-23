@@ -58,11 +58,16 @@ export const calculators = {
 
 export const resources = {
   title: "Resources",
-  description: "Free guides and calculators from Mums Aloud: a holiday survival guide, an activities guide for babies, an ovulation calculator and a pregnancy calculator.",
+  description: "Support contacts, trusted resources, free guides and calculators from Mums Aloud.",
   tag: "Resources",
   heading: { lead: "Guides and tools you can", accent: "actually use." } satisfies AccentText,
   // confirm
-  intro: "Two free guides to download and two calculators, made with mothers in our community in mind.",
+  intro: "Where to find support, the resources we trust, two free guides to download and two calculators, made with mothers in our community in mind.",
+  supportHeading: "Support and trusted resources",
+  support: [
+    { title: "Find Support", text: "Helplines and trusted UK organisations for urgent help, pregnancy and loss, mental health, feeding, your rights and safety at home.", href: "/find-support/", icon: "support" },
+    { title: "Trusted Resources", text: "Programmes and resources we endorse, chosen because they have helped mums in this community.", href: "/trusted-resources/", icon: "trusted" },
+  ] as const,
   guidesHeading: "Free guides",
   calculatorsHeading: "Calculators",
   download: "Download the PDF",

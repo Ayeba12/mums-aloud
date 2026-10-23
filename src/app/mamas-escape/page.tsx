@@ -124,6 +124,7 @@ export default function MamasEscapePage() {
             <h3 className="mx-auto mt-16 max-w-[24ch] text-center text-h2 lg:mt-24">
               <Accent {...why.inside} />
             </h3>
+            <p className="mx-auto mt-4 max-w-[46ch] text-center text-lead">{experience.itemsLead}</p>
             <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {experience.items.map((item) => {
                 const Icon = experienceIcons[item.icon];

@@ -118,7 +118,7 @@ export const founder = {
       { text: "If you've found yourself somewhere in these words, then I hope you know this: you are not alone. Whether you're looking for support, connection, encouragement, or simply a place where you don't have to explain yourself, you've found your village." },
       { text: "Welcome to MumsAloud. I'm so glad you're here.", emphasis: true },
     ],
-    signoff: { name: "Bokun", role: "Founder, MumsAloud" },
+    signoff: { name: "Bokun Imoukhuede", role: "Founder, MumsAloud" },
   },
   pillars: {
     tag: "What drives me",
@@ -147,7 +147,7 @@ export const founder = {
   },
   closing: {
     heading: { lead: "Ready for a", accent: "closer conversation?" } satisfies AccentText,
-    body: "Work With Us is the closer path with Bokun for a mother who wants support that is hers alone. Mama's Escape is the community around it.",
+    body: "Work With Bokun is the closer path for a mother who wants personalised, one-to-one support. Mama's Escape is the community around it, free to every mum.",
     primary: { label: "Work with Bokun", href: "/work-with-us/" },
     secondary: { label: "Join Mama's Escape" },
   },

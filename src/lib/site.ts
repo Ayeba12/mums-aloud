@@ -7,8 +7,23 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   /** Where every "Join" button on the site goes: the joining section of the Mama's Escape page. */
   joinUrl: "/mamas-escape/#join",
-  /** Newsletter sign-up. No platform is chosen yet, so it defaults to the email field in the footer of the current page. */
-  newsletterUrl: process.env.NEXT_PUBLIC_NEWSLETTER_URL || "#newsletter",
+  /** The team inbox (owner, 10 Aug 2026 notes): enquiries, applications and newsletter requests land here. */
+  email: "admin@mumsaloud.com",
+  /** The official phone number (owner, 10 Aug 2026 notes). */
+  phone: { display: "07587 542609", href: "tel:+447587542609" },
+  /** confirm: the Instagram handle. Social links are shown only once their URLs are filled in. */
+  social: {
+    instagram: { label: "Instagram", handle: "", href: "" },
+    facebook: { label: "Facebook", handle: "", href: "" },
+    youtube: { label: "YouTube", handle: "", href: "" },
+  },
+  /**
+   * Newsletter sign-up. Until a newsletter platform is chosen, "Get the newsletter" opens an email
+   * to the team (owner's preference, 10 Aug 2026) so every request reaches the inbox today.
+   */
+  newsletterUrl:
+    process.env.NEXT_PUBLIC_NEWSLETTER_URL ||
+    "mailto:admin@mumsaloud.com?subject=Mama%E2%80%99s%20Escape%20newsletter&body=Please%20add%20me%20to%20the%20Mama%E2%80%99s%20Escape%20newsletter.%0A%0AMy%20name%3A%20",
 } as const;
 
 /**

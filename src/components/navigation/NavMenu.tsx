@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { CaretDownIcon, ListIcon, XIcon } from "@phosphor-icons/react";
 import { buttonClasses } from "@/components/ui/Button";
-import { isGroup, type NavItem } from "@/content/navigation";
+import { isExternalHref, isGroup, type NavItem } from "@/content/navigation";
 
 const itemClasses =
   "inline-flex min-h-12 items-center gap-1 rounded-pill px-4 font-semibold text-ink no-underline transition-colors duration-150 hover:bg-surface-tinted hover:text-ink aria-[current=page]:bg-surface-tinted";
@@ -53,14 +53,20 @@ export function NavMenu({ items, joinUrl, joinLabel }: { items: NavItem[]; joinU
 
   return (
     <nav ref={navRef} aria-label="Main" className="flex items-center gap-2">
-      <ul className="hidden items-center gap-1 lg:flex">
+      <ul className="hidden items-center gap-1 xl:flex">
         {items.map((item) => {
           if (!isGroup(item)) {
             return (
               <li key={item.label}>
-                <Link href={item.href} aria-current={current(item.href)} className={itemClasses} onClick={closeAll}>
-                  {item.label}
-                </Link>
+                {isExternalHref(item.href) ? (
+                  <a href={item.href} className={itemClasses} onClick={closeAll}>
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link href={item.href} aria-current={current(item.href)} className={itemClasses} onClick={closeAll}>
+                    {item.label}
+                  </Link>
+                )}
               </li>
             );
           }
@@ -126,7 +132,7 @@ export function NavMenu({ items, joinUrl, joinLabel }: { items: NavItem[]; joinU
         aria-expanded={mobileOpen}
         aria-controls={`${baseId}-mobile`}
         onClick={() => setMobileOpen((value) => !value)}
-        className="inline-flex size-12 cursor-pointer items-center justify-center rounded-pill text-ink hover:bg-surface-tinted lg:hidden"
+        className="inline-flex size-12 cursor-pointer items-center justify-center rounded-pill text-ink hover:bg-surface-tinted xl:hidden"
       >
         {mobileOpen ? <XIcon aria-hidden size={24} /> : <ListIcon aria-hidden size={24} />}
         <span className="sr-only">{mobileOpen ? "Close menu" : "Open menu"}</span>
@@ -135,7 +141,7 @@ export function NavMenu({ items, joinUrl, joinLabel }: { items: NavItem[]; joinU
       <div
         id={`${baseId}-mobile`}
         hidden={!mobileOpen}
-        className="absolute inset-x-0 top-full mt-3 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-card border border-border-decoration bg-surface p-4 shadow-raised lg:hidden"
+        className="absolute inset-x-0 top-full mt-3 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-card border border-border-decoration bg-surface p-4 shadow-raised xl:hidden"
       >
         <ul className="flex flex-col gap-6">
           {items.map((item) =>
@@ -154,9 +160,15 @@ export function NavMenu({ items, joinUrl, joinLabel }: { items: NavItem[]; joinU
               </li>
             ) : (
               <li key={item.label}>
-                <Link href={item.href} aria-current={current(item.href)} onClick={closeAll} className={`${itemClasses} w-full`}>
-                  {item.label}
-                </Link>
+                {isExternalHref(item.href) ? (
+                  <a href={item.href} onClick={closeAll} className={`${itemClasses} w-full`}>
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link href={item.href} aria-current={current(item.href)} onClick={closeAll} className={`${itemClasses} w-full`}>
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ),
           )}

@@ -1,7 +1,9 @@
 /**
- * Copy for the Affiliate Programs, Services and New Mums Circle pages, from the live pages
- * (23 Oct 2026), tidied. Destinations are the live site's own links. The affiliate disclosure is
- * drafted and needs sign-off (`confirm`).
+ * Copy for the Our Services, Trusted Resources and New Mums Circle pages. Services and Trusted
+ * Resources follow the owner's "Website updates, maternal wellbeing direction" document
+ * (10 Aug 2026; `output/client-docs/`), word for word where it gives the words. The offers on
+ * Trusted Resources are the live Affiliate Programs page's own, with their live destinations.
+ * Items marked `confirm` are drafted and need sign-off.
  */
 import type { AccentText } from "@/components/ui/Heading";
 
@@ -16,13 +18,153 @@ export type Offer = {
   referral?: boolean;
 };
 
-export const affiliate = {
-  title: "Affiliate Programs",
-  description: "Programmes Mums Aloud recommends and runs with partners: parenting, premarital and marital support, and personal harmony coaching.",
-  tag: "Affiliate programs",
-  heading: { lead: "Programmes we recommend", accent: "and run with partners." } satisfies AccentText,
+export type Pathway = {
+  id: string;
+  icon: "support" | "group" | "mentor" | "community" | "training" | "events" | "experts";
+  title: string;
+  summary: string;
+  items: readonly string[];
+};
+export type PathwayGroup = { id: string; tag: string; heading: AccentText; pathways: readonly Pathway[] };
+export type Audience = { icon: "mums" | "volunteers"; title: string; items: readonly string[] };
+
+/** The seven pathways, in the owner's order, in two groups (confirm: the group names are drafted). */
+const groups: readonly PathwayGroup[] = [
+  {
+    id: "support-and-belonging",
+    tag: "Support and belonging",
+    heading: { lead: "Pick the pathway that fits", accent: "where you are." },
+    pathways: [
+      {
+        id: "support",
+        icon: "support",
+        title: "1:1 Support",
+        summary: "One-to-one support built around you, from your first steps into motherhood through to the toughest days.",
+        items: ["Individual support sessions with a trained practitioner", "Postpartum transition coaching", "Crisis support and referrals", "Signposting to specialist services"],
+      },
+      {
+        id: "group",
+        icon: "group",
+        title: "Group Support & Counselling",
+        summary: "A safe space to share, be heard, and know you're not carrying it alone.",
+        items: ["Weekly support group sessions", "Group counselling and mindfulness sessions", "Online community forums", "Peer-led discussion circles"],
+      },
+      {
+        id: "mentor",
+        icon: "mentor",
+        title: "Get a Mentor Mum",
+        summary: "Paired with a mum who's walked the path before you, for honest guidance and real friendship.",
+        items: ["One-to-one mentor matching", "Regular check-ins and ongoing support", "Guidance from lived experience, not just training", "A steady, familiar face through the early years"],
+      },
+      {
+        id: "community",
+        icon: "community",
+        title: "Join Our Community",
+        summary: "Become part of a community that shows up for you and your family, not just in a crisis.",
+        items: ["Community groups and forums", "Social events and meet-ups", "Buddy system pairing", "A sense of belonging that lasts beyond the early years"],
+      },
+    ],
+  },
+  {
+    id: "learn-and-grow",
+    tag: "Learn, meet and grow",
+    heading: { lead: "Practical skills, real experts and", accent: "reasons to gather." },
+    pathways: [
+      {
+        id: "training",
+        icon: "training",
+        title: "Training and Workshops",
+        summary: "Targeted training designed to empower mothers, build practical life skills, and support smooth transitions back into the workforce or entrepreneurship.",
+        items: ["Personal Growth & Confidence", "Back-to-Work & Career Transition", "Financial Literacy & Household Budgeting", "Basic Business & Entrepreneurship"],
+      },
+      {
+        id: "events",
+        icon: "events",
+        title: "Community Events",
+        summary: "Regular events that bring mums together to connect, celebrate, and belong.",
+        items: ["Regular community gatherings", "Family-friendly activities", "Networking and celebration events"],
+      },
+      {
+        id: "experts",
+        icon: "experts",
+        title: "Subject Matter Expert Sessions",
+        summary: "Trusted, practical guidance straight from professionals who know their stuff.",
+        items: [
+          "Guest expert workshops (health, wellbeing, finance, parenting)",
+          "Live Q&A sessions with specialists",
+          "Topic-led talks shaped by what mums actually ask for",
+          "Access to accurate, reliable information: no guesswork",
+        ],
+      },
+    ],
+  },
+];
+
+const audiences: readonly Audience[] = [
+  {
+    icon: "mums",
+    title: "For Mums",
+    items: [
+      "1:1 and group support, including counselling and mentor matching",
+      "A trusted community to connect, grow, and belong",
+      "Practical support for personal development and getting back into work",
+    ],
+  },
+  {
+    icon: "volunteers",
+    title: "For Volunteers",
+    items: [
+      "A trusted space to give back and make a real difference",
+      "Opportunities to mentor, lead sessions, or support behind the scenes",
+      "Training provided wherever you need it",
+    ],
+  },
+];
+
+export const services = {
+  title: "Our Services",
+  description:
+    "Real support for mums at every stage of the journey: 1:1 support, group support and counselling, mentor mums, community, training, events and expert sessions from Mums Aloud.",
+  tag: "Our services",
+  heading: { lead: "Our", accent: "Services" } satisfies AccentText,
+  intro: "Real support for mums, at every stage of the journey, from pregnancy through the early years.",
+  groups,
+  volunteer: {
+    tag: "Want to volunteer?",
+    heading: { lead: "There's a place for you", accent: "at Mums Aloud." } satisfies AccentText,
+    intro: "Whether you're an expert in your field or simply want to give back, there's a place for you at Mums Aloud.",
+    items: [
+      "Become a Mentor Mum",
+      "Support any of our service areas: bring your own experience, or be trained by us",
+      "Help facilitate a group session, workshop, or event",
+      "Support behind the scenes with community activities",
+    ],
+    note: "You don't need to have it all figured out. If there's an area you're passionate about but not yet confident in, we'll train you.",
+    action: { label: "Volunteer with us", href: "/volunteer/" },
+  },
+  approach: {
+    tag: "How we help",
+    heading: { lead: "How Mums Aloud", accent: "aims to help." } satisfies AccentText,
+    intro: "Our approach addresses the real, everyday challenges mums face, and the ones nobody talks about.",
+    audiences,
+  },
+  closing: {
+    heading: { lead: "Ready to", accent: "get started?" } satisfies AccentText,
+    body: "Whether you're a mum looking for support, or someone who wants to help, we're here for you.",
+    primary: { label: "Get Support", href: "/contact/" },
+    secondary: { label: "Volunteer With Us", href: "/volunteer/" },
+  },
+};
+
+export const trustedResources = {
+  title: "Trusted Resources",
+  description: "Recommended programmes and resources Mums Aloud endorses: parenting, premarital and marital support, and personal harmony coaching.",
+  tag: "Trusted resources",
+  heading: { lead: "Programmes and resources", accent: "we endorse." } satisfies AccentText,
+  intro: "Recommended programmes and resources we endorse that can support you on this journey: curated parenting programmes and resources, chosen based on what's actually helped mums in this community.",
   // confirm: the disclosure wording and which links are referral links.
-  intro: "Some of these programmes are run by partners, and one link is a referral link: if you join through it, Mums Aloud may receive a commission at no extra cost to you. We only list what we would recommend to a friend.",
+  disclosure:
+    "Some of these programmes are run by partners, and one link is a referral link: if you join through it, Mums Aloud may receive a commission at no extra cost to you. We only list what we would recommend to a friend.",
   referralLabel: "Referral link",
   bookedLabel: "Booked with Bokun",
   offers: [
@@ -68,29 +210,8 @@ export const affiliate = {
   ] satisfies Offer[],
   closing: {
     heading: { lead: "Not sure which one", accent: "is for you?" } satisfies AccentText,
-    body: "A free call with Bokun is the quickest way to find out. For the community itself, Mama's Escape is the door in.",
-    primary: { label: "Book a free call", href: calendly },
-    secondary: { label: "Join Mama's Escape" },
-  },
-};
-
-export const services = {
-  title: "Products & Services",
-  description: "Everything Mums Aloud offers in one place: the Postpartum Transition Program, Chaos to Calm, TELA, partnerships and affiliate programmes.",
-  tag: "Products & services",
-  heading: { lead: "Grounded in empathy, understanding", accent: "and cultural sensitivity." } satisfies AccentText,
-  intro: "Our team of experts is dedicated to high-quality services grounded in empathy, understanding and cultural sensitivity. We work closely with each client to identify their needs and goals, and develop solutions that help them succeed.",
-  items: [
-    { title: "Postpartum Transition Program", text: "The postpartum period is one of the most profound transitions in a woman's life: physical recovery, emotional growth and a changing identity, with its own challenges, uncertainty and the pressure to adapt to a new normal.", href: "/work-with-us/#postpartum" },
-    { title: "Chaos to Calm", text: "A 90-day coaching programme designed to help you break free from the overload, rediscover your true self, and create a life that feels calm, balanced and fulfilling.", href: "/work-with-us/#chaos-to-calm" },
-    { title: "The Empowered Life Assessment (TELA)", text: "Unlock your full potential as a mother by taking our assessment: the first step towards discovering your strengths, identifying areas for growth, and receiving personalised support from our community.", href: "/work-with-us/#tela" },
-    { title: "Partnership", text: "We partner with organisations that share our vision of supporting, understanding and empowering Black mothers to thrive, across healthcare, the public sector and the private sector.", href: "/partnership/" },
-    { title: "Affiliate programmes", text: "Programmes we recommend and run with partners: parenting, premarital and marital support, and personal harmony coaching.", href: "/affiliate-programs/" },
-  ],
-  closing: {
-    heading: { lead: "Start with", accent: "a conversation." } satisfies AccentText,
-    body: "Tell us what you need and we will point you to the right place.",
-    primary: { label: "Get in touch", href: "/contact/" },
+    body: "A free consultation call with Bokun is the quickest way to find out. For the community itself, Mama's Escape is the door in.",
+    primary: { label: "Book a free consultation call", href: calendly },
     secondary: { label: "Join Mama's Escape" },
   },
 };

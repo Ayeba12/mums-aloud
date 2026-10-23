@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpenTextIcon, CalendarHeartIcon, HandHeartIcon, LightbulbIcon } from "@phosphor-icons/react/ssr";
+import { ArrowRightIcon, BookOpenTextIcon, CalendarHeartIcon, HandHeartIcon, LightbulbIcon } from "@phosphor-icons/react/ssr";
 import { Section, SectionHeading } from "@/components/layout/Section";
 import { FeatureTabs } from "@/components/sections/FeatureTabs";
 import { ButtonLink } from "@/components/ui/Button";
@@ -31,7 +31,24 @@ export function MamasEscapeFeature() {
         </ButtonLink>
       </div>
       <p className="mt-6 max-w-[46ch] text-lead">{mamasEscape.body}</p>
-      <div className="mt-12">
+      {/* Mama's Escape is more than the community: the three parts, each a link. */}
+      <p className="mt-6 font-semibold text-ink">{mamasEscape.partsLead}</p>
+      <ul className="mt-2 flex flex-wrap gap-2">
+        {mamasEscape.parts.map((part) => {
+          const href = part.href === "newsletter" ? siteConfig.newsletterUrl : part.href;
+          const Part = href.startsWith("/") ? Link : "a";
+          return (
+            <li key={part.label}>
+              <Part href={href} className="inline-flex min-h-12 items-center gap-2 rounded-pill border border-border-decoration bg-surface-card px-4 font-semibold text-ink no-underline hover:border-action">
+                {part.label}
+                <ArrowRightIcon aria-hidden size={16} weight="bold" />
+              </Part>
+            </li>
+          );
+        })}
+      </ul>
+      <p className="mt-8 font-semibold text-ink">{mamasEscape.itemsLead}</p>
+      <div className="mt-4">
         <FeatureTabs
           items={mamasEscape.items.map((item) => ({
             id: item.icon,

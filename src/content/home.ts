@@ -26,10 +26,10 @@ export const coreAreas = {
   heading: { lead: "Four ways we", accent: "walk with you" },
   intro: "Whether you are a mother, a partner organisation or a professional, there is a clear place to start.",
   items: [
-    { ...coreAreaLinks[0], number: "01", icon: "community", summary: "Our early years community, where mothers feel seen, heard and less alone." },
+    { ...coreAreaLinks[0], number: "01", icon: "community", summary: "Our community for Black mothers, with the podcast and the newsletter: a place to be seen, heard and less alone." },
     { ...coreAreaLinks[1], number: "02", icon: "partnership", summary: "Working with organisations, commissioners and community partners to amplify impact." },
-    { ...coreAreaLinks[2], number: "03", icon: "training", summary: "Practical, culturally relevant learning and connection for mothers and professionals." },
-    { ...coreAreaLinks[3], number: "04", icon: "growth", summary: "1:1 support, coaching and personal programmes for mothers ready to invest in themselves." },
+    { ...coreAreaLinks[2], number: "03", icon: "services", summary: "Free support for mums at every stage: one-to-one and group support, mentor mums, training, events and expert sessions." },
+    { ...coreAreaLinks[3], number: "04", icon: "growth", summary: "Personalised one-to-one support with our founder, from a free consultation call to postpartum coaching." },
   ],
 } as const;
 
@@ -37,11 +37,19 @@ export const mamasEscape = {
   eyebrow: "Mama's Escape",
   heading: { lead: "You don't have to do it", accent: "all alone" },
   body: "A space for Black mothers to be seen, held and poured into. For the woman, not just the role. If you are doing this far from the village that would have held you, we understand, because we are you.",
+  /** Mama's Escape is more than the community: three parts, one village (owner, 10 Aug 2026). */
+  partsLead: "Three parts, one village:",
+  parts: [
+    { label: "The community", href: "/mamas-escape/" },
+    { label: "The podcast", href: "/podcast/" },
+    { label: "The newsletter", href: "newsletter" },
+  ],
+  itemsLead: "Inside the community, four things we do together:",
   items: [
-    { icon: "mentor", title: "Mentor Mums", text: "A woman who has walked ahead of you and is reaching back." },
-    { icon: "expert", title: "Expert Series and Training", text: "Practical tools for your recovery, in body and in mind." },
-    { icon: "resources", title: "Resource Sharing", text: "The right help, gathered and made sense of." },
-    { icon: "events", title: "Community Events", text: "A room of women who already understand." },
+    { icon: "mentor", title: "Mentor Mums", text: "Paired with a mum who has walked the path before you, for honest guidance and real friendship." },
+    { icon: "expert", title: "Expert Series and Training", text: "Expert sessions and practical training that build confidence and real life skills." },
+    { icon: "resources", title: "Resource Sharing", text: "Trusted information and the right contacts, gathered and made sense of." },
+    { icon: "events", title: "Community Events", text: "Regular gatherings that bring mums together to connect, celebrate and belong." },
   ],
   primary: "Join Mama's Escape",
   quiet: { label: "Not ready yet? Listen to the podcast", href: "/podcast/" },
@@ -64,9 +72,9 @@ export const story = {
 export const impact = {
   eyebrow: "Our impact",
   heading: { lead: "Real mothers. Real partners.", accent: "Real change." },
-  // confirm: owner to verify figures and add community size and events delivered.
+  // The 2,300+ figure is the owner's (notes of 10 Aug 2026); confirm the wording of its label.
   stats: [
-    { value: "70+", label: "mothers directly supported through the Uplifting Mothers Project" },
+    { value: "2,300+", label: "mothers supported through our community, events and programmes" },
     { value: "11", label: "partner organisations, from the NHS to local councils and community groups" },
     {
       value: "3×",
@@ -99,7 +107,7 @@ export const partners = {
 export const newsletter = {
   eyebrow: "Stay close",
   heading: { lead: "Not ready to join yet?", accent: "Stay close." },
-  body: "Join the Mama's Escape newsletter for real stories and real support, straight to your inbox. Or listen to the podcast, wherever you are on the journey.",
+  body: "Ask for the Mama's Escape newsletter and we will send real stories and real support straight to your inbox. Or listen to the podcast, wherever you are on the journey.",
   newsletterLabel: "Get the newsletter",
   podcast: { label: "Listen to the podcast", href: "https://creators.spotify.com/pod/show/mamasescape" },
 };

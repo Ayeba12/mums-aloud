@@ -26,7 +26,7 @@ export const routes = {
   heading: { lead: "Building stronger communities", accent: "together." } satisfies AccentText,
   items: [
     { title: "Insight and involvement", text: "Focus groups, patient and public involvement, research participation.", href: "#ways" },
-    { title: "Training and outreach", text: "Training, workshop facilitation, engagement and community events.", href: "/training-and-events/" },
+    { title: "Training and outreach", text: "Training, workshop facilitation, engagement and community events.", href: "#ways" },
   ],
   partnersTag: "Who we have worked with",
 };
@@ -130,6 +130,7 @@ export const enquiry = {
   },
   /** confirm: the reply time is drafted. */
   note: "Tell us about your organisation and what you are hoping to achieve. We reply within a few working days.",
+  emailLead: "Prefer email? Write to",
 };
 
 export const partners = {

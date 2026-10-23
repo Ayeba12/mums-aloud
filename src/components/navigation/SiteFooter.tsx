@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cacheLife } from "next/cache";
-import { ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
+import { ArrowUpRightIcon, EnvelopeSimpleIcon } from "@phosphor-icons/react/ssr";
 import { NewsletterForm } from "./NewsletterForm";
 import { footerGroups, legalLinks } from "@/content/navigation";
 import { ButtonLink } from "@/components/ui/Button";
@@ -15,11 +15,32 @@ async function Year() {
   return new Date().getFullYear();
 }
 
+const footerLink = "inline-flex min-h-12 items-center gap-1 text-ink no-underline hover:underline";
+
+/**
+ * Until a newsletter platform is chosen, the footer asks for the newsletter by email (the owner's
+ * preference), so every request reaches the inbox today. The email field takes over once
+ * NEWSLETTER_WEBHOOK_URL is set.
+ */
+function NewsletterByEmail() {
+  return (
+    <div className="flex flex-col gap-3">
+      <p className="font-semibold text-ink">Get the newsletter</p>
+      <p className="text-caption text-text-secondary">Real stories and real support, straight to your inbox. Ask by email and we will add you.</p>
+      <ButtonLink href={siteConfig.newsletterUrl} variant="secondary" icon={<EnvelopeSimpleIcon aria-hidden size={20} />} className="self-start">
+        Email us to join
+      </ButtonLink>
+    </div>
+  );
+}
+
 /**
  * The reference footer: a light card inside the page frame holding a media tile with a
- * caption and action, link columns, the email field and a legal bar.
+ * caption and action, link columns, the newsletter, the ways to reach us and a legal bar.
  */
 export function SiteFooter() {
+  const newsletterOpen = Boolean(process.env.NEWSLETTER_WEBHOOK_URL);
+  const socials = Object.values(siteConfig.social).filter((social) => social.href);
   return (
     <footer className="frame-x pt-8 pb-2 md:pb-4">
       <div className="rounded-panel bg-surface-card p-4">
@@ -46,9 +67,9 @@ export function SiteFooter() {
           </div>
 
           <div className="flex flex-col gap-12 py-2 lg:col-span-8 lg:pr-4">
-            {/* "Get the newsletter" links across the site land here, on the field itself. */}
+            {/* "Get the newsletter" links across the site land here when a platform is connected. */}
             <div id="newsletter" className="max-w-form scroll-mt-24">
-              <NewsletterForm />
+              {newsletterOpen ? <NewsletterForm /> : <NewsletterByEmail />}
             </div>
 
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -58,7 +79,7 @@ export function SiteFooter() {
                   <ul className="mt-2 flex flex-col">
                     {group.links.map((link) => (
                       <li key={link.href}>
-                        <Link href={link.href} className="inline-flex min-h-12 items-center text-ink no-underline hover:underline">
+                        <Link href={link.href} className={footerLink}>
                           {link.label}
                         </Link>
                       </li>
@@ -66,21 +87,37 @@ export function SiteFooter() {
                   </ul>
                 </nav>
               ))}
-              <nav aria-label="Listen and contact">
-                <p className="text-caption font-semibold tracking-wide text-text-secondary uppercase">Listen</p>
+              <nav aria-label="Get in touch">
+                <p className="text-caption font-semibold tracking-wide text-text-secondary uppercase">Get in touch</p>
                 <ul className="mt-2 flex flex-col">
                   <li>
-                    <a
-                      href="https://creators.spotify.com/pod/show/mamasescape"
-                      className="inline-flex min-h-12 items-center gap-1 text-ink no-underline hover:underline"
-                    >
+                    <a href={`mailto:${siteConfig.email}`} className={`${footerLink} break-all`}>
+                      {siteConfig.email}
+                    </a>
+                  </li>
+                  <li>
+                    <a href={siteConfig.phone.href} className={footerLink}>
+                      {siteConfig.phone.display}
+                    </a>
+                  </li>
+                  {socials.map((social) => (
+                    <li key={social.label}>
+                      <a href={social.href} className={footerLink}>
+                        {social.label}
+                        <ArrowUpRightIcon aria-hidden size={16} />
+                        <span className="sr-only">(opens {social.label})</span>
+                      </a>
+                    </li>
+                  ))}
+                  <li>
+                    <a href="https://creators.spotify.com/pod/show/mamasescape" className={footerLink}>
                       Mama&apos;s Escape podcast
                       <ArrowUpRightIcon aria-hidden size={16} />
                       <span className="sr-only">(opens Spotify)</span>
                     </a>
                   </li>
                   <li>
-                    <Link href="/contact/" className="inline-flex min-h-12 items-center text-ink no-underline hover:underline">
+                    <Link href="/contact/" className={footerLink}>
                       Contact us
                     </Link>
                   </li>

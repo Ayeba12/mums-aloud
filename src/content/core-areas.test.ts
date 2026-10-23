@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { coreAreaLinks } from "./navigation";
 import * as partnership from "./partnership";
-import * as training from "./training-events";
 import * as workWithUs from "./work-with-us";
 
 describe("core area pages", () => {
@@ -9,20 +8,19 @@ describe("core area pages", () => {
     expect(coreAreaLinks.map((link) => link.href)).toEqual([
       "/mamas-escape/",
       "/partnership/",
-      "/training-and-events/",
+      "/services/",
       "/work-with-us/",
     ]);
   });
 
-  it("Work With Us carries the three live offers with their legacy URLs", () => {
-    expect(workWithUs.programmes.items.map((item) => item.legacyPath)).toEqual([
-      "/chaos-to-calm/",
-      "/postpartum-transition-program/",
-      "/the-empowered-life-assessment-tela/",
-    ]);
-    for (const item of workWithUs.programmes.items) {
-      expect(item.action.href).toMatch(/^(https:\/\/calendly\.com\/|#)/);
+  it("Work With Bokun carries the owner's four services, each a section the legacy URLs can land on", () => {
+    expect(workWithUs.services.items.map((item) => item.id)).toEqual(["consultation", "assessments", "postpartum", "resources"]);
+    for (const item of workWithUs.services.items) {
+      expect(item.action.href).toMatch(/^(https:\/\/calendly\.com\/|\/)/);
     }
+    const assessments = workWithUs.services.items.find((item) => item.id === "assessments");
+    expect(assessments?.options?.every((option) => option.href.startsWith("https://forms.gle/"))).toBe(true);
+    expect(JSON.stringify(workWithUs)).not.toMatch(/[–—]/);
   });
 
   it("Partnership no longer names another organisation in its enquiry copy", () => {
@@ -37,14 +35,8 @@ describe("core area pages", () => {
     expect(partnership.enquiry.form.placeholders).toHaveProperty("organisation");
   });
 
-  it("Training & Events says plainly when no events are published", () => {
-    expect(training.events.empty).toMatch(/No dates are published yet/);
-    expect(training.strands.items.map((item) => item.title)).toContain("The Maternal Health Summit");
-  });
-
   it("every in-page link points at a section on its page", () => {
-    expect(workWithUs.hero.secondary.href).toBe("#programmes");
-    expect(training.hero.primary.href).toBe("#events");
+    expect(workWithUs.hero.secondary.href).toBe("#consultation");
     expect(partnership.hero.secondary.href).toBe("#offer");
     for (const href of [partnership.hero.primary.href, partnership.offer.action.href, partnership.ways.action.href]) {
       expect(href).toBe("#enquire");

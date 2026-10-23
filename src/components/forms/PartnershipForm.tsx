@@ -2,6 +2,7 @@
 
 import { useActionState, useId, type ReactNode } from "react";
 import { sendPartnershipEnquiry, type ContactState } from "@/app/actions/contact";
+import { FormStatus } from "@/components/forms/FormStatus";
 import { Button } from "@/components/ui/Button";
 import { enquiry } from "@/content/partnership";
 import type { ContactFields } from "@/lib/contact";
@@ -69,11 +70,7 @@ export function PartnershipForm() {
         <p className="text-caption text-text-secondary">{enquiry.form.privacy}</p>
       </div>
 
-      {state.status !== "idle" && state.message && (
-        <p role="status" className={`rounded-card bg-surface p-4 ${state.status === "error" ? "font-semibold text-error" : "text-ink"}`}>
-          {state.message}
-        </p>
-      )}
+      <FormStatus status={state.status} message={state.message} fallback={state.fallback} />
     </form>
   );
 }

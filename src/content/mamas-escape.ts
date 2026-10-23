@@ -12,7 +12,7 @@ export const page = {
 export const hero = {
   tag: "Mama's Escape",
   heading: { lead: "There's a place for you", accent: "here." },
-  intro: "The community for Black mothers ready to stop doing it all alone.",
+  intro: "Our community for Black mothers ready to stop doing it all alone, with a podcast and a newsletter that keep you close.",
   primary: "Join Mama's Escape",
   secondary: { label: "What to expect", href: "#what-to-expect" },
   /** Floating card over the hero portrait, as the reference's case-study card. */
@@ -49,28 +49,30 @@ export const why = {
 };
 
 export const experience = {
-  tag: "What you will experience",
+  tag: "Inside the community",
   heading: { lead: "A mother deserves to be", accent: "looked after too." },
   body: "Before we were mothers, we were women full of ideas, dreams, and plans. Then motherhood arrived, often far from home, far from the village that would have held us. Everyone gathered round the baby. Few asked how we were.",
   pledge: "We know, because it is our story too. A baby is born, but a mother is born too. She needs care too.",
+  /** The community's four core areas, in the owner's words (notes of 10 Aug 2026). */
+  itemsLead: "The community focuses on four core areas.",
   items: [
-    { icon: "mentor", title: "Mentor Mums", text: "A woman who has walked ahead of you and is reaching back. Someone to answer the questions you would only ask another mum, and to hold what you share in confidence." },
-    { icon: "expert", title: "Expert Series and Training", text: "Sessions with people who understand, giving you practical tools for your recovery, in body and in mind." },
-    { icon: "resources", title: "Resource Sharing", text: "The right help, gathered and made sense of, so the systems around you are easier to face." },
-    { icon: "events", title: "Community Events", text: "Reasons to leave isolation and come into a room of women who already understand." },
+    { icon: "mentor", title: "Mentor Mums", text: "Paired with a mum who has walked the path before you: honest guidance, regular check-ins and real friendship, from lived experience, not just training." },
+    { icon: "expert", title: "Expert Series and Training", text: "Guest experts on health, wellbeing, finance and parenting, live Q&As, and training that builds confidence, practical life skills and a way back into work." },
+    { icon: "resources", title: "Resource Sharing", text: "Accurate, reliable information and the right contacts, gathered and made sense of, so the systems around you are easier to face." },
+    { icon: "events", title: "Community Events", text: "Regular gatherings, family-friendly activities and celebrations that bring mums together to connect and belong." },
   ],
 } as const;
 
 export const marquee = "We speak with you. We speak for you. We are you.";
 
 export const family = {
-  tag: "Where Mama's Escape sits",
-  heading: { lead: "The community, and the ways to", accent: "stay close" },
-  intro: "Mama's Escape is the community, and it is part of Mums Aloud. Around it sit our podcast and our newsletter, ways to stay close wherever you are on the journey.",
+  tag: "What Mama's Escape is",
+  heading: { lead: "Three parts,", accent: "one village." },
+  intro: "Mama's Escape is more than the community. It is the community, the podcast and the newsletter, so there is a way in wherever you are on the journey.",
   tiles: [
-    { icon: "community", title: "The Community", text: "A space for mothers to connect, share, and support one another.", action: { label: "How to join", href: "#join" } },
+    { icon: "community", title: "The Community", text: "Mentor mums, expert sessions and training, shared resources and events, for mothers who support one another.", action: { label: "How to join", href: "#join" } },
     { icon: "podcast", title: "The Podcast", text: "Mama's Escape Podcast. Real conversations, real mothers.", action: { label: "Listen on Spotify", href: "https://creators.spotify.com/pod/show/mamasescape", external: true } },
-    { icon: "newsletter", title: "The Newsletter", text: "Monthly voices from our community, straight to your inbox.", action: { label: "Get the newsletter", href: "#newsletter" } },
+    { icon: "newsletter", title: "The Newsletter", text: "Real stories and real support, straight to your inbox. Ask for it by email and we will add you.", action: { label: "Get the newsletter", href: "newsletter" } },
   ],
 } as const;
 
@@ -122,11 +124,11 @@ export const faq = {
     },
     {
       q: "I'm not ready to join. Can I still stay close?",
-      a: "Of course. Listen to the podcast, get the newsletter, or reach out to Work With Us for a closer conversation with Bokun.",
+      a: "Of course. Listen to the podcast, get the newsletter, or reach out to Work With Bokun for a closer conversation.",
     },
     {
-      q: "How is this different from Work With Us?",
-      a: "Mama's Escape is the community: a room of women. Work With Us is a closer path with Bokun for a mother who wants support that is just hers.",
+      q: "How is this different from Work With Bokun?",
+      a: "Mama's Escape is the community: a room of women, free to every mum. Work With Bokun is a closer path for a mother who wants personalised, one-to-one support.",
     },
   ],
 };
@@ -139,8 +141,8 @@ export const stayClose = {
     "Or stay close: ",
     { label: "listen to the podcast", href: "https://creators.spotify.com/pod/show/mamasescape", external: true },
     ", get the newsletter, or reach out to ",
-    { label: "Work With Us", href: "/work-with-us/" },
-    " for a closer conversation with Bokun.",
+    { label: "Work With Bokun", href: "/work-with-us/" },
+    " for a closer conversation.",
   ],
   newsletter: "Get the newsletter",
   closing: "You don't have to do it all alone.",

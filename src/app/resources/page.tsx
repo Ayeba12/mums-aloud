@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRightIcon, ArrowUpRightIcon, BabyIcon, BookOpenTextIcon, CalendarDotsIcon } from "@phosphor-icons/react/ssr";
+import { ArrowRightIcon, ArrowUpRightIcon, BabyIcon, BookOpenTextIcon, CalendarDotsIcon, LifebuoyIcon, SealCheckIcon } from "@phosphor-icons/react/ssr";
 import { IconChip, Section, Tag } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { Accent } from "@/components/ui/Heading";
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 const linkClasses = "mt-4 inline-flex min-h-12 items-center gap-2 font-semibold after:absolute after:inset-0";
+const supportIcons = { support: LifebuoyIcon, trusted: SealCheckIcon };
 
 /** The Resources hub: the two free guides and the two calculators, each as a card. */
 export default function ResourcesPage() {
@@ -26,6 +27,28 @@ export default function ResourcesPage() {
           </h1>
           <p className="mt-4 max-w-[46ch] text-lead">{resources.intro}</p>
         </div>
+
+        <h2 id="support-heading" className="mt-16 text-h3">
+          {resources.supportHeading}
+        </h2>
+        <ul aria-labelledby="support-heading" className="mt-6 grid gap-4 md:grid-cols-2 lg:gap-6">
+          {resources.support.map((item) => {
+            const Icon = supportIcons[item.icon];
+            return (
+              <li key={item.href} className="group relative flex flex-col rounded-card border border-border-decoration bg-surface-card p-6">
+                <IconChip>
+                  <Icon aria-hidden size={24} />
+                </IconChip>
+                <h3 className="mt-4 font-body text-h4 font-bold text-ink">{item.title}</h3>
+                <p className="mt-2 text-text">{item.text}</p>
+                <Link href={item.href} className={linkClasses}>
+                  Open
+                  <ArrowRightIcon aria-hidden size={16} weight="bold" className="transition-transform duration-150 group-hover:translate-x-1 motion-reduce:transition-none" />
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
 
         <h2 id="guides-heading" className="mt-16 text-h3">
           {resources.guidesHeading}

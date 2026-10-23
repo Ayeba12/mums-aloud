@@ -1,47 +1,53 @@
 /**
- * Site navigation, following the client's Website Restructure Brief v2 (section 5):
- * About, How We Help, Stories, Resources, Contact, plus one join action.
- * Routes keep existing WordPress URLs where they exist.
+ * Site navigation, following the client's Website Restructure Brief v2 (section 5) and the
+ * owner's notes of 10 August 2026: four core areas (Mama's Escape, Partnership, Our Services,
+ * Work With Bokun), the podcast and newsletter pinned in the main menu, Find Support under
+ * Resources, and Volunteer With Us under About. Routes keep existing WordPress URLs where they exist.
  */
+import { siteConfig } from "@/lib/site";
+
 export type NavLink = { label: string; href: string; description?: string };
 export type NavGroup = { label: string; links: NavLink[] };
 export type NavItem = NavLink | NavGroup;
 
 export const isGroup = (item: NavItem): item is NavGroup => "links" in item;
 
+/** True for links that leave the site or open the mail client, so they render as plain anchors. */
+export const isExternalHref = (href: string) => /^(https?:|mailto:|tel:)/.test(href);
+
 export const coreAreaLinks: NavLink[] = [
-  { label: "Mama's Escape", href: "/mamas-escape/", description: "Our early years community" },
+  { label: "Mama's Escape", href: "/mamas-escape/", description: "Our community, podcast and newsletter" },
   { label: "Partnership Opportunities", href: "/partnership/", description: "For organisations and commissioners" },
-  { label: "Training, Workshops & Events", href: "/training-and-events/", description: "Learning and connection" },
-  { label: "Work With Us", href: "/work-with-us/", description: "1:1 support and coaching" },
+  { label: "Our Services", href: "/services/", description: "Support for mums at every stage" },
+  { label: "Work With Bokun", href: "/work-with-us/", description: "Personalised one-to-one support" },
+];
+
+const aboutLinks: NavLink[] = [
+  { label: "About Mums Aloud", href: "/about-mums-aloud/" },
+  { label: "Meet Bokun", href: "/meet-bokun/" },
+  { label: "Meet the Team", href: "/meet-the-team/" },
+  { label: "Mum's Council", href: "/mums-council/" },
+  { label: "Volunteer With Us", href: "/volunteer/" },
 ];
 
 export const mainNav: NavItem[] = [
-  {
-    label: "About",
-    links: [
-      { label: "About Mums Aloud", href: "/about-mums-aloud/" },
-      { label: "Meet Bokun", href: "/meet-bokun/" },
-      { label: "Meet the Team", href: "/meet-the-team/" },
-      { label: "Mum's Council", href: "/mums-council/" },
-    ],
-  },
+  { label: "About", links: aboutLinks },
   { label: "How We Help", links: coreAreaLinks },
   {
     label: "Stories",
     links: [
       { label: "Story Lounge", href: "/story-lounge/" },
       { label: "Blog", href: "/blog/" },
-      { label: "Podcast", href: "/podcast/" },
     ],
   },
+  { label: "Podcast", href: "/podcast/" },
+  { label: "Newsletter", href: siteConfig.newsletterUrl },
   {
     label: "Resources",
     links: [
-      { label: "Holiday Survival Guide", href: "/holiday-guide-for-school-kids/" },
-      { label: "Activities Guide for Babies", href: "/ativites-guide-for-babies/" },
-      { label: "Ovulation Calculator", href: "/ovulation-calculator/" },
-      { label: "Pregnancy Calculator", href: "/pregnancy-calculator/" },
+      { label: "Find Support", href: "/find-support/", description: "Helplines and trusted organisations" },
+      { label: "Guides and calculators", href: "/resources/" },
+      { label: "Trusted Resources", href: "/trusted-resources/" },
     ],
   },
   { label: "Contact", href: "/contact/" },
@@ -49,24 +55,16 @@ export const mainNav: NavItem[] = [
 
 export const footerGroups: NavGroup[] = [
   { label: "How we help", links: coreAreaLinks },
-  {
-    label: "About",
-    links: [
-      { label: "About Mums Aloud", href: "/about-mums-aloud/" },
-      { label: "Meet Bokun", href: "/meet-bokun/" },
-      { label: "Meet the Team", href: "/meet-the-team/" },
-      { label: "Mum's Council", href: "/mums-council/" },
-      { label: "Contact", href: "/contact/" },
-    ],
-  },
+  { label: "About", links: [...aboutLinks, { label: "Contact", href: "/contact/" }] },
   {
     label: "Stories & resources",
     links: [
       { label: "Story Lounge", href: "/story-lounge/" },
       { label: "Blog", href: "/blog/" },
       { label: "Podcast", href: "/podcast/" },
-      { label: "Resources", href: "/resources/" },
-      { label: "Affiliate Programs", href: "/affiliate-programs/" },
+      { label: "Find Support", href: "/find-support/" },
+      { label: "Guides and calculators", href: "/resources/" },
+      { label: "Trusted Resources", href: "/trusted-resources/" },
     ],
   },
 ];

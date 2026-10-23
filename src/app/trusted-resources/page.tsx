@@ -4,28 +4,32 @@ import { Section, Tag } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { ButtonLink } from "@/components/ui/Button";
 import { Accent } from "@/components/ui/Heading";
-import { affiliate } from "@/content/offers";
+import { trustedResources } from "@/content/offers";
 
 export const metadata: Metadata = {
-  title: affiliate.title,
-  description: affiliate.description,
-  alternates: { canonical: "/affiliate-programs/" },
+  title: trustedResources.title,
+  description: trustedResources.description,
+  alternates: { canonical: "/trusted-resources/" },
 };
 
-/** Affiliate programmes from the live page, each with its destination and a plain note on the relationship. */
-export default function AffiliateProgramsPage() {
+/**
+ * Trusted Resources (the live Affiliate Programs page, renamed at the owner's request): the
+ * programmes Mums Aloud endorses, each with its destination and a plain note on the relationship.
+ */
+export default function TrustedResourcesPage() {
   return (
     <main id="main">
       <Section aria-labelledby="page-heading" className="bg-[linear-gradient(to_bottom,var(--color-surface-tinted),var(--color-surface)_32rem)]">
         <div className="mx-auto flex flex-col items-center text-center">
-          <Tag>{affiliate.tag}</Tag>
+          <Tag>{trustedResources.tag}</Tag>
           <h1 id="page-heading" className="mt-2 max-w-[18ch] text-h1 tracking-tight">
-            <Accent {...affiliate.heading} />
+            <Accent {...trustedResources.heading} />
           </h1>
-          <p className="mt-4 max-w-[52ch] text-lead">{affiliate.intro}</p>
+          <p className="mt-4 max-w-[52ch] text-lead">{trustedResources.intro}</p>
+          <p className="mt-4 max-w-[60ch] text-caption text-text-secondary">{trustedResources.disclosure}</p>
         </div>
         <ul className="mt-12 flex flex-col gap-4 lg:gap-6">
-          {affiliate.offers.map((offer) => (
+          {trustedResources.offers.map((offer) => (
             <li key={offer.title} className="grid gap-6 rounded-card border border-border-decoration bg-surface-card p-6 lg:grid-cols-12 lg:gap-8 lg:p-8">
               <div className="lg:col-span-8">
                 <h2 className="text-h3">{offer.title}</h2>
@@ -50,7 +54,7 @@ export default function AffiliateProgramsPage() {
                   {offer.action.label}
                   <span className="sr-only">(opens in a new site)</span>
                 </ButtonLink>
-                <p className="text-caption text-text-secondary">{offer.referral ? affiliate.referralLabel : affiliate.bookedLabel}</p>
+                <p className="text-caption text-text-secondary">{offer.referral ? trustedResources.referralLabel : trustedResources.bookedLabel}</p>
               </div>
             </li>
           ))}
@@ -58,11 +62,11 @@ export default function AffiliateProgramsPage() {
       </Section>
 
       <ClosingInvite
-        id="affiliate-closing"
-        heading={affiliate.closing.heading}
-        body={affiliate.closing.body}
-        primary={affiliate.closing.primary}
-        secondary={affiliate.closing.secondary}
+        id="resources-closing"
+        heading={trustedResources.closing.heading}
+        body={trustedResources.closing.body}
+        primary={trustedResources.closing.primary}
+        secondary={trustedResources.closing.secondary}
       />
     </main>
   );
