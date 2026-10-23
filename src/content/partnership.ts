@@ -16,7 +16,7 @@ export const hero = {
   tag: "Partnership Opportunities",
   heading: { lead: "Creating partnerships that transform", accent: "Black maternal care." } satisfies AccentText,
   intro: "We partner with organisations that share our vision of supporting, understanding and empowering Black mothers to thrive.",
-  primary: { label: "Explore partnership", href: "/contact/" },
+  primary: { label: "Explore partnership", href: "#enquire" },
   secondary: { label: "What we offer", href: "#offer" },
   /** Captions on the photo cards under the hero: four of the ways we work, as placeholders until real photography lands. */
   cards: ["Focus groups", "Community events", "Training and workshops", "Peer support"],
@@ -53,7 +53,7 @@ export const offer = {
     { icon: "data", title: "Data-driven insights", text: "Access to data and research on the experiences and needs of Black mothers in the UK." },
     { icon: "advocates", title: "An engaged community", text: "A strong network of engaged, influential Black mothers who can act as advocates and ambassadors." },
   ],
-  action: { label: "Explore partnership", href: "/contact/" },
+  action: { label: "Explore partnership", href: "#enquire" },
 } as const;
 
 export const ways = {
@@ -77,7 +77,7 @@ export const ways = {
     { title: "Training and facilitation", items: ["Training and workshop facilitation", "Peer support programmes"] },
     { title: "Engagement and advocacy", items: ["Engagement and community outreach", "Campaigns and community advocacy", "Community events and gatherings"] },
   ],
-  action: { label: "Talk to us", href: "/contact/" },
+  action: { label: "Talk to us", href: "#enquire" },
 };
 
 /** confirm: drafted for the reference's process section; the owner to confirm each step and what partners receive. */
@@ -113,15 +113,27 @@ export const voices = {
   link: { label: "View all stories", href: "/story-lounge/" },
 };
 
+/**
+ * The enquiry form, with the live page's own invitation. The live sentence names another
+ * organisation ("The Motherhood Group"), a slip; it reads Mums Aloud here.
+ */
+export const enquiry = {
+  tag: "Partner with us",
+  heading: { lead: "Innovative partnerships", accent: "and collaborations." } satisfies AccentText,
+  intro: "Mums Aloud is keen to adopt and foster innovative partnerships and collaborations. If you're interested in working or collaborating with Mums Aloud, please contact us using the form below.",
+  form: {
+    labels: { name: "Your name", email: "Email address", organisation: "Organisation", phone: "Phone number (optional)", message: "Your message" },
+    placeholders: { name: "Jane Doe", email: "name@example.com", organisation: "Your organisation", phone: "+44 7700 900123", message: "Tell us what you have in mind and who you want to reach." },
+    submit: "Send enquiry",
+    sending: "Sending…",
+    privacy: "We only use what you share here to reply to you.",
+  },
+  /** confirm: the reply time is drafted. */
+  note: "Tell us about your organisation and what you are hoping to achieve. We reply within a few working days.",
+};
+
 export const partners = {
   tag: "Who we have worked with",
   heading: { lead: "In good", accent: "company" } satisfies AccentText,
   intro: "Mums Aloud was built alongside partners who believe mothers deserve to be seen and supported.",
-};
-
-export const closing = {
-  heading: { lead: "Let's build something", accent: "together." } satisfies AccentText,
-  body: "Tell us about your organisation and what you are hoping to achieve. We reply within a few working days.",
-  primary: { label: "Get in touch", href: "/contact/" },
-  secondary: { label: "See our training", href: "/training-and-events/" },
 };

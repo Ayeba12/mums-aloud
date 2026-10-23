@@ -4,6 +4,7 @@ import { contactTopics, readContactFields, validateContact, type ContactFields }
 const good: ContactFields = {
   name: "Ama Mensah",
   email: "ama@example.com",
+  organisation: "",
   phone: "",
   topic: "mamas-escape",
   message: "I would like to know more about joining the community.",
@@ -32,6 +33,12 @@ describe("validateContact", () => {
   it("caps very long messages", () => {
     expect(validateContact({ ...good, message: "x".repeat(4001) }).message).toMatch(/4,000/);
   });
+
+  it("asks for the organisation only on the partnership form", () => {
+    expect(validateContact({ ...good, topic: "partnership" })).toEqual({});
+    expect(validateContact({ ...good, topic: "partnership" }, { requireOrganisation: true }).organisation).toMatch(/organisation/);
+    expect(validateContact({ ...good, topic: "partnership", organisation: "Trafford Council" }, { requireOrganisation: true })).toEqual({});
+  });
 });
 
 describe("readContactFields", () => {
@@ -43,6 +50,7 @@ describe("readContactFields", () => {
     expect(readContactFields(data)).toEqual({
       name: "Ama",
       email: "ama@example.com",
+      organisation: "",
       phone: "",
       topic: "",
       message: "Hello there, I have a question.",

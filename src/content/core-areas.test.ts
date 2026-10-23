@@ -28,7 +28,13 @@ describe("core area pages", () => {
   it("Partnership no longer names another organisation in its enquiry copy", () => {
     const text = JSON.stringify(partnership);
     expect(text).not.toMatch(/Motherhood Group/);
+    expect(partnership.enquiry.intro).toMatch(/collaborating with Mums Aloud/);
     expect(partnership.ways.items.length).toBeGreaterThanOrEqual(8);
+  });
+
+  it("Partnership's enquiry form asks for the five agreed fields", () => {
+    expect(Object.keys(partnership.enquiry.form.labels)).toEqual(["name", "email", "organisation", "phone", "message"]);
+    expect(partnership.enquiry.form.placeholders).toHaveProperty("organisation");
   });
 
   it("Training & Events says plainly when no events are published", () => {
@@ -40,5 +46,8 @@ describe("core area pages", () => {
     expect(workWithUs.hero.secondary.href).toBe("#programmes");
     expect(training.hero.primary.href).toBe("#events");
     expect(partnership.hero.secondary.href).toBe("#offer");
+    for (const href of [partnership.hero.primary.href, partnership.offer.action.href, partnership.ways.action.href]) {
+      expect(href).toBe("#enquire");
+    }
   });
 });

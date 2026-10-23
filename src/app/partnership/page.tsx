@@ -5,13 +5,13 @@ import { Suspense } from "react";
 import { ArrowRightIcon, ChartBarIcon, GlobeHemisphereWestIcon, HeartIcon, MegaphoneIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { PostTile } from "@/components/content/PostTile";
 import { Section, SectionHeading, Tag } from "@/components/layout/Section";
-import { ClosingInvite } from "@/components/sections/ClosingInvite";
+import { PartnershipForm } from "@/components/forms/PartnershipForm";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { ButtonLink } from "@/components/ui/Button";
 import { Carousel } from "@/components/ui/Carousel";
 import { Accent } from "@/components/ui/Heading";
 import { impact, partners as partnerNames } from "@/content/home";
-import { closing, hero, network, offer, page, process, routes, voices, ways, why } from "@/content/partnership";
+import { enquiry, hero, network, offer, page, process, routes, voices, ways, why } from "@/content/partnership";
 import { getLatest } from "@/lib/wordpress/client";
 import type { PostSummary } from "@/lib/wordpress/mapping";
 import circlePhoto from "@/assets/photos/women-community-circle.jpg";
@@ -62,7 +62,7 @@ const stepPhotos = [
  * Partnership Opportunities, after the reference's homepage: a centred hero over a row of photo
  * cards, a berry panel with two big photo cards and the partner strip, the impact figures as a fan
  * of note cards, the portrait-and-list berry panel with the four offers, three strands of ways to
- * work together, a numbered process, two community stories, and the light closing.
+ * work together, a numbered process, two community stories, and the enquiry form to close.
  */
 export default function PartnershipPage() {
   return (
@@ -280,7 +280,22 @@ export default function PartnershipPage() {
         </div>
       </Section>
 
-      <ClosingInvite id="closing-heading" heading={closing.heading} body={closing.body} primary={closing.primary} secondary={closing.secondary} />
+      {/* Enquiry: the live page's invitation beside the form, closing the page on the tint. */}
+      <Section id="enquire" aria-labelledby="enquire-heading" className="scroll-mt-24 bg-[linear-gradient(to_bottom,var(--color-surface),var(--color-surface-tinted))]">
+        <div className="grid gap-8 lg:grid-cols-12 lg:gap-8">
+          <SectionHeading
+            id="enquire-heading"
+            tag={enquiry.tag}
+            heading={enquiry.heading}
+            intro={enquiry.intro}
+            className="lg:col-span-5"
+            action={<p className="max-w-[46ch] text-text-secondary">{enquiry.note}</p>}
+          />
+          <div className="rounded-panel bg-surface-card p-6 lg:col-span-6 lg:col-start-7 lg:p-8">
+            <PartnershipForm />
+          </div>
+        </div>
+      </Section>
     </main>
   );
 }
