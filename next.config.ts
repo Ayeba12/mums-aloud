@@ -19,6 +19,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "mumsaloud.com", pathname: "/wp-content/uploads/**" },
+      // Podcast artwork, served by Spotify for Creators.
+      { protocol: "https", hostname: "d3t3ozftmdmh3i.cloudfront.net" },
     ],
   },
   turbopack: {

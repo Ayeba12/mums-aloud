@@ -1,11 +1,12 @@
 import { revalidateTag } from "next/cache";
 import { timingSafeEqual } from "node:crypto";
+import { PODCAST_TAG } from "@/lib/podcast/feed";
 import { collections, collectionTag, type CollectionKey } from "@/lib/wordpress/collections";
 
 /**
  * Called by WordPress when content is published or updated.
- * POST /api/revalidate with header `x-revalidate-secret` and JSON `{ "collection": "blog" }`.
- * Omit `collection` to refresh every collection.
+ * POST /api/revalidate with header `x-revalidate-secret` and JSON `{ "collection": "blog" }`
+ * (or `"podcast"` for the episode feed). Omit `collection` to refresh everything.
  */
 export async function POST(request: Request) {
   const secret = process.env.REVALIDATE_SECRET;
@@ -23,16 +24,15 @@ export async function POST(request: Request) {
     // An empty body means "refresh everything".
   }
 
-  if (body.collection && !(body.collection in collections)) {
+  if (body.collection && body.collection !== PODCAST_TAG && !(body.collection in collections)) {
     return Response.json({ error: `Unknown collection "${body.collection}"` }, { status: 400 });
   }
 
-  const keys = body.collection
-    ? [body.collection as CollectionKey]
-    : (Object.keys(collections) as CollectionKey[]);
-  for (const key of keys) revalidateTag(collectionTag(key), "max");
+  const everything = [...(Object.keys(collections) as CollectionKey[]).map(collectionTag), PODCAST_TAG];
+  const tags = !body.collection ? everything : body.collection === PODCAST_TAG ? [PODCAST_TAG] : [collectionTag(body.collection as CollectionKey)];
+  for (const tag of tags) revalidateTag(tag, "max");
 
-  return Response.json({ revalidated: keys.map(collectionTag) });
+  return Response.json({ revalidated: tags });
 }
 
 function isSameSecret(received: string, expected: string) {
