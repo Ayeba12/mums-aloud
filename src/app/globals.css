@@ -23,3 +23,33 @@
   ::selection { background-color: var(--color-berry-lipstick-100); color: var(--color-black-900); }
   input, textarea { caret-color: var(--color-action); }
 }
+
+/* Rich text from WordPress posts (stories, articles): the body role in a reading column. */
+@layer components {
+  .rich-text { color: var(--color-text); font-size: var(--text-body); line-height: var(--text-body--line-height); }
+  .rich-text > * + * { margin-top: --spacing(4); }
+  .rich-text h2, .rich-text h3 { font-family: var(--font-heading); font-weight: 400; color: var(--color-ink); text-wrap: balance; }
+  .rich-text h2 { font-size: var(--text-h3); line-height: var(--text-h3--line-height); margin-top: --spacing(10); }
+  .rich-text h3 { font-size: var(--text-h4); line-height: var(--text-h4--line-height); margin-top: --spacing(8); }
+  .rich-text h4, .rich-text h5, .rich-text h6 { font-weight: 700; color: var(--color-ink); margin-top: --spacing(6); }
+  .rich-text ul, .rich-text ol { padding-left: --spacing(6); }
+  .rich-text ul { list-style: disc; }
+  .rich-text ol { list-style: decimal; }
+  .rich-text li + li { margin-top: --spacing(2); }
+  .rich-text blockquote {
+    margin-block: --spacing(8);
+    padding-left: --spacing(6);
+    border-left: 1px solid var(--color-border-control);
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: var(--text-h4);
+    line-height: var(--text-h4--line-height);
+    color: var(--color-ink);
+  }
+  .rich-text a { text-decoration: underline; text-underline-offset: 0.2em; }
+  .rich-text strong { font-weight: 700; color: var(--color-ink); }
+  .rich-text img { border-radius: var(--radius-card); }
+  .rich-text figure { margin-block: --spacing(8); }
+  .rich-text figcaption { margin-top: --spacing(2); font-size: var(--text-caption); line-height: var(--text-caption--line-height); color: var(--color-text-secondary); }
+  .rich-text hr { margin-block: --spacing(10); border: 0; border-top: 1px solid var(--color-border-decoration); }
+}

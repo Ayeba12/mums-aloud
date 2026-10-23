@@ -1,6 +1,6 @@
 import { cacheLife, cacheTag } from "next/cache";
 import { collections, collectionTag, hiddenSlugs, type CollectionKey } from "./collections";
-import { toPostSummary, type PostSummary, type WpPost } from "./mapping";
+import { toPostDetail, toPostSummary, type PostDetail, type PostSummary, type WpPost } from "./mapping";
 
 const API_URL = (process.env.WORDPRESS_API_URL ?? "https://mumsaloud.com/wp-json/wp/v2").replace(/\/$/, "");
 const TIMEOUT_MS = 15_000; // the current WordPress host can take 8s+ to answer
@@ -59,4 +59,40 @@ export async function getLatest(key: CollectionKey, count = 3): Promise<PostSumm
   }
   const posts = await wpFetch<WpPost[]>(`/${collection.restBase}?${params}`);
   return posts.filter((post) => !hiddenSlugs.has(post.slug)).slice(0, count).map(toPostSummary);
+}
+
+/**
+ * Every published item in a collection, newest first. WordPress serves at most 100 per request;
+ * the largest collection holds 31 today, so paging can wait until a listing nears that.
+ */
+export async function getAll(key: CollectionKey): Promise<PostSummary[]> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(collectionTag(key));
+
+  const collection = collections[key];
+  const params = new URLSearchParams({ per_page: "100", orderby: "date", order: "desc", _embed: "wp:featuredmedia" });
+  if (collection.categorySlug) {
+    params.set("categories", String(await getCategoryId(collection.categorySlug)));
+  }
+  const posts = await wpFetch<WpPost[]>(`/${collection.restBase}?${params}`);
+  return posts.filter((post) => !hiddenSlugs.has(post.slug)).map(toPostSummary);
+}
+
+const SLUG = /^[a-z0-9][a-z0-9-]*$/i;
+
+/**
+ * One item by slug, with its body, or null when it does not exist or is hidden. The category
+ * filter is not applied here: a slug is unique within its post type, and legacy root-level posts
+ * outside the Story Lounge category keep their URLs (the page labels them by their own category).
+ */
+export async function getBySlug(key: CollectionKey, slug: string): Promise<PostDetail | null> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag(collectionTag(key));
+
+  if (!SLUG.test(slug) || hiddenSlugs.has(slug)) return null;
+  const params = new URLSearchParams({ slug, _embed: "wp:featuredmedia,wp:term" });
+  const [post] = await wpFetch<WpPost[]>(`/${collections[key].restBase}?${params}`);
+  return post ? toPostDetail(post) : null;
 }

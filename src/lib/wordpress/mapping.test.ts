@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { decodeEntities, permalinkPath, tidyTitle, toPlainText, toPostSummary, truncate, type WpPost } from "./mapping";
+import { decodeEntities, permalinkPath, sanitiseHtml, tidyTitle, toPlainText, toPostDetail, toPostSummary, truncate, type WpPost } from "./mapping";
 
 describe("decodeEntities", () => {
   it("decodes numeric and named entities from WordPress titles", () => {
@@ -71,5 +71,46 @@ describe("toPostSummary", () => {
       date: "2024-10-28T10:00:00",
       image: { src: "https://mumsaloud.com/wp-content/uploads/a.jpg", alt: "", width: 800, height: 600 },
     });
+  });
+});
+
+describe("sanitiseHtml", () => {
+  it("removes scripts, embeds and inline handlers but keeps the writing", () => {
+    const dirty =
+      '<p class="wp-block-paragraph">Hello <strong>mums</strong></p><script>alert(1)</script>' +
+      '<iframe src="https://example.com"></iframe><p onclick="steal()">Keep me</p><a href="javascript:void(0)">x</a>';
+    expect(sanitiseHtml(dirty)).toBe(
+      '<p class="wp-block-paragraph">Hello <strong>mums</strong></p><p>Keep me</p><a>x</a>',
+    );
+  });
+
+  it("drops the empty paragraphs WordPress leaves behind", () => {
+    expect(sanitiseHtml("<p>One</p><p>&nbsp;</p><p> </p><p><br></p><p>Two</p>")).toBe("<p>One</p><p>Two</p>");
+  });
+});
+
+describe("toPostDetail", () => {
+  it("adds the cleaned body, the modified date and the category names", () => {
+    const post: WpPost = {
+      id: 442,
+      slug: "emmanuella",
+      link: "https://mumsaloud.com/emmanuella/",
+      date: "2024-10-31T09:00:00",
+      modified: "2024-11-02T09:00:00",
+      title: { rendered: "Emmanuella" },
+      excerpt: { rendered: "<p>Her story.</p>" },
+      content: { rendered: '<p class="wp-block-paragraph">Once upon a time.</p><script>x()</script>' },
+      _embedded: {
+        "wp:term": [
+          [{ id: 7, name: "Story Lounge", slug: "story-lounge", taxonomy: "category" }],
+          [{ id: 9, name: "tag", slug: "tag", taxonomy: "post_tag" }],
+        ],
+      },
+    };
+    const detail = toPostDetail(post);
+    expect(detail.path).toBe("/emmanuella/");
+    expect(detail.html).toBe('<p class="wp-block-paragraph">Once upon a time.</p>');
+    expect(detail.modified).toBe("2024-11-02T09:00:00");
+    expect(detail.categories).toEqual([{ name: "Story Lounge", slug: "story-lounge" }]);
   });
 });

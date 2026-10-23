@@ -19,6 +19,8 @@ export type WpPost = {
       alt_text?: string;
       media_details?: { width?: number; height?: number };
     }>;
+    /** One array per taxonomy (categories, tags, ...), each holding that taxonomy's terms. */
+    "wp:term"?: Array<Array<{ id: number; name: string; slug: string; taxonomy: string }>>;
   };
 };
 
@@ -102,5 +104,41 @@ export function toPostSummary(post: WpPost): PostSummary {
           height: media.media_details?.height,
         }
       : undefined,
+  };
+}
+
+export type PostDetail = PostSummary & {
+  modified: string;
+  /** Post body as HTML, cleaned by `sanitiseHtml`. */
+  html: string;
+  categories: Array<{ name: string; slug: string }>;
+};
+
+/**
+ * WordPress already limits what editors can save, but the HTML still crosses a trust boundary
+ * into our pages: drop scripts, styles, embeds and inline event handlers, and tidy empty
+ * paragraphs. Third-party embeds (iframes) are removed until the podcast work decides how to
+ * label them.
+ */
+export function sanitiseHtml(html: string): string {
+  return html
+    .replace(/<(script|style|iframe|object|embed|noscript)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, "")
+    .replace(/<(script|style|iframe|object|embed)\b[^>]*\/?>/gi, "")
+    .replace(/\son[a-z]+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, "")
+    .replace(/\s(href|src)\s*=\s*(["']?)\s*javascript:[^"'\s>]*\2/gi, "")
+    .replace(/<p\b[^>]*>(?:\s|&nbsp;|<br\s*\/?>)*<\/p>/gi, "")
+    .trim();
+}
+
+export function toPostDetail(post: WpPost): PostDetail {
+  const categories = (post._embedded?.["wp:term"] ?? [])
+    .flat()
+    .filter((term) => term.taxonomy === "category")
+    .map((term) => ({ name: decodeEntities(term.name), slug: term.slug }));
+  return {
+    ...toPostSummary(post),
+    modified: post.modified,
+    html: sanitiseHtml(post.content?.rendered ?? ""),
+    categories,
   };
 }
