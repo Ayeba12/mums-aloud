@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cacheLife } from "next/cache";
-import { ArrowUpRightIcon, EnvelopeSimpleIcon } from "@phosphor-icons/react/ssr";
+import { ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
 import { NewsletterForm } from "./NewsletterForm";
 import { footerGroups, legalLinks } from "@/content/navigation";
 import { ButtonLink } from "@/components/ui/Button";
@@ -18,28 +18,10 @@ async function Year() {
 const footerLink = "inline-flex min-h-12 items-center gap-1 text-ink no-underline hover:underline";
 
 /**
- * Until a newsletter platform is chosen, the footer asks for the newsletter by email (the owner's
- * preference), so every request reaches the inbox today. The email field takes over once
- * NEWSLETTER_WEBHOOK_URL is set.
- */
-function NewsletterByEmail() {
-  return (
-    <div className="flex flex-col gap-3">
-      <p className="font-semibold text-ink">Get the newsletter</p>
-      <p className="text-caption text-text-secondary">Real stories and real support, straight to your inbox. Ask by email and we will add you.</p>
-      <ButtonLink href={siteConfig.newsletterUrl} variant="secondary" icon={<EnvelopeSimpleIcon aria-hidden size={20} />} className="self-start">
-        Email us to join
-      </ButtonLink>
-    </div>
-  );
-}
-
-/**
  * The reference footer: a light card inside the page frame holding a media tile with a
  * caption and action, link columns, the newsletter, the ways to reach us and a legal bar.
  */
 export function SiteFooter() {
-  const newsletterOpen = Boolean(process.env.NEWSLETTER_WEBHOOK_URL);
   const socials = Object.values(siteConfig.social).filter((social) => social.href);
   return (
     <footer className="frame-x pt-8 pb-2 md:pb-4">
@@ -67,9 +49,9 @@ export function SiteFooter() {
           </div>
 
           <div className="flex flex-col gap-12 py-2 lg:col-span-8 lg:pr-4">
-            {/* "Get the newsletter" links across the site land here when a platform is connected. */}
+            {/* "Get the newsletter" links open the dialog; without script they land here, on the field. */}
             <div id="newsletter" className="max-w-form scroll-mt-24">
-              {newsletterOpen ? <NewsletterForm /> : <NewsletterByEmail />}
+              <NewsletterForm />
             </div>
 
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

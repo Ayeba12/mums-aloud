@@ -122,7 +122,7 @@ export const mainNav: NavItem[] = [
       { label: "Find Support", href: "/find-support/", description: "Helplines and trusted organisations" },
       { label: "Guides and calculators", href: "/resources/" },
       { label: "Trusted Resources", href: "/trusted-resources/" },
-      { label: "Newsletter", href: siteConfig.newsletterUrl, description: "Ask by email and we will add you" },
+      { label: "Newsletter", href: siteConfig.newsletterUrl, description: "Real stories, straight to your inbox" },
     ],
     feature: { photo: "smiling", caption: "The right help, when you need it", action: { label: "Find support", href: "/find-support/" } },
     columns: [

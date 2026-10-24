@@ -24,6 +24,9 @@
   input, textarea { caret-color: var(--color-action); }
 }
 
+/* While a modal dialog is open the page behind it holds still. */
+body:has(dialog[open]) { overflow: hidden; }
+
 /* Rich text from WordPress posts (stories, articles): the body role in a reading column. */
 @layer components {
   .rich-text { color: var(--color-text); font-size: var(--text-body); line-height: var(--text-body--line-height); }

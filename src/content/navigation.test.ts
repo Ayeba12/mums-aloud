@@ -17,12 +17,12 @@ describe("navigation", () => {
     };
     expect(links("Stories").map((link) => link.href)).toContain("/podcast/");
     const newsletter = links("Resources").find((link) => link.label === "Newsletter");
-    expect(newsletter && isExternalHref(newsletter.href)).toBe(true);
+    expect(newsletter?.href).toBe("#newsletter");
   });
 
-  it("uses WordPress-style internal paths with a trailing slash, except the newsletter email link", () => {
+  it("uses WordPress-style internal paths with a trailing slash, except external links and the newsletter anchor", () => {
     for (const link of allLinks) {
-      if (isExternalHref(link.href)) continue;
+      if (isExternalHref(link.href) || link.href === "#newsletter") continue;
       expect(link.href, link.label).toMatch(/^\/([a-z0-9-]+\/)*$/);
     }
   });
