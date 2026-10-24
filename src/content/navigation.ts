@@ -16,6 +16,8 @@ export type NavFeature = {
   photo: "circle" | "laughing" | "friends" | "golden" | "smiling" | "park" | "embrace" | "kissing" | "bokun";
   caption: string;
   action: NavLink;
+  /** A narrower, taller card for a portrait photo (owner, 24 Oct 2026: Bokun's portrait). */
+  portrait?: boolean;
 };
 
 /** An icon row on the left of a mega menu, as the reference's "Home A / B / C" items. */
@@ -61,7 +63,7 @@ export const mainNav: NavItem[] = [
   {
     label: "About",
     links: aboutLinks,
-    feature: { photo: "bokun", caption: "Meet Bokun, our founder", action: { label: "Read her story", href: "/meet-bokun/" } },
+    feature: { photo: "bokun", portrait: true, caption: "Meet Bokun, our founder", action: { label: "Read her story", href: "/meet-bokun/" } },
     columns: [
       {
         label: "Get in touch",

@@ -31,7 +31,7 @@ const photos: Record<NavFeature["photo"], { src: StaticImageData | string; alt: 
   park: { src: parkPhoto, alt: "", position: "object-[50%_30%]" },
   embrace: { src: embracePhoto, alt: "", position: "object-[50%_30%]" },
   kissing: { src: kissingPhoto, alt: "", position: "object-[50%_35%]" },
-  bokun: { src: founderPortrait.src, alt: founderPortrait.alt, position: "object-[50%_8%]" },
+  bokun: { src: founderPortrait.src, alt: founderPortrait.alt, position: "object-[50%_20%]" },
 };
 const icons = { community: UsersThreeIcon, partnership: HandshakeIcon, services: HandHeartIcon, growth: PlantIcon };
 
@@ -270,7 +270,7 @@ function MegaPanel({ group, current, onNavigate }: { group: NavGroup; current: (
   return (
     <div className="rounded-panel border border-border-decoration bg-surface p-4 shadow-raised lg:p-6">
       {group.feature ? (
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className={`grid gap-8 ${group.feature.portrait ? "lg:grid-cols-[2fr_3fr]" : "lg:grid-cols-2"}`}>
           <FeatureCard feature={group.feature} onNavigate={onNavigate} />
           <div className="flex flex-col justify-between gap-12">
             {columns}
@@ -343,7 +343,7 @@ function FeatureCard({ feature, onNavigate }: { feature: NavFeature; onNavigate:
     <Link
       href={feature.action.href}
       onClick={onNavigate}
-      className="group relative flex min-h-[18rem] flex-col justify-end overflow-hidden rounded-card no-underline ring-1 ring-black-950/10 ring-inset lg:min-h-[22rem]"
+      className={`group relative flex min-h-[18rem] flex-col justify-end overflow-hidden rounded-card no-underline ring-1 ring-black-950/10 ring-inset ${feature.portrait ? "lg:min-h-[32rem]" : "lg:min-h-[22rem]"}`}
     >
       <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 64rem) 40vw, 100vw" className={`object-cover transition-transform duration-500 ease-standard group-hover:scale-[1.03] motion-reduce:transition-none ${photo.position}`} />
       <span aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-black-950)_0%,color-mix(in_srgb,var(--color-black-950)_70%,transparent)_30%,transparent_60%)]" />
