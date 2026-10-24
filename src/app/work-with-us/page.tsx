@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowUpRightIcon, BookOpenTextIcon, CheckIcon, ClipboardTextIcon, FlowerLotusIcon, PhoneCallIcon } from "@phosphor-icons/react/ssr";
+import { ArrowUpRightIcon, BookOpenTextIcon, CheckIcon, ClipboardTextIcon, FlowerLotusIcon, PhoneCallIcon, SunHorizonIcon } from "@phosphor-icons/react/ssr";
 import { IconChip, Section, SectionHeading, Tag } from "@/components/layout/Section";
 import { ClosingPanel } from "@/components/sections/ClosingPanel";
 import { ButtonLink } from "@/components/ui/Button";
@@ -14,11 +14,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "/work-with-us/" },
 };
 
-const icons = { call: PhoneCallIcon, assessment: ClipboardTextIcon, postpartum: FlowerLotusIcon, resources: BookOpenTextIcon };
+const icons = { call: PhoneCallIcon, calm: SunHorizonIcon, assessment: ClipboardTextIcon, postpartum: FlowerLotusIcon, resources: BookOpenTextIcon };
 
 /**
  * Work With Bokun (at the live `/work-with-us/` URL), to the owner's outline (10 Aug 2026):
- * Bokun's own portrait beside the note that community support stays free, her four personalised
+ * Bokun's own portrait beside the note that community support stays free, her five personalised
  * services as cards (each a section the legacy programme URLs land on), and the berry closing.
  */
 export default function WorkWithBokunPage() {
@@ -50,19 +50,21 @@ export default function WorkWithBokunPage() {
         </div>
       </section>
 
-      {/* The four services as cards on the tint; each card is the section its legacy URL redirects to. */}
+      {/* The five services as cards on the tint; each card is the section its legacy URL redirects to. */}
       <Section tone="tinted" aria-labelledby="services-heading">
         <SectionHeading id="services-heading" tag={services.tag} heading={services.heading} />
         <ul className="mt-12 grid gap-4 md:grid-cols-2 lg:gap-6">
-          {services.items.map((item) => {
+          {services.items.map((item, index) => {
             const Icon = icons[item.icon];
             const external = Boolean(item.action.external);
+            const last = index === services.items.length - 1 && services.items.length % 2 === 1;
             return (
-              <li key={item.id} id={item.id} className="flex flex-col rounded-panel bg-surface p-6 scroll-mt-24 lg:p-8">
+              <li key={item.id} id={item.id} className={`flex flex-col rounded-panel bg-surface p-6 scroll-mt-24 lg:p-8 ${last ? "md:col-span-2" : ""}`}>
                 <IconChip>
                   <Icon aria-hidden size={24} />
                 </IconChip>
                 <h3 className="mt-6 text-h3">{item.title}</h3>
+                {item.strap && <p className="mt-2 font-semibold text-text-secondary">{item.strap}</p>}
                 <p className="mt-3 max-w-[46ch]">{item.summary}</p>
                 <ul className="mt-6 flex flex-col gap-2">
                   {item.points.map((point) => (

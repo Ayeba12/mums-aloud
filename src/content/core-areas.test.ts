@@ -13,8 +13,9 @@ describe("core area pages", () => {
     ]);
   });
 
-  it("Work With Bokun carries the owner's four services, each a section the legacy URLs can land on", () => {
-    expect(workWithUs.services.items.map((item) => item.id)).toEqual(["consultation", "assessments", "postpartum", "resources"]);
+  it("Work With Bokun carries the owner's five services, each a section the legacy URLs can land on", () => {
+    expect(workWithUs.services.items.map((item) => item.id)).toEqual(["consultation", "chaos-to-calm", "assessments", "postpartum", "resources"]);
+    expect(workWithUs.services.items[1].strap).toMatch(/90-day/);
     for (const item of workWithUs.services.items) {
       expect(item.action.href).toMatch(/^(https:\/\/calendly\.com\/|\/)/);
     }

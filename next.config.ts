@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
    */
   async redirects() {
     return [
-      { source: "/chaos-to-calm/", destination: "/work-with-us/", permanent: false },
+      { source: "/chaos-to-calm/", destination: "/work-with-us/#chaos-to-calm", permanent: false },
       { source: "/postpartum-transition-program/", destination: "/work-with-us/#postpartum", permanent: false },
       { source: "/the-empowered-life-assessment-tela/", destination: "/work-with-us/#assessments", permanent: false },
       // Owner's notes (10 Aug 2026): training sits under Services; Affiliate Programs is now Trusted Resources.
