@@ -189,3 +189,5 @@ Forms: visible labels, 48px fields, 2px `border-control` border, `control` radiu
 - Don't open menus on hover, auto-advance carousels, or animate under reduced motion.
 - Don't present stock photography as members, or attach quotes to it.
 - Don't show a join button whose destination is closed or unset.
+
+- **Header menus.** The pill header is a three-column grid (equal outer tracks) so the menu is centred. Each group opens a mega menu the width of the pill (`rounded-panel`, `p-6`, `shadow-raised`): a photo card with a serif italic caption and an `inverse-outline` pill, or icon rows, beside labelled link columns and a faint footer line. Hover (mouse) or click opens it; Escape, outside click or focus leaving closes it; the page softens behind it.

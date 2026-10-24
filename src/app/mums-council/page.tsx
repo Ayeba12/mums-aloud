@@ -10,9 +10,9 @@ import {
   UsersThreeIcon,
 } from "@phosphor-icons/react/ssr";
 import { ProfileTile } from "@/components/content/ProfileTile";
-import { IconChip, Section, SectionHeading, Statement, Tag } from "@/components/layout/Section";
+import { IconChip, Section, SectionHeading, Statement } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
-import { Accent } from "@/components/ui/Heading";
+import { PageHeader } from "@/components/sections/PageHeader";
 import { council } from "@/content/about";
 import { siteConfig } from "@/lib/site";
 
@@ -33,15 +33,7 @@ const expectIcons = { empowerment: SparkleIcon, education: GraduationCapIcon, in
 export default function MumsCouncilPage() {
   return (
     <main id="main">
-      <Section aria-labelledby="page-heading" className="bg-[linear-gradient(to_bottom,var(--color-surface-tinted),var(--color-surface)_32rem)]">
-        <div className="mx-auto flex flex-col items-center text-center">
-          <Tag>{council.tag}</Tag>
-          <h1 id="page-heading" className="mt-2 max-w-[18ch] text-h1 tracking-tight">
-            <Accent {...council.heading} />
-          </h1>
-          <p className="mt-4 max-w-[46ch] text-lead">{council.intro}</p>
-        </div>
-      </Section>
+      <PageHeader tag={council.tag} heading={council.heading} intro={council.intro} />
 
       <Section aria-labelledby="roles-heading">
         <SectionHeading id="roles-heading" tag={council.roles.tag} heading={council.roles.heading} />

@@ -11,10 +11,10 @@ import {
   UsersIcon,
   UsersThreeIcon,
 } from "@phosphor-icons/react/ssr";
-import { IconChip, Section, SectionHeading, Tag } from "@/components/layout/Section";
+import { IconChip, Section, SectionHeading } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { ButtonLink } from "@/components/ui/Button";
-import { Accent } from "@/components/ui/Heading";
+import { PageHeader } from "@/components/sections/PageHeader";
 import { services } from "@/content/offers";
 import volunteerPhoto from "@/assets/photos/two-friends-smiling.jpg";
 import approachPhoto from "@/assets/photos/women-community-circle.jpg";
@@ -48,15 +48,7 @@ export default function ServicesPage() {
   const starts = services.groups.map((_, index) => services.groups.slice(0, index).reduce((count, group) => count + group.pathways.length, 0));
   return (
     <main id="main">
-      <Section aria-labelledby="page-heading" className="bg-[linear-gradient(to_bottom,var(--color-surface-tinted),var(--color-surface)_32rem)] pb-0 md:pb-0 lg:pb-0">
-        <div className="mx-auto flex flex-col items-center text-center">
-          <Tag>{services.tag}</Tag>
-          <h1 id="page-heading" className="mt-2 max-w-[18ch] text-h1 tracking-tight">
-            <Accent {...services.heading} />
-          </h1>
-          <p className="mt-4 max-w-[46ch] text-lead">{services.intro}</p>
-        </div>
-      </Section>
+      <PageHeader tag={services.tag} heading={services.heading} intro={services.intro} />
 
       {/* The pathways: four about support and belonging, then three about learning and gathering. */}
       {services.groups.map((group, groupIndex) => (

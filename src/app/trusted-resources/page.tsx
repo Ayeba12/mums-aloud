@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
-import { Section, Tag } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { ButtonLink } from "@/components/ui/Button";
-import { Accent } from "@/components/ui/Heading";
+import { PageHeader } from "@/components/sections/PageHeader";
 import { trustedResources } from "@/content/offers";
 
 export const metadata: Metadata = {
@@ -19,15 +18,12 @@ export const metadata: Metadata = {
 export default function TrustedResourcesPage() {
   return (
     <main id="main">
-      <Section aria-labelledby="page-heading" className="bg-[linear-gradient(to_bottom,var(--color-surface-tinted),var(--color-surface)_32rem)]">
-        <div className="mx-auto flex flex-col items-center text-center">
-          <Tag>{trustedResources.tag}</Tag>
-          <h1 id="page-heading" className="mt-2 max-w-[18ch] text-h1 tracking-tight">
-            <Accent {...trustedResources.heading} />
-          </h1>
-          <p className="mt-4 max-w-[52ch] text-lead">{trustedResources.intro}</p>
-          <p className="mt-4 max-w-[60ch] text-caption text-text-secondary">{trustedResources.disclosure}</p>
-        </div>
+      <PageHeader
+        tag={trustedResources.tag}
+        heading={trustedResources.heading}
+        intro={trustedResources.intro}
+        extra={<p className="mt-4 max-w-[60ch] text-caption text-text-secondary">{trustedResources.disclosure}</p>}
+      >
         <ul className="mt-12 flex flex-col gap-4 lg:gap-6">
           {trustedResources.offers.map((offer) => (
             <li key={offer.title} className="grid gap-6 rounded-card border border-border-decoration bg-surface-card p-6 lg:grid-cols-12 lg:gap-8 lg:p-8">
@@ -59,7 +55,7 @@ export default function TrustedResourcesPage() {
             </li>
           ))}
         </ul>
-      </Section>
+      </PageHeader>
 
       <ClosingInvite
         id="resources-closing"

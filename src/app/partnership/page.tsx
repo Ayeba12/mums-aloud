@@ -10,6 +10,7 @@ import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { ButtonLink } from "@/components/ui/Button";
 import { Carousel } from "@/components/ui/Carousel";
 import { Accent } from "@/components/ui/Heading";
+import { PageHeader } from "@/components/sections/PageHeader";
 import { impact, partners as partnerNames } from "@/content/home";
 import { enquiry, hero, network, offer, page, process, routes, voices, ways, why } from "@/content/partnership";
 import { siteConfig } from "@/lib/site";
@@ -69,22 +70,21 @@ export default function PartnershipPage() {
   return (
     <main id="main">
       {/* Hero: centred copy on the tint, then the photo cards (a slider with arrows on phones). */}
-      <Section aria-labelledby="page-heading" className="bg-[linear-gradient(to_bottom,var(--color-surface-tinted),var(--color-surface)_40rem)]">
-        <div className="mx-auto flex flex-col items-center text-center">
-          <Tag>{hero.tag}</Tag>
-          <h1 id="page-heading" className="mt-2 max-w-[18ch] text-h1 tracking-tight">
-            <Accent {...hero.heading} />
-          </h1>
-          <p className="mt-4 max-w-[46ch] text-lead">{hero.intro}</p>
-          <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">
+      <PageHeader
+        tag={hero.tag}
+        heading={hero.heading}
+        intro={hero.intro}
+        actions={
+          <>
             <ButtonLink href={hero.primary.href} size="large" arrow>
               {hero.primary.label}
             </ButtonLink>
             <ButtonLink href={hero.secondary.href} variant="secondary" size="large">
               {hero.secondary.label}
             </ButtonLink>
-          </div>
-        </div>
+          </>
+        }
+      >
         <Carousel
           count={heroCards.length}
           className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-4 px-4 md:mx-0 md:grid md:grid-cols-4 md:gap-6 md:overflow-visible md:scroll-pl-0 md:px-0"
@@ -100,7 +100,7 @@ export default function PartnershipPage() {
             </li>
           ))}
         </Carousel>
-      </Section>
+      </PageHeader>
 
       {/* Berry panel: two big photo cards for the two routes in, then the partner strip. */}
       <div className="frame-x section-y">

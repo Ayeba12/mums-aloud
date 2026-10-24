@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRightIcon, ArrowUpRightIcon, BabyIcon, BookOpenTextIcon, CalendarDotsIcon, LifebuoyIcon, SealCheckIcon } from "@phosphor-icons/react/ssr";
-import { IconChip, Section, Tag } from "@/components/layout/Section";
+import { IconChip } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
-import { Accent } from "@/components/ui/Heading";
+import { PageHeader } from "@/components/sections/PageHeader";
 import { calculators, guides, resources } from "@/content/resources";
 
 export const metadata: Metadata = {
@@ -19,14 +19,7 @@ const supportIcons = { support: LifebuoyIcon, trusted: SealCheckIcon };
 export default function ResourcesPage() {
   return (
     <main id="main">
-      <Section aria-labelledby="page-heading" className="bg-[linear-gradient(to_bottom,var(--color-surface-tinted),var(--color-surface)_32rem)]">
-        <div className="mx-auto flex flex-col items-center text-center">
-          <Tag>{resources.tag}</Tag>
-          <h1 id="page-heading" className="mt-2 max-w-[18ch] text-h1 tracking-tight">
-            <Accent {...resources.heading} />
-          </h1>
-          <p className="mt-4 max-w-[46ch] text-lead">{resources.intro}</p>
-        </div>
+      <PageHeader tag={resources.tag} heading={resources.heading} intro={resources.intro}>
 
         <h2 id="support-heading" className="mt-16 text-h3">
           {resources.supportHeading}
@@ -94,7 +87,7 @@ export default function ResourcesPage() {
           <ArrowUpRightIcon aria-hidden size={14} />
           The guides are PDF files; the calculators give estimates only.
         </p>
-      </Section>
+      </PageHeader>
 
       <ClosingInvite
         id="resources-closing"

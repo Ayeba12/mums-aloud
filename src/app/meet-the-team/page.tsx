@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { ProfileTile } from "@/components/content/ProfileTile";
-import { Section, SectionHeading, Tag } from "@/components/layout/Section";
+import { Section, SectionHeading } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { ButtonLink } from "@/components/ui/Button";
-import { Accent } from "@/components/ui/Heading";
+import { PageHeader } from "@/components/sections/PageHeader";
 import { team, teamPage } from "@/content/about";
 
 export const metadata: Metadata = {
@@ -20,14 +20,7 @@ export const metadata: Metadata = {
 export default function MeetTheTeamPage() {
   return (
     <main id="main">
-      <Section aria-labelledby="page-heading" className="bg-[linear-gradient(to_bottom,var(--color-surface-tinted),var(--color-surface)_32rem)]">
-        <div className="mx-auto flex flex-col items-center text-center">
-          <Tag>{teamPage.tag}</Tag>
-          <h1 id="page-heading" className="mt-2 max-w-[18ch] text-h1 tracking-tight">
-            <Accent {...teamPage.heading} />
-          </h1>
-          <p className="mt-4 max-w-[46ch] text-lead">{teamPage.intro}</p>
-        </div>
+      <PageHeader tag={teamPage.tag} heading={teamPage.heading} intro={teamPage.intro}>
         <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {team.map((person) => (
             <li key={person.name}>
@@ -36,7 +29,7 @@ export default function MeetTheTeamPage() {
           ))}
         </ul>
         <p className="mt-6 text-center text-caption text-text-secondary">{teamPage.note}</p>
-      </Section>
+      </PageHeader>
 
       <Section aria-labelledby="council-heading" tone="tinted">
         <div className="flex flex-wrap items-end justify-between gap-6">

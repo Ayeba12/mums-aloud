@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { ArrowUpRightIcon, ClockIcon, PhoneIcon } from "@phosphor-icons/react/ssr";
-import { Section, Tag } from "@/components/layout/Section";
+import { Section } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
-import { Accent } from "@/components/ui/Heading";
+import { PageHeader } from "@/components/sections/PageHeader";
 import { findSupport, type SupportEntry } from "@/content/find-support";
 import { siteConfig } from "@/lib/site";
 
@@ -57,14 +57,7 @@ function Entry({ entry, tone = "card" }: { entry: SupportEntry; tone?: "card" | 
 export default function FindSupportPage() {
   return (
     <main id="main">
-      <Section aria-labelledby="page-heading" className="bg-[linear-gradient(to_bottom,var(--color-surface-tinted),var(--color-surface)_32rem)]">
-        <div className="mx-auto flex flex-col items-center text-center">
-          <Tag>{findSupport.tag}</Tag>
-          <h1 id="page-heading" className="mt-2 max-w-[18ch] text-h1 tracking-tight">
-            <Accent {...findSupport.heading} />
-          </h1>
-          <p className="mt-4 max-w-[46ch] text-lead">{findSupport.intro}</p>
-        </div>
+      <PageHeader tag={findSupport.tag} heading={findSupport.heading} intro={findSupport.intro}>
 
         <section aria-labelledby="urgent-heading" className="mt-12 rounded-panel bg-surface-warm p-6 md:p-8">
           <h2 id="urgent-heading" className="text-h2">
@@ -89,7 +82,7 @@ export default function FindSupportPage() {
             ))}
           </ul>
         </nav>
-      </Section>
+      </PageHeader>
 
       {findSupport.groups.map((group) => (
         <Section key={group.id} id={group.id} aria-labelledby={`${group.id}-heading`} className="scroll-mt-24 pt-0">

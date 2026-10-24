@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRightIcon, ArrowUpRightIcon, EnvelopeSimpleIcon, InstagramLogoIcon, PhoneIcon } from "@phosphor-icons/react/ssr";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { IconChip, Section, Tag } from "@/components/layout/Section";
+import { IconChip } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
-import { Accent } from "@/components/ui/Heading";
+import { PageHeader } from "@/components/sections/PageHeader";
 import { contact } from "@/content/contact";
 import { joinForm, siteConfig } from "@/lib/site";
 
@@ -30,14 +30,7 @@ export default function ContactPage() {
   const reach = contact.reach.items.filter((item) => reachLinks[item.kind].href);
   return (
     <main id="main">
-      <Section aria-labelledby="page-heading" className="bg-[linear-gradient(to_bottom,var(--color-surface-tinted),var(--color-surface)_32rem)]">
-        <div className="mx-auto flex flex-col items-center text-center">
-          <Tag>{contact.tag}</Tag>
-          <h1 id="page-heading" className="mt-2 max-w-[18ch] text-h1 tracking-tight">
-            <Accent {...contact.heading} />
-          </h1>
-          <p className="mt-4 max-w-[46ch] text-lead">{contact.intro}</p>
-        </div>
+      <PageHeader tag={contact.tag} heading={contact.heading} intro={contact.intro}>
 
         <h2 id="reach-heading" className="sr-only">
           {contact.reach.heading}
@@ -129,7 +122,7 @@ export default function ContactPage() {
             </section>
           </aside>
         </div>
-      </Section>
+      </PageHeader>
 
       <ClosingInvite
         id="contact-closing"

@@ -6,7 +6,7 @@ import { dateFormat } from "@/components/content/PostCard";
 import { Section, SectionHeading, Tag } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { ButtonLink } from "@/components/ui/Button";
-import { Accent } from "@/components/ui/Heading";
+import { PageHeader } from "@/components/sections/PageHeader";
 import { podcastPage as copy } from "@/content/podcast";
 import { durationLabel, getPodcast, type Episode, type Podcast } from "@/lib/podcast/feed";
 import { siteConfig } from "@/lib/site";
@@ -27,14 +27,12 @@ const spotifyLinkClasses = "inline-flex min-h-12 items-center gap-2 font-semibol
 export default function PodcastPage() {
   return (
     <main id="main">
-      <Section aria-labelledby="page-heading" className="bg-[linear-gradient(to_bottom,var(--color-surface-tinted),var(--color-surface)_32rem)]">
-        <div className="mx-auto flex flex-col items-center text-center">
-          <Tag>{copy.tag}</Tag>
-          <h1 id="page-heading" className="mt-2 max-w-[18ch] text-h1 tracking-tight">
-            <Accent {...copy.heading} />
-          </h1>
-          <p className="mt-4 max-w-[46ch] text-lead">{copy.intro}</p>
-          <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">
+      <PageHeader
+        tag={copy.tag}
+        heading={copy.heading}
+        intro={copy.intro}
+        actions={
+          <>
             <ButtonLink href={copy.spotify.href} size="large" icon={<ArrowUpRightIcon aria-hidden size={16} weight="bold" />}>
               {copy.spotify.label}
               <span className="sr-only">(opens Spotify)</span>
@@ -42,14 +40,15 @@ export default function PodcastPage() {
             <ButtonLink href={copy.latest.href} variant="secondary" size="large">
               {copy.latest.label}
             </ButtonLink>
-          </div>
-        </div>
+          </>
+        }
+      >
         <div className="mt-12">
           <Suspense fallback={<p className="text-center text-text-secondary">Loading the latest episode…</p>}>
             <LatestEpisode />
           </Suspense>
         </div>
-      </Section>
+      </PageHeader>
 
       <Section aria-labelledby="about-heading">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">

@@ -5,10 +5,10 @@ import { Suspense } from "react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react/ssr";
 import { dateFormat } from "@/components/content/PostCard";
 import { PostTile } from "@/components/content/PostTile";
-import { Section, Tag } from "@/components/layout/Section";
+import { Tag } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { buttonClasses, ButtonLink } from "@/components/ui/Button";
-import { Accent } from "@/components/ui/Heading";
+import { PageHeader } from "@/components/sections/PageHeader";
 import { postInvite, type ListingCopy } from "@/content/stories";
 import { pageCount, pageHref, pageSlice } from "@/lib/paging";
 import { getAll } from "@/lib/wordpress/client";
@@ -39,23 +39,13 @@ export async function listingPageCount(collection: CollectionKey): Promise<numbe
 export function PostListing({ collection, copy, page = 1 }: { collection: CollectionKey; copy: ListingCopy; page?: number }) {
   return (
     <main id="main">
-      <Section
-        aria-labelledby="listing-heading"
-        className="bg-[linear-gradient(to_bottom,var(--color-surface-tinted),var(--color-surface)_32rem)]"
-      >
-        <div className="mx-auto flex flex-col items-center text-center">
-          <Tag>{copy.tag}</Tag>
-          <h1 id="listing-heading" className="mt-2 max-w-[18ch] text-h1 tracking-tight">
-            <Accent {...copy.heading} />
-          </h1>
-          <p className="mt-4 max-w-[46ch] text-lead">{copy.intro}</p>
-        </div>
+      <PageHeader id="listing-heading" tag={copy.tag} heading={copy.heading} intro={copy.intro}>
         <div className="mt-12">
           <Suspense fallback={<p className="text-center text-text-secondary">Loading {copy.title.toLowerCase()}…</p>}>
             <ListingPosts collection={collection} copy={copy} page={page} />
           </Suspense>
         </div>
-      </Section>
+      </PageHeader>
 
       <ClosingInvite id="listing-invite" heading={postInvite.heading} body={postInvite.body} primary={postInvite.primary} secondary={postInvite.secondary} />
     </main>
