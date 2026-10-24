@@ -33,6 +33,18 @@ describe("navigation", () => {
     expect(coreAreas.items.map((item) => item.href)).toEqual(coreAreaLinks.map((link) => link.href));
   });
 
+  it("gives every group a mega menu side: a photo card or icon rows, never both", () => {
+    for (const item of mainNav) {
+      if (!isGroup(item)) continue;
+      expect(Boolean(item.feature) !== Boolean(item.highlights), item.label).toBe(true);
+      if (item.feature) expect(item.feature.action.href, item.label).toMatch(/^\//);
+      if (item.highlights) {
+        expect(item.highlights.every((link) => link.icon && link.description), item.label).toBe(true);
+        expect(item.columns?.length, item.label).toBe(2);
+      }
+    }
+  });
+
   it("puts Find Support under Resources and Volunteer With Us under About", () => {
     const group = (label: string) => {
       const item = mainNav.find((entry) => entry.label === label);
