@@ -9,10 +9,15 @@ const allLinks = [
 ];
 
 describe("navigation", () => {
-  it("pins the podcast and newsletter in the main menu, as the owner asked", () => {
-    expect(mainNav.map((item) => item.label)).toEqual(["About", "How We Help", "Stories", "Podcast", "Newsletter", "Resources", "Contact"]);
-    const newsletter = mainNav.find((item) => item.label === "Newsletter");
-    expect(newsletter && !isGroup(newsletter) && isExternalHref(newsletter.href)).toBe(true);
+  it("keeps five top-level items, with the podcast under Stories and the newsletter under Resources", () => {
+    expect(mainNav.map((item) => item.label)).toEqual(["About", "How We Help", "Stories", "Resources", "Contact"]);
+    const links = (label: string) => {
+      const item = mainNav.find((entry) => entry.label === label);
+      return item && isGroup(item) ? item.links : [];
+    };
+    expect(links("Stories").map((link) => link.href)).toContain("/podcast/");
+    const newsletter = links("Resources").find((link) => link.label === "Newsletter");
+    expect(newsletter && isExternalHref(newsletter.href)).toBe(true);
   });
 
   it("uses WordPress-style internal paths with a trailing slash, except the newsletter email link", () => {

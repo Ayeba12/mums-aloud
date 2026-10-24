@@ -1,8 +1,8 @@
 /**
  * Site navigation, following the client's Website Restructure Brief v2 (section 5) and the
  * owner's notes of 10 August 2026: four core areas (Mama's Escape, Partnership, Our Services,
- * Work With Bokun), the podcast and newsletter pinned in the main menu, Find Support under
- * Resources, and Volunteer With Us under About. Routes keep existing WordPress URLs where they exist.
+ * Work With Bokun), Podcast under Stories, Newsletter and Find Support under Resources, and
+ * Volunteer With Us under About (24 Oct 2026). Routes keep existing WordPress URLs where they exist.
  */
 import { siteConfig } from "@/lib/site";
 
@@ -38,16 +38,16 @@ export const mainNav: NavItem[] = [
     links: [
       { label: "Story Lounge", href: "/story-lounge/" },
       { label: "Blog", href: "/blog/" },
+      { label: "Podcast", href: "/podcast/" },
     ],
   },
-  { label: "Podcast", href: "/podcast/" },
-  { label: "Newsletter", href: siteConfig.newsletterUrl },
   {
     label: "Resources",
     links: [
       { label: "Find Support", href: "/find-support/", description: "Helplines and trusted organisations" },
       { label: "Guides and calculators", href: "/resources/" },
       { label: "Trusted Resources", href: "/trusted-resources/" },
+      { label: "Newsletter", href: siteConfig.newsletterUrl, description: "Ask by email and we will add you" },
     ],
   },
   { label: "Contact", href: "/contact/" },

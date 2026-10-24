@@ -9,6 +9,8 @@ import { isExternalHref, isGroup, type NavItem } from "@/content/navigation";
 
 const itemClasses =
   "inline-flex min-h-12 items-center gap-1 rounded-pill px-4 font-semibold text-ink no-underline transition-colors duration-150 hover:bg-surface-tinted hover:text-ink aria-[current=page]:bg-surface-tinted";
+const panelLinkClasses =
+  "flex min-h-12 flex-col justify-center rounded-card px-4 py-2 text-ink no-underline hover:bg-surface-tinted hover:text-ink aria-[current=page]:bg-surface-tinted";
 
 /**
  * Header navigation. Desktop groups open on click (not hover) as disclosures;
@@ -53,7 +55,7 @@ export function NavMenu({ items, joinUrl, joinLabel }: { items: NavItem[]; joinU
 
   return (
     <nav ref={navRef} aria-label="Main" className="flex items-center gap-2">
-      <ul className="hidden items-center gap-1 xl:flex">
+      <ul className="hidden items-center gap-1 lg:flex">
         {items.map((item) => {
           if (!isGroup(item)) {
             return (
@@ -99,15 +101,17 @@ export function NavMenu({ items, joinUrl, joinLabel }: { items: NavItem[]; joinU
                 <ul>
                   {item.links.map((link) => (
                     <li key={link.href}>
-                      <Link
-                        href={link.href}
-                        aria-current={current(link.href)}
-                        onClick={closeAll}
-                        className="flex min-h-12 flex-col justify-center rounded-card px-4 py-2 text-ink no-underline hover:bg-surface-tinted hover:text-ink aria-[current=page]:bg-surface-tinted"
-                      >
-                        <span className="font-semibold">{link.label}</span>
-                        {link.description && <span className="text-caption text-text-secondary">{link.description}</span>}
-                      </Link>
+                      {isExternalHref(link.href) ? (
+                        <a href={link.href} onClick={closeAll} className={panelLinkClasses}>
+                          <span className="font-semibold">{link.label}</span>
+                          {link.description && <span className="text-caption text-text-secondary">{link.description}</span>}
+                        </a>
+                      ) : (
+                        <Link href={link.href} aria-current={current(link.href)} onClick={closeAll} className={panelLinkClasses}>
+                          <span className="font-semibold">{link.label}</span>
+                          {link.description && <span className="text-caption text-text-secondary">{link.description}</span>}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -132,7 +136,7 @@ export function NavMenu({ items, joinUrl, joinLabel }: { items: NavItem[]; joinU
         aria-expanded={mobileOpen}
         aria-controls={`${baseId}-mobile`}
         onClick={() => setMobileOpen((value) => !value)}
-        className="inline-flex size-12 cursor-pointer items-center justify-center rounded-pill text-ink hover:bg-surface-tinted xl:hidden"
+        className="inline-flex size-12 cursor-pointer items-center justify-center rounded-pill text-ink hover:bg-surface-tinted lg:hidden"
       >
         {mobileOpen ? <XIcon aria-hidden size={24} /> : <ListIcon aria-hidden size={24} />}
         <span className="sr-only">{mobileOpen ? "Close menu" : "Open menu"}</span>
@@ -141,7 +145,7 @@ export function NavMenu({ items, joinUrl, joinLabel }: { items: NavItem[]; joinU
       <div
         id={`${baseId}-mobile`}
         hidden={!mobileOpen}
-        className="absolute inset-x-0 top-full mt-3 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-card border border-border-decoration bg-surface p-4 shadow-raised xl:hidden"
+        className="absolute inset-x-0 top-full mt-3 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-card border border-border-decoration bg-surface p-4 shadow-raised lg:hidden"
       >
         <ul className="flex flex-col gap-6">
           {items.map((item) =>
@@ -151,9 +155,15 @@ export function NavMenu({ items, joinUrl, joinLabel }: { items: NavItem[]; joinU
                 <ul className="mt-1">
                   {item.links.map((link) => (
                     <li key={link.href}>
-                      <Link href={link.href} aria-current={current(link.href)} onClick={closeAll} className={`${itemClasses} w-full`}>
-                        {link.label}
-                      </Link>
+                      {isExternalHref(link.href) ? (
+                        <a href={link.href} onClick={closeAll} className={`${itemClasses} w-full`}>
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link href={link.href} aria-current={current(link.href)} onClick={closeAll} className={`${itemClasses} w-full`}>
+                          {link.label}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
