@@ -84,23 +84,39 @@ export const impact = {
   ],
 };
 
+/**
+ * A partner organisation; `logo` is a file in `public/partners/` (sources and brand rules in
+ * docs/photo-credits.md), shown in place of the name when present; `tall` marks a square-ish
+ * mark that needs more height than a wordmark to read.
+ */
+export type Partner = { name: string; slug: string; logo?: { src: string; width: number; height: number; tall?: boolean } };
+
+/**
+ * The owner's partner list (Mamas_Escape_Website_Copy.md), in the owner's order. Logos were
+ * gathered from each organisation's own site on 26 Oct 2026; confirm each partner's permission
+ * before launch (the National Lottery mark is for funded projects only; the NHS logo needs the
+ * NHS partner's say-so). Chuck Gallery has no logo file, so its tile is set in type.
+ */
+const partnerItems: Partner[] = [
+  { name: "National Lottery Community Fund", slug: "national-lottery", logo: { src: "/partners/national-lottery.svg", width: 160, height: 52 } },
+  { name: "NHS", slug: "nhs", logo: { src: "/partners/nhs.svg", width: 371, height: 150 } },
+  { name: "Caribbean and African Health Network (CAHN)", slug: "cahn", logo: { src: "/partners/cahn.png", width: 1103, height: 320 } },
+  { name: "Rehoboth for Families", slug: "rehoboth-for-families", logo: { src: "/partners/rehoboth-for-families.png", width: 359, height: 184, tall: true } },
+  { name: "Trafford Council", slug: "trafford-council", logo: { src: "/partners/trafford-council.png", width: 477, height: 115 } },
+  { name: "Manchester City Council", slug: "manchester-city-council", logo: { src: "/partners/manchester-city-council.svg", width: 709, height: 146 } },
+  { name: "Trafford Community Collective", slug: "trafford-community-collective", logo: { src: "/partners/trafford-community-collective.svg", width: 1074, height: 392, tall: true } },
+  { name: "Chuck Gallery", slug: "chuck-gallery" },
+  { name: "Read with Doja", slug: "read-with-doja", logo: { src: "/partners/read-with-doja.png", width: 451, height: 268, tall: true } },
+  { name: "She Reconnects", slug: "she-reconnects", logo: { src: "/partners/she-reconnects.png", width: 1092, height: 187 } },
+  { name: "Blossom Foundation", slug: "blossom-foundation", logo: { src: "/partners/blossom-foundation.png", width: 283, height: 320, tall: true } },
+];
+
 export const partners = {
   heading: { lead: "We don't do this", accent: "alone either" },
   intro: "Mums Aloud was built alongside partners who believe mothers deserve to be seen and supported.",
-  // confirm: official names, logos and any funder acknowledgement rules (e.g. National Lottery).
-  names: [
-    "National Lottery",
-    "NHS",
-    "CAHN",
-    "Rehoboth for Families",
-    "Trafford Council",
-    "Manchester City Council",
-    "Trafford Community Collective",
-    "Chuck Gallery",
-    "Read with Doja",
-    "She Reconnects",
-    "Blossom Foundation",
-  ],
+  // confirm: official names, each partner's permission to show its logo, and any funder acknowledgement rules (e.g. National Lottery, NHS).
+  items: partnerItems,
+  names: partnerItems.map((partner) => partner.name),
   invite: { label: "Add your organisation", href: "/partnership/" },
 };
 

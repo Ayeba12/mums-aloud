@@ -1,4 +1,4 @@
-# Photo credits
+# Photo and logo credits
 
 Placeholder photography until Mums Aloud supplies consented community photos. All images are free to use under the [Unsplash License](https://unsplash.com/license) (checked 20 October 2026). Credit is not required but is good practice.
 
@@ -26,3 +26,21 @@ Supplied by the owner on 26 October 2026 and stored in `src/assets/photos/team/`
 Supplied by the owner on 26 October 2026 and stored in `src/assets/photos/council/`, resized to 1600px on the long side. They arrived without names; each was matched to the named thumbnail on the previous site's Mum's Council page (read 26 October 2026): brown scarf selfie with the mirror = Bella Abidakun; white blouse, arms crossed, blue background = Temi Fagbo; black dress with gold earrings = Bukunmi Ladeji; green faux fur coat = Elizabeth Toluwani; curly hair and pink lipstick on light blue = Abies Sonia. The owner confirmed every match on 26 October 2026.
 
 Together with the team portraits these are the only photos on the site that stand for named people.
+
+## Partner logos
+
+Gathered on 26 October 2026 from each organisation's own site unless noted, cleaned (scripts, event handlers and external references stripped from SVGs; transparent margins trimmed from PNGs, capped at 320px tall) and stored in `public/partners/`. They are shown on the homepage partner tiles with the organisation's name as alt text. Showing a partner's logo is the partner's call: confirm permission with each before launch.
+
+| File | Organisation | Source | Notes |
+| --- | --- | --- | --- |
+| `national-lottery.svg` | The National Lottery Community Fund | https://www.tnlcommunityfund.org.uk/media/sovnf1mw/the-national-lottery-community-fund-logo-in-english.svg | The crossed-fingers mark is a Gambling Commission trade mark. The Fund's terms allow it only for a funded project, not beyond the grant's life; minimum 20px on screen; branding@tnlcommunityfund.org.uk. Confirm Mums Aloud holds or held a grant. |
+| `nhs.svg` | NHS | https://commons.wikimedia.org/wiki/File:National_Health_Service_(England)_logo.svg | Registered trade mark. NHS Identity rules: it cannot be used as part of another organisation's identity, or to imply endorsement, without authorisation. The previous site showed three NHS bodies instead (North Thames Genomic Medicine Service, Lewisham and Greenwich NHS Trust, South East Genomic Medicine Service); the owner should say which NHS partner to name and ask them. |
+| `cahn.png` | Caribbean & African Health Network (CAHN) | https://www.cahn.org.uk/wp-content/uploads/2021/04/CAHN-Logo_Black_New.png | The site links to a rebrand page; check the mark before launch. |
+| `rehoboth-for-families.png` | Rehoboth for Families, Children and Young People (charity 1190359) | https://rehobothforfamilies.org.uk/wp-content/uploads/2021/01/cropped-rehobothlogo.jpg | The site publishes only a JPG crop; the white background was lifted to transparency here. Ask the charity for the master. |
+| `trafford-council.png` | Trafford Council | https://www.trafford.gov.uk/themes/custom/bbd_localgov/logo.svg (the PNG embedded in it) | The council's header asset is white artwork; recoloured to the site's ink for the light card. Raster, so keep it small; ask the comms team for a vector. |
+| `manchester-city-council.svg` | Manchester City Council | The header logo embedded in https://www.manchester.gov.uk/__data/assets/git_bridge/0018/6066/main.css | Published only in white; the fills were changed to the site's ink. |
+| `trafford-community-collective.svg` | Trafford Community Collective (charity 1193780) | https://traffordcollective.org.uk/wp-content/uploads/2023/12/602fe03362aa348ef68efb22_TCC-Main.svg | |
+| `read-with-doja.png` | Read with Doja | https://readwithdoja.com/wp-content/uploads/2025/02/Asset-1.png | Low resolution (451px); ask for the master. The site states no location, so confirm it is the right Read with Doja. |
+| `she-reconnects.png` | She Reconnects | https://she-reconnects.net/wp-content/uploads/2023/10/full-logo-white.png (wordmark) and logo-green.png (brand green) | The full lockup is published only in white; recoloured to the brand green sampled from the icon. Founded by Bokun Imoukhuede and Dinma Nwobi. |
+| `blossom-foundation.png` | Blossom Foundation (charity 1177641, Manchester) | https://static.wixstatic.com/media/f759a1_cda4b63c66f647d69aee9ffd21340063~mv2.png (the site's main logo) | The only Blossom Foundation registered in Manchester (for Black African girls); confirm it is the partner meant. |
+| none | Chuck Gallery | https://www.chuckgallery.com/ | The gallery has no logo file anywhere public (its site sets the name in type), so the tile shows the name. Ask the gallery for one. |
