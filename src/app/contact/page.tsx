@@ -44,7 +44,7 @@ export default function ContactPage() {
                 <IconChip>
                   <Icon aria-hidden size={24} />
                 </IconChip>
-                <h3 className="mt-4 font-body text-h4 font-bold text-ink">{item.title}</h3>
+                <h3 className="mt-4 font-body text-title font-semibold text-ink">{item.title}</h3>
                 <p className="mt-1 text-text">{item.text}</p>
                 <a href={href} className="mt-3 inline-flex min-h-12 items-center gap-2 font-semibold break-all after:absolute after:inset-0">
                   {label}
@@ -77,7 +77,7 @@ export default function ContactPage() {
                   const external = "external" in item && item.external;
                   return (
                     <li key={item.title} className="group relative rounded-card border border-border-decoration bg-surface p-5">
-                      <h3 className="font-body text-h4 font-bold text-ink">{item.title}</h3>
+                      <h3 className="font-body text-title font-semibold text-ink">{item.title}</h3>
                       <p className="mt-1 text-text">{item.text}</p>
                       {external ? (
                         <a href={href} className="mt-3 inline-flex min-h-12 items-center gap-2 font-semibold after:absolute after:inset-0">

@@ -17,7 +17,7 @@ function Entry({ entry, tone = "card" }: { entry: SupportEntry; tone?: "card" | 
   const external = entry.phoneHref?.startsWith("https://");
   return (
     <li className={`flex flex-col rounded-card p-6 ${tone === "urgent" ? "bg-surface" : "border border-border-decoration bg-surface-card"}`}>
-      <h3 className="font-body text-h4 font-bold text-ink">{entry.name}</h3>
+      <h3 className="font-body text-title font-semibold text-ink">{entry.name}</h3>
       <p className="mt-2 text-text">{entry.helps}</p>
       <dl className="mt-4 flex flex-col gap-2">
         {entry.phone && entry.phoneHref && (

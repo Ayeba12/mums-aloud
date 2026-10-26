@@ -123,7 +123,7 @@ export default function PartnershipPage() {
                   <div aria-hidden className={`absolute inset-x-0 bottom-0 h-3/5 ${scrim}`} />
                   <div className="absolute right-6 bottom-6 left-6 flex items-end justify-between gap-4">
                     <div>
-                      <h3 className="font-body text-h4 font-bold text-black-50">
+                      <h3 className="font-body text-title font-semibold text-black-50">
                         <Link href={route.href} className="text-black-50 no-underline after:absolute after:inset-0">
                           {route.title}
                         </Link>
@@ -228,7 +228,7 @@ export default function PartnershipPage() {
         <ul className="mt-12 grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-8">
           {ways.strands.map((strand, index) => (
             <li key={strand.title} className="flex flex-col">
-              <h3 className="font-body text-h4 font-bold text-ink">{strand.title}</h3>
+              <h3 className="font-heading text-h4 text-ink">{strand.title}</h3>
               <div className={`mt-4 overflow-hidden rounded-card ${imageRing}`}>
                 <Image
                   src={strandPhotos[index].photo}

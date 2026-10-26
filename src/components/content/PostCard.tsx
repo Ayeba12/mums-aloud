@@ -24,7 +24,7 @@ export function PostCard({ post, label }: { post: PostSummary; label: string }) 
       )}
       <div className="flex flex-1 flex-col gap-2 p-6">
         <p className="text-caption font-semibold tracking-wide text-text-secondary uppercase">{label}</p>
-        <h3 className="font-body text-h4 font-bold text-ink">
+        <h3 className="font-body text-title font-semibold text-ink">
           <Link href={post.path} className="text-ink no-underline after:absolute after:inset-0 hover:underline">
             {post.title}
           </Link>

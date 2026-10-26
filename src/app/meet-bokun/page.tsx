@@ -58,7 +58,9 @@ export default function MeetBokunPage() {
                   {paragraph.text}
                 </p>
               ) : (
-                <p key={paragraph.text}>{paragraph.text}</p>
+                <p key={paragraph.text} className="text-reading">
+                  {paragraph.text}
+                </p>
               ),
             )}
           </div>
@@ -76,7 +78,7 @@ export default function MeetBokunPage() {
           {pillars.items.map((item) => (
             <li key={item.title} className="flex flex-col rounded-card bg-surface p-6 lg:p-8">
               <QuotesIcon aria-hidden size={24} weight="fill" className="text-accent" />
-              <h3 className="mt-4 font-body text-h4 font-bold text-ink">{item.title}</h3>
+              <h3 className="mt-4 font-heading text-h4 text-ink">{item.title}</h3>
               <p className="mt-2">{item.text}</p>
             </li>
           ))}

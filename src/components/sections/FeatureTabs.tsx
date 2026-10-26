@@ -42,7 +42,7 @@ export function FeatureTabs({ items }: { items: FeatureTab[] }) {
           const buttonId = `${baseId}-${item.id}-button`;
           return (
             <li key={item.id} className={`rounded-panel transition-colors duration-200 ${isOpen ? "bg-surface-card" : ""}`}>
-              <h3 className="font-body text-h4 font-bold">
+              <h3 className="font-body text-title font-semibold">
                 <button
                   type="button"
                   id={buttonId}

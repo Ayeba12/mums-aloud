@@ -128,7 +128,7 @@ export default function ServicesPage() {
                       <Icon aria-hidden size={24} />
                     </IconChip>
                     <div>
-                      <h3 className="font-body text-h4 font-bold text-ink">{audience.title}</h3>
+                      <h3 className="font-heading text-h4 text-ink">{audience.title}</h3>
                       <ul className="mt-3 flex flex-col gap-2">
                         {audience.items.map((item) => (
                           <li key={item} className="flex items-start gap-3">

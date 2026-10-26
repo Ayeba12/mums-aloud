@@ -110,7 +110,7 @@ export function ProcessSteps({ steps, outcomeLabel }: { steps: ProcessStep[]; ou
             </div>
             <div className="flex flex-col rounded-card bg-surface-card p-6 md:col-span-7 lg:p-8">
               <p className="text-caption font-semibold tracking-wide text-text-secondary uppercase">Step 0{index + 1}</p>
-              <h3 className="mt-2 font-body text-h4 font-bold text-ink">{step.title}</h3>
+              <h3 className="mt-2 font-heading text-h4 text-ink">{step.title}</h3>
               <p className="mt-2 max-w-[56ch]">{step.text}</p>
               <div className="mt-6 rounded-control bg-black-100 p-4 md:mt-auto md:pt-4">
                 <p className="text-caption font-semibold tracking-wide text-text-secondary uppercase">{outcomeLabel}</p>

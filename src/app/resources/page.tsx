@@ -32,7 +32,7 @@ export default function ResourcesPage() {
                 <IconChip>
                   <Icon aria-hidden size={24} />
                 </IconChip>
-                <h3 className="mt-4 font-body text-h4 font-bold text-ink">{item.title}</h3>
+                <h3 className="mt-4 font-body text-title font-semibold text-ink">{item.title}</h3>
                 <p className="mt-2 text-text">{item.text}</p>
                 <Link href={item.href} className={linkClasses}>
                   Open
@@ -52,7 +52,7 @@ export default function ResourcesPage() {
               <IconChip>
                 <BookOpenTextIcon aria-hidden size={24} />
               </IconChip>
-              <h3 className="mt-4 font-body text-h4 font-bold text-ink">{guide.title}</h3>
+              <h3 className="mt-4 font-body text-title font-semibold text-ink">{guide.title}</h3>
               <p className="mt-2 text-text">{guide.intro}</p>
               <Link href={`/${guide.slug}/`} className={linkClasses}>
                 Open the guide
@@ -74,7 +74,7 @@ export default function ResourcesPage() {
               <IconChip>
                 <Icon aria-hidden size={24} />
               </IconChip>
-              <h3 className="mt-4 font-body text-h4 font-bold text-ink">{calculator.title}</h3>
+              <h3 className="mt-4 font-body text-title font-semibold text-ink">{calculator.title}</h3>
               <p className="mt-2 text-text">{calculator.intro}</p>
               <Link href={`/${calculator.slug}/`} className={linkClasses}>
                 {resources.open}

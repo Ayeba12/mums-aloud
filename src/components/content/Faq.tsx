@@ -10,7 +10,7 @@ export function Faq({ items }: { items: Array<{ q: string; a: string }> }) {
       {items.map((item) => (
         <li key={item.q}>
           <details className="group rounded-card bg-surface-tinted open:bg-surface-card">
-            <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-card px-6 py-4 font-body text-h4 font-bold text-ink marker:hidden [&::-webkit-details-marker]:hidden">
+            <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-card px-6 py-4 font-body text-title font-semibold text-ink marker:hidden [&::-webkit-details-marker]:hidden">
               {item.q}
               <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-pill bg-surface text-ink transition-transform duration-200 ease-standard group-open:rotate-45 motion-reduce:transition-none">
                 <PlusIcon aria-hidden size={16} weight="bold" />

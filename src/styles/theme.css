@@ -97,9 +97,15 @@
   --text-body: 1rem;
   --leading-body: 1.5rem;
   --text-body--line-height: var(--leading-body);
+  --text-reading: clamp(1.0625rem, 1.04464rem + 0.0892857vw, 1.125rem);
+  --leading-reading: 1.75rem;
+  --text-reading--line-height: var(--leading-reading);
   --text-lead: 1.25rem;
   --leading-lead: clamp(1.75rem, 1.67857rem + 0.357143vw, 2rem);
   --text-lead--line-height: var(--leading-lead);
+  --text-title: clamp(1.25rem, 1.17857rem + 0.357143vw, 1.5rem);
+  --leading-title: clamp(1.75rem, 1.67857rem + 0.357143vw, 2rem);
+  --text-title--line-height: var(--leading-title);
   --text-h4: clamp(1.25rem, 1.10714rem + 0.714286vw, 1.75rem);
   --leading-h4: clamp(1.75rem, 1.60714rem + 0.714286vw, 2.25rem);
   --text-h4--line-height: var(--leading-h4);
@@ -113,9 +119,10 @@
   --leading-h1: clamp(3rem, 2.57143rem + 2.14286vw, 4.5rem);
   --text-h1--line-height: var(--leading-h1);
   --text-display: clamp(3rem, 2.35714rem + 3.21429vw, 5.25rem);
-  --leading-display: clamp(3.5rem, 2.92857rem + 2.85714vw, 5.5rem);
+  --leading-display: clamp(3.5rem, 2.85714rem + 3.21429vw, 5.75rem);
   --text-display--line-height: var(--leading-display);
   --tracking-tight: -0.01em;
+  --tracking-display: -0.015em;
   --tracking-wide: 0.08em;
 
   /* 4pt base: p-1 = 4px, p-2 = 8px, p-6 = 24px, p-24 = 96px. */

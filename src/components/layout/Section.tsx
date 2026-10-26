@@ -62,7 +62,7 @@ export function SectionHeading({
   return (
     <div className={`flex flex-col ${centered ? "mx-auto items-center text-center" : "items-start"} ${className}`}>
       {tag && <Tag>{tag}</Tag>}
-      <Level id={id} className={`${tag ? "mt-2" : ""} ${Level === "h1" ? "text-display tracking-tight" : "text-h2"} max-w-[22ch]`}>
+      <Level id={id} className={`${tag ? "mt-2" : ""} ${Level === "h1" ? "text-display tracking-display" : "text-h2"} max-w-[22ch]`}>
         <Accent {...heading} />
       </Level>
       {intro && <p className="mt-4 max-w-[46ch] text-lead">{intro}</p>}

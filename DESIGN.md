@@ -34,9 +34,9 @@ typography:
   display:
     fontFamily: Libre Caslon Text
     fontSize: clamp(3rem, 2.35714rem + 3.21429vw, 5.25rem)
-    lineHeight: clamp(3.5rem, 2.92857rem + 2.85714vw, 5.5rem)
+    lineHeight: clamp(3.5rem, 2.85714rem + 3.21429vw, 5.75rem)
     fontWeight: 400
-    letterSpacing: -0.01em
+    letterSpacing: -0.015em
   h1:
     fontFamily: Libre Caslon Text
     fontSize: clamp(2.5rem, 2.07143rem + 2.14286vw, 4rem)
@@ -54,10 +54,23 @@ typography:
     lineHeight: clamp(2rem, 1.78571rem + 1.07143vw, 2.75rem)
     fontWeight: 400
   h4:
-    fontFamily: Urbanist
+    fontFamily: Libre Caslon Text
     fontSize: clamp(1.25rem, 1.10714rem + 0.714286vw, 1.75rem)
     lineHeight: clamp(1.75rem, 1.60714rem + 0.714286vw, 2.25rem)
-    fontWeight: 700
+    fontWeight: 400
+    use: content cards (offers, pathways, roles, steps, episodes)
+  title:
+    fontFamily: Urbanist
+    fontSize: clamp(1.25rem, 1.17857rem + 0.357143vw, 1.5rem)
+    lineHeight: clamp(1.75rem, 1.67857rem + 0.357143vw, 2rem)
+    fontWeight: 600
+    use: utility tiles (routes, profiles, resource links, form panels, accordion items)
+  reading:
+    fontFamily: Urbanist
+    fontSize: clamp(1.0625rem, 1.04464rem + 0.0892857vw, 1.125rem)
+    lineHeight: 1.75rem
+    fontWeight: 400
+    use: long stories and the founder letter, in the 65ch column
   lead:
     fontFamily: Urbanist
     fontSize: 1.25rem
@@ -191,3 +204,5 @@ Forms: visible labels, 48px fields, 2px `border-control` border, `control` radiu
 - Don't show a join button whose destination is closed or unset.
 
 - **Header menus.** The pill header is a three-column grid (equal outer tracks) so the menu is centred. Each group opens a mega menu the width of the pill (`rounded-panel`, `p-6`, `shadow-raised`): a photo card with a serif italic caption and an `inverse-outline` pill, or icon rows, beside labelled link columns and a faint footer line. Hover (mouse) or click opens it; Escape, outside click or focus leaving closes it; the page softens behind it.
+- **Page header (no photo).** `PageHeader`: the tint starts at the top of the page behind the floating bar and fades into the canvas by the header's end (`min(44rem, 100%)`), never a hard edge. Tag, serif italic title, intro, optional extra line, pills and a quiet note, centred; a page's first cards can sit on the fading tint as children. Photo pages keep `PageHero`.
+- **Newsletter.** One dialog (`NewsletterDialog`, native `<dialog>`) opens from any link to `#newsletter`; the footer's email pill is the no-script landing. Panel `rounded-panel` on `surface`, photo column from `md`, Tag + serif heading + intro + two fields + arrow pill + consent caption; enters and leaves with an 8px rise and fade over 200ms `ease-standard`, backdrop `black-950/40` blurred; the page behind holds still.

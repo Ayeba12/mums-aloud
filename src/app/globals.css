@@ -29,7 +29,7 @@ body:has(dialog[open]) { overflow: hidden; }
 
 /* Rich text from WordPress posts (stories, articles): the body role in a reading column. */
 @layer components {
-  .rich-text { color: var(--color-text); font-size: var(--text-body); line-height: var(--text-body--line-height); }
+  .rich-text { color: var(--color-text); font-size: var(--text-reading); line-height: var(--text-reading--line-height); }
   .rich-text > * + * { margin-top: --spacing(4); }
   .rich-text h2, .rich-text h3 { font-family: var(--font-heading); font-weight: 400; color: var(--color-ink); text-wrap: balance; }
   .rich-text h2 { font-size: var(--text-h3); line-height: var(--text-h3--line-height); margin-top: --spacing(10); }

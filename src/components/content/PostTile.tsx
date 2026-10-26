@@ -35,7 +35,7 @@ export function PostTile({
         </div>
       )}
       <Tag className="mt-4 self-start">{label}</Tag>
-      <h3 className="mt-3 max-w-[40ch] font-body text-h4 font-bold text-ink">
+      <h3 className="mt-3 max-w-[40ch] font-body text-title font-semibold text-ink">
         <Link href={post.path} className="text-ink no-underline after:absolute after:inset-0 hover:underline">
           {post.title}
         </Link>

@@ -45,7 +45,7 @@ export default function MumsCouncilPage() {
                 <IconChip>
                   <Icon aria-hidden size={24} />
                 </IconChip>
-                <h3 className="mt-4 font-body text-h4 font-bold text-ink">{item.title}</h3>
+                <h3 className="mt-4 font-heading text-h4 text-ink">{item.title}</h3>
                 <p className="mt-2">{item.text}</p>
               </li>
             );

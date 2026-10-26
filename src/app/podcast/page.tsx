@@ -192,7 +192,7 @@ async function EpisodeList() {
               )}
               <div className="min-w-0">
                 <EpisodeMeta episode={episode} />
-                <h3 className="mt-2 font-body text-h4 font-bold text-ink">{episode.title}</h3>
+                <h3 className="mt-2 font-heading text-h4 text-ink">{episode.title}</h3>
                 {episode.summary && <p className="mt-2 max-w-[70ch]">{episode.summary}</p>}
                 <Player episode={episode} />
                 {episode.link && (

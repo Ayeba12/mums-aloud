@@ -26,13 +26,15 @@ const semantic = [
 ] as const;
 
 const typeScale = [
-  ["Display", "text-display font-heading tracking-tight", "Libre Caslon Text · 48 → 84px · line 56 → 88"],
+  ["Display", "text-display font-heading tracking-display", "Libre Caslon Text · 48 → 84px · line 56 → 92 · tracking -0.015em"],
   ["Heading 1", "text-h1 font-heading tracking-tight", "Libre Caslon Text · 40 → 64px · line 48 → 72"],
   ["Heading 2", "text-h2 font-heading", "Libre Caslon Text · 32 → 48px · line 40 → 56"],
   ["Heading 3", "text-h3 font-heading", "Libre Caslon Text · 24 → 36px · line 32 → 44"],
-  ["Heading 4", "text-h4 font-body font-bold", "Urbanist bold · 20 → 28px · line 28 → 36"],
-  ["Lead text for introductions", "text-lead", "Urbanist · 18 → 20px · line 28 → 32"],
-  ["Body text for reading", "text-body", "Urbanist · 16px · line 24"],
+  ["Heading 4", "text-h4 font-heading", "Libre Caslon Text · 20 → 28px · line 28 → 36 · content cards: offers, pathways, roles, steps"],
+  ["Title for utility tiles", "text-title font-body font-semibold", "Urbanist 600 · 20 → 24px · line 28 → 32 · routes, profiles, resource links, forms"],
+  ["Lead text for introductions", "text-lead", "Urbanist · 20px · line 28 → 32"],
+  ["Reading text for stories and letters", "text-reading", "Urbanist · 17 → 18px · line 28 · the 65ch column"],
+  ["Body text for the interface", "text-body", "Urbanist · 16px · line 24"],
   ["Caption and metadata", "text-caption text-text-secondary", "Urbanist · 14px · line 20"],
 ] as const;
 
@@ -53,7 +55,7 @@ export default function StyleGuide() {
 
       <Section tone="card" aria-labelledby="colour">
         <SectionHeading id="colour" tag="Colour" heading={{ lead: "Palette and", accent: "roles" }} />
-        <h3 className="mt-12 font-body text-h4 font-bold">Semantic roles</h3>
+        <h3 className="mt-12 font-body text-title font-semibold">Semantic roles</h3>
         <ul className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-7">
           {semantic.map(([token, use]) => (
             <li key={token} className="flex flex-col gap-2">
@@ -65,7 +67,7 @@ export default function StyleGuide() {
         </ul>
         {ramps.map((ramp) => (
           <div key={ramp} className="mt-8">
-            <h3 className="font-body text-h4 font-bold capitalize">{ramp.replace("-", " ")}</h3>
+            <h3 className="font-body text-title font-semibold capitalize">{ramp.replace("-", " ")}</h3>
             <ul className="mt-2 grid grid-cols-6 gap-1 md:grid-cols-11">
               {steps.map((step) => (
                 <li key={step} className="flex flex-col gap-1">
@@ -101,7 +103,7 @@ export default function StyleGuide() {
             </li>
           ))}
         </ul>
-        <h3 className="mt-12 font-body text-h4 font-bold">Layout grid</h3>
+        <h3 className="mt-12 font-body text-title font-semibold">Layout grid</h3>
         <div className="layout-grid mt-4" aria-hidden>
           {Array.from({ length: 12 }, (_, index) => (
             <span

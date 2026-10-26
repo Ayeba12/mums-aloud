@@ -35,7 +35,7 @@ export function Hero() {
           className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-black-950)_0%,color-mix(in_srgb,var(--color-black-950)_92%,transparent)_44%,color-mix(in_srgb,var(--color-black-950)_45%,transparent)_68%,transparent_100%)]"
         />
         <div className="group container-page relative flex flex-col items-center pt-48 pb-12 text-center md:pb-16 lg:pb-20">
-          <h1 id="hero-heading" className="max-w-[14ch] text-display tracking-tight text-black-50">
+          <h1 id="hero-heading" className="max-w-[14ch] text-display tracking-display text-black-50">
             <Accent {...hero.headline} />
           </h1>
           {/* Collapses to nothing on hover-capable desktops, so heading and buttons sit together until the copy is hovered or focused. */}

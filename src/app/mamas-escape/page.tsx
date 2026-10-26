@@ -199,7 +199,7 @@ export default function MamasEscapePage() {
                   <div className="surface-dark absolute right-2 bottom-2 left-2 rounded-control p-5">
                     <div className="flex items-center gap-3">
                       <Icon aria-hidden size={20} className="shrink-0 text-accent" />
-                      <h3 className="font-body text-h4 font-bold">{tile.title}</h3>
+                      <h3 className="font-body text-title font-semibold">{tile.title}</h3>
                     </div>
                     <p className="mt-2">{tile.text}</p>
                     {external ? (
@@ -251,7 +251,7 @@ export default function MamasEscapePage() {
             <Image src={laughingPhoto} alt="" fill placeholder="blur" sizes="(min-width: 64rem) 66vw, 100vw" className="object-cover object-[60%_20%]" />
           </div>
           <div className="rounded-panel bg-surface-warm p-6 lg:col-start-1 lg:row-start-1 lg:p-8">
-            <h3 className="font-body text-h4 font-bold text-ink">{join.asksTitle}</h3>
+            <h3 className="font-heading text-h4 text-ink">{join.asksTitle}</h3>
             <ol className="mt-4 flex flex-col gap-3">
               {join.asks.map((ask, index) => (
                 <li key={ask} className="flex gap-3">

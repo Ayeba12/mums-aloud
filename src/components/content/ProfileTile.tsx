@@ -14,7 +14,7 @@ export function ProfileTile({ person }: { person: Profile }) {
       <span aria-hidden className="inline-flex size-12 items-center justify-center rounded-pill bg-accent-soft font-heading text-h4 text-ink">
         {initial}
       </span>
-      <h3 className="mt-4 font-body text-h4 font-bold text-ink">
+      <h3 className="mt-4 font-body text-title font-semibold text-ink">
         {person.href ? (
           <Link href={person.href} className="text-ink no-underline after:absolute after:inset-0 hover:underline">
             {person.name}
