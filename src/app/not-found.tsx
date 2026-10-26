@@ -1,31 +1,63 @@
-import { Section, Tag } from "@/components/layout/Section";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRightIcon } from "@phosphor-icons/react/ssr";
+import { PageHeader } from "@/components/sections/PageHeader";
 import { ButtonLink } from "@/components/ui/Button";
-import { Accent } from "@/components/ui/Heading";
 import { collections } from "@/lib/wordpress/collections";
 
-/** A real 404 in the site's own voice: no redirect to the homepage, two honest ways onward. */
+export const metadata: Metadata = { title: "Page not found" };
+
+/** The quickest ways back, as quiet pill links under the two actions. */
+const waysOnward = [
+  { label: "Mama's Escape", href: "/mamas-escape/" },
+  { label: "Our Services", href: "/services/" },
+  { label: "Find Support", href: "/find-support/" },
+  { label: "Contact us", href: "/contact/" },
+];
+
+/**
+ * A real 404 in the site's own voice, centred on the shared page header: the tint fades under the
+ * floating bar, the title and intro sit in the middle, two pills lead onward, and four quiet links
+ * cover the rest. No redirect to the homepage, nothing invented.
+ */
 export default function NotFound() {
   return (
     <main id="main">
-      <Section aria-labelledby="not-found-heading">
-        <div className="flex flex-col items-start">
-          <Tag>Page not found</Tag>
-          <h1 id="not-found-heading" className="mt-2 max-w-[18ch] text-h1 tracking-tight">
-            <Accent lead="We could not find" accent="that page." />
-          </h1>
-          <p className="mt-4 max-w-[46ch] text-lead">
-            The link may be out of date, or the page may have moved. The stories and articles are still here.
-          </p>
-          <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">
+      <PageHeader
+        id="not-found-heading"
+        tag="Page not found"
+        heading={{ lead: "We could not find", accent: "that page." }}
+        intro="The link may be out of date, or the page may have moved. Everything else is still here, and these are the quickest ways back."
+        actions={
+          <>
             <ButtonLink href="/" size="large" arrow>
               Back to the homepage
             </ButtonLink>
             <ButtonLink href={collections.storyLounge.listingPath ?? "/"} variant="secondary" size="large">
               Story Lounge
             </ButtonLink>
-          </div>
-        </div>
-      </Section>
+          </>
+        }
+        className="min-h-[70svh]"
+      >
+        <nav aria-label="Popular pages" className="mx-auto mt-12 flex max-w-[60rem] flex-col items-center text-center">
+          <p className="text-caption font-semibold tracking-wide text-text-secondary uppercase">Or go straight to</p>
+          <ul className="mt-4 flex flex-wrap justify-center gap-2">
+            {waysOnward.map((way) => (
+              <li key={way.href}>
+                <Link
+                  href={way.href}
+                  className="group inline-flex min-h-12 items-center gap-2 rounded-pill border border-border-decoration bg-surface-card px-4 font-semibold text-ink no-underline transition-colors duration-150 hover:border-action"
+                >
+                  {way.label}
+                  <ArrowRightIcon aria-hidden size={16} weight="bold" className="transition-transform duration-150 group-hover:translate-x-1 motion-reduce:transition-none" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-10 text-caption text-text-secondary">Error 404</p>
+        </nav>
+      </PageHeader>
     </main>
   );
 }
