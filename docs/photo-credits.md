@@ -21,4 +21,4 @@ The client brief asks for real, non-stock photos in the hero. Replace these with
 
 ## Team portraits (the client's own photos)
 
-Supplied by the owner on 26 October 2026 and stored in `src/assets/photos/team/`. They arrived without names. The owner confirmed Oyindamola (grey background, braids, black blazer). Provisional until confirmed: red wrap top on brown = Bokun Imoukhuede; black and white with pearls = Dk Jonah; teal jacket on white = Yemi Komolafe. These are the only photos on the site that stand for named people.
+Supplied by the owner on 26 October 2026 and stored in `src/assets/photos/team/`. They arrived without names. The owner confirmed every match on 26 October 2026: red wrap top on brown = Bokun Imoukhuede; grey background with braids = Oyindamola; black and white with pearls = Dk Jonah; teal jacket on white = Yemi Komolafe. These are the only photos on the site that stand for named people.
