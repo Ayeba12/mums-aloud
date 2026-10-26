@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { coreAreaLinks, footerGroups, isExternalHref, isGroup, legalLinks, mainNav } from "./navigation";
+import { coreAreaLinks, footerGroups, isExternalHref, isGroup, legalLinks, mainNav, menuPromo } from "./navigation";
 import { coreAreas } from "./home";
 import { siteConfig } from "@/lib/site";
 
@@ -61,5 +61,11 @@ describe("navigation", () => {
       expect(link.href, link.label).not.toMatch(/\/#/);
     }
     expect(siteConfig.joinUrl).not.toMatch(/#/);
+  });
+
+  it("closes the phone menu with the join promo card, pointing at the join page", () => {
+    expect(menuPromo.action.href).toBe(siteConfig.joinUrl);
+    expect(menuPromo.caption).toBe("Empowering Mums to Thrive");
+    expect(menuPromo.photo).not.toBe("bokun");
   });
 });

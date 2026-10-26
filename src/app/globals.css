@@ -27,8 +27,9 @@
 /* The 404 page stands on its own: no site footer under it. */
 body:has(main[data-no-footer]) > footer { display: none; }
 
-/* While a modal dialog is open the page behind it holds still. */
-body:has(dialog[open]) { overflow: hidden; }
+/* While a modal dialog or the phone menu is open the page behind it holds still. */
+body:has(dialog[open]),
+body:has([data-mobile-menu="open"]) { overflow: hidden; }
 
 /* Rich text from WordPress posts (stories, articles): the body role in a reading column. */
 @layer components {
