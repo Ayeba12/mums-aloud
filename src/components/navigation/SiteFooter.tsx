@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cacheLife } from "next/cache";
 import { ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
 import { NewsletterForm } from "./NewsletterForm";
+import { SocialLinks } from "./SocialLinks";
 import { footerGroups, legalLinks } from "@/content/navigation";
 import { ButtonLink } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site";
@@ -19,10 +20,10 @@ const footerLink = "inline-flex min-h-12 items-center gap-1 text-ink no-underlin
 
 /**
  * The reference footer: a light card inside the page frame holding a media tile with a
- * caption and action, link columns, the newsletter, the ways to reach us and a legal bar.
+ * caption and action, link columns, the newsletter, the ways to reach us, and a legal bar that
+ * carries the social icons beside the copyright.
  */
 export function SiteFooter() {
-  const socials = Object.values(siteConfig.social).filter((social) => social.href);
   return (
     <footer className="frame-x pt-8 pb-2 md:pb-4">
       <div className="rounded-panel bg-surface-card p-4">
@@ -82,15 +83,6 @@ export function SiteFooter() {
                       {siteConfig.phone.display}
                     </a>
                   </li>
-                  {socials.map((social) => (
-                    <li key={social.label}>
-                      <a href={social.href} className={footerLink}>
-                        {social.label}
-                        <ArrowUpRightIcon aria-hidden size={16} />
-                        <span className="sr-only">(opens {social.label})</span>
-                      </a>
-                    </li>
-                  ))}
                   <li>
                     <a href="https://creators.spotify.com/pod/show/mamasescape" className={footerLink}>
                       Mama&apos;s Escape podcast
@@ -107,10 +99,13 @@ export function SiteFooter() {
               </nav>
             </div>
 
-            <div className="mt-auto flex flex-col gap-2 border-t border-border-decoration pt-6 text-caption text-text-secondary sm:flex-row sm:items-center sm:justify-between">
-              <p>
-                © <Year /> Mums Aloud. All rights reserved.
-              </p>
+            <div className="mt-auto flex flex-col gap-4 border-t border-border-decoration pt-6 text-caption text-text-secondary sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+                <SocialLinks />
+                <p>
+                  © <Year /> Mums Aloud. All rights reserved.
+                </p>
+              </div>
               <ul className="flex flex-wrap gap-x-6">
                 {legalLinks.map((link) => (
                   <li key={link.href}>

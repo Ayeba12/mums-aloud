@@ -11,10 +11,16 @@ export const siteConfig = {
   email: "admin@mumsaloud.com",
   /** The official phone number (owner, 10 Aug 2026 notes). */
   phone: { display: "07587 542609", href: "tel:+447587542609" },
-  /** confirm: the Instagram handle. Social links are shown only once their URLs are filled in. */
+  /**
+   * Public profiles, shown in the footer and on the Contact page only once their URL is filled in.
+   * Found on 26 Oct 2026, since the live site's social icons carry no links: Instagram @mumsaloud
+   * (the MumsAloud account whose bio links to the New Mums Circle sign-up) and the Facebook page at
+   * /mumsaloud (confirm: the page exists under the Mums Aloud name; the owner to check it is theirs).
+   * No YouTube channel was found, so that entry stays empty and hidden until the owner supplies one.
+   */
   social: {
-    instagram: { label: "Instagram", handle: "", href: "" },
-    facebook: { label: "Facebook", handle: "", href: "" },
+    instagram: { label: "Instagram", handle: "@mumsaloud", href: "https://www.instagram.com/mumsaloud/" },
+    facebook: { label: "Facebook", handle: "Mums Aloud", href: "https://www.facebook.com/mumsaloud/" },
     youtube: { label: "YouTube", handle: "", href: "" },
   },
   /**
