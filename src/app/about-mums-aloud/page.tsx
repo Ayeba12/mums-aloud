@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ProfileTile } from "@/components/content/ProfileTile";
+import { teamPortraits } from "@/components/content/teamPortraits";
 import { Section, SectionHeading, Statement, Tag } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { PageHero } from "@/components/sections/PageHero";
@@ -81,7 +82,7 @@ export default function AboutPage() {
         </section>
       </div>
 
-      {/* The team, as cards: initials rather than stock portraits. */}
+      {/* The team, as portrait cards with the client's own photos. */}
       <Section aria-labelledby="team-heading">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading id="team-heading" tag={about.team.tag} heading={about.team.heading} intro={about.team.intro} />
@@ -92,7 +93,7 @@ export default function AboutPage() {
         <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {team.map((person) => (
             <li key={person.name}>
-              <ProfileTile person={person} />
+              <ProfileTile person={person} {...teamPortraits[person.id]} />
             </li>
           ))}
         </ul>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ProfileTile } from "@/components/content/ProfileTile";
+import { teamPortraits } from "@/components/content/teamPortraits";
 import { Section, SectionHeading } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { ButtonLink } from "@/components/ui/Button";
@@ -13,9 +14,8 @@ export const metadata: Metadata = {
 };
 
 /**
- * Meet the Team: name and role for each person as the live site publishes them, with initials in
- * place of portraits so no stock photo is ever read as a team member. No photo hero for the same
- * reason.
+ * Meet the Team: each person's own portrait (supplied by the client), name and role as the live
+ * site publishes them. No stock photo anywhere near a real name.
  */
 export default function MeetTheTeamPage() {
   return (
@@ -24,7 +24,7 @@ export default function MeetTheTeamPage() {
         <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {team.map((person) => (
             <li key={person.name}>
-              <ProfileTile person={person} />
+              <ProfileTile person={person} {...teamPortraits[person.id]} />
             </li>
           ))}
         </ul>

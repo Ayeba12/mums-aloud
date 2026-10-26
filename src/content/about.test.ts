@@ -6,6 +6,8 @@ describe("About content", () => {
     expect(team.map((person) => person.name)).toEqual(["Bokun Imoukhuede", "Oyindamola", "Dk Jonah", "Yemi Komolafe"]);
     expect(team[0].href).toBe("/meet-bokun/");
     expect(team.slice(1).every((person) => person.href === undefined)).toBe(true);
+    expect(new Set(team.map((person) => person.id)).size).toBe(4);
+    expect(team.every((person) => person.id !== "council")).toBe(true);
   });
 
   it("keeps the founder letter in her words, ending with her sign-off", () => {

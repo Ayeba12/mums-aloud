@@ -7,7 +7,7 @@
  */
 import type { AccentText } from "@/components/ui/Heading";
 
-export type Profile = { name: string; role: string; href?: string; linkLabel?: string };
+export type Profile = { id: "bokun" | "oyindamola" | "dk-jonah" | "yemi" | "council"; name: string; role: string; href?: string; linkLabel?: string };
 
 export const about = {
   title: "About Mums Aloud",
@@ -55,10 +55,10 @@ export const about = {
 
 /** The four people on the live Meet the Team page, roles as stated there (confirm). */
 export const team: Profile[] = [
-  { name: "Bokun Imoukhuede", role: "Founder and Chief Thriving Officer", href: "/meet-bokun/", linkLabel: "Read Bokun's story" },
-  { name: "Oyindamola", role: "Content Strategist" },
-  { name: "Dk Jonah", role: "Brand Strategist" },
-  { name: "Yemi Komolafe", role: "Engagement Manager" },
+  { id: "bokun", name: "Bokun Imoukhuede", role: "Founder and Chief Thriving Officer", href: "/meet-bokun/", linkLabel: "Read Bokun's story" },
+  { id: "oyindamola", name: "Oyindamola", role: "Content Strategist" },
+  { id: "dk-jonah", name: "Dk Jonah", role: "Brand Strategist" },
+  { id: "yemi", name: "Yemi Komolafe", role: "Engagement Manager" },
 ];
 
 export const teamPage = {
@@ -67,8 +67,8 @@ export const teamPage = {
   tag: "Meet the team",
   heading: { lead: "A driven team with", accent: "diverse skills." } satisfies AccentText,
   intro: about.team.intro,
-  /** Honest note while full profiles are gathered. */
-  note: "Full profiles are being gathered with each team member. Names and roles are as published today.",
+  /** Honest note while full profiles are written. */
+  note: "Full profiles are on their way. Names and roles are as published today.",
   council: {
     heading: { lead: "Also at the table:", accent: "the Mum's Council." } satisfies AccentText,
     body: "A group of Black and mixed-race mothers committed to improving the lives of mothers and families in our community.",
@@ -183,11 +183,11 @@ export const council = {
     heading: { lead: "The mothers", accent: "at the table." } satisfies AccentText,
     note: "Profiles are being gathered with each member. Names are as published today.",
     people: [
-      { name: "Bella Abidakun", role: "Council member" },
-      { name: "Temi Fagbo", role: "Council member" },
-      { name: "Bukunmi Ladeji", role: "Council member" },
-      { name: "Elizabeth Toluwani", role: "Council member" },
-      { name: "Abies Sonia", role: "Council member" },
+      { id: "council", name: "Bella Abidakun", role: "Council member" },
+      { id: "council", name: "Temi Fagbo", role: "Council member" },
+      { id: "council", name: "Bukunmi Ladeji", role: "Council member" },
+      { id: "council", name: "Elizabeth Toluwani", role: "Council member" },
+      { id: "council", name: "Abies Sonia", role: "Council member" },
     ] satisfies Profile[],
   },
   expect: {
