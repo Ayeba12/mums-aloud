@@ -15,8 +15,8 @@ export const siteConfig = {
    * Public profiles, shown in the footer and on the Contact page only once their URL is filled in.
    * Found on 26 Oct 2026, since the live site's social icons carry no links: Instagram @mumsaloud
    * (the MumsAloud account whose bio links to the New Mums Circle sign-up) and the Facebook page at
-   * /mumsaloud (confirm: the page exists under the Mums Aloud name; the owner to check it is theirs).
-   * No YouTube channel was found, so that entry stays empty and hidden until the owner supplies one.
+   * /mumsaloud. Both confirmed by the owner on 26 Oct 2026. Mums Aloud has no YouTube channel
+   * (owner, 26 Oct 2026); the entry stays empty and hidden, ready should one start.
    */
   social: {
     instagram: { label: "Instagram", handle: "@mumsaloud", href: "https://www.instagram.com/mumsaloud/" },
