@@ -6,7 +6,6 @@ colors:
   surface: "#fff8fb"
   surface-tinted: "#fbe9f2"
   surface-card: "#f1f1f4"
-  surface-warm: "#fce8f1"
   surface-dark: "#8b0e42"
   ink: "#17171c"
   text: "#2d2d39"
@@ -152,7 +151,7 @@ Mums Aloud is a community for Black mothers in the UK. The site's job is to make
 
 Berry (`action`) is the only colour for links, primary buttons and pressed states. Marigold (`accent`) appears only in small shapes next to an action: the arrow circle inside a button, the accent button, icon chips and one highlighted phrase per statement. Never use marigold as a section background or as body text on the canvas; `#8e620b` (marigold 700) is 5.14:1 and fails the 7:1 text floor.
 
-The canvas is `surface`; alternate sections use `surface-tinted`, `surface-warm` or `surface-card`, never pure white. One dark panel per page uses `surface-dark` (berry 700) with `on-action` text, marigold 100 (`accent-soft`) for links, and marigold 300 (`accent`) only for italic accent words at heading size. On the dark panel, tags use berry 800 and cards use berry 800.
+The canvas is `surface`; alternate sections use `surface-tinted` or `surface-card`, never pure white (the former `surface-warm` was retired on 26 Oct 2026: it was indistinguishable from the tint). Text over photos and scrims is `on-photo`; photo gradients fade to `scrim` (black 950) or `scrim-berry` (berry 900); marigold controls hover to `accent-hover`. One dark panel per page uses `surface-dark` (berry 700) with `on-action` text, marigold 100 (`accent-soft`) for links, and marigold 300 (`accent`) only for italic accent words at heading size. On the dark panel, tags use berry 800, cards use berry 800, and captions use black 100 (7.3:1) so they read quieter than the body.
 
 Routine text must measure 7:1 against its background; large text (24px regular or 18.67px bold and above) must measure 4.5:1. Text over a photo sits on a scrim and the rendered pixels are measured before approval.
 

@@ -69,7 +69,6 @@
   --color-surface: var(--color-soft-pink-canvas);
   --color-surface-tinted: var(--color-lavender-blush-50);
   --color-surface-card: var(--color-black-50);
-  --color-surface-warm: var(--color-pastel-petal-50);
   --color-surface-dark: var(--color-berry-lipstick-700);
   --color-ink: var(--color-black-900);
   --color-text: var(--color-black-800);
@@ -81,6 +80,10 @@
   --color-accent: var(--color-marigold-300);
   --color-on-accent: var(--color-black-900);
   --color-accent-soft: var(--color-marigold-100);
+  --color-accent-hover: var(--color-marigold-200);
+  --color-on-photo: var(--color-black-50);
+  --color-scrim: var(--color-black-950);
+  --color-scrim-berry: var(--color-berry-lipstick-900);
   --color-border-control: var(--color-black-500);
   --color-border-decoration: var(--color-black-100);
   --color-error: var(--color-berry-lipstick-800);
@@ -162,7 +165,7 @@
   --color-surface-card: var(--color-berry-lipstick-800);
   --color-ink: var(--color-black-50);
   --color-text: var(--color-black-50);
-  --color-text-secondary: var(--color-black-50);
+  --color-text-secondary: var(--color-black-100);
   --color-action: var(--color-marigold-100);
   --color-action-hover: var(--color-marigold-200);
   --color-focus: var(--color-black-50);

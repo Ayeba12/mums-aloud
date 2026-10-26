@@ -53,12 +53,12 @@ export function NewsletterDialog() {
         // A click on the backdrop (the dialog element itself, outside the panel) closes it.
         if (event.target === ref.current) close();
       }}
-      className="m-auto w-[calc(100%-2rem)] max-w-[56rem] translate-y-2 rounded-panel bg-surface p-0 text-text opacity-0 shadow-raised transition-[opacity,translate,overlay,display] transition-discrete duration-200 ease-standard backdrop:bg-black-950/40 backdrop:opacity-0 backdrop:backdrop-blur-sm backdrop:transition-[opacity,overlay,display] backdrop:transition-discrete backdrop:duration-200 open:translate-y-0 open:opacity-100 open:backdrop:opacity-100 starting:open:translate-y-2 starting:open:opacity-0 starting:open:backdrop:opacity-0 motion-reduce:transition-none"
+      className="m-auto w-[calc(100%-2rem)] max-w-[56rem] translate-y-2 rounded-panel bg-surface p-0 text-text opacity-0 shadow-raised transition-[opacity,translate,overlay,display] transition-discrete duration-200 ease-standard backdrop:bg-scrim/40 backdrop:opacity-0 backdrop:backdrop-blur-sm backdrop:transition-[opacity,overlay,display] backdrop:transition-discrete backdrop:duration-200 open:translate-y-0 open:opacity-100 open:backdrop:opacity-100 starting:open:translate-y-2 starting:open:opacity-0 starting:open:backdrop:opacity-0 motion-reduce:transition-none"
     >
       <div className="grid overflow-hidden rounded-panel md:grid-cols-[2fr_3fr]">
         <div className="relative hidden min-h-full md:block">
           <Image src={photo} alt="" fill placeholder="blur" sizes="(min-width: 48rem) 22rem, 0px" className="object-cover object-[50%_30%]" />
-          <span aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,color-mix(in_srgb,var(--color-black-950)_55%,transparent),transparent_60%)]" />
+          <span aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,color-mix(in_srgb,var(--color-scrim)_55%,transparent),transparent_60%)]" />
         </div>
         <div className="relative p-6 md:p-8 lg:p-10">
           <button

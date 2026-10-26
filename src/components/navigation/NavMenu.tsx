@@ -240,7 +240,7 @@ export function NavMenu({ items, joinUrl, joinLabel }: { items: NavItem[]; joinU
           <div
             aria-hidden
             data-open={Boolean(openGroup)}
-            className="pointer-events-none fixed inset-0 z-[calc(var(--z-header)-1)] hidden bg-black-950/10 backdrop-blur-sm transition-opacity duration-200 ease-standard data-[open=false]:opacity-0 motion-reduce:transition-none lg:block"
+            className="pointer-events-none fixed inset-0 z-[calc(var(--z-header)-1)] hidden bg-scrim/10 backdrop-blur-sm transition-opacity duration-200 ease-standard data-[open=false]:opacity-0 motion-reduce:transition-none lg:block"
           />,
           document.body,
         )}
@@ -346,9 +346,9 @@ function FeatureCard({ feature, onNavigate }: { feature: NavFeature; onNavigate:
       className={`group relative flex min-h-[18rem] flex-col justify-end overflow-hidden rounded-card no-underline ring-1 ring-black-950/10 ring-inset ${feature.portrait ? "lg:min-h-[32rem]" : "lg:min-h-[22rem]"}`}
     >
       <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 64rem) 40vw, 100vw" className={`object-cover transition-transform duration-500 ease-standard group-hover:scale-[1.03] motion-reduce:transition-none ${photo.position}`} />
-      <span aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-black-950)_0%,color-mix(in_srgb,var(--color-black-950)_70%,transparent)_30%,transparent_60%)]" />
+      <span aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-scrim)_0%,color-mix(in_srgb,var(--color-scrim)_70%,transparent)_30%,transparent_60%)]" />
       <span className="relative flex flex-wrap items-end justify-between gap-4 p-6">
-        <span className="max-w-[14ch] font-heading text-h3 italic text-black-50">{feature.caption}</span>
+        <span className="max-w-[14ch] font-heading text-h3 italic text-on-photo">{feature.caption}</span>
         <span className={buttonClasses("inverse-outline")}>{feature.action.label}</span>
       </span>
     </Link>

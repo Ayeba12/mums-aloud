@@ -13,11 +13,11 @@ const variants: Record<Variant, string> = {
     "border-transparent bg-action text-on-action hover:bg-action-hover hover:text-on-action active:bg-action-pressed",
   secondary:
     "border-berry-lipstick-700 bg-transparent text-berry-lipstick-700 hover:bg-berry-lipstick-50 hover:text-berry-lipstick-700 active:bg-berry-lipstick-100 active:text-berry-lipstick-800",
-  accent: "border-transparent bg-accent text-on-accent hover:bg-marigold-200 hover:text-on-accent",
+  accent: "border-transparent bg-accent text-on-accent hover:bg-accent-hover hover:text-on-accent",
   inverse:
     "border-transparent bg-black-50 text-berry-lipstick-900 hover:bg-berry-lipstick-50 hover:text-berry-lipstick-900",
   "inverse-outline":
-    "border-black-50 bg-transparent text-black-50 hover:bg-black-50/15 hover:text-black-50",
+    "border-on-photo bg-transparent text-on-photo hover:bg-on-photo/15 hover:text-on-photo",
 };
 
 const sizes: Record<Size, string> = { default: "min-h-12", large: "min-h-14" };

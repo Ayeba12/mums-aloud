@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from "react"
 import { slideIndex, trackEdges } from "./carousel-math";
 
 const arrowButton =
-  "inline-flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-pill bg-accent text-on-accent transition-[background-color,scale] duration-150 ease-standard hover:bg-marigold-200 active:scale-[0.96] disabled:cursor-not-allowed disabled:bg-black-100 disabled:text-black-700 motion-reduce:active:scale-100";
+  "inline-flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-pill bg-accent text-on-accent transition-[background-color,scale] duration-150 ease-standard hover:bg-accent-hover active:scale-[0.96] disabled:cursor-not-allowed disabled:bg-black-100 disabled:text-black-700 motion-reduce:active:scale-100";
 
 /** One slide plus the gap after it: the distance between two snap points. */
 function strideOf(list: HTMLUListElement): number {

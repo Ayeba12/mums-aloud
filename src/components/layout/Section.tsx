@@ -1,12 +1,11 @@
 import type { ComponentProps, ReactNode } from "react";
 import { Accent, type AccentText } from "@/components/ui/Heading";
 
-type Tone = "default" | "tinted" | "warm" | "card" | "dark";
+type Tone = "default" | "tinted" | "card" | "dark";
 
 const tones: Record<Tone, string> = {
   default: "",
   tinted: "bg-surface-tinted",
-  warm: "bg-surface-warm",
   card: "bg-surface-card",
   dark: "surface-dark",
 };

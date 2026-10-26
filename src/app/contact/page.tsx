@@ -97,7 +97,7 @@ export default function ContactPage() {
               </ul>
             </section>
 
-            <section aria-labelledby="urgent-heading" className="rounded-card bg-surface-warm p-6">
+            <section aria-labelledby="urgent-heading" className="rounded-card bg-surface-tinted p-6">
               <h2 id="urgent-heading" className="text-h3">
                 {contact.urgent.heading}
               </h2>

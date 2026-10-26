@@ -34,19 +34,19 @@ export function PageHero({
         <Image src={photo} alt={alt} fill priority placeholder="blur" sizes="100vw" className={`object-cover ${position}`} />
         <div
           aria-hidden
-          className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-black-950)_0%,color-mix(in_srgb,var(--color-black-950)_92%,transparent)_42%,color-mix(in_srgb,var(--color-black-950)_45%,transparent)_66%,transparent_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-scrim)_0%,color-mix(in_srgb,var(--color-scrim)_92%,transparent)_42%,color-mix(in_srgb,var(--color-scrim)_45%,transparent)_66%,transparent_100%)]"
         />
         {/* Stacked on phones and tablets; from lg the tag and title sit bottom-left and the intro with its
             actions bottom-right (owner, 26 Oct 2026), both on the hero's lower edge. */}
         <div className="container-page relative grid gap-4 pt-40 pb-10 md:pb-12 lg:grid-cols-12 lg:items-end lg:gap-8 lg:pb-16">
           <div className="flex flex-col items-start lg:col-span-7">
-            <Tag className="border-transparent bg-black-950 text-black-50">{tag}</Tag>
-            <h1 id="page-heading" className="mt-4 max-w-[16ch] text-h1 tracking-tight text-black-50">
+            <Tag className="border-transparent bg-scrim text-on-photo">{tag}</Tag>
+            <h1 id="page-heading" className="mt-4 max-w-[16ch] text-h1 tracking-tight text-on-photo">
               <Accent {...heading} />
             </h1>
           </div>
           <div className="flex flex-col items-start lg:col-span-5 lg:col-start-8">
-            <p className="max-w-[44ch] text-lead text-black-50">{intro}</p>
+            <p className="max-w-[44ch] text-lead text-on-photo">{intro}</p>
             {actions && <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">{actions}</div>}
           </div>
         </div>

@@ -59,7 +59,7 @@ export default function FindSupportPage() {
     <main id="main">
       <PageHeader tag={findSupport.tag} heading={findSupport.heading} intro={findSupport.intro}>
 
-        <section aria-labelledby="urgent-heading" className="mt-12 rounded-panel bg-surface-warm p-6 md:p-8">
+        <section aria-labelledby="urgent-heading" className="mt-12 rounded-panel bg-surface-tinted p-6 md:p-8">
           <h2 id="urgent-heading" className="text-h2">
             {findSupport.urgent.heading}
           </h2>

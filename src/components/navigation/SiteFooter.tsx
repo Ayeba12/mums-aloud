@@ -36,12 +36,12 @@ export function SiteFooter() {
               sizes="(min-width: 64rem) 33vw, 100vw"
               className="object-cover object-[50%_30%]"
             />
-            <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-black-950)_0%,color-mix(in_srgb,var(--color-black-950)_70%,transparent)_30%,transparent_60%)]" />
+            <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-scrim)_0%,color-mix(in_srgb,var(--color-scrim)_70%,transparent)_30%,transparent_60%)]" />
             <span className="absolute top-4 left-4 rounded-control bg-surface p-2">
               <Image src="/brand/mumsaloud-logo.webp" alt="Mums Aloud" width={92} height={48} className="h-8 w-auto" />
             </span>
             <div className="relative flex flex-wrap items-end justify-between gap-4 p-6">
-              <p className="max-w-[14ch] font-heading text-h3 italic text-black-50">Empowering Mums to Thrive</p>
+              <p className="max-w-[14ch] font-heading text-h3 italic text-on-photo">Empowering Mums to Thrive</p>
               <ButtonLink href={siteConfig.joinUrl} variant="inverse-outline">
                 Join Mama&apos;s Escape
               </ButtonLink>

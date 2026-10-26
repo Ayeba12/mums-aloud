@@ -37,7 +37,7 @@ export function NewsletterForm() {
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-pill bg-accent text-on-accent hover:bg-marigold-200 disabled:cursor-wait"
+          className="inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-pill bg-accent text-on-accent hover:bg-accent-hover disabled:cursor-wait"
         >
           <ArrowRightIcon aria-hidden size={20} weight="bold" />
           <span className="sr-only">{pending ? "Sending" : "Subscribe"}</span>

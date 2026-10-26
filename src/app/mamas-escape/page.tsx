@@ -52,7 +52,7 @@ const expectPhotos = [
 const imageRing = "ring-1 ring-black-950/10 ring-inset";
 /** Scrim under the portrait captions: the world's own dark (berry 900), not a neutral black. */
 const portraitScrim =
-  "bg-[linear-gradient(to_top,var(--color-berry-lipstick-900)_0%,color-mix(in_srgb,var(--color-berry-lipstick-900)_85%,transparent)_45%,transparent_100%)]";
+  "bg-[linear-gradient(to_top,var(--color-scrim-berry)_0%,color-mix(in_srgb,var(--color-scrim-berry)_85%,transparent)_45%,transparent_100%)]";
 
 export default function MamasEscapePage() {
   return (
@@ -231,7 +231,7 @@ export default function MamasEscapePage() {
             <li key={photo.alt} className={`relative aspect-[2/3] overflow-hidden rounded-panel ${imageRing}`}>
               <Image src={photo.src} alt={photo.alt} placeholder="blur" sizes="(min-width: 40rem) 33vw, 100vw" className={`absolute inset-0 size-full object-cover ${photo.position}`} />
               <div aria-hidden className={`absolute inset-x-0 bottom-0 h-3/5 ${portraitScrim}`} />
-              <p className="absolute right-6 bottom-6 left-6 font-heading text-h4 text-black-50">{expect.moments[index]}</p>
+              <p className="absolute right-6 bottom-6 left-6 font-heading text-h4 text-on-photo">{expect.moments[index]}</p>
             </li>
           ))}
         </ul>
@@ -251,7 +251,7 @@ export default function MamasEscapePage() {
           <div className={`relative min-h-72 overflow-hidden rounded-panel lg:col-span-2 lg:col-start-2 lg:row-start-1 ${imageRing}`}>
             <Image src={laughingPhoto} alt="" fill placeholder="blur" sizes="(min-width: 64rem) 66vw, 100vw" className="object-cover object-[60%_20%]" />
           </div>
-          <div className="rounded-panel bg-surface-warm p-6 lg:col-start-1 lg:row-start-1 lg:p-8">
+          <div className="rounded-panel bg-surface-tinted p-6 lg:col-start-1 lg:row-start-1 lg:p-8">
             <h3 className="font-heading text-h4 text-ink">{join.asksTitle}</h3>
             <ol className="mt-4 flex flex-col gap-3">
               {join.asks.map((ask, index) => (

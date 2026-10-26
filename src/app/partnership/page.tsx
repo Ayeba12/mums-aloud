@@ -33,9 +33,9 @@ export const metadata: Metadata = {
 
 const imageRing = "ring-1 ring-black-950/10 ring-inset";
 const scrim =
-  "bg-[linear-gradient(to_top,var(--color-berry-lipstick-900)_0%,color-mix(in_srgb,var(--color-berry-lipstick-900)_85%,transparent)_45%,transparent_100%)]";
+  "bg-[linear-gradient(to_top,var(--color-scrim-berry)_0%,color-mix(in_srgb,var(--color-scrim-berry)_85%,transparent)_45%,transparent_100%)]";
 const captionScrim =
-  "lg:bg-[linear-gradient(to_top,var(--color-berry-lipstick-900)_0%,color-mix(in_srgb,var(--color-berry-lipstick-900)_85%,transparent)_55%,transparent_100%)]";
+  "lg:bg-[linear-gradient(to_top,var(--color-scrim-berry)_0%,color-mix(in_srgb,var(--color-scrim-berry)_85%,transparent)_55%,transparent_100%)]";
 const offerIcons = { insight: UsersThreeIcon, culture: GlobeHemisphereWestIcon, data: ChartBarIcon, advocates: MegaphoneIcon };
 
 /** Stock placeholders until the client's own photography lands: decorative, never captioned as partners or members. */
@@ -95,7 +95,7 @@ export default function PartnershipPage() {
               <figure className={`relative aspect-[3/4] overflow-hidden rounded-card ${imageRing}`}>
                 <Image src={card.photo} alt="" fill placeholder="blur" sizes="(min-width: 48rem) 25vw, 70vw" className={`object-cover ${card.position}`} />
                 <div aria-hidden className={`absolute inset-x-0 bottom-0 h-2/5 ${scrim}`} />
-                <figcaption className="absolute right-4 bottom-4 left-4 font-semibold text-black-50">{hero.cards[index]}</figcaption>
+                <figcaption className="absolute right-4 bottom-4 left-4 font-semibold text-on-photo">{hero.cards[index]}</figcaption>
               </figure>
             </li>
           ))}
@@ -123,12 +123,12 @@ export default function PartnershipPage() {
                   <div aria-hidden className={`absolute inset-x-0 bottom-0 h-3/5 ${scrim}`} />
                   <div className="absolute right-6 bottom-6 left-6 flex items-end justify-between gap-4">
                     <div>
-                      <h3 className="font-body text-title font-semibold text-black-50">
-                        <SmartLink href={route.href} className="text-black-50 no-underline after:absolute after:inset-0">
+                      <h3 className="font-body text-title font-semibold text-on-photo">
+                        <SmartLink href={route.href} className="text-on-photo no-underline after:absolute after:inset-0">
                           {route.title}
                         </SmartLink>
                       </h3>
-                      <p className="mt-1 max-w-[36ch] text-black-50">{route.text}</p>
+                      <p className="mt-1 max-w-[36ch] text-on-photo">{route.text}</p>
                     </div>
                     <span aria-hidden className="inline-flex size-12 shrink-0 items-center justify-center rounded-pill bg-accent text-on-accent transition-transform duration-150 group-hover:translate-x-1 motion-reduce:transition-none">
                       <ArrowRightIcon size={20} weight="bold" />
