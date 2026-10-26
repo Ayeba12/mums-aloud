@@ -44,7 +44,11 @@ export const about = {
   mission: {
     tag: "Our mission",
     heading: { lead: "A community that supports, uplifts and equips", accent: "mums to thrive." } satisfies AccentText,
-    body: "A platform where you can share your stories without guilt, connect with others who understand your journey, and receive practical guidance on harmonising motherhood with personal growth. Whether you are looking for emotional support, cultural connection, or simply a space for your mental wellbeing as a woman, MumsAloud is here to walk with you every step of the way, with culturally sensitive services tailored to you as a Black mum.",
+    paragraphs: [
+      "A platform where you can share your stories without guilt, connect with others who understand your journey, and receive practical guidance on harmonising motherhood with personal growth.",
+      "Whether you are looking for emotional support, cultural connection, or simply a space for your mental wellbeing as a woman, MumsAloud is here to walk with you every step of the way, with culturally sensitive services tailored to you as a Black mum.",
+    ],
+    action: { label: "Join Mama's Escape" },
     visionTag: "Our vision",
     vision: "A world where every mother thrives, is empowered and connected, living a life of fulfilment and purpose.",
   },

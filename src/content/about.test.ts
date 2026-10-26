@@ -37,6 +37,13 @@ describe("About content", () => {
     }
   });
 
+  it("sets the mission as two paragraphs with one door, and keeps the vision as one sentence", () => {
+    expect(about.mission.paragraphs).toHaveLength(2);
+    expect(about.mission.paragraphs.join(" ")).toMatch(/^A platform where you can share your stories/);
+    expect(about.mission.action.label).toBe("Join Mama's Escape");
+    expect(about.mission.vision).toMatch(/every mother thrives/);
+  });
+
   it("points the About page's secondary actions at pages that exist", () => {
     expect(about.hero.secondary.href).toBe("/meet-bokun/");
     expect(about.team.link.href).toBe("/meet-the-team/");

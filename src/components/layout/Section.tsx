@@ -46,6 +46,7 @@ export function SectionHeading({
   action,
   align = "start",
   level: Level = "h2",
+  reveal = false,
   className = "",
 }: {
   id: string;
@@ -55,13 +56,15 @@ export function SectionHeading({
   action?: ReactNode;
   align?: "start" | "center";
   level?: "h1" | "h2";
+  /** Marks the heading for a `Reveal` wrapper's line-by-line entrance. */
+  reveal?: boolean;
   className?: string;
 }) {
   const centered = align === "center";
   return (
     <div className={`flex flex-col ${centered ? "mx-auto items-center text-center" : "items-start"} ${className}`}>
       {tag && <Tag>{tag}</Tag>}
-      <Level id={id} className={`${tag ? "mt-2" : ""} ${Level === "h1" ? "text-display tracking-display" : "text-h2"} max-w-[22ch]`}>
+      <Level id={id} data-reveal={reveal ? "lines" : undefined} className={`${tag ? "mt-2" : ""} ${Level === "h1" ? "text-display tracking-display" : "text-h2"} max-w-[22ch]`}>
         <Accent {...heading} />
       </Level>
       {intro && <p className="mt-4 max-w-[46ch] text-lead">{intro}</p>}

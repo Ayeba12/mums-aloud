@@ -11,7 +11,7 @@ These are stock photos. The people shown are not Mums Aloud members, and must no
 | `women-community-circle.jpg` | Iwaria Inc. | https://unsplash.com/photos/GLLeZ59t3bA | Homepage story panel; Mama's Escape portrait row |
 | `mother-daughter-embrace.jpg` | Ben Masora | https://unsplash.com/photos/8hLjTQCNbNY | Homepage photo row; Mama's Escape berry panel |
 | `two-friends-smiling.jpg` | Andra C Taylor Jr | https://unsplash.com/photos/CmdrVG8gmhg | Homepage photo row; Mama's Escape portrait row |
-| `hero-mother-baby-golden-hour.jpg` | Junior REIS | https://unsplash.com/photos/9ooYPL2Tffg | Homepage photo row; Mama's Escape newsletter card |
+| `hero-mother-baby-golden-hour.jpg` | Junior REIS | https://unsplash.com/photos/9ooYPL2Tffg | Homepage photo row; Mama's Escape newsletter card; About mission panel (vision card) |
 | `mother-baby-smiling.jpg` | Andrae Ricketts | https://unsplash.com/photos/3Qi0PkM_Wes | Homepage newsletter invitation; Mama's Escape podcast card and portrait row |
 | `mother-daughter-park.jpg` | Dion Martins | https://unsplash.com/photos/Tt4H8glyHKs | Site footer tile; Mama's Escape hero |
 
