@@ -24,6 +24,9 @@
   input, textarea { caret-color: var(--color-action); }
 }
 
+/* The 404 page stands on its own: no site footer under it. */
+body:has(main[data-no-footer]) > footer { display: none; }
+
 /* While a modal dialog is open the page behind it holds still. */
 body:has(dialog[open]) { overflow: hidden; }
 

@@ -18,11 +18,12 @@ const waysOnward = [
 /**
  * A real 404 in the site's own voice, centred on the shared page header: the tint fades under the
  * floating bar, the title and intro sit in the middle, two pills lead onward, and four quiet links
- * cover the rest. No redirect to the homepage, nothing invented.
+ * cover the rest. No redirect to the homepage, nothing invented. The page fills the screen on its
+ * own: `data-no-footer` hides the site footer here (owner, 26 Oct 2026; see globals.css).
  */
 export default function NotFound() {
   return (
-    <main id="main">
+    <main id="main" data-no-footer="">
       <PageHeader
         id="not-found-heading"
         tag="Page not found"
@@ -38,7 +39,7 @@ export default function NotFound() {
             </ButtonLink>
           </>
         }
-        className="min-h-[70svh]"
+        className="flex min-h-svh flex-col justify-center"
       >
         <nav aria-label="Popular pages" className="mx-auto mt-12 flex max-w-[60rem] flex-col items-center text-center">
           <p className="text-caption font-semibold tracking-wide text-text-secondary uppercase">Or go straight to</p>
