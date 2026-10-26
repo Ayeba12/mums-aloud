@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState, useSyncExternalStore, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
 import { createPortal } from "react-dom";
-import { ArrowUpRightIcon, CaretDownIcon, HandHeartIcon, HandshakeIcon, ListIcon, PlantIcon, UsersThreeIcon } from "@phosphor-icons/react";
+import { ArrowUpRightIcon, CaretDownIcon, HandHeartIcon, HandshakeIcon, ListIcon, PlantIcon, UsersThreeIcon, XIcon } from "@phosphor-icons/react";
 import { buttonClasses } from "@/components/ui/Button";
 import { founderPortrait, isExternalHref, isGroup, menuFooter, menuPromo, type NavFeature, type NavGroup, type NavItem, type NavLink } from "@/content/navigation";
 import circlePhoto from "@/assets/photos/women-community-circle.jpg";
@@ -155,7 +155,7 @@ export function NavMenu({
         if (!navRef.current?.contains(event.relatedTarget as Node | null)) setOpenGroup(null);
       }}
     >
-      {/* The reference's circle menu button: a tinted circle that inverts while the menu is open. */}
+      {/* The reference's circle menu button: a tinted circle that inverts while the menu is open, with an X in place of the list (owner, 26 Oct 2026). */}
       <button
         type="button"
         ref={(node) => {
@@ -171,7 +171,7 @@ export function NavMenu({
           mobileOpen ? "bg-ink text-on-photo" : "bg-surface-tinted text-ink hover:bg-accent-soft"
         }`}
       >
-        <ListIcon aria-hidden size={24} />
+        {mobileOpen ? <XIcon aria-hidden size={24} /> : <ListIcon aria-hidden size={24} />}
         <span className="sr-only">{mobileOpen ? "Close menu" : "Open menu"}</span>
       </button>
 
