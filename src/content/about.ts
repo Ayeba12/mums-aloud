@@ -190,7 +190,7 @@ export const council = {
   members: {
     tag: "The council",
     heading: { lead: "The mothers", accent: "at the table." } satisfies AccentText,
-    // confirm: the biographies are each member's own words from the previous site's pop-ups (read 26 Oct 2026), lightly tidied into the third person.
+    // The biographies are each member's own words from the previous site's pop-ups (read 26 Oct 2026), lightly tidied into the third person; owner confirmed 26 Oct 2026.
     note: "Biographies are in each member's own words, as published on the previous Mums Aloud site.",
     people: [
       {
