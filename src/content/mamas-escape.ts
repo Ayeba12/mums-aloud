@@ -63,7 +63,8 @@ export const experience = {
   ],
 } as const;
 
-export const marquee = "We speak with you. We speak for you. We are you.";
+/** The pledge (owner, 26 Oct 2026): the name as the promise, from the copy's "questions we were taught not to say out loud". */
+export const marquee = "Say it out loud. You are allowed.";
 
 export const family = {
   tag: "What Mama's Escape is",

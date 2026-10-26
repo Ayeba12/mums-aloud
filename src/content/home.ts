@@ -59,7 +59,7 @@ export const story = {
   eyebrow: "Our story",
   heading: { lead: "We built what we", accent: "couldn't find" },
   body: "Before we were mothers, we were women full of ideas, dreams and plans. Then motherhood arrived, often far from home, far from the village that would have held us. Everyone gathered round the baby. Few asked how we were. So we learned to appear okay while running on empty.",
-  pledge: "We speak with you. We speak for you. We are you.",
+  pledge: "Say it out loud. You are allowed.",
   link: { label: "Read our story", href: "/about-mums-aloud/" },
   voices: {
     tag: "Community voices",
