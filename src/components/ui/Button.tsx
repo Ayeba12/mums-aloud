@@ -63,6 +63,9 @@ export function Button({
   );
 }
 
+/** In-page anchors, mail, phone and outside links are plain anchors: the browser scrolls to a hash on every click, where a client-side router ignores a repeat. */
+export const isPlainHref = (href: unknown): href is string => typeof href === "string" && /^(#|https?:|mailto:|tel:|sms:)/.test(href);
+
 export function ButtonLink({
   variant,
   size = "default",
@@ -72,11 +75,24 @@ export function ButtonLink({
   className,
   ...props
 }: CommonProps & ComponentProps<typeof Link>) {
-  return (
-    <Link className={buttonClasses(variant, size, className, arrow)} {...props}>
+  const inner = (
+    <>
       {children}
       {icon}
       {arrow && <Arrow size={size} />}
+    </>
+  );
+  if (isPlainHref(props.href)) {
+    const { href, ...rest } = props;
+    return (
+      <a href={href} className={buttonClasses(variant, size, className, arrow)} {...(rest as ComponentProps<"a">)}>
+        {inner}
+      </a>
+    );
+  }
+  return (
+    <Link className={buttonClasses(variant, size, className, arrow)} {...props}>
+      {inner}
     </Link>
   );
 }

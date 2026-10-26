@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Suspense } from "react";
 import { ArrowRightIcon, ChartBarIcon, GlobeHemisphereWestIcon, HeartIcon, MegaphoneIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { PostTile } from "@/components/content/PostTile";
@@ -11,6 +10,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Carousel } from "@/components/ui/Carousel";
 import { Accent } from "@/components/ui/Heading";
 import { PageHeader } from "@/components/sections/PageHeader";
+import { SmartLink } from "@/components/ui/SmartLink";
 import { impact, partners as partnerNames } from "@/content/home";
 import { enquiry, hero, network, offer, page, process, routes, voices, ways, why } from "@/content/partnership";
 import { siteConfig } from "@/lib/site";
@@ -124,9 +124,9 @@ export default function PartnershipPage() {
                   <div className="absolute right-6 bottom-6 left-6 flex items-end justify-between gap-4">
                     <div>
                       <h3 className="font-body text-title font-semibold text-black-50">
-                        <Link href={route.href} className="text-black-50 no-underline after:absolute after:inset-0">
+                        <SmartLink href={route.href} className="text-black-50 no-underline after:absolute after:inset-0">
                           {route.title}
-                        </Link>
+                        </SmartLink>
                       </h3>
                       <p className="mt-1 max-w-[36ch] text-black-50">{route.text}</p>
                     </div>
@@ -246,10 +246,10 @@ export default function PartnershipPage() {
                   </li>
                 ))}
               </ul>
-              <Link href={ways.action.href} className="mt-4 inline-flex min-h-12 items-center gap-2 self-start font-semibold">
+              <SmartLink href={ways.action.href} className="mt-4 inline-flex min-h-12 items-center gap-2 self-start font-semibold">
                 {ways.action.label}
                 <ArrowRightIcon aria-hidden size={16} weight="bold" />
-              </Link>
+              </SmartLink>
             </li>
           ))}
         </ul>

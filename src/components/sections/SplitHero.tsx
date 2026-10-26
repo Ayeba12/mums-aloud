@@ -1,9 +1,9 @@
 import Image, { type StaticImageData } from "next/image";
-import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowRightIcon } from "@phosphor-icons/react/ssr";
 import { Tag } from "@/components/layout/Section";
 import { Accent, type AccentText } from "@/components/ui/Heading";
+import { SmartLink } from "@/components/ui/SmartLink";
 
 /**
  * The reference's Home B hero: a tall portrait in one column with a floating card,
@@ -37,10 +37,10 @@ export function SplitHero({
           <div className="absolute right-2 bottom-2 left-2 max-w-[22rem] rounded-card bg-surface p-5 shadow-raised sm:right-auto md:p-6">
             <Tag>{card.tag}</Tag>
             <p className="mt-3 font-heading text-body text-ink md:mt-4 md:text-h4">{card.text}</p>
-            <Link href={card.link.href} className="mt-4 inline-flex min-h-12 items-center gap-2 font-semibold">
+            <SmartLink href={card.link.href} className="mt-4 inline-flex min-h-12 items-center gap-2 font-semibold">
               {card.link.label}
               <ArrowRightIcon aria-hidden size={16} weight="bold" />
-            </Link>
+            </SmartLink>
           </div>
         </div>
 

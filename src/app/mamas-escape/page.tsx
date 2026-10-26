@@ -20,6 +20,7 @@ import { TextMarquee } from "@/components/sections/TextMarquee";
 import { ButtonLink } from "@/components/ui/Button";
 import { Carousel } from "@/components/ui/Carousel";
 import { Accent } from "@/components/ui/Heading";
+import { SmartLink } from "@/components/ui/SmartLink";
 import { experience, expect, family, faq, hero, join, marquee, page, podcast, stayClose, why } from "@/content/mamas-escape";
 import { joinForm, siteConfig } from "@/lib/site";
 import heroPhoto from "@/assets/photos/mother-daughter-park.jpg";
@@ -209,10 +210,10 @@ export default function MamasEscapePage() {
                         <span className="sr-only">(opens Spotify)</span>
                       </a>
                     ) : (
-                      <Link href={href} className="mt-3 inline-flex min-h-12 items-center gap-2 font-semibold after:absolute after:inset-0">
+                      <SmartLink href={href} className="mt-3 inline-flex min-h-12 items-center gap-2 font-semibold after:absolute after:inset-0">
                         {tile.action.label}
                         <ArrowRightIcon aria-hidden size={16} weight="bold" />
-                      </Link>
+                      </SmartLink>
                     )}
                   </div>
                 </article>

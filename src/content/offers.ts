@@ -237,6 +237,6 @@ export const newMumsCircle = {
     heading: { lead: "Looking for the", accent: "whole village?" } satisfies AccentText,
     body: "Mama's Escape is the wider community: mentor mums, expert sessions, resources and events for Black mothers in the UK.",
     primary: { label: "Join Mama's Escape" },
-    secondary: { label: "What to expect", href: "/mamas-escape/#what-to-expect" },
+    secondary: { label: "What to expect", href: "/mamas-escape/" },
   },
 };

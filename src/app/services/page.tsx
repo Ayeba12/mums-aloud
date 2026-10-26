@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import {
   ArrowRightIcon,
   ArrowUpRightIcon,
@@ -18,6 +17,7 @@ import { IconChip, Section, SectionHeading } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { ButtonLink } from "@/components/ui/Button";
 import { PageHeader } from "@/components/sections/PageHeader";
+import { SmartLink } from "@/components/ui/SmartLink";
 import { services } from "@/content/offers";
 import { joinForm } from "@/lib/site";
 import volunteerPhoto from "@/assets/photos/two-friends-smiling.jpg";
@@ -89,10 +89,10 @@ export default function ServicesPage() {
                         <span className="sr-only">(opens Calendly)</span>
                       </a>
                     ) : (
-                      <Link href={pathway.action.join ? joinForm.href : (pathway.action.href ?? "/")} className="group inline-flex min-h-12 items-center gap-2 font-semibold">
+                      <SmartLink href={pathway.action.join ? joinForm.href : (pathway.action.href ?? "/")} className="group inline-flex min-h-12 items-center gap-2 font-semibold">
                         {pathway.action.label}
                         <ArrowRightIcon aria-hidden size={16} weight="bold" className="transition-transform duration-150 group-hover:translate-x-1 motion-reduce:transition-none" />
-                      </Link>
+                      </SmartLink>
                     )}
                   </div>
                 </li>

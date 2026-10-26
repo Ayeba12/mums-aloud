@@ -109,5 +109,5 @@ export const closing = {
   // confirm: drafted line under the owner's "Ready to Talk?" heading.
   body: "One free conversation is the first step. Bring whatever is on your mind.",
   primary: { label: "Book Your Free Consultation Call", href: calendly, external: true },
-  secondary: { label: "Join Mama's Escape instead", href: "/mamas-escape/#join" },
+  secondary: { label: "Join Mama's Escape instead", href: "/mamas-escape/" },
 };

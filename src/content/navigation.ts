@@ -85,7 +85,7 @@ export const mainNav: NavItem[] = [
         links: [
           { label: "Join Mama's Escape", href: siteConfig.joinUrl },
           { label: "Book a free call with Bokun", href: calendly },
-          { label: "Partner with us", href: "/partnership/#enquire" },
+          { label: "Partner with us", href: "/partnership/" },
         ],
       },
       {

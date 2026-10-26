@@ -5,8 +5,8 @@ export const siteConfig = {
   description:
     "Mums Aloud is a community built by mothers, for Black mothers in the UK. Join Mama's Escape to be understood without having to explain.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  /** Where every "Join" button on the site goes: the joining section of the Mama's Escape page. */
-  joinUrl: "/mamas-escape/#join",
+  /** Where every "Join" button on the site goes: the Mama's Escape page, opened at its top (owner, 26 Oct 2026). */
+  joinUrl: "/mamas-escape/",
   /** The team inbox (owner, 10 Aug 2026 notes): enquiries, applications and newsletter requests land here. */
   email: "admin@mumsaloud.com",
   /** The official phone number (owner, 10 Aug 2026 notes). */
@@ -31,5 +31,5 @@ export const siteConfig = {
  */
 export const joinForm = {
   open: Boolean(process.env.NEXT_PUBLIC_JOIN_URL),
-  href: process.env.NEXT_PUBLIC_JOIN_URL || "/mamas-escape/#join",
+  href: process.env.NEXT_PUBLIC_JOIN_URL || "/mamas-escape/",
 } as const;

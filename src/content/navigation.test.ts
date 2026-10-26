@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { coreAreaLinks, footerGroups, isExternalHref, isGroup, legalLinks, mainNav } from "./navigation";
 import { coreAreas } from "./home";
+import { siteConfig } from "@/lib/site";
 
 const allLinks = [
   ...mainNav.flatMap((item) => (isGroup(item) ? item.links : [item])),
@@ -53,5 +54,12 @@ describe("navigation", () => {
     expect(group("Resources")).toContain("/find-support/");
     expect(group("About")).toContain("/volunteer/");
     expect(group("How We Help").some((href) => /calculator|affiliate|training/.test(href))).toBe(false);
+  });
+
+  it("never sends a visitor to a section of another page: pages open at their top (owner, 26 Oct 2026)", () => {
+    for (const link of allLinks) {
+      expect(link.href, link.label).not.toMatch(/\/#/);
+    }
+    expect(siteConfig.joinUrl).not.toMatch(/#/);
   });
 });

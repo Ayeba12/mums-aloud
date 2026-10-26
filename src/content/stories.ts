@@ -80,5 +80,5 @@ export const postInvite = {
   heading: { lead: "There's a place for you", accent: "here." },
   body: "Mama's Escape is the community behind these pages: mentor mums, expert sessions, resources and events for Black mothers in the UK.",
   primary: { label: "Join Mama's Escape" },
-  secondary: { label: "See what's inside", href: "/mamas-escape/#inside" },
+  secondary: { label: "See what's inside", href: "/mamas-escape/" },
 };
