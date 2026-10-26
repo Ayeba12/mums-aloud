@@ -1,13 +1,22 @@
 /**
  * Copy for the About pages, taken from the live site on 23 October 2026 (`/about-mums-aloud/`,
  * `/meet-bokun/`, `/meet-the-team/`, `/mums-council/`) and lightly tidied. Credentials and roles are
- * as the live site states them and still need the owner's sign-off (`confirm`). Team and council
- * biographies live in Elementor pop-ups the API does not expose, so profiles carry name and role
- * only until the owner supplies them.
+ * as the live site states them and still need the owner's sign-off (`confirm`). Team biographies
+ * live in Elementor pop-ups the API does not expose, so team profiles carry name and role only until
+ * the owner supplies them; the council biographies were read from the pop-ups printed into the live
+ * Mum's Council page on 26 Oct 2026.
  */
 import type { AccentText } from "@/components/ui/Heading";
 
-export type Profile = { id: "bokun" | "oyindamola" | "dk-jonah" | "yemi" | "council"; name: string; role: string; href?: string; linkLabel?: string };
+export type Profile = {
+  id: "bokun" | "oyindamola" | "dk-jonah" | "yemi" | "bella-abidakun" | "temi-fagbo" | "bukunmi-ladeji" | "elizabeth-toluwani" | "abies-sonia";
+  name: string;
+  role: string;
+  href?: string;
+  linkLabel?: string;
+  /** Biography paragraphs, shown in the "Read bio" dialog when present. */
+  bio?: string[];
+};
 
 export const about = {
   title: "About Mums Aloud",
@@ -181,13 +190,59 @@ export const council = {
   members: {
     tag: "The council",
     heading: { lead: "The mothers", accent: "at the table." } satisfies AccentText,
-    note: "Profiles are being gathered with each member. Names are as published today.",
+    // confirm: the biographies are each member's own words from the previous site's pop-ups (read 26 Oct 2026), lightly tidied into the third person.
+    note: "Biographies are in each member's own words, as published on the previous Mums Aloud site.",
     people: [
-      { id: "council", name: "Bella Abidakun", role: "Council member" },
-      { id: "council", name: "Temi Fagbo", role: "Council member" },
-      { id: "council", name: "Bukunmi Ladeji", role: "Council member" },
-      { id: "council", name: "Elizabeth Toluwani", role: "Council member" },
-      { id: "council", name: "Abies Sonia", role: "Council member" },
+      {
+        id: "bella-abidakun",
+        name: "Bella Abidakun",
+        role: "Professional nurse",
+        bio: [
+          "Bella Abidakun is an education and retention team leader and a Professional Nurse Advocate lead with a background in adult nursing, currently working with an NHS trust in the United Kingdom. She is a chartered human resource practitioner in Nigeria and a family life coach with core expertise in life balance.",
+          "She sits on the board of the Royal College of Nursing, Yorkshire and Humber region.",
+          "She is the founder of The Life Balance Network and the convener of The Praying and Twerking Wife, and a previous facilitator of Undressing Sex with the Institute of Family Engineering and Development, Africa.",
+          "She has inspired people of different ages and walks of life. She is a mentor and a role model to many, with a goal to see people win in every area of their lives and be the best of themselves.",
+          "She is passionate about personal development, child protection, and excelling and finding balance in family life, work and business.",
+          "She is a wife and a mother to four fantastic children.",
+        ],
+      },
+      {
+        id: "temi-fagbo",
+        name: "Temi Fagbo",
+        role: "Life and love coach",
+        bio: [
+          "Temi Fagbo is a mother of two amazing teenagers and a life and love coach. She is passionate about personal rebranding and helping her clients build a possibility mindset, set smarter goals, grow in self-awareness, heal from abuse and gain self-confidence.",
+          "She holds that we are only limited by weakness of attention and poverty of imagination: anything is simple if you understand the process.",
+        ],
+      },
+      {
+        id: "bukunmi-ladeji",
+        name: "Bukunmi Ladeji",
+        role: "Nurse and entrepreneur",
+        bio: [
+          "Bukunmi is a dedicated nurse, entrepreneur and proud mother of two. Her own experiences of pregnancy and motherhood have given her a profound understanding of the challenges women face during and after childbirth, and that empathy fuels her passion to support and empower mothers on their journeys.",
+          "With a blend of medical expertise, business acumen and personal experience, she brings the skills, qualifications and exposure to make a meaningful impact, and looks forward to every opportunity to make a difference.",
+        ],
+      },
+      {
+        id: "elizabeth-toluwani",
+        name: "Elizabeth Toluwani",
+        role: "Childminder and doula in training",
+        bio: [
+          "Elizabeth Toluwani, also known as Temidayo, is a dedicated mother and a passionate advocate for maternal and child wellbeing. With a background in psychology, health and education, she brings a wealth of knowledge and experience to her work as a childminder, child carer and doula in training.",
+          "Driven by her own journey, including navigating the challenges of pregnancy loss, Temidayo deeply understands the importance of emotional and practical support for mothers during the prenatal and postnatal periods.",
+          "She is passionate about fostering strong bonds between parents and children: building healthy routines, establishing clear boundaries and cultivating a supportive family environment. Her certifications in teaching, skills building, family relationships and character building further equip her to guide and support the families in her care.",
+        ],
+      },
+      {
+        id: "abies-sonia",
+        name: "Abies Sonia",
+        role: "Counsellor and certified life coach",
+        bio: [
+          "Abies Sonia is a mother of three, a passionate advocate for emotional wellbeing, and a skilled guide on the journey of self-discovery. As a BACP Accredited Counsellor and Certified Life Coach, she understands the unique challenges and joys of navigating life's ups and downs.",
+          "With expertise in techniques such as NLP and EFT, Abies creates a safe and supportive space where you can explore your emotions, build resilience and connect with your authentic self.",
+        ],
+      },
     ] satisfies Profile[],
   },
   expect: {

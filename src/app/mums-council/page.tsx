@@ -10,6 +10,7 @@ import {
   UsersThreeIcon,
 } from "@phosphor-icons/react/ssr";
 import { ProfileTile } from "@/components/content/ProfileTile";
+import { teamPortraits } from "@/components/content/teamPortraits";
 import { IconChip, Section, SectionHeading, Statement } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { PageHeader } from "@/components/sections/PageHeader";
@@ -26,9 +27,9 @@ const roleIcons = { advocacy: MegaphoneIcon, research: ChartBarIcon, community: 
 const expectIcons = { empowerment: SparkleIcon, education: GraduationCapIcon, inspiration: UsersThreeIcon };
 
 /**
- * Mum's Council, from the live page: what the council does, its members (names as published,
- * profiles to follow), and what a mother can expect. Registration has no destination on the live
- * site yet, so the page says so rather than inventing one.
+ * Mum's Council, from the live page: what the council does, its members (their own portraits,
+ * roles and biographies behind "Read bio"), and what a mother can expect. Registration has no
+ * destination on the live site yet, so the page says so rather than inventing one.
  */
 export default function MumsCouncilPage() {
   return (
@@ -71,7 +72,7 @@ export default function MumsCouncilPage() {
         <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
           {council.members.people.map((person) => (
             <li key={person.name}>
-              <ProfileTile person={person} />
+              <ProfileTile person={person} {...teamPortraits[person.id]} context={council.tag} />
             </li>
           ))}
         </ul>

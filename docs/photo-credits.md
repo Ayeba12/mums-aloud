@@ -21,4 +21,8 @@ The client brief asks for real, non-stock photos in the hero. Replace these with
 
 ## Team portraits (the client's own photos)
 
-Supplied by the owner on 26 October 2026 and stored in `src/assets/photos/team/`. They arrived without names. The owner confirmed every match on 26 October 2026: red wrap top on brown = Bokun Imoukhuede; grey background with braids = Oyindamola; black and white with pearls = Dk Jonah; teal jacket on white = Yemi Komolafe. These are the only photos on the site that stand for named people.
+Supplied by the owner on 26 October 2026 and stored in `src/assets/photos/team/`. They arrived without names. The owner confirmed every match on 26 October 2026: red wrap top on brown = Bokun Imoukhuede; grey background with braids = Oyindamola; black and white with pearls = Dk Jonah; teal jacket on white = Yemi Komolafe. ## Council portraits (the client's own photos)
+
+Supplied by the owner on 26 October 2026 and stored in `src/assets/photos/council/`, resized to 1600px on the long side. They arrived without names; each was matched to the named thumbnail on the previous site's Mum's Council page (read 26 October 2026): brown scarf selfie with the mirror = Bella Abidakun; white blouse, arms crossed, blue background = Temi Fagbo; black dress with gold earrings = Bukunmi Ladeji; green faux fur coat = Elizabeth Toluwani; curly hair and pink lipstick on light blue = Abies Sonia.
+
+Together with the team portraits these are the only photos on the site that stand for named people.
