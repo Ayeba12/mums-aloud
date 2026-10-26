@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import {
+  ArrowRightIcon,
+  ArrowUpRightIcon,
   CalendarHeartIcon,
   ChalkboardTeacherIcon,
   CheckIcon,
@@ -16,6 +19,7 @@ import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { ButtonLink } from "@/components/ui/Button";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { services } from "@/content/offers";
+import { joinForm } from "@/lib/site";
 import volunteerPhoto from "@/assets/photos/two-friends-smiling.jpg";
 import approachPhoto from "@/assets/photos/women-community-circle.jpg";
 
@@ -76,6 +80,21 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
+                  {/* The one door for this service, at the foot of the card. */}
+                  <div className="mt-auto pt-6">
+                    {pathway.action.external ? (
+                      <a href={pathway.action.href} className="group inline-flex min-h-12 items-center gap-2 font-semibold">
+                        {pathway.action.label}
+                        <ArrowUpRightIcon aria-hidden size={16} weight="bold" />
+                        <span className="sr-only">(opens Calendly)</span>
+                      </a>
+                    ) : (
+                      <Link href={pathway.action.join ? joinForm.href : (pathway.action.href ?? "/")} className="group inline-flex min-h-12 items-center gap-2 font-semibold">
+                        {pathway.action.label}
+                        <ArrowRightIcon aria-hidden size={16} weight="bold" className="transition-transform duration-150 group-hover:translate-x-1 motion-reduce:transition-none" />
+                      </Link>
+                    )}
+                  </div>
                 </li>
               );
             })}

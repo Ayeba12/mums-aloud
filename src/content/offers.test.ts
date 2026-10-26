@@ -54,3 +54,17 @@ describe("Offers and resources content", () => {
     expect(calculators.pregnancy.note).toMatch(/estimate/i);
   });
 });
+
+describe("Our Services actions", () => {
+  it("gives every pathway one specific door: the joining form, Bokun's call, the contact form or the newsletter", () => {
+    const pathways = services.groups.flatMap((group) => group.pathways);
+    expect(pathways).toHaveLength(7);
+    for (const pathway of pathways) {
+      const { action } = pathway;
+      expect(action.label, pathway.id).not.toMatch(/learn more|click here/i);
+      const ok = action.join === true || action.href === "#newsletter" || action.href === "/contact/" || /^https:\/\/calendly\.com\//.test(action.href ?? "");
+      expect(ok, pathway.id).toBe(true);
+      if (action.external) expect(action.href, pathway.id).toMatch(/^https:/);
+    }
+  });
+});

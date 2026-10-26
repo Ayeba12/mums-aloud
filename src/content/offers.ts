@@ -24,6 +24,8 @@ export type Pathway = {
   title: string;
   summary: string;
   items: readonly string[];
+  /** The one door for this service: `join` resolves to the joining form, `external` opens Calendly. */
+  action: { label: string; href?: string; join?: true; external?: true };
 };
 export type PathwayGroup = { id: string; tag: string; heading: AccentText; pathways: readonly Pathway[] };
 export type Audience = { icon: "mums" | "volunteers"; title: string; items: readonly string[] };
@@ -41,6 +43,7 @@ const groups: readonly PathwayGroup[] = [
         title: "1:1 Support",
         summary: "One-to-one support built around you, from your first steps into motherhood through to the toughest days.",
         items: ["Individual support sessions with a trained practitioner", "Postpartum transition coaching", "Crisis support and referrals", "Signposting to specialist services"],
+        action: { label: "Book a free call", href: calendly, external: true },
       },
       {
         id: "group",
@@ -48,6 +51,7 @@ const groups: readonly PathwayGroup[] = [
         title: "Group Support & Counselling",
         summary: "A safe space to share, be heard, and know you're not carrying it alone.",
         items: ["Weekly support group sessions", "Group counselling and mindfulness sessions", "Online community forums", "Peer-led discussion circles"],
+        action: { label: "Join Mama's Escape", join: true },
       },
       {
         id: "mentor",
@@ -55,6 +59,7 @@ const groups: readonly PathwayGroup[] = [
         title: "Get a Mentor Mum",
         summary: "Paired with a mum who's walked the path before you, for honest guidance and real friendship.",
         items: ["One-to-one mentor matching", "Regular check-ins and ongoing support", "Guidance from lived experience, not just training", "A steady, familiar face through the early years"],
+        action: { label: "Join Mama's Escape", join: true },
       },
       {
         id: "community",
@@ -62,6 +67,7 @@ const groups: readonly PathwayGroup[] = [
         title: "Join Our Community",
         summary: "Become part of a community that shows up for you and your family, not just in a crisis.",
         items: ["Community groups and forums", "Social events and meet-ups", "Buddy system pairing", "A sense of belonging that lasts beyond the early years"],
+        action: { label: "Join Mama's Escape", join: true },
       },
     ],
   },
@@ -76,6 +82,7 @@ const groups: readonly PathwayGroup[] = [
         title: "Training and Workshops",
         summary: "Targeted training designed to empower mothers, build practical life skills, and support smooth transitions back into the workforce or entrepreneurship.",
         items: ["Personal Growth & Confidence", "Back-to-Work & Career Transition", "Financial Literacy & Household Budgeting", "Basic Business & Entrepreneurship"],
+        action: { label: "Ask about training", href: "/contact/" },
       },
       {
         id: "events",
@@ -83,6 +90,7 @@ const groups: readonly PathwayGroup[] = [
         title: "Community Events",
         summary: "Regular events that bring mums together to connect, celebrate, and belong.",
         items: ["Regular community gatherings", "Family-friendly activities", "Networking and celebration events"],
+        action: { label: "Get the newsletter", href: "#newsletter" },
       },
       {
         id: "experts",
@@ -95,6 +103,7 @@ const groups: readonly PathwayGroup[] = [
           "Topic-led talks shaped by what mums actually ask for",
           "Access to accurate, reliable information: no guesswork",
         ],
+        action: { label: "Join Mama's Escape", join: true },
       },
     ],
   },
