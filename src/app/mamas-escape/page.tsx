@@ -51,8 +51,6 @@ const expectPhotos = [
 ];
 const imageRing = "ring-1 ring-black-950/10 ring-inset";
 /** Scrim under the portrait captions: the world's own dark (berry 900), not a neutral black. */
-const portraitScrim =
-  "bg-[linear-gradient(to_top,var(--color-scrim-berry)_0%,color-mix(in_srgb,var(--color-scrim-berry)_85%,transparent)_45%,transparent_100%)]";
 
 export default function MamasEscapePage() {
   return (
@@ -223,18 +221,25 @@ export default function MamasEscapePage() {
         </Carousel>
       </Section>
 
-      {/* What to expect: three portraits with one line each, as the reference's testimonial row. */}
+      {/* What to expect: three portraits with one line each, as the reference's testimonial row. A slider
+          until lg (three narrow portraits cannot hold a sentence), then three across. The caption sits at
+          the lead size, the heading size only from xl where a card is wide enough for four lines, and the
+          scrim runs the full height so a long line stays legible wherever it ends. */}
       <Section id="what-to-expect" aria-labelledby="expect-heading" tone="tinted" className="scroll-mt-24">
         <SectionHeading id="expect-heading" tag={expect.tag} heading={expect.heading} intro={expect.body} align="center" />
-        <ul className="mt-12 grid gap-4 sm:grid-cols-3 md:gap-6">
+        <Carousel
+          count={expectPhotos.length}
+          className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-4 px-4 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:scroll-pl-0 lg:px-0"
+          controlsClassName="lg:hidden"
+        >
           {expectPhotos.map((photo, index) => (
-            <li key={photo.alt} className={`relative aspect-[2/3] overflow-hidden rounded-panel ${imageRing}`}>
-              <Image src={photo.src} alt={photo.alt} placeholder="blur" sizes="(min-width: 40rem) 33vw, 100vw" className={`absolute inset-0 size-full object-cover ${photo.position}`} />
-              <div aria-hidden className={`absolute inset-x-0 bottom-0 h-3/5 ${portraitScrim}`} />
-              <p className="absolute right-6 bottom-6 left-6 font-heading text-h4 text-on-photo">{expect.moments[index]}</p>
+            <li key={photo.alt} className={`relative aspect-[2/3] w-[72vw] shrink-0 snap-start overflow-hidden rounded-panel sm:w-[44vw] md:w-[38vw] lg:w-auto ${imageRing}`}>
+              <Image src={photo.src} alt={photo.alt} placeholder="blur" sizes="(min-width: 64rem) 33vw, (min-width: 48rem) 38vw, 72vw" className={`absolute inset-0 size-full object-cover ${photo.position}`} />
+              <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-scrim-berry)_0%,color-mix(in_srgb,var(--color-scrim-berry)_88%,transparent)_32%,color-mix(in_srgb,var(--color-scrim-berry)_45%,transparent)_62%,transparent_90%)]" />
+              <p className="absolute right-5 bottom-5 left-5 font-heading text-lead text-on-photo text-pretty lg:right-6 lg:bottom-6 lg:left-6 xl:text-h4">{expect.moments[index]}</p>
             </li>
           ))}
-        </ul>
+        </Carousel>
         <p className="mt-6 text-center text-caption text-text-secondary">{expect.note}</p>
       </Section>
 
