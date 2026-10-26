@@ -22,6 +22,8 @@ describe("About content", () => {
 
   it("carries the council's five roles and five members", () => {
     expect(council.roles.items).toHaveLength(5);
+    expect(council.roles.statement.highlight).toBe("makes a difference");
+    expect(council.roles.items.every((item) => item.icon && item.title && item.text)).toBe(true);
     expect(council.members.people).toHaveLength(5);
     expect(council.register.pending).toMatch(/being set up/);
   });

@@ -1,9 +1,10 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeftIcon, ArrowRightIcon, PauseIcon, PlayIcon } from "@phosphor-icons/react/ssr";
 import { centreDistance, centredIndex, centredScrollLeft, loopShift } from "@/components/ui/carousel-math";
+import { useReducedMotion } from "@/components/motion/useReducedMotion";
 
 export type Portrait = { src: StaticImageData; alt: string; position: string };
 
@@ -18,14 +19,6 @@ const arrowButton =
   "inline-flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-pill bg-accent text-on-accent transition-[background-color,scale] duration-150 ease-standard hover:bg-accent-hover active:scale-[0.96] motion-reduce:active:scale-100";
 const playButton =
   "inline-flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-pill border border-on-photo/40 text-on-photo transition-[background-color,scale] duration-150 ease-standard hover:bg-on-photo/15 active:scale-[0.96] motion-reduce:active:scale-100";
-
-const reducedQuery = "(prefers-reduced-motion: reduce)";
-const subscribeReduced = (onChange: () => void) => {
-  const media = window.matchMedia(reducedQuery);
-  media.addEventListener("change", onChange);
-  return () => media.removeEventListener("change", onChange);
-};
-const useReducedMotion = () => useSyncExternalStore(subscribeReduced, () => window.matchMedia(reducedQuery).matches, () => false);
 
 /** The card width and the gap after it: together the distance between two centred cards. */
 function metrics(list: HTMLUListElement) {

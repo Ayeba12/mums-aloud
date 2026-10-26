@@ -170,8 +170,8 @@ export const council = {
   heading: { lead: "A force for", accent: "change." } satisfies AccentText,
   intro: "Our Mum's Council is a dedicated group of passionate Black and mixed-race mothers committed to improving the lives of mothers and families within our community.",
   roles: {
-    tag: "What the council does",
-    heading: { lead: "Five ways the council", accent: "makes a difference." } satisfies AccentText,
+    /** The reference's centred statement over the card marquee: one highlighted phrase, no tag. */
+    statement: { lead: "Five ways the council", highlight: "makes a difference", trail: "." },
     items: [
       { icon: "advocacy", title: "Advocacy", text: "Championing the needs and concerns of Black mothers, particularly in mental and emotional wellbeing." },
       { icon: "research", title: "Research and development", text: "Contributing to research projects that aim to better understand the unique challenges faced by Black mothers." },

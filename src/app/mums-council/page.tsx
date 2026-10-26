@@ -12,6 +12,8 @@ import {
 import { ProfileTile } from "@/components/content/ProfileTile";
 import { teamPortraits } from "@/components/content/teamPortraits";
 import { IconChip, Section, SectionHeading, Statement } from "@/components/layout/Section";
+import { Reveal } from "@/components/motion/Reveal";
+import { CardMarquee } from "@/components/sections/CardMarquee";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { council } from "@/content/about";
@@ -27,32 +29,41 @@ const roleIcons = { advocacy: MegaphoneIcon, research: ChartBarIcon, community: 
 const expectIcons = { empowerment: SparkleIcon, education: GraduationCapIcon, inspiration: UsersThreeIcon };
 
 /**
- * Mum's Council, from the live page: what the council does, its members (their own portraits,
- * roles and biographies behind "Read bio"), and what a mother can expect. Registration has no
- * destination on the live site yet, so the page says so rather than inventing one.
+ * Mum's Council, from the live page: what the council does (the reference's statement over a
+ * drifting row of cards, revealed on scroll), its members (their own portraits, roles and
+ * biographies behind "Read bio"), and what a mother can expect. Registration has no destination
+ * on the live site yet, so the page says so rather than inventing one.
  */
 export default function MumsCouncilPage() {
   return (
     <main id="main">
       <PageHeader tag={council.tag} heading={council.heading} intro={council.intro} />
 
-      <Section aria-labelledby="roles-heading">
-        <SectionHeading id="roles-heading" tag={council.roles.tag} heading={council.roles.heading} />
-        <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {council.roles.items.map((item) => {
-            const Icon = roleIcons[item.icon];
-            return (
-              <li key={item.title} className="flex flex-col rounded-card border border-border-decoration bg-surface-card p-6">
-                <IconChip>
-                  <Icon aria-hidden size={24} />
-                </IconChip>
-                <h3 className="mt-4 font-heading text-h4 text-ink">{item.title}</h3>
-                <p className="mt-2">{item.text}</p>
-              </li>
-            );
-          })}
-        </ul>
-      </Section>
+      <Reveal>
+        <Statement id="roles-heading" {...council.roles.statement} size="h3" reveal>
+          <div data-reveal="fade">
+            <CardMarquee label="What the council does">
+              {council.roles.items.map((item) => {
+                const Icon = roleIcons[item.icon];
+                return (
+                  <li
+                    key={item.title}
+                    className="flex h-[20rem] w-[16rem] shrink-0 flex-col justify-between rounded-card border border-border-decoration bg-surface-card p-6 md:h-[22rem] md:w-[29rem] md:rounded-panel md:p-8"
+                  >
+                    <div>
+                      <IconChip>
+                        <Icon aria-hidden size={24} />
+                      </IconChip>
+                      <h3 className="mt-5 font-heading text-h4 text-ink md:mt-6">{item.title}</h3>
+                    </div>
+                    <p>{item.text}</p>
+                  </li>
+                );
+              })}
+            </CardMarquee>
+          </div>
+        </Statement>
+      </Reveal>
 
       <Statement
         id="council-statement"

@@ -83,7 +83,9 @@ export function IconChip({ className = "", children }: { className?: string; chi
  * Centred editorial statement, as on the People Work reference: a narrow serif H2 with one
  * highlighted phrase. No tag; at most a supporting paragraph and one quiet link beneath it.
  * A trail that starts with punctuation closes up against the highlight. `wide` loosens the
- * measure for a statement of several sentences.
+ * measure for a statement of several sentences; `size="h3"` is the reference's smaller statement
+ * over a row of cards, which go in `children` (96px below from `lg`). `reveal` marks the heading
+ * for a `Reveal` wrapper's line-by-line entrance.
  */
 export function Statement({
   id,
@@ -93,6 +95,9 @@ export function Statement({
   body,
   action,
   wide = false,
+  size = "h2",
+  reveal = false,
+  children,
 }: {
   id: string;
   lead: string;
@@ -101,16 +106,21 @@ export function Statement({
   body?: string;
   action?: ReactNode;
   wide?: boolean;
+  size?: "h2" | "h3";
+  reveal?: boolean;
+  children?: ReactNode;
 }) {
   const closeUp = trail !== undefined && /^[,.:;!?]/.test(trail);
+  const measure = size === "h3" ? "max-w-[34ch]" : wide ? "max-w-[38ch]" : "max-w-[30ch]";
   return (
     <Section aria-labelledby={id}>
-      <h2 id={id} className={`mx-auto text-center text-h2 text-balance ${wide ? "max-w-[38ch]" : "max-w-[30ch]"}`}>
+      <h2 id={id} data-reveal={reveal ? "lines" : undefined} className={`mx-auto text-center text-balance ${size === "h3" ? "text-h3" : "text-h2"} ${measure}`}>
         {lead} <mark className="rounded-control bg-accent-soft px-2 text-ink">{highlight}</mark>
         {trail && (closeUp ? trail : ` ${trail}`)}
       </h2>
       {body && <p className="mx-auto mt-6 max-w-[56ch] text-center text-lead">{body}</p>}
       {action && <div className="mt-6 flex justify-center">{action}</div>}
+      {children && <div className="mt-16 lg:mt-24">{children}</div>}
     </Section>
   );
 }
