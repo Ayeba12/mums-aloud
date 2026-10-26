@@ -2,6 +2,7 @@ import Image from "next/image";
 import { SectionHeading, Tag } from "@/components/layout/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { Accent } from "@/components/ui/Heading";
+import { VoicesSlider, type Portrait } from "./VoicesSlider";
 import { story } from "@/content/home";
 import storyPhoto from "@/assets/photos/women-community-circle.jpg";
 import embrace from "@/assets/photos/mother-daughter-embrace.jpg";
@@ -12,10 +13,10 @@ import park from "@/assets/photos/mother-daughter-park.jpg";
 import smiling from "@/assets/photos/mother-baby-smiling.jpg";
 
 /**
- * Portraits for the voices strip. Stock photography: never captioned as members.
+ * Portraits for the voices slider. Stock photography: never captioned as members.
  * When consented quotes arrive, add `name` and `quote` here and render them on the card.
  */
-const portraits = [
+const portraits: Portrait[] = [
   { src: embrace, alt: "A mother and daughter embracing, foreheads touching", position: "object-[50%_30%]" },
   { src: goldenHour, alt: "Two smiling women in golden evening light, one fixing the other's headwrap", position: "object-[50%_25%]" },
   { src: friends, alt: "Two friends smiling side by side", position: "object-[55%_30%]" },
@@ -26,7 +27,7 @@ const portraits = [
 
 /**
  * The reference's story frame: one dark rounded panel holding a photo that fades into the
- * panel colour, with the story copy over the fade, then the voices section and its marquee.
+ * panel colour, with the story copy over the fade, then the voices section and its slider.
  */
 export function StoryPanel() {
   return (
@@ -56,20 +57,8 @@ export function StoryPanel() {
           <div className="container-page">
             <SectionHeading id="voices-heading" tag={story.voices.tag} heading={story.voices.heading} align="center" />
           </div>
-          <div className="group mt-12 overflow-hidden" aria-hidden>
-            <ul className="flex w-max animate-marquee gap-6 group-hover:[animation-play-state:paused] motion-reduce:animate-none">
-              {[...portraits, ...portraits].map((photo, index) => (
-                <li key={index} className="w-72 shrink-0 md:w-[20rem]">
-                  <Image
-                    src={photo.src}
-                    alt=""
-                    placeholder="blur"
-                    sizes="20rem"
-                    className={`aspect-[2/3] w-full rounded-panel object-cover ${photo.position}`}
-                  />
-                </li>
-              ))}
-            </ul>
+          <div className="mt-12">
+            <VoicesSlider portraits={portraits} label={story.voices.tag} />
           </div>
           <p className="container-page mt-8 text-center text-caption">{story.voices.note}</p>
         </section>

@@ -2,7 +2,7 @@
 @import "../styles/theme.css";
 
 @theme {
-  /* Voices strip: the track is duplicated, so -50% is one full loop. Paused on hover; off under reduced motion. */
+  /* Pledge line (TextMarquee): the track is duplicated, so -50% is one full loop. Paused on hover; off under reduced motion. */
   --animate-marquee: marquee 56s linear infinite;
   @keyframes marquee {
     from { transform: translateX(0); }
