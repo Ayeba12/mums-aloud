@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     locale: "en_GB",
     siteName: siteConfig.name,
   },
+  // The share image and icons are the files beside this layout: opengraph-image.png, twitter-image.png,
+  // icon.png, apple-icon.png and favicon.ico (Next's file conventions add the tags).
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
