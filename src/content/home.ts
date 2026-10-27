@@ -95,7 +95,8 @@ export type Partner = { name: string; slug: string; logo?: { src: string; width:
  * The owner's partner list (Mamas_Escape_Website_Copy.md), in the owner's order. Logos were
  * gathered from each organisation's own site on 26 Oct 2026; confirm each partner's permission
  * before launch (the National Lottery mark is for funded projects only; the NHS logo needs the
- * NHS partner's say-so). Chuck Gallery has no logo file, so its tile is set in type.
+ * NHS partner's say-so; the owner chose the generic NHS mark on 27 Oct 2026). Chuck Gallery has no
+ * logo file, so its tile is set in type.
  */
 const partnerItems: Partner[] = [
   { name: "National Lottery Community Fund", slug: "national-lottery", logo: { src: "/partners/national-lottery.svg", width: 160, height: 52 } },
