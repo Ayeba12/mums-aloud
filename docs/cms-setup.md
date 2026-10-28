@@ -132,3 +132,4 @@ If the notice is red: `HTTP 401` means the two secrets differ; `HTTP 503` means 
 - Set a **featured image** (shown on the cards) and an **excerpt** (the card text; without one, the first 180 characters of the body are used).
 - Changes show on the site within seconds. If one does not, **Settings > Headless site > Refresh the site now**. Failing that, the site refreshes itself within the hour.
 - Upload images in the CMS's media library. Their addresses start with `https://cms.mumsaloud.com/wp-content/uploads/`.
+- Two plugins must stay active: **WPGraphQL** (the site reads all content through it) and **Mums Aloud Headless** (it registers the content types, exposes them to WPGraphQL and sends the refresh requests). Deactivating either empties the site's listings.
