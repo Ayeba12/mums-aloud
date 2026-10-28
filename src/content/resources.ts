@@ -5,6 +5,7 @@
  * library until the client's files move.
  */
 import type { AccentText } from "@/components/ui/Heading";
+import { uploadUrl } from "@/lib/wordpress/urls";
 
 export type Guide = {
   slug: string;
@@ -22,7 +23,7 @@ export const guides: Guide[] = [
     title: "Holiday Survival Guide for School-Age Kids",
     heading: { lead: "Holiday survival guide for", accent: "school-age kids." },
     intro: "Ideas and gentle structure for the school holidays, so the days feel lighter for you and fuller for them. A free PDF from Mums Aloud to download and keep.",
-    pdf: "https://mumsaloud.com/wp-content/uploads/2025/08/Holiday-Survival-GUIDE-for-school-age-kids.docx.pdf",
+    pdf: uploadUrl("2025/08/Holiday-Survival-GUIDE-for-school-age-kids.docx.pdf"),
     published: "August 2025",
   },
   {
@@ -30,7 +31,7 @@ export const guides: Guide[] = [
     title: "Activities Guide for Babies",
     heading: { lead: "Activities guide", accent: "for babies." },
     intro: "Simple, low-cost ways to play, soothe and connect with your baby in the first year. A free PDF from Mums Aloud to download and keep.",
-    pdf: "https://mumsaloud.com/wp-content/uploads/2025/08/Activities-GUIDE-for-babies.pdf",
+    pdf: uploadUrl("2025/08/Activities-GUIDE-for-babies.pdf"),
     published: "August 2025",
   },
 ];

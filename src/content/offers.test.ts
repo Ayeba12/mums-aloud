@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { uploadUrl } from "@/lib/wordpress/urls";
 import { newMumsCircle, services, trustedResources } from "./offers";
 import { calculators, guides } from "./resources";
 
@@ -45,7 +46,7 @@ describe("Offers and resources content", () => {
 
   it("keeps the guides at their live URLs with PDFs on the live site", () => {
     expect(guides.map((guide) => guide.slug)).toEqual(["holiday-guide-for-school-kids", "ativites-guide-for-babies"]);
-    expect(guides.every((guide) => guide.pdf.startsWith("https://mumsaloud.com/wp-content/uploads/") && guide.pdf.endsWith(".pdf"))).toBe(true);
+    expect(guides.every((guide) => guide.pdf.startsWith(uploadUrl("")) && guide.pdf.endsWith(".pdf"))).toBe(true);
   });
 
   it("keeps the calculators at their live URLs with an estimate-only note", () => {

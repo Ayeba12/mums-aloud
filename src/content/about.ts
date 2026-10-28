@@ -7,6 +7,7 @@
  * Mum's Council page on 26 Oct 2026.
  */
 import type { AccentText } from "@/components/ui/Heading";
+import { uploadUrl } from "@/lib/wordpress/urls";
 
 export type Profile = {
   id: "bokun" | "oyindamola" | "dk-jonah" | "yemi" | "bella-abidakun" | "temi-fagbo" | "bukunmi-ladeji" | "elizabeth-toluwani" | "abies-sonia";
@@ -104,7 +105,7 @@ export const founder = {
     heading: { lead: "Who looks after the woman who is", accent: "looking after everyone else?" } satisfies AccentText,
     intro: "Bokun Imoukhuede, founder of MumsAloud, on how it all started.",
     portrait: {
-      src: "https://mumsaloud.com/wp-content/uploads/2024/10/Mrs-Bokun-1025x1536.jpeg",
+      src: uploadUrl("2024/10/Mrs-Bokun-1025x1536.jpeg"),
       alt: "Bokun Imoukhuede, founder of MumsAloud",
       width: 1025,
       height: 1536,

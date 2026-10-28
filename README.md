@@ -31,13 +31,17 @@ Open http://localhost:3000. The design system is at http://localhost:3000/style-
 
 ## Content freshness
 
-WordPress data is cached with tags (`wp:storyLounge`, `wp:blog`, `wp:articles`, `wp:mumTopics`) and refreshes hourly as a safety net. For instant updates, have WordPress call this on publish:
+WordPress data is cached with tags (`wp:storyLounge`, `wp:blog`, `wp:articles`, `wp:mumTopics`, `wp:pages`, `podcast`) and refreshes hourly as a safety net. The Mums Aloud Headless plugin (`wp-plugin/`, installed on the CMS) calls this on every publish, update, bin and delete:
 
 ```
 POST https://<site>/api/revalidate/
 Header: x-revalidate-secret: <REVALIDATE_SECRET>
 Body: {"collection": "blog"}   (omit to refresh everything)
 ```
+
+## The CMS
+
+Content is edited at https://cms.mumsaloud.com/ (WordPress) and read through its REST API. `docs/cms-setup.md` has the setup, the content import and the go-live steps; `wp-plugin/` holds the plugin that registers the content types and sends the refresh requests. `WORDPRESS_API_URL` names the CMS, and the media host and the `/wp-admin` and `/wp-content/uploads/` redirects follow it.
 
 ## Deploying
 
