@@ -10,12 +10,20 @@ export const privacyPage = {
   updated: "Last updated",
 };
 
+/** The cookie notice bar (every page, until closed): honest about what this site does, with the policy one tap away. */
+export const cookieNotice = {
+  label: "Cookie notice",
+  text: "We do not use tracking or advertising cookies. Once you close this notice, your browser keeps one small setting so it stays closed.",
+  link: { label: "Cookie policy", href: "/cookie-policy-uk/" },
+  dismiss: "Got it",
+};
+
 export const cookiePolicy = {
   title: "Cookie policy",
   description: "What this website stores in your browser, and what it does not.",
   tag: "Cookie policy (UK)",
   heading: { lead: "What this site keeps", accent: "in your browser." },
-  reviewed: "Last reviewed 23 October 2026",
+  reviewed: "Last reviewed 28 October 2026",
   // confirm: keep this true as hosting, analytics or embeds change.
   sections: [
     {
@@ -23,6 +31,7 @@ export const cookiePolicy = {
       paragraphs: [
         "At the time of writing, this website sets no cookies for advertising, analytics or tracking, and no cookies are needed for it to work.",
         "The newsletter and contact forms send what you type to us when you press send. They store nothing in your browser.",
+        "When you close the cookie notice at the foot of the page, your browser keeps one small setting (not a cookie) so the notice stays closed. It holds nothing about you, and clearing your browser's site data removes it.",
       ],
     },
     {

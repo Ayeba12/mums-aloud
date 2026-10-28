@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Libre_Caslon_Text, Urbanist } from "next/font/google";
+import { CookieNotice } from "@/components/navigation/CookieNotice";
 import { SiteFooter } from "@/components/navigation/SiteFooter";
 import { SiteHeader } from "@/components/navigation/SiteHeader";
 import { NewsletterDialog } from "@/components/newsletter/NewsletterDialog";
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
         <SiteFooter />
         <NewsletterDialog />
+        <CookieNotice />
       </body>
     </html>
   );
