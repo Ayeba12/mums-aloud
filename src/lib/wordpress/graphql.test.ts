@@ -22,8 +22,9 @@ describe("GraphQL endpoint", () => {
 });
 
 describe("queries", () => {
-  it("lists Story Lounge posts through the category filter and the custom types through their own fields", () => {
-    expect(listQuery("storyLounge")).toContain('posts(first: $first, where: { categoryName: "story-lounge", orderby');
+  it("lists every post for the Story Lounge and the custom types through their own fields", () => {
+    expect(listQuery("storyLounge")).toContain("posts(first: $first, where: { orderby");
+    expect(listQuery("storyLounge")).not.toContain("categoryName");
     expect(listQuery("blog")).toContain("mumStories(first: $first, where: { orderby");
     expect(listQuery("articles")).toContain("articles(first: $first");
     expect(listQuery("mumTopics")).toContain("mumTopics(first: $first");

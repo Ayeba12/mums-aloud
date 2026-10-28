@@ -1,7 +1,8 @@
 /**
  * Which WordPress content feeds which part of the site.
- * Owner decision (20 Oct 2026): Story Lounge = `post` in the `story-lounge` category,
- * Blog = `mum-story`, `article` is its own collection, `mum-topic` stays in the model.
+ * Owner decision (28 Oct 2026, replacing 20 Oct): Story Lounge = every `post`, whatever its
+ * category; Blog = `mum-story` and `mum-topic` together (topics keep their own `/mum-topic/` URLs
+ * and read as Blog items); `article` is its own collection on the Articles page only.
  * Change the mapping here; components only use the collection keys.
  */
 export type CollectionKey = "storyLounge" | "blog" | "articles" | "mumTopics";
@@ -19,6 +20,8 @@ export type Collection = {
   categorySlug?: string;
   /** Listing page on the new site, if it has one. */
   listingPath?: string;
+  /** Other collections whose items this one lists alongside its own (the Blog also shows Mum Topics). */
+  sources?: CollectionKey[];
 };
 
 export const collections: Record<CollectionKey, Collection> = {
@@ -28,7 +31,6 @@ export const collections: Record<CollectionKey, Collection> = {
     restBase: "posts",
     graphql: { single: "post", plural: "posts" },
     uriPrefix: "/",
-    categorySlug: "story-lounge",
     listingPath: "/story-lounge/",
   },
   blog: {
@@ -38,6 +40,7 @@ export const collections: Record<CollectionKey, Collection> = {
     graphql: { single: "mumStory", plural: "mumStories" },
     uriPrefix: "/mum-story/",
     listingPath: "/blog/",
+    sources: ["blog", "mumTopics"],
   },
   articles: {
     key: "articles",
@@ -54,6 +57,8 @@ export const collections: Record<CollectionKey, Collection> = {
     restBase: "mum-topic",
     graphql: { single: "mumTopic", plural: "mumTopics" },
     uriPrefix: "/mum-topic/",
+    /** Topics are listed on the Blog; their own pages link back there. */
+    listingPath: "/blog/",
   },
 };
 

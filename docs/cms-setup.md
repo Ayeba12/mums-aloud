@@ -125,9 +125,9 @@ If the notice is red: `HTTP 401` means the two secrets differ; `HTTP 503` means 
 ## Step 7. Day to day
 
 - Write and publish in the CMS. Where things show on the site:
-  - **Posts** in the **Story Lounge** category: the Story Lounge.
-  - **Mums Stories**: the Blog.
-  - **Articles**: their own pages at `/article/...`.
+  - **Posts** (any category): the Story Lounge.
+  - **Mums Stories** and **Mum Topics**: the Blog, newest first together. Topics keep `/mum-topic/...` addresses.
+  - **Articles**: the Articles page and their own pages at `/article/...`.
   - **Pages** `privacy-policy` and `cookie-policy-uk`: the policy pages.
   - Everything else in WordPress is not shown.
 - Set a **featured image** (shown on the cards) and an **excerpt** (the card text; without one, the first 180 characters of the body are used).

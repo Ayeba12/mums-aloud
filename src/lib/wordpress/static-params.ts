@@ -9,12 +9,14 @@
 import { listingPages } from "@/lib/paging";
 import { getAll } from "./client";
 import type { CollectionKey } from "./collections";
+import { itemUri } from "./graphql";
 
 export const PLACEHOLDER_SLUG = "unavailable";
 
 export async function slugParams(key: CollectionKey): Promise<Array<{ slug: string }>> {
   try {
-    const slugs = (await getAll(key)).map((post) => post.slug);
+    // Only this type's own items: an aggregated listing's other sources have their own routes.
+    const slugs = (await getAll(key)).filter((post) => post.path === itemUri(key, post.slug)).map((post) => post.slug);
     return (slugs.length ? slugs : [PLACEHOLDER_SLUG]).map((slug) => ({ slug }));
   } catch {
     return [{ slug: PLACEHOLDER_SLUG }];
