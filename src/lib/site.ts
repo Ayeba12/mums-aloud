@@ -4,7 +4,7 @@ export const siteConfig = {
   tagline: "A community for Black mothers in the UK",
   description:
     "Mums Aloud is a community built by mothers, for Black mothers in the UK. Join Mama's Escape to be understood without having to explain.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   /** Where every "Join" button on the site goes: the Mama's Escape page, opened at its top (owner, 26 Oct 2026). */
   joinUrl: "/mamas-escape/",
   /** The team inbox (owner, 10 Aug 2026 notes): enquiries, applications and newsletter requests land here. */

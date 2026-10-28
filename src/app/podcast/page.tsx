@@ -218,7 +218,7 @@ async function EpisodeList() {
             url: `${siteConfig.url}/podcast/`,
             image: podcast.image,
             author: podcast.author ? { "@type": "Person", name: podcast.author } : undefined,
-            webFeed: process.env.PODCAST_FEED_URL ?? "https://anchor.fm/s/e0f9c9c4/podcast/rss",
+            webFeed: process.env.PODCAST_FEED_URL || "https://anchor.fm/s/e0f9c9c4/podcast/rss",
           }),
         }}
       />

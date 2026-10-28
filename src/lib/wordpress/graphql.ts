@@ -11,8 +11,9 @@
 import { collections, type CollectionKey } from "./collections";
 import type { WpPost } from "./mapping";
 
-const API_URL = (process.env.WORDPRESS_API_URL ?? "https://cms.mumsaloud.com/wp-json/wp/v2").replace(/\/$/, "");
-export const GRAPHQL_URL = (process.env.WORDPRESS_GRAPHQL_URL ?? `${new URL(API_URL).origin}/graphql`).replace(/\/$/, "");
+// `||`, not `??`: a blank value in the hosting settings counts as unset.
+const API_URL = (process.env.WORDPRESS_API_URL || "https://cms.mumsaloud.com/wp-json/wp/v2").replace(/\/$/, "");
+export const GRAPHQL_URL = (process.env.WORDPRESS_GRAPHQL_URL || `${new URL(API_URL).origin}/graphql`).replace(/\/$/, "");
 const TIMEOUT_MS = 15_000;
 
 export class WordPressError extends Error {

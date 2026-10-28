@@ -7,7 +7,8 @@ import { decodeEntities, toPlainText, truncate } from "@/lib/wordpress/mapping";
  * plainly what the feed does not provide (transcripts, for now).
  */
 export const PODCAST_TAG = "podcast";
-const FEED_URL = process.env.PODCAST_FEED_URL ?? "https://anchor.fm/s/e0f9c9c4/podcast/rss";
+// `||`, not `??`: a blank value in the hosting settings counts as unset.
+const FEED_URL = process.env.PODCAST_FEED_URL || "https://anchor.fm/s/e0f9c9c4/podcast/rss";
 const TIMEOUT_MS = 15_000;
 
 export type Episode = {

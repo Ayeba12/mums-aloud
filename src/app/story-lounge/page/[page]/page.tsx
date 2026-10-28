@@ -3,11 +3,13 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { listingPageCount, PostListing } from "@/components/content/PostListing";
 import { storyLounge } from "@/content/stories";
 import { pageHref, parsePage } from "@/lib/paging";
+import { pageParams } from "@/lib/wordpress/static-params";
 
 type Props = { params: Promise<{ page: string }> };
 
 /** Later pages of the Story Lounge; page 1 is `/story-lounge/` itself. See the Blog paging route for the notes. */
-export const instant = false;
+export const ensureStatic = "navigation";
+export const generateStaticParams = () => pageParams("storyLounge");
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const page = parsePage((await params).page);

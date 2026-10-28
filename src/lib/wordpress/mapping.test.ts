@@ -69,6 +69,7 @@ describe("toPostSummary", () => {
       title: "Habibah",
       excerpt: "A story about ‘home’.",
       date: "2024-10-28T10:00:00",
+      modified: "2024-10-28T10:00:00",
       image: { src: "https://mumsaloud.com/wp-content/uploads/a.jpg", alt: "", width: 800, height: 600 },
     });
   });

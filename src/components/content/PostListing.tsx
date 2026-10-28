@@ -10,7 +10,7 @@ import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { buttonClasses, ButtonLink } from "@/components/ui/Button";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { postInvite, type ListingCopy } from "@/content/stories";
-import { pageCount, pageHref, pageSlice } from "@/lib/paging";
+import { listingPages, pageCount, pageHref, pageSlice } from "@/lib/paging";
 import { getAll } from "@/lib/wordpress/client";
 import { collections, type CollectionKey } from "@/lib/wordpress/collections";
 import type { PostSummary } from "@/lib/wordpress/mapping";
@@ -25,7 +25,7 @@ const imageRing = "ring-1 ring-black-950/10 ring-inset";
 export async function listingPageCount(collection: CollectionKey): Promise<number | null> {
   try {
     const posts = await getAll(collection);
-    return pageCount(Math.max(0, posts.length - 1));
+    return listingPages(posts.length);
   } catch {
     return null;
   }

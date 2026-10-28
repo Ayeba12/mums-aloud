@@ -13,6 +13,11 @@ export function pageCount(total: number, size = LISTING_PAGE_SIZE): number {
   return Math.max(1, Math.ceil(total / size));
 }
 
+/** Pages in a listing: the newest item is featured on page 1, the rest run eight per page. */
+export function listingPages(total: number): number {
+  return pageCount(Math.max(0, total - 1));
+}
+
 export function pageSlice<T>(items: T[], page: number, size = LISTING_PAGE_SIZE): T[] {
   return items.slice((page - 1) * size, page * size);
 }

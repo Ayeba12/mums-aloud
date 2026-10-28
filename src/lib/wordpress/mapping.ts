@@ -32,6 +32,8 @@ export type PostSummary = {
   title: string;
   excerpt: string;
   date: string;
+  /** Last edit in WordPress, for the sitemap. */
+  modified?: string;
   image?: { src: string; alt: string; width?: number; height?: number };
 };
 
@@ -96,6 +98,7 @@ export function toPostSummary(post: WpPost): PostSummary {
     title: tidyTitle(post.title.rendered),
     excerpt: truncate(toPlainText(post.excerpt?.rendered ?? ""), 180),
     date: post.date,
+    modified: post.modified,
     image: media?.source_url
       ? {
           src: media.source_url,
