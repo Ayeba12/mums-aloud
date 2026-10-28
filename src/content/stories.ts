@@ -1,5 +1,5 @@
 /**
- * Copy for the two editorial listings and their post pages. The collections themselves are
+ * Copy for the three editorial listings and their post pages. The collections themselves are
  * mapped in `lib/wordpress/collections.ts` (owner decision, 20 Oct 2026). Intros are drafted from
  * the brief and the live site's labels and need owner sign-off (`confirm`).
  */
@@ -58,21 +58,21 @@ export const blog: ListingCopy = {
   empty: "No articles have been published yet. Come back soon.",
 };
 
-/** The separate `article` collection (four pieces today). Where they are listed is still to decide; until then they sit beside the Blog. */
+/** The separate `article` collection (four first-person pieces today), listed at `/article/`, the live site's own archive URL. */
 export const articles: ListingCopy = {
   title: "Articles",
   description: "Longer pieces from Mums Aloud on motherhood, identity and finding the woman inside the mother.",
-  /** The label links back to the Blog, where these sit for now. */
-  tag: "Blog",
+  tag: "Articles",
   heading: { lead: "Longer reads,", accent: "mum to mum." },
+  // confirm
   intro: "Longer pieces on motherhood, identity and finding the woman inside the mother.",
   cardLabel: "Article",
   featuredLabel: "Featured article",
   readLabel: "Read the article",
   latestHeading: "Latest articles",
-  allLabel: "Back to the Blog",
+  allLabel: "All articles",
   moreHeading: { lead: "More", accent: "articles" },
-  empty: "No articles have been published yet.",
+  empty: "No articles have been published yet. Come back soon.",
 };
 
 /** The contextual invitation at the foot of every story and article. */

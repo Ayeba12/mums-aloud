@@ -17,6 +17,8 @@ describe("navigation", () => {
       return item && isGroup(item) ? item.links : [];
     };
     expect(links("Stories").map((link) => link.href)).toContain("/podcast/");
+    // Articles sit after Blog: the `article` collection's own listing at the live site's archive URL (28 Oct 2026).
+    expect(links("Stories").map((link) => link.href)).toEqual(["/story-lounge/", "/blog/", "/article/", "/podcast/"]);
     const newsletter = links("Resources").find((link) => link.label === "Newsletter");
     expect(newsletter?.href).toBe("#newsletter");
   });

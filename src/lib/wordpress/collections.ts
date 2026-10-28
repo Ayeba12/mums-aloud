@@ -35,8 +35,8 @@ export const collections: Record<CollectionKey, Collection> = {
     key: "articles",
     label: "Articles",
     restBase: "article",
-    /** No listing of their own yet (owner to decide); article pages link back to the Blog. */
-    listingPath: "/blog/",
+    /** The live site's own archive URL (`has_archive`), kept; later pages live at `/article/page/<n>/`. */
+    listingPath: "/article/",
   },
   mumTopics: {
     key: "mumTopics",

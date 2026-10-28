@@ -103,6 +103,7 @@ export const mainNav: NavItem[] = [
     links: [
       { label: "Story Lounge", href: "/story-lounge/" },
       { label: "Blog", href: "/blog/" },
+      { label: "Articles", href: "/article/" },
       { label: "Podcast", href: "/podcast/" },
     ],
     feature: { photo: "laughing", caption: "Real mothers, real stories", action: { label: "Read the Story Lounge", href: "/story-lounge/" } },
@@ -162,6 +163,7 @@ export const footerGroups: NavGroup[] = [
     links: [
       { label: "Story Lounge", href: "/story-lounge/" },
       { label: "Blog", href: "/blog/" },
+      { label: "Articles", href: "/article/" },
       { label: "Podcast", href: "/podcast/" },
       { label: "Find Support", href: "/find-support/" },
       { label: "Guides and calculators", href: "/resources/" },
