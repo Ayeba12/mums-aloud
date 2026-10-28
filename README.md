@@ -43,9 +43,13 @@ Body: {"collection": "blog"}   (omit to refresh everything)
 
 Content is edited at https://cms.mumsaloud.com/ (WordPress) and read through its REST API. `docs/cms-setup.md` has the setup, the content import and the go-live steps; `wp-plugin/` holds the plugin that registers the content types and sends the refresh requests. `WORDPRESS_API_URL` names the CMS, and the media host and the `/wp-admin` and `/wp-content/uploads/` redirects follow it.
 
+## The lock file
+
+`package-lock.json` must be complete for Linux, where CI and Vercel run `npm ci`. npm on Windows leaves out the optional WASM packages that sharp and Tailwind depend on (`@emnapi/runtime`, `@emnapi/core`), so after changing dependencies on a Windows machine run the **Refresh lock file** workflow on GitHub (Actions > Refresh lock file > Run workflow) and pull `main`. It resolves the full tree on Linux, proves `npm ci` accepts it, and commits the lock.
+
 ## Deploying
 
-1. Push this folder to a new GitHub repository.
+1. The code lives at https://github.com/Ayeba12/mums-aloud (`main`).
 2. In Vercel, import the repository. Framework: Next.js. Root directory: the repository root.
 3. Add the variables from `.env.example` in Vercel for Production and Preview.
 4. Every pull request gets a preview URL; merging to `main` deploys to production.
