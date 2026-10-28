@@ -2,16 +2,18 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Suspense } from "react";
 import { ArrowRightIcon, ChartBarIcon, GlobeHemisphereWestIcon, HeartIcon, MegaphoneIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
+import { PartnerTile } from "@/components/content/PartnerTile";
 import { PostTile } from "@/components/content/PostTile";
 import { Section, SectionHeading, Tag } from "@/components/layout/Section";
 import { PartnershipForm } from "@/components/forms/PartnershipForm";
+import { CardMarquee } from "@/components/sections/CardMarquee";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { ButtonLink } from "@/components/ui/Button";
 import { Carousel } from "@/components/ui/Carousel";
 import { Accent } from "@/components/ui/Heading";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { SmartLink } from "@/components/ui/SmartLink";
-import { impact, partners as partnerNames } from "@/content/home";
+import { impact, partners as partnerList } from "@/content/home";
 import { enquiry, hero, network, offer, page, process, routes, voices, ways, why } from "@/content/partnership";
 import { siteConfig } from "@/lib/site";
 import { getLatest } from "@/lib/wordpress/client";
@@ -102,7 +104,7 @@ export default function PartnershipPage() {
         </Carousel>
       </PageHeader>
 
-      {/* Berry panel: two big photo cards for the two routes in, then the partner strip. */}
+      {/* Berry panel: two big photo cards for the two routes in, then the partners' logos as a marquee. */}
       <div className="frame-x section-y">
         <section aria-labelledby="routes-heading" className="surface-dark rounded-panel">
           <div className="container-page section-y">
@@ -138,11 +140,12 @@ export default function PartnershipPage() {
               ))}
             </ul>
             <p className="mt-12 text-center text-caption font-semibold tracking-wide uppercase opacity-80">{routes.partnersTag}</p>
-            <ul className="mt-4 flex flex-wrap justify-center gap-x-8 gap-y-3 text-center font-semibold">
-              {partnerNames.names.map((name) => (
-                <li key={name}>{name}</li>
+            {/* The partners' logos drift across the panel on light tiles, clipped at the panel's own edges. */}
+            <CardMarquee label={routes.partnersTag} className="mt-6">
+              {partnerList.items.map((partner) => (
+                <PartnerTile key={partner.slug} partner={partner} variant="marquee" />
               ))}
-            </ul>
+            </CardMarquee>
           </div>
         </section>
       </div>

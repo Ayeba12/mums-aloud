@@ -87,9 +87,10 @@ export const impact = {
 /**
  * A partner organisation; `logo` is a file in `public/partners/` (sources and brand rules in
  * docs/photo-credits.md), shown in place of the name when present; `tall` marks a square-ish
- * mark that needs more height than a wordmark to read.
+ * mark that needs more height than a wordmark to read; `onDark` is a version drawn for dark
+ * grounds (the others are turned white by CSS on the berry panel, which a lozenge mark cannot be).
  */
-export type Partner = { name: string; slug: string; logo?: { src: string; width: number; height: number; tall?: boolean } };
+export type Partner = { name: string; slug: string; logo?: { src: string; width: number; height: number; tall?: boolean; onDark?: string } };
 
 /**
  * The owner's partner list (Mamas_Escape_Website_Copy.md), in the owner's order. Logos were
@@ -100,7 +101,7 @@ export type Partner = { name: string; slug: string; logo?: { src: string; width:
  */
 const partnerItems: Partner[] = [
   { name: "National Lottery Community Fund", slug: "national-lottery", logo: { src: "/partners/national-lottery.svg", width: 160, height: 52 } },
-  { name: "NHS", slug: "nhs", logo: { src: "/partners/nhs.svg", width: 371, height: 150 } },
+  { name: "NHS", slug: "nhs", logo: { src: "/partners/nhs.svg", width: 371, height: 150, onDark: "/partners/nhs-white.svg" } },
   { name: "Caribbean and African Health Network (CAHN)", slug: "cahn", logo: { src: "/partners/cahn.png", width: 1103, height: 320 } },
   { name: "Rehoboth for Families", slug: "rehoboth-for-families", logo: { src: "/partners/rehoboth-for-families.png", width: 359, height: 184, tall: true } },
   { name: "Trafford Council", slug: "trafford-council", logo: { src: "/partners/trafford-council.png", width: 477, height: 115 } },
