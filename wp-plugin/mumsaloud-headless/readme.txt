@@ -24,4 +24,4 @@ Settings > Headless site: the site's URL, the shared secret (REVALIDATE_SECRET o
 == Changelog ==
 
 = 1.0.0 =
-* First version.
+* First version. The folder is mumsaloud-headless; activation removes the unusable mums-aloud-headless folder left by a faulty first upload.

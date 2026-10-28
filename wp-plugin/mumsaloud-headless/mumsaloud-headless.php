@@ -52,8 +52,33 @@ final class Mums_Aloud_Headless
 
     public static function activate()
     {
+        self::remove_broken_upload();
         self::register_post_types();
         flush_rewrite_rules();
+    }
+
+    /**
+     * The first upload of this plugin (28 Oct 2026) was zipped on Windows with backslashes in the entry
+     * names, so `plugins/mums-aloud-headless/` holds files literally named `mums-aloud-headless\...`.
+     * WordPress's own file layer turns backslashes into slashes and so can neither activate nor delete
+     * them; plain PHP can. Only a folder holding nothing but such files is touched.
+     */
+    private static function remove_broken_upload()
+    {
+        $dir = WP_PLUGIN_DIR . '/mums-aloud-headless';
+        if (!is_dir($dir) || realpath($dir) === realpath(__DIR__)) {
+            return;
+        }
+        $entries = array_diff(scandir($dir), array('.', '..'));
+        foreach ($entries as $entry) {
+            if (strpos($entry, '\\') === false || !is_file($dir . '/' . $entry)) {
+                return;
+            }
+        }
+        foreach ($entries as $entry) {
+            @unlink($dir . '/' . $entry);
+        }
+        @rmdir($dir);
     }
 
     /* ---------- Content types (the same slugs, REST bases and URL shapes as the previous site) ---------- */
