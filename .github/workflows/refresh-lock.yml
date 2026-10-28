@@ -1,0 +1,39 @@
+name: Refresh lock file
+
+# Regenerates package-lock.json on Linux and commits it. npm on Windows leaves out the optional
+# WASM packages that sharp and Tailwind's oxide depend on (@emnapi/runtime, @emnapi/core), and
+# `npm ci` on Linux then refuses the lock as out of sync. Run this (Actions > Refresh lock file >
+# Run workflow) after changing dependencies on a Windows machine, then pull main.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NPM_CONFIG_FUND: "false"
+      NPM_CONFIG_AUDIT: "false"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Resolve the full dependency tree into the lock
+        run: npm install --package-lock-only --ignore-scripts
+      - name: Prove npm ci accepts it
+        run: npm ci --ignore-scripts
+      - name: Commit the lock if it changed
+        run: |
+          if git diff --quiet -- package-lock.json; then
+            echo "package-lock.json unchanged"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add package-lock.json
+            git commit -m "Regenerate package-lock.json on Linux"
+            git push
+          fi
