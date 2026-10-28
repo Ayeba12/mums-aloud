@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      WORDPRESS_API_URL: ${{ vars.WORDPRESS_API_URL || 'https://mumsaloud.com/wp-json/wp/v2' }}
+      WORDPRESS_API_URL: ${{ vars.WORDPRESS_API_URL || 'https://cms.mumsaloud.com/wp-json/wp/v2' }}
       NEXT_PUBLIC_SITE_URL: https://mumsaloud.com
       NEXT_TELEMETRY_DISABLED: 1
     steps:

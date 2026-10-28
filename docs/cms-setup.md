@@ -6,7 +6,7 @@ The new website reads its stories, articles, posts and policy pages from WordPre
 
 - **cms.mumsaloud.com** is a brand-new, empty WordPress (7.1.3, Hostinger). It has one "Hello world!" post and no content types of its own.
 - **mumsaloud.com** (the old Elementor site) still holds all the content: 31 blog stories (Mums Stories), 4 articles, 6 Story Lounge posts, 25 pages, 188 media files. Three content types there (Mums Stories, Articles, Mum Topics) come from a plugin, so the new CMS needs them registered before anything can be imported.
-- The new site currently reads from mumsaloud.com. After step 4 it reads from the CMS. After step 6 the domain mumsaloud.com points at the new site, and the CMS is the only WordPress left.
+- Since step 4 (28 October 2026) the new site reads from the CMS. After step 6 the domain mumsaloud.com points at the new site, and the CMS is the only WordPress left.
 
 **A note on access.** Never send passwords in chat. Two ways to do the WordPress steps:
 
@@ -41,7 +41,7 @@ Sign in at https://cms.mumsaloud.com/wp-admin/ and go through **Settings**:
 
 The plugin does three jobs: it registers the three content types the site reads (Mums Stories, Articles, Mum Topics) with the same URLs as before; it tells the site to refresh whenever something is published, updated, binned or deleted; and, after go-live, it sends anyone who opens the CMS to the site.
 
-1. The file is `output/cms/mums-aloud-headless.zip` (built from `web/wp-plugin/`).
+1. The file is `output/cms/mumsaloud-headless.zip` (built from `web/wp-plugin/`).
 2. In the CMS: **Plugins > Add New Plugin > Upload Plugin**, choose the zip, **Install Now**, then **Activate**.
 3. Check: the left menu now shows **Mums Stories**, **Articles** and **Mum Topics**, and https://cms.mumsaloud.com/wp-json/wp/v2/mum-story answers `[]` instead of an error.
 4. **Settings > Headless site** appears. Leave the Site URL and Secret empty for now (step 5), and leave "Send visitors" unticked.

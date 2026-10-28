@@ -4,7 +4,7 @@ import { decodeEntities, sanitiseHtml } from "./mapping";
 /** WordPress pages whose body the site renders as written in WordPress (the policies). */
 export const PAGES_TAG = "wp:pages";
 
-const API_URL = (process.env.WORDPRESS_API_URL ?? "https://mumsaloud.com/wp-json/wp/v2").replace(/\/$/, "");
+const API_URL = (process.env.WORDPRESS_API_URL ?? "https://cms.mumsaloud.com/wp-json/wp/v2").replace(/\/$/, "");
 const TIMEOUT_MS = 15_000;
 const SLUG = /^[a-z0-9][a-z0-9-]*$/i;
 

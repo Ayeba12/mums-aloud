@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 /** The CMS: the REST base names it, and the media host and the admin redirects follow. */
-const wordpressApiUrl = (process.env.WORDPRESS_API_URL ?? "https://mumsaloud.com/wp-json/wp/v2").replace(/\/$/, "");
+const wordpressApiUrl = (process.env.WORDPRESS_API_URL ?? "https://cms.mumsaloud.com/wp-json/wp/v2").replace(/\/$/, "");
 const wordpressOrigin = new URL(wordpressApiUrl).origin;
 const siteHost = new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").hostname;
 

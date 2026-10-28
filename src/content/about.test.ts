@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { about, council, founder, team } from "./about";
 import { teamPortraits } from "@/components/content/teamPortraits";
+import { uploadUrl } from "@/lib/wordpress/urls";
 
 describe("About content", () => {
   it("lists the four team members from the live site, Bokun first with a link to her page", () => {
@@ -16,8 +17,8 @@ describe("About content", () => {
     expect(founder.letter.signoff).toEqual({ name: "Bokun Imoukhuede", role: "Founder, MumsAloud" });
   });
 
-  it("uses Bokun's own portrait from the live site, not a stock photo", () => {
-    expect(founder.hero.portrait.src).toMatch(/^https:\/\/mumsaloud\.com\/wp-content\/uploads\//);
+  it("uses Bokun's own portrait from the WordPress media library, not a stock photo", () => {
+    expect(founder.hero.portrait.src).toBe(uploadUrl("2024/10/Mrs-Bokun-1025x1536.jpeg"));
   });
 
   it("carries the council's five roles and five members", () => {
