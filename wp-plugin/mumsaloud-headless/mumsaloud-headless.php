@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Mums Aloud Headless
  * Plugin URI:  https://mumsaloud.com/
- * Description: Makes this WordPress the content editor for the Mums Aloud website: registers Mums Stories, Articles and Mum Topics for the REST API, tells the site to refresh when content changes, and can send visitors from this CMS to the site.
- * Version:     1.0.0
+ * Description: Makes this WordPress the content editor for the Mums Aloud website: registers Mums Stories, Articles and Mum Topics for the REST API and WPGraphQL, tells the site to refresh when content changes, and can send visitors from this CMS to the site.
+ * Version:     1.1.0
  * Author:      Mums Aloud
  * Requires at least: 6.1
  * Requires PHP: 7.4
@@ -81,7 +81,7 @@ final class Mums_Aloud_Headless
         @rmdir($dir);
     }
 
-    /* ---------- Content types (the same slugs, REST bases and URL shapes as the previous site) ---------- */
+    /* ---------- Content types (the same slugs, REST bases and URL shapes as the previous site; also in WPGraphQL) ---------- */
 
     public static function register_post_types()
     {
@@ -98,6 +98,9 @@ final class Mums_Aloud_Headless
             'labels'        => self::labels('Mums Stories', 'Mum Story'),
             'description'   => 'All mums stories',
             'rest_base'     => 'mum-story',
+            'show_in_graphql'     => true,
+            'graphql_single_name' => 'mumStory',
+            'graphql_plural_name' => 'mumStories',
             'rewrite'       => array('slug' => 'mum-story', 'with_front' => false),
             'menu_icon'     => 'dashicons-businesswoman',
             'menu_position' => 5,
@@ -107,6 +110,9 @@ final class Mums_Aloud_Headless
             'labels'        => self::labels('Articles', 'Article'),
             'description'   => 'Articles for Mums Aloud',
             'rest_base'     => 'article',
+            'show_in_graphql'     => true,
+            'graphql_single_name' => 'article',
+            'graphql_plural_name' => 'articles',
             'rewrite'       => array('slug' => 'article', 'with_front' => false),
             'hierarchical'  => true,
             'supports'      => array_merge($supports, array('page-attributes')),
@@ -118,6 +124,9 @@ final class Mums_Aloud_Headless
             'labels'        => self::labels('Mum Topics', 'Mum Topic'),
             'description'   => 'All mums topic',
             'rest_base'     => 'mum-topic',
+            'show_in_graphql'     => true,
+            'graphql_single_name' => 'mumTopic',
+            'graphql_plural_name' => 'mumTopics',
             'rewrite'       => array('slug' => 'mum-topic', 'with_front' => false),
             'menu_icon'     => 'dashicons-buddicons-topics',
             'menu_position' => 7,
