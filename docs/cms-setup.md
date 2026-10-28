@@ -92,6 +92,7 @@ This needs the site deployed (README, "Deploying": the GitHub repository and the
 
 | Name | Value |
 | --- | --- |
+| `WORDPRESS_GRAPHQL_URL` | `https://cms.mumsaloud.com/graphql` |
 | `WORDPRESS_API_URL` | `https://cms.mumsaloud.com/wp-json/wp/v2` |
 | `REVALIDATE_SECRET` | a long random value, generated with the command below |
 | `NEXT_PUBLIC_SITE_URL` | `https://mumsaloud.com` (the Vercel address until the domain moves) |
