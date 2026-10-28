@@ -16,13 +16,18 @@ const SPEED = 35;
  * second copy, run out to the section's edges so the cards pass under them. It pauses under the
  * mouse and while off screen. Under reduced motion it is a still row you can scroll sideways, and
  * the copy is not rendered. The first row is the one assistive technology reads; the copy is hidden.
+ * `fade` softens both ends with a mask (48px, 96px from `md`), for a row that runs inside a panel
+ * rather than out to the screen's edges, so items ease in and out instead of cutting off.
  */
-export function CardMarquee({ children, label, className = "" }: { children: ReactNode; label: string; className?: string }) {
+export function CardMarquee({ children, label, fade = false, className = "" }: { children: ReactNode; label: string; fade?: boolean; className?: string }) {
   const root = useRef<HTMLDivElement>(null);
   const tween = useRef<gsap.core.Tween | null>(null);
   const hovered = useRef(false);
   const visible = useRef(false);
   const reduced = useReducedMotion();
+  const edges = fade
+    ? "[--fade:3rem] md:[--fade:6rem] [mask-image:linear-gradient(to_right,transparent,black_var(--fade),black_calc(100%-var(--fade)),transparent)]"
+    : "";
 
   useGSAP(
     () => {
@@ -80,7 +85,7 @@ export function CardMarquee({ children, label, className = "" }: { children: Rea
 
   if (reduced) {
     return (
-      <div ref={root} className={`-mx-4 overflow-x-auto px-4 md:-mx-6 md:px-6 lg:-mx-8 lg:px-8 [scrollbar-width:thin] ${className}`}>
+      <div ref={root} className={`-mx-4 overflow-x-auto px-4 md:-mx-6 md:px-6 lg:-mx-8 lg:px-8 [scrollbar-width:thin] ${edges} ${className}`}>
         <ul aria-label={label} className="flex w-max gap-3 md:gap-4">
           {children}
         </ul>
@@ -89,7 +94,7 @@ export function CardMarquee({ children, label, className = "" }: { children: Rea
   }
 
   return (
-    <div ref={root} className={`-mx-4 overflow-hidden md:-mx-6 lg:-mx-8 ${className}`}>
+    <div ref={root} className={`-mx-4 overflow-hidden md:-mx-6 lg:-mx-8 ${edges} ${className}`}>
       <div data-track className="flex w-max gap-3 md:gap-4">
         <ul data-list aria-label={label} className="flex gap-3 md:gap-4">
           {children}

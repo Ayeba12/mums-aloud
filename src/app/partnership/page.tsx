@@ -140,8 +140,8 @@ export default function PartnershipPage() {
               ))}
             </ul>
             <p className="mt-12 text-center text-caption font-semibold tracking-wide uppercase opacity-80">{routes.partnersTag}</p>
-            {/* The partners' logos drift across the panel on light tiles, clipped at the panel's own edges. */}
-            <CardMarquee label={routes.partnersTag} className="mt-6">
+            {/* The partners' logos drift across the panel in its light ink, easing in and out at the panel's own edges. */}
+            <CardMarquee label={routes.partnersTag} fade className="mt-6">
               {partnerList.items.map((partner) => (
                 <PartnerTile key={partner.slug} partner={partner} variant="marquee" />
               ))}
