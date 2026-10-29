@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ArrowRightIcon, HeartIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
-import { Button, ButtonLink } from "@/components/ui/Button";
+import { Button, buttonClasses, ButtonLink } from "@/components/ui/Button";
 import { IconChip, Section, SectionHeading, Tag } from "@/components/layout/Section";
 
 export const metadata: Metadata = {
@@ -140,6 +140,26 @@ export default function StyleGuide() {
             <ArrowRightIcon aria-hidden size={16} weight="bold" />
           </span>
         </div>
+      </Section>
+
+      <Section aria-labelledby="emails">
+        <SectionHeading id="emails" tag="Emails" heading={{ lead: "The system", accent: "in the inbox" }} />
+        <p className="mt-4 max-w-reading text-text">
+          The volunteer form&apos;s two emails, rendered from the same tokens with tables and inline styles. Inboxes that block web fonts show Georgia and
+          Arial instead.
+        </p>
+        <ul className="mt-8 flex flex-wrap gap-4">
+          <li>
+            <a href="/style-guide/emails/volunteer-applicant/" target="_blank" rel="noopener" className={buttonClasses("secondary")}>
+              Applicant confirmation
+            </a>
+          </li>
+          <li>
+            <a href="/style-guide/emails/volunteer-admin/" target="_blank" rel="noopener" className={buttonClasses("secondary")}>
+              Team notification
+            </a>
+          </li>
+        </ul>
       </Section>
 
       <Section tone="dark" aria-labelledby="dark">

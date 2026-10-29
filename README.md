@@ -54,3 +54,4 @@ Content is edited at https://cms.mumsaloud.com/ (WordPress) and read through WPG
 3. Add the variables from `.env.example` in Vercel for Production and Preview.
 4. Every pull request gets a preview URL; merging to `main` deploys to production.
 5. Protect `main` in GitHub: require a pull request and a passing `CI / check`.
+6. Volunteer applications: `docs/volunteer-sheet-setup.md` connects the form to a Google Sheet and the two emails (`VOLUNTEER_WEBHOOK_URL`, `VOLUNTEER_WEBHOOK_SECRET`).

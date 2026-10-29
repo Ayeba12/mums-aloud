@@ -8,7 +8,7 @@ These are stock photos. The people shown are not Mums Aloud members, and must no
 | --- | --- | --- | --- |
 | `two-women-laughing.jpg` | Andra C Taylor Jr | https://unsplash.com/photos/KfoNVMCFb5M | Homepage hero slideshow; Mama's Escape community card and join photo |
 | `mother-kissing-baby.jpg` | Lawrence Crayton | https://unsplash.com/photos/KCZ5msJzxPQ | Homepage feature tabs; Mama's Escape experience portrait |
-| `women-community-circle.jpg` | Iwaria Inc. | https://unsplash.com/photos/GLLeZ59t3bA | Homepage story panel; Mama's Escape portrait row |
+| `women-community-circle.jpg` | Iwaria Inc. | https://unsplash.com/photos/GLLeZ59t3bA | Homepage story panel; Mama's Escape portrait row; the volunteer confirmation email (`public/email/volunteer.jpg`, a 1200x675 crop) |
 | `mother-daughter-embrace.jpg` | Ben Masora | https://unsplash.com/photos/8hLjTQCNbNY | Homepage photo row; Mama's Escape berry panel |
 | `two-friends-smiling.jpg` | Andra C Taylor Jr | https://unsplash.com/photos/CmdrVG8gmhg | Homepage photo row; Mama's Escape portrait row |
 | `hero-mother-baby-golden-hour.jpg` | Junior REIS | https://unsplash.com/photos/9ooYPL2Tffg | Homepage photo row; Mama's Escape newsletter card; About mission panel (vision card) |
@@ -18,6 +18,10 @@ These are stock photos. The people shown are not Mums Aloud members, and must no
 Eight photos cover eleven placements on the Mama's Escape page and footer, so three repeat: `two-women-laughing.jpg` (community card and join photo), `mother-baby-smiling.jpg` (podcast card and portrait row) and `mother-daughter-park.jpg` (hero and footer). Three more photos, ideally the client's own, would remove the repeats.
 
 The client brief asks for real, non-stock photos in the hero. Replace these with consented community photography when available.
+
+## Email assets
+
+`public/email/` holds the files the transactional emails load from the site, since inboxes need absolute addresses and plain formats: `logo.png` is the wordmark from `public/brand/mumsaloud-logo.webp` as a 240px PNG (WebP does not show in every inbox), and `volunteer.jpg` is the crop of `women-community-circle.jpg` noted above.
 
 ## Team portraits (the client's own photos)
 

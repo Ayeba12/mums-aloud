@@ -50,12 +50,14 @@ describe("readVolunteerFields", () => {
 });
 
 describe("sendVolunteerApplication", () => {
-  const webhook = process.env.CONTACT_WEBHOOK_URL;
+  const env = { inbox: process.env.CONTACT_WEBHOOK_URL, sheet: process.env.VOLUNTEER_WEBHOOK_URL };
   beforeEach(() => {
     delete process.env.CONTACT_WEBHOOK_URL;
+    delete process.env.VOLUNTEER_WEBHOOK_URL;
   });
   afterEach(() => {
-    if (webhook) process.env.CONTACT_WEBHOOK_URL = webhook;
+    if (env.inbox) process.env.CONTACT_WEBHOOK_URL = env.inbox;
+    if (env.sheet) process.env.VOLUNTEER_WEBHOOK_URL = env.sheet;
   });
 
   const submit = (fields: Partial<VolunteerFields>) => {
@@ -78,5 +80,23 @@ describe("sendVolunteerApplication", () => {
     expect(decodeURIComponent(state.fallback?.href ?? "")).toContain("First name: Ama");
     expect(decodeURIComponent(state.fallback?.href ?? "")).toContain("Skills & experience: Ten years");
     expect(state.values).toEqual(good);
+  });
+
+  it("delivers to the applications sheet first, with both emails, and promises the confirmation", async () => {
+    process.env.VOLUNTEER_WEBHOOK_URL = "https://script.google.com/macros/s/abc/exec";
+    const bodies: string[] = [];
+    const original = globalThis.fetch;
+    globalThis.fetch = (async (_url: string | URL | Request, init?: RequestInit) => {
+      bodies.push(String(init?.body ?? ""));
+      return new Response(JSON.stringify({ ok: true, row: 2, sent: 2, failures: [] }), { status: 200 });
+    }) as typeof fetch;
+    try {
+      const state = await submit({});
+      expect(state.status).toBe("success");
+      expect(state.message).toMatch(/confirmation email/);
+      expect(JSON.parse(bodies[0]).emails).toHaveLength(2);
+    } finally {
+      globalThis.fetch = original;
+    }
   });
 });
