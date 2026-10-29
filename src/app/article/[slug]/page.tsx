@@ -7,6 +7,7 @@ type Props = { params: Promise<{ slug: string }> };
 
 /** The `article` collection keeps its legacy `/article/[slug]/` URLs. See the root `[slug]` route for the rendering notes. */
 export const ensureStatic = "navigation";
+export const instant = false;
 export const generateStaticParams = () => slugParams("articles");
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

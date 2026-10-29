@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react/ssr";
-import { dateFormat } from "@/components/content/PostCard";
+import { dateFormat } from "@/lib/dates";
 import { PostTile } from "@/components/content/PostTile";
 import { Tag } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";

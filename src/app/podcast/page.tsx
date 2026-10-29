@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Suspense } from "react";
 import { ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
-import { dateFormat } from "@/components/content/PostCard";
+import { dateFormat } from "@/lib/dates";
 import { Section, SectionHeading, Tag } from "@/components/layout/Section";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { ButtonLink } from "@/components/ui/Button";

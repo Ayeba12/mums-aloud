@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { dateFormat } from "@/components/content/PostCard";
+import { dateFormat } from "@/lib/dates";
 import { Section, Tag } from "@/components/layout/Section";
 import { privacyPage } from "@/content/policies";
 import { getPage } from "@/lib/wordpress/pages";

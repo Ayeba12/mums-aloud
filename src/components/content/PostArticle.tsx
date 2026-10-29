@@ -3,11 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
-import { dateFormat, PostCard } from "@/components/content/PostCard";
+import { PostTile } from "@/components/content/PostTile";
 import { Section, SectionHeading } from "@/components/layout/Section";
 import { ClosingPanel } from "@/components/sections/ClosingPanel";
 import { ButtonLink } from "@/components/ui/Button";
 import { postInvite, type ListingCopy } from "@/content/stories";
+import { dateFormat } from "@/lib/dates";
 import { joinForm, siteConfig } from "@/lib/site";
 import { getAll, getBySlug } from "@/lib/wordpress/client";
 import { collections, type CollectionKey } from "@/lib/wordpress/collections";
@@ -50,7 +51,7 @@ export async function postMetadata(collection: CollectionKey, slug: string, copy
 
 /**
  * One story or article: label and title, dates, the feature image when there is one, the body in
- * a 65ch reading column, three more from the same collection, and the contextual invitation.
+ * a 65ch reading column, three more from the same collection as the Blog's tiles, and the contextual invitation.
  */
 export async function PostArticle({ collection, slug, copy }: { collection: CollectionKey; slug: string; copy: ListingCopy }) {
   const { listingPath = "/" } = collections[collection];
@@ -148,10 +149,10 @@ export async function PostArticle({ collection, slug, copy }: { collection: Coll
               {copy.allLabel}
             </ButtonLink>
           </div>
-          <ul className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8">
+          <ul className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
             {related.map((item) => (
               <li key={item.id} className="min-w-0">
-                <PostCard post={item} label={copy.cardLabel} />
+                <PostTile post={item} label={copy.cardLabel} sizes="(min-width: 64rem) 33vw, (min-width: 48rem) 50vw, 100vw" />
               </li>
             ))}
           </ul>

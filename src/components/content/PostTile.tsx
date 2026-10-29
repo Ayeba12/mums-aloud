@@ -5,7 +5,8 @@ import type { PostSummary } from "@/lib/wordpress/mapping";
 
 /**
  * A post as the reference's tile: photo, tag and title, no card around them, the whole tile as
- * the link. Used by the listings' grids and the homepage's Story Lounge and Blog sections.
+ * the link. Used by the listings' grids, the homepage's Story Lounge and Blog sections, and the
+ * related posts under a story or article.
  */
 export function PostTile({
   post,

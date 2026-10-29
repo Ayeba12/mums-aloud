@@ -9,6 +9,7 @@ type Props = { params: Promise<{ page: string }> };
 
 /** Later pages of the Story Lounge; page 1 is `/story-lounge/` itself. See the Blog paging route for the notes. */
 export const ensureStatic = "navigation";
+export const instant = false;
 export const generateStaticParams = () => pageParams("storyLounge");
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

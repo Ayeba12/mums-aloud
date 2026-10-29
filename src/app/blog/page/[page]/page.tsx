@@ -13,6 +13,7 @@ type Props = { params: Promise<{ page: string }> };
  * a page past the end answers with a real 404 before anything streams.
  */
 export const ensureStatic = "navigation";
+export const instant = false;
 export const generateStaticParams = () => pageParams("blog");
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

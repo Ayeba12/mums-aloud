@@ -11,6 +11,7 @@ type Props = { params: Promise<{ slug: string }> };
  * labels. See the root `[slug]` route for the rendering notes.
  */
 export const ensureStatic = "navigation";
+export const instant = false;
 export const generateStaticParams = () => slugParams("mumTopics");
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
