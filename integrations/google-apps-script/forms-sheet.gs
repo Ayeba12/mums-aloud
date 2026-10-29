@@ -1,18 +1,26 @@
 /**
- * Mums Aloud: volunteer applications into this Google Sheet, plus the two emails.
+ * Mums Aloud: the website's forms into this Google Sheet, plus their emails.
  *
- * The website renders the row and both emails (the applicant's confirmation and the team's
- * notification) and posts them here with a shared secret. This script checks the secret, appends
- * the row (writing the header row the first time) and sends the emails exactly as given.
+ * One tab per form: Applications (Volunteer With Us), Contact, Partnership. The website renders
+ * the row and both emails (the sender's confirmation and the team's notification) and posts them
+ * here with a shared secret. This script checks the secret, appends the row to the named tab
+ * (writing the header row the first time) and sends the emails exactly as given.
  *
- * Setup: web/docs/volunteer-sheet-setup.md. In short: paste this into Extensions > Apps Script of
+ * Setup: web/docs/forms-sheet-setup.md. In short: paste this into Extensions > Apps Script of
  * the sheet, add SECRET under Project Settings > Script properties, run `authorise` once, then
  * Deploy > New deployment > Web app (execute as Me, access Anyone) and copy the URL into Vercel.
+ * After changing this file: Deploy > Manage deployments > edit > Version: New version > Deploy.
  */
 
-var SHEET_NAME = "Applications";
+var SHEETS = ["Applications", "Contact", "Partnership"];
 
-/** The website's POST. Always answers JSON; a wrong secret is refused. */
+var HEADERS = {
+  Applications: ["Submitted (ISO)", "Submitted (London)", "First name", "Last name", "Email", "Phone", "Skills & experience", "Availability", "Source"],
+  Contact: ["Submitted (ISO)", "Submitted (London)", "Name", "Email", "Organisation", "Phone", "About", "Message", "Source"],
+  Partnership: ["Submitted (ISO)", "Submitted (London)", "Name", "Email", "Organisation", "Phone", "About", "Message", "Source"]
+};
+
+/** The website's POST. Always answers JSON; a wrong secret or an unknown tab is refused. */
 function doPost(e) {
   var lock = LockService.getScriptLock();
   try {
@@ -20,16 +28,18 @@ function doPost(e) {
     var secret = PropertiesService.getScriptProperties().getProperty("SECRET");
     if (!secret) return json_({ ok: false, error: "SECRET is not set under Project Settings > Script properties" });
     if (!body.secret || body.secret !== secret) return json_({ ok: false, error: "Wrong secret" });
+    var name = body.sheet || SHEETS[0];
+    if (SHEETS.indexOf(name) === -1) return json_({ ok: false, error: "Unknown sheet: " + name });
 
     lock.waitLock(15000);
-    var sheet = sheet_();
+    var sheet = sheet_(name);
     var row = body.row || {};
     var headers = headers_(sheet, Object.keys(row));
     sheet.appendRow(headers.map(function (header) { return row[header] == null ? "" : String(row[header]); }));
     var rowNumber = sheet.getLastRow();
     lock.releaseLock();
 
-    var sheetUrl = SpreadsheetApp.getActiveSpreadsheet().getUrl();
+    var sheetUrl = SpreadsheetApp.getActiveSpreadsheet().getUrl() + "#gid=" + sheet.getSheetId();
     var sent = 0;
     var failures = [];
     (body.emails || []).forEach(function (message) {
@@ -40,7 +50,7 @@ function doPost(e) {
         failures.push(String(err));
       }
     });
-    return json_({ ok: true, row: rowNumber, sent: sent, failures: failures });
+    return json_({ ok: true, sheet: name, row: rowNumber, sent: sent, failures: failures });
   } catch (err) {
     try { lock.releaseLock(); } catch (ignored) {}
     return json_({ ok: false, error: String(err) });
@@ -49,30 +59,27 @@ function doPost(e) {
 
 /** Opening the web app URL in a browser shows this, so you can tell the deployment is live. */
 function doGet() {
-  return json_({ ok: true, service: "Mums Aloud volunteer applications", accepts: "POST" });
+  return json_({ ok: true, service: "Mums Aloud forms", sheets: SHEETS, accepts: "POST" });
 }
 
 /**
  * Run this once from the editor (select `authorise`, press Run) and accept the permissions:
- * the sheet and sending email. The web app then runs with them.
+ * the sheet and sending email. The web app then runs with them. It also creates the three tabs
+ * with their header rows.
  */
 function authorise() {
-  var sheet = sheet_();
-  headers_(sheet, [
-    "Submitted (ISO)", "Submitted (London)", "First name", "Last name", "Email", "Phone",
-    "Skills & experience", "Availability", "Source"
-  ]);
+  SHEETS.forEach(function (name) { headers_(sheet_(name), HEADERS[name]); });
   var quota = MailApp.getRemainingDailyQuota();
-  Logger.log("Ready. Sheet: " + SpreadsheetApp.getActiveSpreadsheet().getName() + ". Emails left today: " + quota);
+  Logger.log("Ready. Sheet: " + SpreadsheetApp.getActiveSpreadsheet().getName() + ". Tabs: " + SHEETS.join(", ") + ". Emails left today: " + quota);
 }
 
-/** The Applications tab, created on first use. */
-function sheet_() {
+/** A form's tab, created on first use. */
+function sheet_(name) {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  return spreadsheet.getSheetByName(SHEET_NAME) || spreadsheet.insertSheet(SHEET_NAME);
+  return spreadsheet.getSheetByName(name) || spreadsheet.insertSheet(name);
 }
 
-/** The header row as it is, with any new column names added at the end; written and frozen when the sheet is empty. */
+/** The header row as it is, with any new column names added at the end; written and frozen when the tab is empty. */
 function headers_(sheet, wanted) {
   var existing = sheet.getLastRow() > 0 ? sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0].map(String) : [];
   var headers = existing.filter(function (header) { return header !== ""; });

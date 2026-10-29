@@ -1,7 +1,10 @@
 "use server";
 
 import { readContactFields, validateContact, type ContactErrors, type ContactFields } from "@/lib/contact";
+import { contactSubmission } from "@/lib/contact-sheet";
+import type { ContactRoute } from "@/lib/email/contact";
 import { deliverToInbox, fieldLines, mailtoHref } from "@/lib/inbox";
+import { deliverToSheet } from "@/lib/sheet-delivery";
 import { siteConfig } from "@/lib/site";
 
 export type ContactState = {
@@ -14,13 +17,14 @@ export type ContactState = {
   fallback?: { href: string; label: string };
 };
 
-type Route = { source: string; subject: string; topic?: string; requireOrganisation?: boolean };
+type Route = { kind: ContactRoute; source: string; subject: string; topic?: string; requireOrganisation?: boolean };
 
 const labels = { name: "Name", email: "Email", organisation: "Organisation", phone: "Phone", topic: "About", message: "Message" };
 
 /**
- * Delivers a message to the team inbox through CONTACT_WEBHOOK_URL. Until that route is set up,
- * the visitor gets a prefilled email to info@mumsaloud.com instead, so no message is ever lost.
+ * Delivers a message to the forms sheet, which records it and sends the sender's confirmation and
+ * the team's notification; failing that, to the team inbox route (CONTACT_WEBHOOK_URL); failing
+ * both, the visitor gets a prefilled email to the team instead, so no message is ever lost.
  */
 async function submit(formData: FormData, route: Route): Promise<ContactState> {
   const fields = { ...readContactFields(formData), ...(route.topic ? { topic: route.topic } : {}) };
@@ -31,21 +35,24 @@ async function submit(formData: FormData, route: Route): Promise<ContactState> {
     return { status: "error", message: "Please check the highlighted fields.", errors, values: fields };
   }
 
-  const result = await deliverToInbox(fields, route.source);
-  if (result.ok) return { status: "success", message: "Thank you. Your message is with us and we will reply by email." };
+  const thing = route.kind === "partnership" ? "enquiry" : "message";
+  const sheet = await deliverToSheet(contactSubmission(fields, route.kind, route.source));
+  if (sheet.ok) return { status: "success", message: `Thank you. Your ${thing} is with us, and a confirmation email is on its way to you.` };
+  const inbox = await deliverToInbox(fields, route.source);
+  if (inbox.ok) return { status: "success", message: `Thank you. Your ${thing} is with us and we will reply by email.` };
 
   const fallback = { href: mailtoHref(route.subject, fieldLines(fields, labels)), label: `Email ${siteConfig.email} instead` };
-  if (result.reason === "unavailable") {
+  if (sheet.reason === "failed" || inbox.reason === "failed") {
     return {
-      status: "unavailable",
-      message: `The online form is not open yet, so your message was not sent. Email it to us instead: the link below opens an email with everything you typed.`,
+      status: "error",
+      message: `Something went wrong on our side and your ${thing} was not sent. Please try again in a moment, or email us instead.`,
       values: fields,
       fallback,
     };
   }
   return {
-    status: "error",
-    message: "Something went wrong on our side and your message was not sent. Please try again in a moment, or email us instead.",
+    status: "unavailable",
+    message: `The online form is not open yet, so your ${thing} was not sent. Email it to us instead: the link below opens an email with everything you typed.`,
     values: fields,
     fallback,
   };
@@ -53,10 +60,16 @@ async function submit(formData: FormData, route: Route): Promise<ContactState> {
 
 /** The Contact page form: the visitor picks the topic. */
 export async function sendContactMessage(_previous: ContactState, formData: FormData): Promise<ContactState> {
-  return submit(formData, { source: "mumsaloud.com contact", subject: "Message from the website" });
+  return submit(formData, { kind: "contact", source: "mumsaloud.com contact", subject: "Message from the website" });
 }
 
 /** The Partnership page form: always a partnership enquiry, and the organisation is required. */
 export async function sendPartnershipEnquiry(_previous: ContactState, formData: FormData): Promise<ContactState> {
-  return submit(formData, { source: "mumsaloud.com partnership", subject: "Partnership enquiry", topic: "partnership", requireOrganisation: true });
+  return submit(formData, {
+    kind: "partnership",
+    source: "mumsaloud.com partnership",
+    subject: "Partnership enquiry",
+    topic: "partnership",
+    requireOrganisation: true,
+  });
 }

@@ -2,7 +2,7 @@
  * The two emails a volunteer application triggers: the applicant's confirmation, with a photo and
  * a copy of what they told us, and the team's notification with every detail and a reply button.
  * Both are rendered here, in the site's own words, and sent by the Google Apps Script that also
- * records the application (docs/volunteer-sheet-setup.md).
+ * records the application (docs/forms-sheet-setup.md).
  */
 import { apply, closing } from "@/content/volunteer";
 import { dateTimeFormat } from "@/lib/dates";
@@ -10,15 +10,9 @@ import { siteConfig } from "@/lib/site";
 import type { VolunteerFields } from "@/lib/volunteer";
 import { buttonRow, detailCard, heading, paragraph, photoCard, SHEET_URL_TOKEN, shell, tag, type DetailRow, type EmailImage } from "./template";
 
-export type EmailMessage = {
-  to: string;
-  subject: string;
-  html: string;
-  text: string;
-  /** The name shown as the sender. */
-  fromName: string;
-  replyTo?: string;
-};
+import type { EmailMessage } from "./message";
+
+export type { EmailMessage };
 
 export type VolunteerEmailOptions = {
   /** Absolute origin for the logo and photo, e.g. https://mums-aloud.vercel.app */

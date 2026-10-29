@@ -50,14 +50,16 @@ describe("readVolunteerFields", () => {
 });
 
 describe("sendVolunteerApplication", () => {
-  const env = { inbox: process.env.CONTACT_WEBHOOK_URL, sheet: process.env.VOLUNTEER_WEBHOOK_URL };
+  const env = { inbox: process.env.CONTACT_WEBHOOK_URL, sheet: process.env.VOLUNTEER_WEBHOOK_URL, forms: process.env.FORMS_WEBHOOK_URL };
   beforeEach(() => {
     delete process.env.CONTACT_WEBHOOK_URL;
     delete process.env.VOLUNTEER_WEBHOOK_URL;
+    delete process.env.FORMS_WEBHOOK_URL;
   });
   afterEach(() => {
     if (env.inbox) process.env.CONTACT_WEBHOOK_URL = env.inbox;
     if (env.sheet) process.env.VOLUNTEER_WEBHOOK_URL = env.sheet;
+    if (env.forms) process.env.FORMS_WEBHOOK_URL = env.forms;
   });
 
   const submit = (fields: Partial<VolunteerFields>) => {

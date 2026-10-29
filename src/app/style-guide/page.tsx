@@ -40,6 +40,16 @@ const typeScale = [
 
 const spacing = [1, 2, 3, 4, 6, 8, 12, 16, 24] as const;
 
+/** The transactional emails with made-up details, served by /style-guide/emails/[name]. */
+const emailPreviews = [
+  { name: "volunteer-applicant", label: "Volunteer: applicant confirmation" },
+  { name: "volunteer-admin", label: "Volunteer: team notification" },
+  { name: "contact-sender", label: "Contact: sender confirmation" },
+  { name: "contact-team", label: "Contact: team notification" },
+  { name: "partnership-sender", label: "Partnership: sender confirmation" },
+  { name: "partnership-team", label: "Partnership: team notification" },
+];
+
 export default function StyleGuide() {
   return (
     <main id="main">
@@ -145,20 +155,17 @@ export default function StyleGuide() {
       <Section aria-labelledby="emails">
         <SectionHeading id="emails" tag="Emails" heading={{ lead: "The system", accent: "in the inbox" }} />
         <p className="mt-4 max-w-reading text-text">
-          The volunteer form&apos;s two emails, rendered from the same tokens with tables and inline styles. Inboxes that block web fonts show Georgia and
-          Arial instead.
+          The forms&apos; emails, rendered from the same tokens with tables and inline styles. Inboxes that block web fonts show Georgia and Arial
+          instead.
         </p>
         <ul className="mt-8 flex flex-wrap gap-4">
-          <li>
-            <a href="/style-guide/emails/volunteer-applicant/" target="_blank" rel="noopener" className={buttonClasses("secondary")}>
-              Applicant confirmation
-            </a>
-          </li>
-          <li>
-            <a href="/style-guide/emails/volunteer-admin/" target="_blank" rel="noopener" className={buttonClasses("secondary")}>
-              Team notification
-            </a>
-          </li>
+          {emailPreviews.map(({ name, label }) => (
+            <li key={name}>
+              <a href={`/style-guide/emails/${name}/`} target="_blank" rel="noopener" className={buttonClasses("secondary")}>
+                {label}
+              </a>
+            </li>
+          ))}
         </ul>
       </Section>
 

@@ -11,6 +11,11 @@ export const contactTopics = [
 
 export type ContactTopic = (typeof contactTopics)[number]["value"];
 
+/** The topic's label as the form shows it; the raw value when it is not in the list. */
+export function topicLabel(value: string): string {
+  return contactTopics.find((topic) => topic.value === value)?.label ?? value;
+}
+
 export type ContactFields = { name: string; email: string; organisation: string; phone: string; topic: string; message: string };
 export type ContactErrors = Partial<Record<keyof ContactFields, string>>;
 

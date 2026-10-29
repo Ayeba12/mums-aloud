@@ -6,7 +6,7 @@ These are stock photos. The people shown are not Mums Aloud members, and must no
 
 | File (`src/assets/photos/`) | Photographer | Source | Used for |
 | --- | --- | --- | --- |
-| `two-women-laughing.jpg` | Andra C Taylor Jr | https://unsplash.com/photos/KfoNVMCFb5M | Homepage hero slideshow; Mama's Escape community card and join photo |
+| `two-women-laughing.jpg` | Andra C Taylor Jr | https://unsplash.com/photos/KfoNVMCFb5M | Homepage hero slideshow; Mama's Escape community card and join photo; the contact and partnership confirmation emails (`public/email/contact.jpg`, a 1200x675 crop) |
 | `mother-kissing-baby.jpg` | Lawrence Crayton | https://unsplash.com/photos/KCZ5msJzxPQ | Homepage feature tabs; Mama's Escape experience portrait |
 | `women-community-circle.jpg` | Iwaria Inc. | https://unsplash.com/photos/GLLeZ59t3bA | Homepage story panel; Mama's Escape portrait row; the volunteer confirmation email (`public/email/volunteer.jpg`, a 1200x675 crop) |
 | `mother-daughter-embrace.jpg` | Ben Masora | https://unsplash.com/photos/8hLjTQCNbNY | Homepage photo row; Mama's Escape berry panel |
@@ -21,7 +21,7 @@ The client brief asks for real, non-stock photos in the hero. Replace these with
 
 ## Email assets
 
-`public/email/` holds the files the transactional emails load from the site, since inboxes need absolute addresses and plain formats: `logo.png` is the wordmark from `public/brand/mumsaloud-logo.webp` as a 240px PNG (WebP does not show in every inbox), and `volunteer.jpg` is the crop of `women-community-circle.jpg` noted above.
+`public/email/` holds the files the transactional emails load from the site, since inboxes need absolute addresses and plain formats: `logo.png` is the wordmark from `public/brand/mumsaloud-logo.webp` as a 240px PNG (WebP does not show in every inbox), `volunteer.jpg` is the crop of `women-community-circle.jpg` noted above, and `contact.jpg` the crop of `two-women-laughing.jpg`.
 
 ## Team portraits (the client's own photos)
 
