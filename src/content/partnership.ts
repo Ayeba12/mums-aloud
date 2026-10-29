@@ -24,6 +24,8 @@ export const hero = {
 
 export const routes = {
   heading: { lead: "Building stronger communities", accent: "together." } satisfies AccentText,
+  /** The live page's opening line under this heading (checked 30 Oct 2026). */
+  intro: "At Mums Aloud, we believe in the power of collaboration to create positive change.",
   items: [
     { title: "Insight and involvement", text: "Focus groups, patient and public involvement, research participation.", href: "#ways" },
     { title: "Training and outreach", text: "Training, workshop facilitation, engagement and community events.", href: "#ways" },
@@ -51,7 +53,7 @@ export const offer = {
     { icon: "insight", title: "Unique insights", text: "Access to a vibrant community of Black mothers, with first-hand understanding of their experiences, needs and perspectives." },
     { icon: "culture", title: "Culturally sensitive solutions", text: "Expertise in developing culturally appropriate programmes, campaigns and initiatives that land with Black mothers." },
     { icon: "data", title: "Data-driven insights", text: "Access to data and research on the experiences and needs of Black mothers in the UK." },
-    { icon: "advocates", title: "An engaged community", text: "A strong network of engaged, influential Black mothers who can act as advocates and ambassadors." },
+    { icon: "advocates", title: "An engaged community", text: "A strong network of engaged, influential Black mothers who can act as advocates and ambassadors for your brand or initiative." },
   ],
   action: { label: "Explore partnership", href: "#enquire" },
 } as const;
@@ -60,21 +62,25 @@ export const ways = {
   tag: "Ways to work together",
   heading: { lead: "Flexible partnerships, shaped to", accent: "your goals" } satisfies AccentText,
   intro: "We offer a range of flexible partnership opportunities, tailored to your specific needs and goals.",
-  /** The live page's ten opportunities, kept whole in `items` and grouped into three strands (confirm the strand names). */
+  /**
+   * The live page's ten opportunities (checked 30 Oct 2026), kept whole in `items` and grouped into
+   * three strands (confirm the strand names). "Campaigns" joins Community Advocacy from the brief.
+   */
   items: [
     "Peer support programmes",
     "Focus groups",
-    "Patient and public involvement (PPI)",
-    "Training and workshop facilitation",
+    "Training",
     "Engagement and community outreach",
+    "Collaborative projects and partnerships",
     "Market research",
+    "Patient and public involvement (PPI)",
+    "Workshop facilitation",
     "Campaigns and community advocacy",
-    "Collaborative projects",
     "Community events and gatherings",
   ],
   strands: [
-    { title: "Insight and research", items: ["Focus groups", "Patient and public involvement (PPI)", "Market research", "Collaborative projects"] },
-    { title: "Training and facilitation", items: ["Training and workshop facilitation", "Peer support programmes"] },
+    { title: "Insight and research", items: ["Focus groups", "Patient and public involvement (PPI)", "Market research", "Collaborative projects and partnerships"] },
+    { title: "Training and facilitation", items: ["Training", "Workshop facilitation", "Peer support programmes"] },
     { title: "Engagement and advocacy", items: ["Engagement and community outreach", "Campaigns and community advocacy", "Community events and gatherings"] },
   ],
   action: { label: "Talk to us", href: "#enquire" },

@@ -111,6 +111,7 @@ export default function PartnershipPage() {
             <h2 id="routes-heading" className="mx-auto max-w-[22ch] text-center text-h2">
               <Accent {...routes.heading} />
             </h2>
+            <p className="mx-auto mt-4 max-w-[46ch] text-center text-lead">{routes.intro}</p>
             <ul className="mt-12 grid gap-4 md:grid-cols-2 lg:gap-6">
               {routes.items.map((route, index) => (
                 <li key={route.title} className={`group relative aspect-[4/3] overflow-hidden rounded-card ${imageRing}`}>

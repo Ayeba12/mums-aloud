@@ -31,6 +31,16 @@ describe("core area pages", () => {
     expect(partnership.ways.items.length).toBeGreaterThanOrEqual(8);
   });
 
+  it("Partnership keeps the live page's ten opportunities, each in one strand, and its opening line", () => {
+    const { items, strands } = partnership.ways;
+    expect(items).toHaveLength(10);
+    expect(items).toEqual(expect.arrayContaining(["Training", "Workshop facilitation", "Collaborative projects and partnerships"]));
+    const placed = strands.flatMap((strand) => strand.items);
+    expect([...placed].sort()).toEqual([...items].sort());
+    expect(partnership.routes.intro).toMatch(/power of collaboration to create positive change/);
+    expect(partnership.offer.items[3].text).toMatch(/for your brand or initiative\.$/);
+  });
+
   it("Partnership's enquiry form asks for the five agreed fields", () => {
     expect(Object.keys(partnership.enquiry.form.labels)).toEqual(["name", "email", "organisation", "phone", "message"]);
     expect(partnership.enquiry.form.placeholders).toHaveProperty("organisation");
