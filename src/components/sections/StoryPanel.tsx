@@ -34,7 +34,11 @@ export function StoryPanel() {
     <div className="frame-x">
       <div className="surface-dark overflow-hidden rounded-panel">
         <section aria-labelledby="story-heading" className="relative flex min-h-[34rem] flex-col justify-end md:min-h-[40rem] lg:h-[45rem]">
-          <Image src={storyPhoto} alt="" fill placeholder="blur" sizes="100vw" data-reveal="parallax" className="object-cover object-[50%_40%]" />
+          {/* The photo's own clipping frame stops short of the section's foot, where the fade is solid berry,
+              so the drifting photo can never show as a strip or a hairline against the voices section. */}
+          <div aria-hidden className="absolute inset-x-0 top-0 bottom-1 overflow-hidden">
+            <Image src={storyPhoto} alt="" fill placeholder="blur" sizes="100vw" data-reveal="parallax" className="object-cover object-[50%_40%]" />
+          </div>
           <div
             aria-hidden
             className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-berry-lipstick-700)_0%,var(--color-berry-lipstick-700)_16%,color-mix(in_srgb,var(--color-scrim)_90%,transparent)_40%,color-mix(in_srgb,var(--color-scrim)_86%,transparent)_66%,color-mix(in_srgb,var(--color-scrim)_30%,transparent)_86%,transparent_100%)]"

@@ -31,7 +31,7 @@ export function NewsletterInvite() {
             }
           />
         </div>
-        <div className="relative min-h-72">
+        <div className="relative min-h-72 overflow-hidden">
           <Image
             src={photo}
             alt="A smiling mother holding her baby at home"
