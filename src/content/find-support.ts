@@ -99,7 +99,7 @@ export const findSupport = {
   ] satisfies SupportGroup[],
   labels: { call: "Call", website: "Visit website", hours: "Open" },
   disclaimer: "We list these organisations in good faith and check their details, but services change. Please confirm opening times with the organisation before you rely on them.",
-  suggest: { lead: "Know an organisation that should be here? Email us at", label: "admin@mumsaloud.com" },
+  suggest: { lead: "Know an organisation that should be here? Email us at", label: "info@mumsaloud.com" },
   closing: {
     heading: { lead: "You don't have to", accent: "face it alone." } satisfies AccentText,
     body: "Mama's Escape is a room of women who understand, and our team is a message away.",

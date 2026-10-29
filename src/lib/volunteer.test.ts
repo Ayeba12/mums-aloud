@@ -76,7 +76,7 @@ describe("sendVolunteerApplication", () => {
   it("offers a prefilled email to the team while the online form is not open", async () => {
     const state = await submit({});
     expect(state.status).toBe("unavailable");
-    expect(state.fallback?.href).toMatch(/^mailto:admin@mumsaloud\.com\?subject=Volunteer%20application&body=/);
+    expect(state.fallback?.href).toMatch(/^mailto:info@mumsaloud\.com\?subject=Volunteer%20application&body=/);
     expect(decodeURIComponent(state.fallback?.href ?? "")).toContain("First name: Ama");
     expect(decodeURIComponent(state.fallback?.href ?? "")).toContain("Skills & experience: Ten years");
     expect(state.values).toEqual(good);

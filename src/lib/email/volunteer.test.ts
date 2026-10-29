@@ -11,7 +11,7 @@ const fields: VolunteerFields = {
   skills: "Ten years as a midwife.\n\nMum of two <3 & proud.",
   availability: "Weekday evenings",
 };
-const options = { origin: "https://mums-aloud.vercel.app", submittedAt: new Date("2026-10-29T12:45:00Z"), adminTo: "admin@mumsaloud.com" };
+const options = { origin: "https://mums-aloud.vercel.app", submittedAt: new Date("2026-10-29T12:45:00Z"), adminTo: "info@mumsaloud.com" };
 
 describe("email template helpers", () => {
   it("escapes everything that could become markup", () => {
@@ -31,7 +31,7 @@ describe("applicant email", () => {
   it("goes to the applicant from Mums Aloud, with replies to the team", () => {
     expect(email.to).toBe("ama@example.com");
     expect(email.fromName).toBe("Mums Aloud");
-    expect(email.replyTo).toBe("admin@mumsaloud.com");
+    expect(email.replyTo).toBe("info@mumsaloud.com");
     expect(email.subject).toBe("We have your volunteer application, Ama");
   });
 
@@ -58,7 +58,7 @@ describe("admin email", () => {
   const email = adminEmail(fields, options);
 
   it("goes to the team with replies to the applicant and the sheet link left for the script", () => {
-    expect(email.to).toBe("admin@mumsaloud.com");
+    expect(email.to).toBe("info@mumsaloud.com");
     expect(email.replyTo).toBe("ama@example.com");
     expect(email.subject).toBe("New volunteer application: Ama Mensah");
     expect(email.html).toContain(`href="${SHEET_URL_TOKEN}"`);
@@ -80,6 +80,6 @@ describe("admin email", () => {
 
 describe("volunteerEmails", () => {
   it("returns the applicant's confirmation first, then the team's notification", () => {
-    expect(volunteerEmails(fields, options).map((email) => email.to)).toEqual(["ama@example.com", "admin@mumsaloud.com"]);
+    expect(volunteerEmails(fields, options).map((email) => email.to)).toEqual(["ama@example.com", "info@mumsaloud.com"]);
   });
 });

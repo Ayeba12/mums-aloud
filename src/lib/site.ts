@@ -7,8 +7,8 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   /** Where every "Join" button on the site goes: the Mama's Escape page, opened at its top (owner, 26 Oct 2026). */
   joinUrl: "/mamas-escape/",
-  /** The team inbox (owner, 10 Aug 2026 notes): enquiries, applications and newsletter requests land here. */
-  email: "admin@mumsaloud.com",
+  /** The team inbox: enquiries, applications and newsletter requests land here. info@ since 29 Oct 2026 (owner); the 10 Aug 2026 notes said admin@. */
+  email: "info@mumsaloud.com",
   /** The official phone number (owner, 10 Aug 2026 notes). */
   phone: { display: "07587 542609", href: "tel:+447587542609" },
   /**

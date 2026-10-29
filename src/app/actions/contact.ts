@@ -20,7 +20,7 @@ const labels = { name: "Name", email: "Email", organisation: "Organisation", pho
 
 /**
  * Delivers a message to the team inbox through CONTACT_WEBHOOK_URL. Until that route is set up,
- * the visitor gets a prefilled email to admin@mumsaloud.com instead, so no message is ever lost.
+ * the visitor gets a prefilled email to info@mumsaloud.com instead, so no message is ever lost.
  */
 async function submit(formData: FormData, route: Route): Promise<ContactState> {
   const fields = { ...readContactFields(formData), ...(route.topic ? { topic: route.topic } : {}) };

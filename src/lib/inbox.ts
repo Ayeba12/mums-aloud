@@ -2,7 +2,7 @@ import { siteConfig } from "@/lib/site";
 
 /**
  * Where the site's forms deliver: a JSON POST to CONTACT_WEBHOOK_URL (the owner's chosen route
- * into admin@mumsaloud.com). Until that is set, callers get `unavailable` and show the visitor a
+ * into info@mumsaloud.com). Until that is set, callers get `unavailable` and show the visitor a
  * prefilled email instead, so nothing typed is ever lost silently.
  */
 export type InboxResult = { ok: true } | { ok: false; reason: "unavailable" | "failed" };

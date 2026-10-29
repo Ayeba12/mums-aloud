@@ -57,7 +57,7 @@ describe("sheetPayload", () => {
   });
 
   it("notifies the site inbox by default", () => {
-    expect(sheetPayload(fields, "x", when).emails[1].to).toBe("admin@mumsaloud.com");
+    expect(sheetPayload(fields, "x", when).emails[1].to).toBe("info@mumsaloud.com");
   });
 });
 
