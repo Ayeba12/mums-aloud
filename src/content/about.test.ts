@@ -5,7 +5,7 @@ import { uploadUrl } from "@/lib/wordpress/urls";
 
 describe("About content", () => {
   it("lists the four team members from the live site, Bokun first with a link to her page", () => {
-    expect(team.map((person) => person.name)).toEqual(["Bokun Imoukhuede", "Oyindamola", "Dk Jonah", "Yemi Komolafe"]);
+    expect(team.map((person) => person.name)).toEqual(["Bokun Imoukhuede", "Gloria Odewumi", "Dk Jonah", "Yemi Komolafe"]);
     expect(team[0].href).toBe("/meet-bokun/");
     expect(team.slice(1).every((person) => person.href === undefined)).toBe(true);
     expect(new Set([...team, ...council.members.people].map((person) => person.id)).size).toBe(9);

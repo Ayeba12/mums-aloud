@@ -70,7 +70,7 @@ export const about = {
 /** The four people on the live Meet the Team page, roles as stated there (confirm). */
 export const team: Profile[] = [
   { id: "bokun", name: "Bokun Imoukhuede", role: "Founder and Chief Thriving Officer", href: "/meet-bokun/", linkLabel: "Read Bokun's story" },
-  { id: "oyindamola", name: "Oyindamola", role: "Content Strategist" },
+  { id: "oyindamola", name: "Gloria Odewumi", role: "Content Strategist" },
   { id: "dk-jonah", name: "Dk Jonah", role: "Brand Strategist" },
   { id: "yemi", name: "Yemi Komolafe", role: "Engagement Manager" },
 ];
