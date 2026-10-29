@@ -68,4 +68,13 @@ describe("Our Services actions", () => {
       if (action.external) expect(action.href, pathway.id).toMatch(/^https:/);
     }
   });
+
+  it("sends 1:1 Support and Group Support & Counselling to a free call with Bokun", () => {
+    const pathways = services.groups.flatMap((group) => group.pathways);
+    for (const title of ["1:1 Support", "Group Support & Counselling"]) {
+      const action = pathways.find((pathway) => pathway.title === title)?.action;
+      expect(action?.label, title).toBe("Book a free call");
+      expect(action?.href, title).toMatch(/^https:\/\/calendly\.com\//);
+    }
+  });
 });

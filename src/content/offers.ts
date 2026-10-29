@@ -51,7 +51,8 @@ const groups: readonly PathwayGroup[] = [
         title: "Group Support & Counselling",
         summary: "A safe space to share, be heard, and know you're not carrying it alone.",
         items: ["Weekly support group sessions", "Group counselling and mindfulness sessions", "Online community forums", "Peer-led discussion circles"],
-        action: { label: "Join Mama's Escape", join: true },
+        /** Owner, 30 Oct 2026: a free call first, as with 1:1 Support (was Join Mama's Escape). */
+        action: { label: "Book a free call", href: calendly, external: true },
       },
       {
         id: "mentor",
