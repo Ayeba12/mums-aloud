@@ -93,13 +93,16 @@ export default function MamasEscapePage() {
 
       {/* Where Mama's Escape sits: the community, the podcast and the newsletter as three photo cards,
           straight after the podcast statement so a new visitor meets the three ways in before the detail
-          (owner, 30 Oct 2026). A slider with arrows on phones, a row of three from md. */}
+          (owner, 30 Oct 2026). 4:5 portraits, so the photo keeps room above its caption. A slider with arrows
+          until xl, one wide card with the next peeking; a row of three only from xl, since three-across
+          squares at tablet and small-laptop widths let the fixed-height caption cover most of the photo
+          (65 to 139 per cent of the card at 768 to 1100px). */}
       <Section aria-labelledby="family-heading">
         <SectionHeading id="family-heading" tag={family.tag} heading={family.heading} intro={family.intro} />
         <Carousel
           count={family.tiles.length}
-          className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-4 px-4 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:scroll-pl-0 md:px-0 lg:gap-8"
-          controlsClassName="md:hidden"
+          className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-4 px-4 md:-mx-6 md:gap-6 md:scroll-pl-6 md:px-6 lg:-mx-8 lg:scroll-pl-8 lg:px-8 xl:mx-0 xl:grid xl:grid-cols-3 xl:gap-8 xl:overflow-visible xl:scroll-pl-0 xl:px-0"
+          controlsClassName="xl:hidden"
         >
           {family.tiles.map((tile) => {
             const media = familyMedia[tile.icon];
@@ -107,13 +110,13 @@ export default function MamasEscapePage() {
             const external = "external" in tile.action && tile.action.external;
             const href = tile.title === "The Newsletter" ? siteConfig.newsletterUrl : tile.action.href;
             return (
-              <li key={tile.title} className="w-[82vw] shrink-0 snap-start sm:w-[60vw] md:w-auto">
-                <article className={`group relative aspect-square overflow-hidden rounded-card ${imageRing}`}>
+              <li key={tile.title} className="w-[82vw] shrink-0 snap-start sm:w-[60vw] md:w-[46vw] xl:w-auto">
+                <article className={`group relative aspect-[4/5] overflow-hidden rounded-card ${imageRing}`}>
                   <Image
                     src={media.photo}
                     alt=""
                     placeholder="blur"
-                    sizes="(min-width: 48rem) 33vw, 82vw"
+                    sizes="(min-width: 80rem) 33vw, (min-width: 48rem) 46vw, (min-width: 40rem) 60vw, 82vw"
                     className={`absolute inset-0 size-full object-cover transition-transform duration-500 ease-standard group-hover:scale-[1.03] motion-reduce:transition-none ${media.position}`}
                   />
                   {/* 8px inside a 16px card, so the caption keeps the control radius and the corners stay concentric. */}
