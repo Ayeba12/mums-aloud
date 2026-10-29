@@ -28,7 +28,8 @@ type Unit = { steps: number; play: (delay: number) => void };
  * - `data-reveal="lines"` on a heading: its lines rise from behind their own clip, one after another.
  * - `data-reveal="fade"` on a block: it rises 16px and fades in.
  * - `data-reveal="stagger"` on a list or grid: its children fade up in turn, row by row as they arrive.
- * - `data-reveal="parallax"` on a photo inside a clipping frame: it drifts a little while the frame crosses the screen.
+ * - `data-reveal="parallax"` on a photo whose parent clips (`overflow-hidden`): it drifts a little while the
+ *   frame crosses the screen, enlarged so no edge shows. An unclipped frame is reported in development.
  *
  * Whatever reaches the reveal line together plays in page order, one short step apart. Only what is still
  * below that line once the page has settled is held back, so the first screen never blinks and nothing is
@@ -90,6 +91,10 @@ export function ScrollReveals() {
         const parallax = (photo: HTMLElement) => {
           const frame = photo.parentElement;
           if (!frame) return;
+          // The frame must clip, or the enlarged, drifting photo spills over whatever sits next to it.
+          if (process.env.NODE_ENV !== "production" && getComputedStyle(frame).overflowY === "visible") {
+            console.warn("[ScrollReveals] a parallax photo's frame does not clip; give it overflow-hidden", frame);
+          }
           gsap.fromTo(
             photo,
             { yPercent: -motion.parallax, scale: motion.parallaxScale },
