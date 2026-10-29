@@ -175,4 +175,5 @@ export const footerGroups: NavGroup[] = [
 export const legalLinks: NavLink[] = [
   { label: "Privacy policy", href: "/privacy-policy/" },
   { label: "Cookie policy", href: "/cookie-policy-uk/" },
+  { label: "Terms and conditions", href: "/terms-and-conditions/" },
 ];

@@ -29,6 +29,7 @@ export const STATIC_ROUTES = [
   "/podcast/",
   "/pregnancy-calculator/",
   "/privacy-policy/",
+  "/terms-and-conditions/",
   "/resources/",
   "/services/",
   "/story-lounge/",
