@@ -6,18 +6,15 @@ Three forms on the site deliver through one Google Sheet in your Google account:
 2. The sender gets a confirmation email in the site's design, with a photo and a copy of what they sent.
 3. The team gets a notification email with every detail, a Reply button and a link to the tab.
 
-The website renders the emails. One small script inside the sheet records the row and sends them. Nothing else is needed: no email service, no extra account, no cost.
+Two parts do this. A small script inside the sheet records the row. The website itself sends the two emails, from **info@mumsaloud.com** through the mailbox's own mail service (Titan Email, which comes with the Hostinger domain). No Google account sends anything, and no extra email service is needed.
 
-This was set up on 29 October 2026 for the volunteer form and extended to the other two the same day. The steps below are kept for a new account or a rebuild.
+This was set up on 29 October 2026. The steps below are kept for a new account or a rebuild.
 
 ## Before you start
 
-Decide which Google account owns the sheet. **The emails are sent from that account.**
-
-- If info@mumsaloud.com is a Google Workspace account, use it. The emails then come from info@mumsaloud.com.
-- If it is not (for example a Hostinger mailbox), use the Google account you work from. The emails then come from that address, shown as "Mums Aloud". Replies still go to info@mumsaloud.com, because every email sets it as the reply address. (Today: ayebaplanet@gmail.com.)
-
-The script file is in the code at `web/integrations/google-apps-script/forms-sheet.gs`. The secret is in `web/.env.local` as `FORMS_WEBHOOK_SECRET` (it is not in GitHub).
+- The Google account that owns the sheet only stores the rows. Any account will do; today it is ayebaplanet@gmail.com.
+- The emails come from the team mailbox. You need its password for step 6; it goes into Vercel only.
+- The script file is in the code at `web/integrations/google-apps-script/forms-sheet.gs`. The secret is in `web/.env.local` as `FORMS_WEBHOOK_SECRET` (it is not in GitHub).
 
 ## Step 1. Create the sheet
 
@@ -44,9 +41,9 @@ The website sends this value with every submission, and the script refuses anyth
 ## Step 4. Grant the permissions once
 
 1. Back in the editor (the **<>** icon), choose `authorise` in the function list next to the Run button, then press **Run**.
-2. Google asks for permission to see the sheet and send email as you. Click **Review permissions**, pick the account, and allow.
+2. Google asks for permission to see the sheet. Click **Review permissions**, pick the account, and allow.
 3. If Google says "Google hasn't verified this app", click **Advanced**, then **Go to Volunteer applications (unsafe)**. It is your own script, in your own account.
-4. The log at the bottom says `Ready. Sheet: Mums Aloud volunteer applications. Tabs: Applications, Contact, Partnership. Emails left today: ...`. The sheet now has the three tabs, each with a bold header row.
+4. The log at the bottom says `Ready. Sheet: Mums Aloud volunteer applications. Tabs: Applications, Contact, Partnership.` The sheet now has the three tabs, each with a bold header row.
 
 ## Step 5. Publish the script as a web app
 
@@ -66,6 +63,8 @@ In Vercel, **Project > Settings > Environment Variables**, for Production:
 | `FORMS_WEBHOOK_URL` | the Web app URL from step 5 |
 | `FORMS_WEBHOOK_SECRET` | the same secret as the script property |
 | `FORMS_NOTIFY_EMAIL` | optional: where the team's notifications go. Leave it out for info@mumsaloud.com |
+| `SMTP_PASSWORD` | the info@mumsaloud.com mailbox password (Titan Email). Mark it Secret. |
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER` | optional: they default to `smtp.titan.email`, `465` and info@mumsaloud.com |
 
 Then **Deployments > the latest > Redeploy**. Production only is deliberate: preview deployments then never write real rows or send real emails.
 
@@ -76,10 +75,10 @@ The older names `VOLUNTEER_WEBHOOK_URL`, `VOLUNTEER_WEBHOOK_SECRET` and `VOLUNTE
 1. Send each form on the site with your own email address: the Volunteer With Us form, the Contact form, the Partnership form.
 2. Each says thank you and that a confirmation email is on its way.
 3. The matching tab shows a new row within a few seconds.
-4. Two emails arrive per form: the confirmation at the address you typed, the notification at info@mumsaloud.com (or the notify address). The first time, check the spam folder and mark them as not spam.
+4. Two emails arrive per form, both from info@mumsaloud.com: the confirmation at the address you typed, the notification at info@mumsaloud.com (or the notify address). The first time, check the spam folder and mark them as not spam.
 5. Delete the test rows.
 
-If a form instead says the online form is not open yet, the URL is missing on Vercel or the deployment has not been redeployed. If it says something went wrong, the secrets differ, the deployment was not made for "Anyone", or the script is an old version that does not know the tab. Google keeps a log under **Executions** in the editor's left bar.
+If a form instead says the online form is not open yet, neither the script URL nor the mailbox password is set on Vercel, or the deployment has not been redeployed. If it says something went wrong, the secrets differ, the deployment was not made for "Anyone", or the script is an old version that does not know the tab. If the row appears but no email arrives, the mailbox password is wrong: the site then says "we will reply by email" instead of promising a confirmation. Google keeps a log under **Executions** in the editor's left bar; Vercel's function logs show mail errors.
 
 ## Changing the script later
 
@@ -87,7 +86,8 @@ Edits do not go live until you make a new version: **Deploy > Manage deployments
 
 ## Good to know
 
-- **Limits.** A personal Gmail account can send 100 emails a day this way, a Google Workspace account 1,500. Each submission sends two.
+- **Limits.** Titan Email allows a few hundred outgoing emails a day per mailbox. Each submission sends two. The newsletter stays on MailerLite; never send a mailing through this route.
 - **Personal data.** The sheet holds names, email addresses, phone numbers and messages. Share it only with the team, and delete rows in line with the privacy notice.
 - **What the emails look like.** Previews, with made-up details, on the site: `/style-guide/emails/volunteer-applicant/`, `volunteer-admin`, `contact-sender`, `contact-team`, `partnership-sender`, `partnership-team`. Gmail and Outlook show Georgia and Arial in place of the site's fonts; Apple Mail shows the real ones. The logo and photo load from the site, so some inboxes ask before showing images.
-- **Fallbacks.** Until the URL is set, the forms go to `CONTACT_WEBHOOK_URL` if that is set, and otherwise the visitor is offered a prefilled email to info@mumsaloud.com. Nothing is lost silently.
+- **Fallbacks.** A submission counts as delivered when the row is saved or the team was emailed. Until either is set up, the forms go to `CONTACT_WEBHOOK_URL` if that is set, and otherwise the visitor is offered a prefilled email to info@mumsaloud.com. Nothing is lost silently.
+- **If the mailbox password changes** in Titan, update `SMTP_PASSWORD` in Vercel and redeploy.

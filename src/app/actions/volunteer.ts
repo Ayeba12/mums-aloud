@@ -2,8 +2,8 @@
 
 import { apply } from "@/content/volunteer";
 import { deliverToInbox, fieldLines, mailtoHref } from "@/lib/inbox";
+import { deliverSubmission } from "@/lib/sheet-delivery";
 import { readVolunteerFields, validateVolunteer, type VolunteerErrors, type VolunteerFields } from "@/lib/volunteer";
-import { deliverToSheet } from "@/lib/sheet-delivery";
 import { volunteerSubmission } from "@/lib/volunteer-sheet";
 
 export type VolunteerState = {
@@ -22,8 +22,8 @@ const SOURCE = "mumsaloud.com volunteer";
 const emailLabels = { ...apply.form.labels, phone: "Phone number" };
 
 /**
- * Volunteer application. Goes to the forms sheet (FORMS_WEBHOOK_URL), which also sends
- * the applicant's confirmation and the team's notification; failing that, to the team inbox route
+ * Volunteer application. Recorded on the forms sheet, with the applicant's confirmation and the
+ * team's notification emailed from the team mailbox; failing that, the team inbox route
  * (CONTACT_WEBHOOK_URL); failing both, the visitor gets a prefilled email instead, so nothing is lost.
  */
 export async function sendVolunteerApplication(_previous: VolunteerState, formData: FormData): Promise<VolunteerState> {
@@ -35,9 +35,14 @@ export async function sendVolunteerApplication(_previous: VolunteerState, formDa
     return { status: "error", message: "Please check the highlighted fields.", errors, values: fields };
   }
 
-  const sheet = await deliverToSheet(volunteerSubmission(fields, SOURCE));
-  if (sheet.ok) {
-    return { status: "success", message: "Thank you. Your application is with our team, and a confirmation email is on its way to you." };
+  const delivery = await deliverSubmission(volunteerSubmission(fields, SOURCE));
+  if (delivery.ok) {
+    return {
+      status: "success",
+      message: delivery.confirmed
+        ? "Thank you. Your application is with our team, and a confirmation email is on its way to you."
+        : "Thank you. Your application is with our team and we will be in touch by email soon.",
+    };
   }
   const inbox = await deliverToInbox(fields, SOURCE);
   if (inbox.ok) {
@@ -45,7 +50,7 @@ export async function sendVolunteerApplication(_previous: VolunteerState, formDa
   }
 
   const fallback = { href: mailtoHref("Volunteer application", fieldLines(fields, emailLabels)), label: apply.form.fallback };
-  if (sheet.reason === "failed" || inbox.reason === "failed") {
+  if (delivery.reason === "failed" || inbox.reason === "failed") {
     return {
       status: "error",
       message: "Something went wrong on our side and your application was not sent. Please try again in a moment, or email it to us instead.",

@@ -4,7 +4,7 @@ import { readContactFields, validateContact, type ContactErrors, type ContactFie
 import { contactSubmission } from "@/lib/contact-sheet";
 import type { ContactRoute } from "@/lib/email/contact";
 import { deliverToInbox, fieldLines, mailtoHref } from "@/lib/inbox";
-import { deliverToSheet } from "@/lib/sheet-delivery";
+import { deliverSubmission } from "@/lib/sheet-delivery";
 import { siteConfig } from "@/lib/site";
 
 export type ContactState = {
@@ -22,9 +22,9 @@ type Route = { kind: ContactRoute; source: string; subject: string; topic?: stri
 const labels = { name: "Name", email: "Email", organisation: "Organisation", phone: "Phone", topic: "About", message: "Message" };
 
 /**
- * Delivers a message to the forms sheet, which records it and sends the sender's confirmation and
- * the team's notification; failing that, to the team inbox route (CONTACT_WEBHOOK_URL); failing
- * both, the visitor gets a prefilled email to the team instead, so no message is ever lost.
+ * Records a message on the forms sheet and emails the sender's confirmation and the team's
+ * notification from the team mailbox; failing that, the team inbox route (CONTACT_WEBHOOK_URL);
+ * failing both, the visitor gets a prefilled email to the team instead, so no message is ever lost.
  */
 async function submit(formData: FormData, route: Route): Promise<ContactState> {
   const fields = { ...readContactFields(formData), ...(route.topic ? { topic: route.topic } : {}) };
@@ -36,13 +36,20 @@ async function submit(formData: FormData, route: Route): Promise<ContactState> {
   }
 
   const thing = route.kind === "partnership" ? "enquiry" : "message";
-  const sheet = await deliverToSheet(contactSubmission(fields, route.kind, route.source));
-  if (sheet.ok) return { status: "success", message: `Thank you. Your ${thing} is with us, and a confirmation email is on its way to you.` };
+  const delivery = await deliverSubmission(contactSubmission(fields, route.kind, route.source));
+  if (delivery.ok) {
+    return {
+      status: "success",
+      message: delivery.confirmed
+        ? `Thank you. Your ${thing} is with us, and a confirmation email is on its way to you.`
+        : `Thank you. Your ${thing} is with us and we will reply by email.`,
+    };
+  }
   const inbox = await deliverToInbox(fields, route.source);
   if (inbox.ok) return { status: "success", message: `Thank you. Your ${thing} is with us and we will reply by email.` };
 
   const fallback = { href: mailtoHref(route.subject, fieldLines(fields, labels)), label: `Email ${siteConfig.email} instead` };
-  if (sheet.reason === "failed" || inbox.reason === "failed") {
+  if (delivery.reason === "failed" || inbox.reason === "failed") {
     return {
       status: "error",
       message: `Something went wrong on our side and your ${thing} was not sent. Please try again in a moment, or email us instead.`,

@@ -1,6 +1,19 @@
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { sendVolunteerApplication } from "@/app/actions/volunteer";
 import { readVolunteerFields, validateVolunteer, type VolunteerFields } from "./volunteer";
+
+// No real SMTP in tests: the transport records subjects and succeeds.
+const sentSubjects: string[] = [];
+vi.mock("nodemailer", () => ({
+  default: {
+    createTransport: () => ({
+      sendMail: async (options: { subject: string }) => {
+        sentSubjects.push(options.subject);
+        return {};
+      },
+    }),
+  },
+}));
 
 const good: VolunteerFields = {
   firstName: "Ama",
@@ -50,16 +63,17 @@ describe("readVolunteerFields", () => {
 });
 
 describe("sendVolunteerApplication", () => {
-  const env = { inbox: process.env.CONTACT_WEBHOOK_URL, sheet: process.env.VOLUNTEER_WEBHOOK_URL, forms: process.env.FORMS_WEBHOOK_URL };
+  const NAMES = ["CONTACT_WEBHOOK_URL", "VOLUNTEER_WEBHOOK_URL", "FORMS_WEBHOOK_URL", "SMTP_PASSWORD"] as const;
+  const saved: Partial<Record<(typeof NAMES)[number], string | undefined>> = {};
   beforeEach(() => {
-    delete process.env.CONTACT_WEBHOOK_URL;
-    delete process.env.VOLUNTEER_WEBHOOK_URL;
-    delete process.env.FORMS_WEBHOOK_URL;
+    sentSubjects.length = 0;
+    for (const name of NAMES) {
+      saved[name] = process.env[name];
+      delete process.env[name];
+    }
   });
   afterEach(() => {
-    if (env.inbox) process.env.CONTACT_WEBHOOK_URL = env.inbox;
-    if (env.sheet) process.env.VOLUNTEER_WEBHOOK_URL = env.sheet;
-    if (env.forms) process.env.FORMS_WEBHOOK_URL = env.forms;
+    for (const name of NAMES) if (saved[name] !== undefined) process.env[name] = saved[name];
   });
 
   const submit = (fields: Partial<VolunteerFields>) => {
@@ -84,19 +98,21 @@ describe("sendVolunteerApplication", () => {
     expect(state.values).toEqual(good);
   });
 
-  it("delivers to the applications sheet first, with both emails, and promises the confirmation", async () => {
-    process.env.VOLUNTEER_WEBHOOK_URL = "https://script.google.com/macros/s/abc/exec";
+  it("records the application on the sheet, sends both emails from the mailbox and promises the confirmation", async () => {
+    process.env.FORMS_WEBHOOK_URL = "https://script.google.com/macros/s/abc/exec";
+    process.env.SMTP_PASSWORD = "pw";
     const bodies: string[] = [];
     const original = globalThis.fetch;
     globalThis.fetch = (async (_url: string | URL | Request, init?: RequestInit) => {
       bodies.push(String(init?.body ?? ""));
-      return new Response(JSON.stringify({ ok: true, row: 2, sent: 2, failures: [] }), { status: 200 });
+      return new Response(JSON.stringify({ ok: true, row: 2, sheetUrl: "https://docs.google.com/spreadsheets/d/x/edit#gid=0" }), { status: 200 });
     }) as typeof fetch;
     try {
       const state = await submit({});
       expect(state.status).toBe("success");
       expect(state.message).toMatch(/confirmation email/);
-      expect(JSON.parse(bodies[0]).emails).toHaveLength(2);
+      expect(JSON.parse(bodies[0]).sheet).toBe("Applications");
+      expect(sentSubjects).toEqual(["We have your volunteer application, Ama", "New volunteer application: Ama Mensah"]);
     } finally {
       globalThis.fetch = original;
     }

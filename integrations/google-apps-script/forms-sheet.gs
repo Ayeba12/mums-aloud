@@ -1,10 +1,11 @@
 /**
- * Mums Aloud: the website's forms into this Google Sheet, plus their emails.
+ * Mums Aloud: the website's forms into this Google Sheet.
  *
- * One tab per form: Applications (Volunteer With Us), Contact, Partnership. The website renders
- * the row and both emails (the sender's confirmation and the team's notification) and posts them
- * here with a shared secret. This script checks the secret, appends the row to the named tab
- * (writing the header row the first time) and sends the emails exactly as given.
+ * One tab per form: Applications (Volunteer With Us), Contact, Partnership. The website posts each
+ * submission here as one row with a shared secret. This script checks the secret, appends the row
+ * to the named tab (writing the header row the first time) and answers with the tab's address, which
+ * the website puts in the team's notification email. The emails themselves are sent by the website
+ * from the team mailbox, so this script needs no email permission.
  *
  * Setup: web/docs/forms-sheet-setup.md. In short: paste this into Extensions > Apps Script of
  * the sheet, add SECRET under Project Settings > Script properties, run `authorise` once, then
@@ -40,17 +41,7 @@ function doPost(e) {
     lock.releaseLock();
 
     var sheetUrl = SpreadsheetApp.getActiveSpreadsheet().getUrl() + "#gid=" + sheet.getSheetId();
-    var sent = 0;
-    var failures = [];
-    (body.emails || []).forEach(function (message) {
-      try {
-        send_(message, sheetUrl);
-        sent += 1;
-      } catch (err) {
-        failures.push(String(err));
-      }
-    });
-    return json_({ ok: true, sheet: name, row: rowNumber, sent: sent, failures: failures });
+    return json_({ ok: true, sheet: name, row: rowNumber, sheetUrl: sheetUrl });
   } catch (err) {
     try { lock.releaseLock(); } catch (ignored) {}
     return json_({ ok: false, error: String(err) });
@@ -63,14 +54,12 @@ function doGet() {
 }
 
 /**
- * Run this once from the editor (select `authorise`, press Run) and accept the permissions:
- * the sheet and sending email. The web app then runs with them. It also creates the three tabs
- * with their header rows.
+ * Run this once from the editor (select `authorise`, press Run) and accept the permission to use
+ * the sheet. The web app then runs with it. It also creates the three tabs with their header rows.
  */
 function authorise() {
   SHEETS.forEach(function (name) { headers_(sheet_(name), HEADERS[name]); });
-  var quota = MailApp.getRemainingDailyQuota();
-  Logger.log("Ready. Sheet: " + SpreadsheetApp.getActiveSpreadsheet().getName() + ". Tabs: " + SHEETS.join(", ") + ". Emails left today: " + quota);
+  Logger.log("Ready. Sheet: " + SpreadsheetApp.getActiveSpreadsheet().getName() + ". Tabs: " + SHEETS.join(", ") + ".");
 }
 
 /** A form's tab, created on first use. */
@@ -95,20 +84,6 @@ function headers_(sheet, wanted) {
     sheet.setFrozenRows(1);
   }
   return headers;
-}
-
-/** Sends one email as the website rendered it, filling in this sheet's address where asked. */
-function send_(message, sheetUrl) {
-  if (!message || !message.to) throw new Error("Email without a recipient");
-  var options = {
-    to: message.to,
-    subject: message.subject || "Mums Aloud",
-    htmlBody: String(message.html || "").split("{{SHEET_URL}}").join(sheetUrl),
-    body: String(message.text || "").split("{{SHEET_URL}}").join(sheetUrl),
-    name: message.fromName || "Mums Aloud"
-  };
-  if (message.replyTo) options.replyTo = message.replyTo;
-  MailApp.sendEmail(options);
 }
 
 function json_(value) {
