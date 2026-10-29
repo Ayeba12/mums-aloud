@@ -30,4 +30,8 @@ describe("partners", () => {
     expect(partners.items.find((partner) => partner.slug === "chuck-gallery")?.logo).toBeUndefined();
     expect(partners.items.find((partner) => partner.slug === "nhs")?.logo?.onDark).toBe("/partners/nhs-white.svg");
   });
+
+  it("invites new partners with the site's own phrase, linking to the Partnership page", () => {
+    expect(partners.invite).toEqual({ label: "Partner with us", href: "/partnership/" });
+  });
 });

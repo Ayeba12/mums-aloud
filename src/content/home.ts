@@ -119,7 +119,7 @@ export const partners = {
   // confirm: official names, each partner's permission to show its logo, and any funder acknowledgement rules (e.g. National Lottery, NHS).
   items: partnerItems,
   names: partnerItems.map((partner) => partner.name),
-  invite: { label: "Add your organisation", href: "/partnership/" },
+  invite: { label: "Partner with us", href: "/partnership/" },
 };
 
 export const newsletter = {
