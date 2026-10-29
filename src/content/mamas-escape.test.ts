@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { experience, family, hero, join, podcast, stayClose } from "./mamas-escape";
+import { experience, family, faq, hero, join, podcast, stayClose } from "./mamas-escape";
 
 describe("Mama's Escape content", () => {
   it("keeps the four ways the community holds each other, in the client's order", () => {
@@ -46,5 +46,9 @@ describe("Mama's Escape content", () => {
   it("explains the closed joining form instead of promising it", () => {
     expect(join.bodyClosed).toMatch(/being set up/);
     expect(join.pending.link).toBe("Get the newsletter");
+  });
+
+  it("names the Mama's Escape Community in the first question", () => {
+    expect(faq.items[0].q).toBe("Who is the Mama's Escape Community for?");
   });
 });

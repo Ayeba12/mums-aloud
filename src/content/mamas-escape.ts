@@ -112,7 +112,7 @@ export const faq = {
   heading: { lead: "Questions?", accent: "Glad you asked." },
   items: [
     {
-      q: "Who is Mama's Escape for?",
+      q: "Who is the Mama's Escape Community for?",
       a: "Black mothers in the UK, particularly of African and Afro-Caribbean heritage, who are ready to stop doing it all alone. Expecting, newly a mum, raising under-fives, or somewhere else on the road: there is a place for you here.",
     },
     {
