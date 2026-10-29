@@ -91,6 +91,58 @@ export default function MamasEscapePage() {
         }
       />
 
+      {/* Where Mama's Escape sits: the community, the podcast and the newsletter as three photo cards,
+          straight after the podcast statement so a new visitor meets the three ways in before the detail
+          (owner, 30 Oct 2026). A slider with arrows on phones, a row of three from md. */}
+      <Section aria-labelledby="family-heading">
+        <SectionHeading id="family-heading" tag={family.tag} heading={family.heading} intro={family.intro} />
+        <Carousel
+          count={family.tiles.length}
+          className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-4 px-4 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:scroll-pl-0 md:px-0 lg:gap-8"
+          controlsClassName="md:hidden"
+        >
+          {family.tiles.map((tile) => {
+            const media = familyMedia[tile.icon];
+            const Icon = media.icon;
+            const external = "external" in tile.action && tile.action.external;
+            const href = tile.title === "The Newsletter" ? siteConfig.newsletterUrl : tile.action.href;
+            return (
+              <li key={tile.title} className="w-[82vw] shrink-0 snap-start sm:w-[60vw] md:w-auto">
+                <article className={`group relative aspect-square overflow-hidden rounded-card ${imageRing}`}>
+                  <Image
+                    src={media.photo}
+                    alt=""
+                    placeholder="blur"
+                    sizes="(min-width: 48rem) 33vw, 82vw"
+                    className={`absolute inset-0 size-full object-cover transition-transform duration-500 ease-standard group-hover:scale-[1.03] motion-reduce:transition-none ${media.position}`}
+                  />
+                  {/* 8px inside a 16px card, so the caption keeps the control radius and the corners stay concentric. */}
+                  <div className="surface-dark absolute right-2 bottom-2 left-2 rounded-control p-5">
+                    <div className="flex items-center gap-3">
+                      <Icon aria-hidden size={20} className="shrink-0 text-accent" />
+                      <h3 className="font-body text-title font-semibold">{tile.title}</h3>
+                    </div>
+                    <p className="mt-2">{tile.text}</p>
+                    {external ? (
+                      <a href={href} className="mt-3 inline-flex min-h-12 items-center gap-2 font-semibold after:absolute after:inset-0">
+                        {tile.action.label}
+                        <ArrowUpRightIcon aria-hidden size={16} weight="bold" />
+                        <span className="sr-only">(opens Spotify)</span>
+                      </a>
+                    ) : (
+                      <SmartLink href={href} className="mt-3 inline-flex min-h-12 items-center gap-2 font-semibold after:absolute after:inset-0">
+                        {tile.action.label}
+                        <ArrowRightIcon aria-hidden size={16} weight="bold" />
+                      </SmartLink>
+                    )}
+                  </div>
+                </article>
+              </li>
+            );
+          })}
+        </Carousel>
+      </Section>
+
       {/* Why we exist: the page's one dark panel, after the reference's dark section. A portrait carrying
           the reason as its caption, the heading set tall beside it; then a statement, four outlined cards
           with their text at the foot, and one pill. */}
@@ -170,56 +222,6 @@ export default function MamasEscapePage() {
       </Section>
 
       <TextMarquee text={marquee} />
-
-      {/* Where Mama's Escape sits: three photo cards. A slider with arrows on phones, a row of three from md. */}
-      <Section aria-labelledby="family-heading">
-        <SectionHeading id="family-heading" tag={family.tag} heading={family.heading} intro={family.intro} />
-        <Carousel
-          count={family.tiles.length}
-          className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-4 px-4 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:scroll-pl-0 md:px-0 lg:gap-8"
-          controlsClassName="md:hidden"
-        >
-          {family.tiles.map((tile) => {
-            const media = familyMedia[tile.icon];
-            const Icon = media.icon;
-            const external = "external" in tile.action && tile.action.external;
-            const href = tile.title === "The Newsletter" ? siteConfig.newsletterUrl : tile.action.href;
-            return (
-              <li key={tile.title} className="w-[82vw] shrink-0 snap-start sm:w-[60vw] md:w-auto">
-                <article className={`group relative aspect-square overflow-hidden rounded-card ${imageRing}`}>
-                  <Image
-                    src={media.photo}
-                    alt=""
-                    placeholder="blur"
-                    sizes="(min-width: 48rem) 33vw, 82vw"
-                    className={`absolute inset-0 size-full object-cover transition-transform duration-500 ease-standard group-hover:scale-[1.03] motion-reduce:transition-none ${media.position}`}
-                  />
-                  {/* 8px inside a 16px card, so the caption keeps the control radius and the corners stay concentric. */}
-                  <div className="surface-dark absolute right-2 bottom-2 left-2 rounded-control p-5">
-                    <div className="flex items-center gap-3">
-                      <Icon aria-hidden size={20} className="shrink-0 text-accent" />
-                      <h3 className="font-body text-title font-semibold">{tile.title}</h3>
-                    </div>
-                    <p className="mt-2">{tile.text}</p>
-                    {external ? (
-                      <a href={href} className="mt-3 inline-flex min-h-12 items-center gap-2 font-semibold after:absolute after:inset-0">
-                        {tile.action.label}
-                        <ArrowUpRightIcon aria-hidden size={16} weight="bold" />
-                        <span className="sr-only">(opens Spotify)</span>
-                      </a>
-                    ) : (
-                      <SmartLink href={href} className="mt-3 inline-flex min-h-12 items-center gap-2 font-semibold after:absolute after:inset-0">
-                        {tile.action.label}
-                        <ArrowRightIcon aria-hidden size={16} weight="bold" />
-                      </SmartLink>
-                    )}
-                  </div>
-                </article>
-              </li>
-            );
-          })}
-        </Carousel>
-      </Section>
 
       {/* What to expect: three portraits with one line each, as the reference's testimonial row. A slider
           until lg (three narrow portraits cannot hold a sentence), then three across. The caption sits at
