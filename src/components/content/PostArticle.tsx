@@ -99,17 +99,17 @@ export async function PostArticle({ collection, slug, copy }: { collection: Coll
       <article>
         <Section aria-labelledby="post-heading">
           <div className="mx-auto max-w-[52rem]">
-            <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-caption font-semibold tracking-wide text-text-secondary uppercase">
+            <p data-enter className="flex flex-wrap items-center gap-x-3 gap-y-1 text-caption font-semibold tracking-wide text-text-secondary uppercase">
               <Link href={listingPath} className="text-text-secondary">
                 {copy.tag}
               </Link>
               <span aria-hidden>·</span>
               <span>{label}</span>
             </p>
-            <h1 id="post-heading" className="mt-4 text-h1 tracking-tight">
+            <h1 id="post-heading" data-enter className="mt-4 text-h1 tracking-tight [--enter-step:1]">
               {post.title}
             </h1>
-            <p className="mt-4 text-caption text-text-secondary">
+            <p data-enter className="mt-4 text-caption text-text-secondary [--enter-step:2]">
               Published <time dateTime={post.date}>{dateFormat.format(new Date(post.date))}</time>
               {updated && (
                 <>
@@ -119,7 +119,7 @@ export async function PostArticle({ collection, slug, copy }: { collection: Coll
             </p>
           </div>
           {post.image && (
-            <div className="mx-auto mt-8 max-w-[64rem] overflow-hidden rounded-card ring-1 ring-black-950/10 ring-inset md:mt-12">
+            <div data-enter className="mx-auto mt-8 max-w-[64rem] overflow-hidden rounded-card ring-1 ring-black-950/10 ring-inset md:mt-12 [--enter-step:3]">
               <Image
                 src={post.image.src}
                 alt={post.image.alt}
@@ -149,7 +149,7 @@ export async function PostArticle({ collection, slug, copy }: { collection: Coll
               {copy.allLabel}
             </ButtonLink>
           </div>
-          <ul className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
+          <ul data-reveal="stagger" className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
             {related.map((item) => (
               <li key={item.id} className="min-w-0">
                 <PostTile post={item} label={copy.cardLabel} sizes="(min-width: 64rem) 33vw, (min-width: 48rem) 50vw, 100vw" />

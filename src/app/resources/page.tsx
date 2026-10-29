@@ -24,7 +24,7 @@ export default function ResourcesPage() {
         <h2 id="support-heading" className="mt-16 text-h3">
           {resources.supportHeading}
         </h2>
-        <ul aria-labelledby="support-heading" className="mt-6 grid gap-4 md:grid-cols-2 lg:gap-6">
+        <ul aria-labelledby="support-heading" data-reveal="stagger" className="mt-6 grid gap-4 md:grid-cols-2 lg:gap-6">
           {resources.support.map((item) => {
             const Icon = supportIcons[item.icon];
             return (
@@ -46,7 +46,7 @@ export default function ResourcesPage() {
         <h2 id="guides-heading" className="mt-16 text-h3">
           {resources.guidesHeading}
         </h2>
-        <ul aria-labelledby="guides-heading" className="mt-6 grid gap-4 md:grid-cols-2 lg:gap-6">
+        <ul aria-labelledby="guides-heading" data-reveal="stagger" className="mt-6 grid gap-4 md:grid-cols-2 lg:gap-6">
           {guides.map((guide) => (
             <li key={guide.slug} className="group relative flex flex-col rounded-card border border-border-decoration bg-surface-card p-6">
               <IconChip>
@@ -65,7 +65,7 @@ export default function ResourcesPage() {
         <h2 id="calculators-heading" className="mt-16 text-h3">
           {resources.calculatorsHeading}
         </h2>
-        <ul aria-labelledby="calculators-heading" className="mt-6 grid gap-4 md:grid-cols-2 lg:gap-6">
+        <ul aria-labelledby="calculators-heading" data-reveal="stagger" className="mt-6 grid gap-4 md:grid-cols-2 lg:gap-6">
           {[
             { calculator: calculators.ovulation, Icon: CalendarDotsIcon },
             { calculator: calculators.pregnancy, Icon: BabyIcon },

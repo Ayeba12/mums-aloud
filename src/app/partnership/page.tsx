@@ -108,11 +108,13 @@ export default function PartnershipPage() {
       <div className="frame-x section-y">
         <section aria-labelledby="routes-heading" className="surface-dark rounded-panel">
           <div className="container-page section-y">
-            <h2 id="routes-heading" className="mx-auto max-w-[22ch] text-center text-h2">
+            <h2 id="routes-heading" data-reveal="lines" className="mx-auto max-w-[22ch] text-center text-h2">
               <Accent {...routes.heading} />
             </h2>
-            <p className="mx-auto mt-4 max-w-[46ch] text-center text-lead">{routes.intro}</p>
-            <ul className="mt-12 grid gap-4 md:grid-cols-2 lg:gap-6">
+            <p data-reveal="fade" className="mx-auto mt-4 max-w-[46ch] text-center text-lead">
+              {routes.intro}
+            </p>
+            <ul data-reveal="stagger" className="mt-12 grid gap-4 md:grid-cols-2 lg:gap-6">
               {routes.items.map((route, index) => (
                 <li key={route.title} className={`group relative aspect-[4/3] overflow-hidden rounded-card ${imageRing}`}>
                   <Image
@@ -140,7 +142,7 @@ export default function PartnershipPage() {
                 </li>
               ))}
             </ul>
-            <p className="mt-12 text-center text-caption font-semibold tracking-wide uppercase opacity-80">{routes.partnersTag}</p>
+            <p data-reveal="fade" className="mt-12 text-center text-caption font-semibold tracking-wide uppercase opacity-80">{routes.partnersTag}</p>
             {/* The partners' logos drift across the panel in its light ink, easing in and out at the panel's own edges. */}
             <CardMarquee label={routes.partnersTag} fade className="mt-6">
               {partnerList.items.map((partner) => (
@@ -154,7 +156,7 @@ export default function PartnershipPage() {
       {/* Why it matters: the impact figures as a fan of note cards, as the reference's stack. */}
       <Section aria-labelledby="why-heading">
         <SectionHeading id="why-heading" tag={why.tag} heading={why.heading} align="center" />
-        <ul className="mx-auto mt-12 flex max-w-[60rem] flex-col gap-4 md:mt-16 md:flex-row md:items-end md:justify-center md:gap-0">
+        <ul data-reveal="stagger" className="mx-auto mt-12 flex max-w-[60rem] flex-col gap-4 md:mt-16 md:flex-row md:items-end md:justify-center md:gap-0">
           {/* The sourced 3x figure takes the front card; the two counts flank it. */}
           {[impact.stats[0], impact.stats[2], impact.stats[1]].map((stat, index) => (
             <li
@@ -184,7 +186,7 @@ export default function PartnershipPage() {
           <div className="grid gap-8 px-2 pt-2 md:px-4 md:pt-4 lg:grid-cols-12 lg:gap-x-8 lg:p-2">
             <div className="relative order-first lg:col-span-6 lg:col-start-1 lg:row-start-1">
               <div className={`overflow-hidden rounded-card ${imageRing}`}>
-                <Image src={embracePhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 50vw, 100vw" className="aspect-square w-full object-cover object-[50%_30%]" />
+                <Image src={embracePhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 50vw, 100vw" data-reveal="parallax" className="aspect-square w-full object-cover object-[50%_30%]" />
               </div>
               <p className={`mt-4 max-w-[46ch] px-2 lg:absolute lg:inset-x-0 lg:bottom-0 lg:m-0 lg:max-w-none lg:rounded-b-card lg:px-6 lg:pt-24 lg:pb-6 ${captionScrim}`}>
                 <span className="block max-w-[46ch]">{network.caption}</span>
@@ -192,7 +194,7 @@ export default function PartnershipPage() {
             </div>
             <div className="px-2 lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:self-center lg:pr-6 lg:pl-0">
               <Tag>{network.tag}</Tag>
-              <ul id="network-heading" className="mt-4 flex flex-col gap-1 font-heading text-h1 leading-tight text-ink">
+              <ul id="network-heading" data-reveal="stagger" className="mt-4 flex flex-col gap-1 font-heading text-h1 leading-tight text-ink">
                 {network.sectors.map((sector) => (
                   <li key={sector}>{sector}</li>
                 ))}
@@ -200,10 +202,10 @@ export default function PartnershipPage() {
             </div>
           </div>
           <div className="container-page pb-12 md:pb-16 lg:pb-24">
-            <h2 className="mx-auto mt-16 max-w-[24ch] text-center text-h2 lg:mt-24">
+            <h2 data-reveal="lines" className="mx-auto mt-16 max-w-[24ch] text-center text-h2 lg:mt-24">
               <Accent {...offer.heading} />
             </h2>
-            <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <ul data-reveal="stagger" className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {offer.items.map((item) => {
                 const Icon = offerIcons[item.icon];
                 return (
@@ -217,7 +219,7 @@ export default function PartnershipPage() {
                 );
               })}
             </ul>
-            <div className="mt-12 flex justify-center">
+            <div data-reveal="fade" className="mt-12 flex justify-center">
               <ButtonLink href={offer.action.href} variant="inverse" size="large" arrow>
                 {offer.action.label}
               </ButtonLink>
@@ -229,7 +231,7 @@ export default function PartnershipPage() {
       {/* Ways to work together: three strands, each a photo column with its opportunities. */}
       <Section id="ways" aria-labelledby="ways-heading" className="scroll-mt-24">
         <SectionHeading id="ways-heading" tag={ways.tag} heading={ways.heading} intro={ways.intro} />
-        <ul className="mt-12 grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-8">
+        <ul data-reveal="stagger" className="mt-12 grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-8">
           {ways.strands.map((strand, index) => (
             <li key={strand.title} className="flex flex-col">
               <h3 className="font-heading text-h4 text-ink">{strand.title}</h3>
@@ -239,6 +241,7 @@ export default function PartnershipPage() {
                   alt=""
                   placeholder="blur"
                   sizes="(min-width: 48rem) 33vw, 100vw"
+                  data-reveal="parallax"
                   className={`aspect-[4/5] w-full object-cover ${strandPhotos[index].position}`}
                 />
               </div>
@@ -303,7 +306,7 @@ export default function PartnershipPage() {
               </div>
             }
           />
-          <div className="rounded-panel bg-surface-card p-6 lg:col-span-6 lg:col-start-7 lg:p-8">
+          <div data-reveal="fade" className="rounded-panel bg-surface-card p-6 lg:col-span-6 lg:col-start-7 lg:p-8">
             <PartnershipForm />
           </div>
         </div>
@@ -326,7 +329,7 @@ async function Voices() {
   }
   if (posts.length === 0) return <p className="text-text-secondary">No stories yet.</p>;
   return (
-    <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-6 lg:gap-x-8">
+    <ul data-reveal="stagger" className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-6 lg:gap-x-8">
       {posts.map((post) => (
         <li key={post.id} className="min-w-0">
           <PostTile post={post} label="Story" />

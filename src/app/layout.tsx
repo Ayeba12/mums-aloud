@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Libre_Caslon_Text, Urbanist } from "next/font/google";
+import { ScrollReveals } from "@/components/motion/ScrollReveals";
 import { CookieNotice } from "@/components/navigation/CookieNotice";
 import { SiteFooter } from "@/components/navigation/SiteFooter";
 import { SiteHeader } from "@/components/navigation/SiteHeader";
@@ -40,7 +41,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-GB" className={`${urbanist.variable} ${libreCaslon.variable} antialiased`}>
+    // data-scroll-behavior: anchors glide (globals.css), but Next turns smooth scrolling off while it changes page, so a new page opens at its top at once.
+    <html lang="en-GB" data-scroll-behavior="smooth" className={`${urbanist.variable} ${libreCaslon.variable} antialiased`}>
       <body className="min-h-dvh">
         <a
           href="#main"
@@ -53,6 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteFooter />
         <NewsletterDialog />
         <CookieNotice />
+        <ScrollReveals />
       </body>
     </html>
   );

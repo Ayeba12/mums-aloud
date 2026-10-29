@@ -10,7 +10,7 @@ import photo from "@/assets/photos/mother-baby-smiling.jpg";
 export function NewsletterInvite() {
   return (
     <Section aria-labelledby="newsletter-heading">
-      <div className="grid overflow-hidden rounded-panel bg-surface-card lg:grid-cols-2">
+      <div data-reveal="fade" className="grid overflow-hidden rounded-panel bg-surface-card lg:grid-cols-2">
         <div className="flex flex-col justify-center p-6 md:p-10 lg:p-16">
           <SectionHeading
             id="newsletter-heading"
@@ -38,6 +38,7 @@ export function NewsletterInvite() {
             fill
             placeholder="blur"
             sizes="(min-width: 64rem) 50vw, 100vw"
+            data-reveal="parallax"
             className="object-cover object-[65%_40%]"
           />
         </div>

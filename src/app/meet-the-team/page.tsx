@@ -21,7 +21,7 @@ export default function MeetTheTeamPage() {
   return (
     <main id="main">
       <PageHeader tag={teamPage.tag} heading={teamPage.heading} intro={teamPage.intro}>
-        <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <ul data-reveal="stagger" className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {team.map((person) => (
             <li key={person.name}>
               <ProfileTile person={person} {...teamPortraits[person.id]} />

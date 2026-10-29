@@ -79,10 +79,10 @@ async function ListingPosts({ collection, copy, page }: { collection: Collection
       <FeaturedPost post={featured} copy={copy} />
       {rest.length > 0 && (
         <>
-          <h2 id="latest-heading" className="mt-16 text-center text-h2 lg:mt-24">
+          <h2 id="latest-heading" data-reveal="lines" className="mt-16 text-center text-h2 lg:mt-24">
             {copy.latestHeading}
           </h2>
-          <ul aria-labelledby="latest-heading" className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:gap-x-8">
+          <ul aria-labelledby="latest-heading" data-reveal="stagger" className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:gap-x-8">
             {items.map((post) => (
               <li key={post.id} className="min-w-0">
                 <PostTile post={post} label={copy.cardLabel} />

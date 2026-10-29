@@ -55,7 +55,7 @@ export default function PodcastPage() {
           <div className="lg:col-span-5">
             <SectionHeading id="about-heading" tag={copy.about.tag} heading={copy.about.heading} />
           </div>
-          <div className="flex flex-col gap-4 lg:col-span-6 lg:col-start-7 lg:pt-10">
+          <div data-reveal="fade" className="flex flex-col gap-4 lg:col-span-6 lg:col-start-7 lg:pt-10">
             {copy.about.paragraphs.map((paragraph) => (
               <p key={paragraph.slice(0, 24)} className="max-w-[56ch]">
                 {paragraph}
@@ -67,10 +67,12 @@ export default function PodcastPage() {
 
       <Section id="episodes" aria-labelledby="episodes-heading" tone="tinted" className="scroll-mt-24">
         <div className="flex flex-col items-start">
-          <h2 id="episodes-heading" className="text-h2">
+          <h2 id="episodes-heading" data-reveal="lines" className="text-h2">
             {copy.episodes.heading}
           </h2>
-          <p className="mt-4 max-w-[46ch] text-lead">{copy.episodes.intro}</p>
+          <p data-reveal="fade" className="mt-4 max-w-[46ch] text-lead">
+            {copy.episodes.intro}
+          </p>
         </div>
         <div className="mt-12">
           <Suspense fallback={<p className="text-text-secondary">Loading episodes…</p>}>
@@ -180,7 +182,7 @@ async function EpisodeList() {
 
   return (
     <>
-      <ol className="flex flex-col gap-4">
+      <ol data-reveal="stagger" className="flex flex-col gap-4">
         {podcast.episodes.map((episode) => {
           const image = episode.image ?? podcast.image;
           return (

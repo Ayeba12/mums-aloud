@@ -30,12 +30,14 @@ export default function MeetBokunPage() {
             <Image src={hero.portrait.src} alt={hero.portrait.alt} fill priority sizes="(min-width: 64rem) 50vw, 100vw" className="object-cover object-[50%_10%]" />
           </div>
           <div className="flex flex-col items-start justify-center px-6 pt-8 pb-12 lg:px-16 lg:pt-32 lg:pb-16">
-            <Tag>{hero.tag}</Tag>
-            <h1 id="page-heading" className="mt-4 max-w-[16ch] text-h1 tracking-tight">
+            <Tag data-enter>{hero.tag}</Tag>
+            <h1 id="page-heading" data-enter className="mt-4 max-w-[16ch] text-h1 tracking-tight [--enter-step:1]">
               <Accent {...hero.heading} />
             </h1>
-            <p className="mt-4 max-w-[40ch] text-lead">{hero.intro}</p>
-            <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">
+            <p data-enter className="mt-4 max-w-[40ch] text-lead [--enter-step:2]">
+              {hero.intro}
+            </p>
+            <div data-enter className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row [--enter-step:3]">
               <ButtonLink href={hero.primary.href} size="large" arrow>
                 {hero.primary.label}
               </ButtonLink>
@@ -51,7 +53,7 @@ export default function MeetBokunPage() {
       <Section id="story" aria-labelledby="letter-heading" className="scroll-mt-24">
         <div className="mx-auto max-w-reading">
           <SectionHeading id="letter-heading" tag={letter.tag} heading={letter.heading} />
-          <div className="mt-8 flex flex-col gap-5">
+          <div data-reveal="fade" className="mt-8 flex flex-col gap-5">
             {letter.paragraphs.map((paragraph) =>
               paragraph.emphasis ? (
                 <p key={paragraph.text} className="font-heading text-h4 italic text-ink">
@@ -64,7 +66,7 @@ export default function MeetBokunPage() {
               ),
             )}
           </div>
-          <p className="mt-8 flex flex-col gap-1">
+          <p data-reveal="fade" className="mt-8 flex flex-col gap-1">
             <span className="font-heading text-h4 italic text-ink">{letter.signoff.name}</span>
             <span className="text-caption font-semibold tracking-wide text-text-secondary uppercase">{letter.signoff.role}</span>
           </p>
@@ -74,7 +76,7 @@ export default function MeetBokunPage() {
       {/* Vision and voice as two cards on the tint. */}
       <Section aria-labelledby="pillars-heading" tone="tinted">
         <SectionHeading id="pillars-heading" tag={pillars.tag} heading={pillars.heading} align="center" />
-        <ul className="mt-12 grid gap-4 md:grid-cols-2 md:gap-6 lg:gap-8">
+        <ul data-reveal="stagger" className="mt-12 grid gap-4 md:grid-cols-2 md:gap-6 lg:gap-8">
           {pillars.items.map((item) => (
             <li key={item.title} className="flex flex-col rounded-card bg-surface p-6 lg:p-8">
               <QuotesIcon aria-hidden size={24} weight="fill" className="text-accent" />
@@ -91,7 +93,7 @@ export default function MeetBokunPage() {
           <div className="lg:col-span-5">
             <SectionHeading id="bio-heading" tag={bio.tag} heading={bio.heading} intro={bio.intro} />
           </div>
-          <div className="flex flex-col gap-4 lg:col-span-6 lg:col-start-7 lg:pt-10">
+          <div data-reveal="fade" className="flex flex-col gap-4 lg:col-span-6 lg:col-start-7 lg:pt-10">
             {bio.paragraphs.map((paragraph) => (
               <p key={paragraph.slice(0, 24)} className="max-w-[56ch]">
                 {paragraph}

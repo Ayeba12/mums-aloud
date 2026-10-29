@@ -18,7 +18,7 @@ export function CoreAreas() {
   return (
     <Section id="how-we-help" aria-labelledby="how-we-help-heading" className="scroll-mt-24">
       <SectionHeading id="how-we-help-heading" tag={coreAreas.eyebrow} heading={coreAreas.heading} intro={coreAreas.intro} />
-      <ul className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4 lg:gap-8">
+      <ul data-reveal="stagger" className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4 lg:gap-8">
         {coreAreas.items.map((area) => {
           const Icon = icons[area.icon];
           return (

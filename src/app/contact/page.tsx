@@ -35,7 +35,7 @@ export default function ContactPage() {
         <h2 id="reach-heading" className="sr-only">
           {contact.reach.heading}
         </h2>
-        <ul aria-labelledby="reach-heading" className={`mt-12 grid gap-4 sm:grid-cols-2 lg:gap-6 ${reach.length > 2 ? "lg:grid-cols-3" : ""}`}>
+        <ul aria-labelledby="reach-heading" data-reveal="stagger" className={`mt-12 grid gap-4 sm:grid-cols-2 lg:gap-6 ${reach.length > 2 ? "lg:grid-cols-3" : ""}`}>
           {reach.map((item) => {
             const { href, label, Icon } = reachLinks[item.kind];
             const external = item.kind === "instagram";
@@ -56,7 +56,7 @@ export default function ContactPage() {
           })}
         </ul>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-12 lg:gap-8">
+        <div data-reveal="stagger" className="mt-12 grid gap-8 lg:grid-cols-12 lg:gap-8">
           <section aria-labelledby="form-heading" className="rounded-panel bg-surface-card p-6 lg:col-span-7 lg:self-start lg:p-8">
             <h2 id="form-heading" className="text-h3">
               {contact.form.heading}

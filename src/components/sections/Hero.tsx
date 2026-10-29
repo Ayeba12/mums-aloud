@@ -35,7 +35,7 @@ export function Hero() {
           className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-scrim)_0%,color-mix(in_srgb,var(--color-scrim)_92%,transparent)_44%,color-mix(in_srgb,var(--color-scrim)_45%,transparent)_68%,transparent_100%)]"
         />
         <div className="group container-page relative flex flex-col items-center pt-48 pb-12 text-center md:pb-16 lg:pb-20">
-          <h1 id="hero-heading" className="max-w-[14ch] text-display tracking-display text-on-photo">
+          <h1 id="hero-heading" data-enter className="max-w-[14ch] text-display tracking-display text-on-photo">
             <Accent {...hero.headline} />
           </h1>
           {/* Collapses to nothing on hover-capable desktops, so heading and buttons sit together until the copy is hovered or focused. */}
@@ -44,7 +44,7 @@ export function Hero() {
               <span className="block pt-4">{hero.subheadline}</span>
             </p>
           </div>
-          <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">
+          <div data-enter className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row [--enter-step:2]">
             <ButtonLink href={siteConfig.joinUrl} variant="inverse" size="large" arrow>
               {hero.primary}
             </ButtonLink>

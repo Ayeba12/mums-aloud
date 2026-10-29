@@ -32,12 +32,14 @@ export default function WorkWithBokunPage() {
             <Image src={portrait.src} alt={portrait.alt} fill priority sizes="(min-width: 64rem) 50vw, 100vw" className="object-cover object-[50%_10%]" />
           </div>
           <div className="flex flex-col items-start justify-center px-6 pt-8 pb-12 lg:px-16 lg:pt-32 lg:pb-16">
-            <Tag>{hero.tag}</Tag>
-            <h1 id="page-heading" className="mt-4 max-w-[16ch] text-h1 tracking-tight">
+            <Tag data-enter>{hero.tag}</Tag>
+            <h1 id="page-heading" data-enter className="mt-4 max-w-[16ch] text-h1 tracking-tight [--enter-step:1]">
               <Accent {...hero.heading} />
             </h1>
-            <p className="mt-4 max-w-[44ch] text-lead">{hero.intro}</p>
-            <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">
+            <p data-enter className="mt-4 max-w-[44ch] text-lead [--enter-step:2]">
+              {hero.intro}
+            </p>
+            <div data-enter className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row [--enter-step:3]">
               <ButtonLink href={hero.primary.href} size="large" arrow>
                 {hero.primary.label}
                 <span className="sr-only">(opens Calendly)</span>
@@ -53,7 +55,7 @@ export default function WorkWithBokunPage() {
       {/* The five services as cards on the tint; each card is the section its legacy URL redirects to. */}
       <Section tone="tinted" aria-labelledby="services-heading">
         <SectionHeading id="services-heading" tag={services.tag} heading={services.heading} />
-        <ul className="mt-12 grid gap-4 md:grid-cols-2 lg:gap-6">
+        <ul data-reveal="stagger" className="mt-12 grid gap-4 md:grid-cols-2 lg:gap-6">
           {services.items.map((item, index) => {
             const Icon = icons[item.icon];
             const external = Boolean(item.action.external);

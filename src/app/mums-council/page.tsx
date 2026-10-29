@@ -80,7 +80,7 @@ export default function MumsCouncilPage() {
 
       <Section aria-labelledby="members-heading" tone="tinted">
         <SectionHeading id="members-heading" tag={council.members.tag} heading={council.members.heading} />
-        <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
+        <ul data-reveal="stagger" className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
           {council.members.people.map((person) => (
             <li key={person.name}>
               <ProfileTile person={person} {...teamPortraits[person.id]} context={council.tag} />
@@ -95,7 +95,7 @@ export default function MumsCouncilPage() {
         <section aria-labelledby="expect-heading" className="surface-dark rounded-panel">
           <div className="container-page section-y">
             <SectionHeading id="expect-heading" tag={council.expect.tag} heading={council.expect.heading} align="center" />
-            <ul className="mt-12 grid gap-4 md:grid-cols-3 lg:gap-6">
+            <ul data-reveal="stagger" className="mt-12 grid gap-4 md:grid-cols-3 lg:gap-6">
               {council.expect.items.map((item) => {
                 const Icon = expectIcons[item.icon];
                 return (

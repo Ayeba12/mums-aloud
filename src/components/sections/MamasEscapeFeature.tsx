@@ -30,10 +30,12 @@ export function MamasEscapeFeature() {
           {mamasEscape.primary}
         </ButtonLink>
       </div>
-      <p className="mt-6 max-w-[46ch] text-lead">{mamasEscape.body}</p>
+      <p data-reveal="fade" className="mt-6 max-w-[46ch] text-lead">
+        {mamasEscape.body}
+      </p>
       {/* Mama's Escape is more than the community: the three parts, each a link. */}
       <p className="mt-6 font-semibold text-ink">{mamasEscape.partsLead}</p>
-      <ul className="mt-2 flex flex-wrap gap-2">
+      <ul data-reveal="stagger" className="mt-2 flex flex-wrap gap-2">
         {mamasEscape.parts.map((part) => {
           const href = part.href === "newsletter" ? siteConfig.newsletterUrl : part.href;
           const Part = href.startsWith("/") ? Link : "a";
@@ -48,7 +50,7 @@ export function MamasEscapeFeature() {
         })}
       </ul>
       <p className="mt-8 font-semibold text-ink">{mamasEscape.itemsLead}</p>
-      <div className="mt-4">
+      <div data-reveal="fade" className="mt-4">
         <FeatureTabs
           items={mamasEscape.items.map((item) => ({
             id: item.icon,

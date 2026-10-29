@@ -161,25 +161,27 @@ export default function MamasEscapePage() {
           <div className="grid gap-8 px-2 pt-2 md:px-4 md:pt-4 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-6 lg:p-2">
             <div className="px-2 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:self-end lg:pr-0 lg:pl-6">
               <Tag>{why.tag}</Tag>
-              <h2 id="why-heading" className="mt-4 max-w-[12ch] text-h2">
+              <h2 id="why-heading" data-reveal="lines" className="mt-4 max-w-[12ch] text-h2">
                 <Accent {...why.heading} />
               </h2>
             </div>
             <div className={`order-first overflow-hidden rounded-card lg:order-none lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 ${imageRing}`}>
-              <Image src={embracePhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 50vw, 100vw" className="aspect-square w-full object-cover object-[50%_30%]" />
+              <Image src={embracePhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 50vw, 100vw" data-reveal="parallax" className="aspect-square w-full object-cover object-[50%_30%]" />
             </div>
-            <p className="max-w-[36ch] px-2 lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-start lg:pr-0 lg:pl-6">
+            <p data-reveal="fade" className="max-w-[36ch] px-2 lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-start lg:pr-0 lg:pl-6">
               <span className="font-heading text-h3 leading-none">{why.stat.value}</span> {why.stat.label} ·{" "}
               <a href={why.stat.source.href}>Source: {why.stat.source.label}</a>
             </p>
           </div>
 
           <div className="container-page pb-12 md:pb-16 lg:pb-24">
-            <h3 className="mx-auto mt-16 max-w-[24ch] text-center text-h2 lg:mt-24">
+            <h3 data-reveal="lines" className="mx-auto mt-16 max-w-[24ch] text-center text-h2 lg:mt-24">
               <Accent {...why.inside} />
             </h3>
-            <p className="mx-auto mt-4 max-w-[46ch] text-center text-lead">{experience.itemsLead}</p>
-            <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <p data-reveal="fade" className="mx-auto mt-4 max-w-[46ch] text-center text-lead">
+              {experience.itemsLead}
+            </p>
+            <ul data-reveal="stagger" className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {experience.items.map((item) => {
                 const Icon = experienceIcons[item.icon];
                 return (
@@ -193,7 +195,7 @@ export default function MamasEscapePage() {
                 );
               })}
             </ul>
-            <div className="mt-12 flex justify-center">
+            <div data-reveal="fade" className="mt-12 flex justify-center">
               <ButtonLink href={joinForm.href} variant="inverse" size="large" arrow>
                 {hero.primary}
               </ButtonLink>
@@ -207,12 +209,12 @@ export default function MamasEscapePage() {
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-6 lg:col-start-7 lg:row-start-1">
             <SectionHeading id="experience-heading" tag={experience.tag} heading={experience.heading} intro={experience.body} />
-            <blockquote className="mt-8 max-w-[40ch]">
+            <blockquote data-reveal="fade" className="mt-8 max-w-[40ch]">
               <QuotesIcon aria-hidden size={24} weight="fill" className="text-accent" />
               <p className="mt-2 font-heading text-h3 italic text-ink">{experience.pledge}</p>
             </blockquote>
           </div>
-          <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1">
+          <div data-reveal="fade" className="lg:col-span-5 lg:col-start-1 lg:row-start-1">
             <Image
               src={kissingPhoto}
               alt="A mother kissing her smiling baby on the cheek"
@@ -257,9 +259,9 @@ export default function MamasEscapePage() {
           intro={joinForm.open ? join.body : join.bodyClosed}
           align="center"
         />
-        <div className="mt-12 grid gap-2 lg:grid-cols-3 lg:gap-4">
+        <div data-reveal="stagger" className="mt-12 grid gap-2 lg:grid-cols-3 lg:gap-4">
           <div className={`relative min-h-72 overflow-hidden rounded-panel lg:col-span-2 lg:col-start-2 lg:row-start-1 ${imageRing}`}>
-            <Image src={laughingPhoto} alt="" fill placeholder="blur" sizes="(min-width: 64rem) 66vw, 100vw" className="object-cover object-[60%_20%]" />
+            <Image src={laughingPhoto} alt="" fill placeholder="blur" sizes="(min-width: 64rem) 66vw, 100vw" data-reveal="parallax" className="object-cover object-[60%_20%]" />
           </div>
           <div className="rounded-panel bg-surface-tinted p-6 lg:col-start-1 lg:row-start-1 lg:p-8">
             <h3 className="font-heading text-h4 text-ink">{join.asksTitle}</h3>
@@ -275,7 +277,7 @@ export default function MamasEscapePage() {
             </ol>
           </div>
         </div>
-        <div className="mt-8 flex justify-center">
+        <div data-reveal="fade" className="mt-8 flex justify-center">
           {joinForm.open ? (
             <ButtonLink href={joinForm.href} size="large" arrow>
               {join.primary}
@@ -293,7 +295,7 @@ export default function MamasEscapePage() {
 
       <Section aria-labelledby="faq-heading">
         <SectionHeading id="faq-heading" heading={faq.heading} align="center" />
-        <div className="mt-12">
+        <div data-reveal="fade" className="mt-12">
           <Faq items={faq.items} />
         </div>
       </Section>
@@ -302,10 +304,10 @@ export default function MamasEscapePage() {
       <Section aria-labelledby="stay-heading" className="bg-[linear-gradient(to_bottom,var(--color-surface),var(--color-surface-tinted))]">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
           <Tag>{stayClose.tag}</Tag>
-          <h2 id="stay-heading" className="mt-2 text-h2">
+          <h2 id="stay-heading" data-reveal="lines" className="mt-2 text-h2">
             <Accent {...stayClose.heading} />
           </h2>
-          <p className="mt-4 max-w-[46ch] text-lead">
+          <p data-reveal="fade" className="mt-4 max-w-[46ch] text-lead">
             {stayClose.body.map((part) =>
               typeof part === "string" ? (
                 part
@@ -321,7 +323,7 @@ export default function MamasEscapePage() {
               ),
             )}
           </p>
-          <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">
+          <div data-reveal="fade" className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">
             <ButtonLink href={joinForm.href} size="large" arrow>
               {join.primary}
             </ButtonLink>
@@ -329,7 +331,9 @@ export default function MamasEscapePage() {
               {stayClose.newsletter}
             </ButtonLink>
           </div>
-          <p className="mt-12 font-heading text-h3 italic text-ink">{stayClose.closing}</p>
+          <p data-reveal="fade" className="mt-12 font-heading text-h3 italic text-ink">
+            {stayClose.closing}
+          </p>
         </div>
       </Section>
     </main>

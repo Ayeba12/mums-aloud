@@ -67,7 +67,7 @@ export function Carousel({
 
   return (
     <>
-      <ul ref={track} className={`[scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${className}`}>
+      <ul ref={track} data-reveal="stagger" className={`[scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${className}`}>
         {children}
       </ul>
       <div className={`mt-6 flex items-center gap-3 ${controlsClassName}`}>

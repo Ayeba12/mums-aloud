@@ -24,6 +24,27 @@
   input, textarea { caret-color: var(--color-action); }
 }
 
+/* Motion (the shared language in components/motion/motion.ts). Opening copy marked data-enter rises 16px and
+   fades in on arrival, a step apart (--enter-step), with CSS alone, so it plays without JavaScript and never
+   waits for hydration. In-page anchors (#enquire, #join) glide; Next's own page changes still jump, since the
+   root carries data-scroll-behavior="smooth". None of it under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  [data-enter] {
+    animation: enter 0.8s var(--ease-standard) both;
+    animation-delay: calc(var(--enter-step, 0) * 80ms + 80ms);
+  }
+}
+@keyframes enter {
+  from { opacity: 0; translate: 0 16px; }
+}
+
+/* A printed page shows everything, whatever was still waiting to scroll in. */
+@media print {
+  [data-reveal], [data-reveal="stagger"] > *, [data-reveal="lines"] * { opacity: 1 !important; transform: none !important; }
+  [data-enter] { animation: none !important; }
+}
+
 /* The 404 page stands on its own: no site footer under it. */
 body:has(main[data-no-footer]) > footer { display: none; }
 

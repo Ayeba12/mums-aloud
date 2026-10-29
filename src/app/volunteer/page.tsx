@@ -63,7 +63,7 @@ export default function VolunteerPage() {
       {/* Why volunteer: the six reasons as cards. */}
       <Section id="why" aria-labelledby="why-heading" className="scroll-mt-24">
         <SectionHeading id="why-heading" tag={why.tag} heading={why.heading} align="center" />
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        <ul data-reveal="stagger" className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {why.items.map((item) => {
             const Icon = icons[item.icon];
             return (
@@ -112,10 +112,10 @@ export default function VolunteerPage() {
               }
             />
             <div className="mt-8 hidden overflow-hidden rounded-card ring-1 ring-black-950/10 ring-inset lg:block">
-              <Image src={friendsPhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 40vw, 100vw" className="aspect-[4/3] w-full object-cover object-[55%_30%]" />
+              <Image src={friendsPhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 40vw, 100vw" data-reveal="parallax" className="aspect-[4/3] w-full object-cover object-[55%_30%]" />
             </div>
           </div>
-          <div className="rounded-panel bg-surface-card p-6 lg:col-span-6 lg:col-start-7 lg:p-8">
+          <div data-reveal="fade" className="rounded-panel bg-surface-card p-6 lg:col-span-6 lg:col-start-7 lg:p-8">
             <VolunteerForm />
           </div>
         </div>

@@ -5,6 +5,8 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { ease } from "@/components/motion/ease";
+import { motion } from "@/components/motion/motion";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -21,7 +23,8 @@ export type ProcessStep = {
 /**
  * The reference's process section: a sticky index on the left whose current item follows the
  * scroll, and the steps on the right, each a photo beside a card. Each step fades up as it enters,
- * and each photo is scaled and drifts as its step crosses the viewport. Under reduced motion the
+ * and each photo is scaled and drifts as its step crosses the viewport, in the site's shared motion
+ * language (`motion.ts`). Under reduced motion the
  * steps are simply shown and only the index tracks the scroll.
  */
 export function ProcessSteps({ steps, outcomeLabel }: { steps: ProcessStep[]; outcomeLabel: string }) {
@@ -49,19 +52,19 @@ export function ProcessSteps({ steps, outcomeLabel }: { steps: ProcessStep[]; ou
         slides.forEach((slide) => {
           gsap.fromTo(
             slide,
-            { autoAlpha: 0, y: 16 },
-            { autoAlpha: 1, y: 0, duration: 0.7, ease: "power2.out", scrollTrigger: { trigger: slide, start: "top 85%", once: true } },
+            { opacity: 0, y: motion.rise },
+            { opacity: 1, y: 0, duration: motion.duration, ease, scrollTrigger: { trigger: slide, start: motion.start, once: true } },
           );
         });
         gsap.utils.toArray<HTMLElement>("[data-parallax]", root.current).forEach((photo) => {
           gsap.fromTo(
             photo,
-            { yPercent: -8, scale: 1.12 },
+            { yPercent: -motion.parallax, scale: motion.parallaxScale },
             {
-              yPercent: 8,
-              scale: 1.12,
+              yPercent: motion.parallax,
+              scale: motion.parallaxScale,
               ease: "none",
-              scrollTrigger: { trigger: photo.parentElement, start: "top bottom", end: "bottom top", scrub: true },
+              scrollTrigger: { trigger: photo.parentElement, start: "top bottom", end: "bottom top", scrub: motion.scrub },
             },
           );
         });
@@ -71,7 +74,7 @@ export function ProcessSteps({ steps, outcomeLabel }: { steps: ProcessStep[]; ou
   );
 
   return (
-    <div ref={root} className="grid gap-8 lg:grid-cols-12 lg:gap-8">
+    <div ref={root} data-reveal-scope className="grid gap-8 lg:grid-cols-12 lg:gap-8">
       <nav aria-label="Steps" className="lg:col-span-3 lg:sticky lg:top-24 lg:self-start">
         <ol className="flex flex-wrap gap-2 lg:flex-col">
           {steps.map((step, index) => {

@@ -58,7 +58,7 @@ export default function ServicesPage() {
       {services.groups.map((group, groupIndex) => (
         <Section key={group.id} aria-labelledby={`${group.id}-heading`} tone={groupIndex % 2 === 1 ? "tinted" : "default"}>
           <SectionHeading id={`${group.id}-heading`} tag={group.tag} heading={group.heading} />
-          <ul className={`mt-12 grid gap-4 md:grid-cols-2 lg:gap-6 ${group.pathways.length === 3 ? "lg:grid-cols-3" : ""}`}>
+          <ul data-reveal="stagger" className={`mt-12 grid gap-4 md:grid-cols-2 lg:gap-6 ${group.pathways.length === 3 ? "lg:grid-cols-3" : ""}`}>
             {group.pathways.map((pathway, index) => {
               const Icon = pathwayIcons[pathway.icon];
               const number = String(starts[groupIndex] + index + 1).padStart(2, "0");
@@ -108,7 +108,7 @@ export default function ServicesPage() {
           <div className="container-page section-y grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-8">
             <div className="lg:col-span-6">
               <SectionHeading id="volunteer-heading" tag={services.volunteer.tag} heading={services.volunteer.heading} intro={services.volunteer.intro} />
-              <ul className="mt-8 flex flex-col gap-3">
+              <ul data-reveal="stagger" className="mt-8 flex flex-col gap-3">
                 {services.volunteer.items.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <CheckIcon aria-hidden size={20} weight="bold" className="mt-1 shrink-0 text-accent" />
@@ -116,15 +116,15 @@ export default function ServicesPage() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-8 max-w-[46ch] font-heading text-h4 italic">{services.volunteer.note}</p>
-              <div className="mt-6">
+              <p data-reveal="fade" className="mt-8 max-w-[46ch] font-heading text-h4 italic">{services.volunteer.note}</p>
+              <div data-reveal="fade" className="mt-6">
                 <ButtonLink href={services.volunteer.action.href} variant="inverse" size="large" arrow>
                   {services.volunteer.action.label}
                 </ButtonLink>
               </div>
             </div>
             <div className={`overflow-hidden rounded-card lg:col-span-5 lg:col-start-8 ${imageRing}`}>
-              <Image src={volunteerPhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 42vw, 100vw" className="aspect-[4/5] w-full object-cover object-[55%_30%]" />
+              <Image src={volunteerPhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 42vw, 100vw" data-reveal="parallax" className="aspect-[4/5] w-full object-cover object-[55%_30%]" />
             </div>
           </div>
         </section>
@@ -134,11 +134,11 @@ export default function ServicesPage() {
       <Section aria-labelledby="approach-heading">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-8">
           <div className={`overflow-hidden rounded-card lg:col-span-5 ${imageRing}`}>
-            <Image src={approachPhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 42vw, 100vw" className="aspect-[4/5] w-full object-cover object-[50%_40%]" />
+            <Image src={approachPhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 42vw, 100vw" data-reveal="parallax" className="aspect-[4/5] w-full object-cover object-[50%_40%]" />
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
             <SectionHeading id="approach-heading" tag={services.approach.tag} heading={services.approach.heading} intro={services.approach.intro} />
-            <ul className="mt-12 flex flex-col gap-4">
+            <ul data-reveal="stagger" className="mt-12 flex flex-col gap-4">
               {services.approach.audiences.map((audience) => {
                 const Icon = audienceIcons[audience.icon];
                 return (

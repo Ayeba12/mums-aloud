@@ -36,7 +36,9 @@ export function Tag({ className = "", ...props }: ComponentProps<"p">) {
 
 /**
  * The shared opening block of every section: tag, 8px, heading, 16px, copy, 24px, action.
- * The caller adds `mt-12` (48px) before the section's content.
+ * The caller adds `mt-12` (48px) before the section's content. Below the first screen an h2's lines
+ * rise into place as it scrolls in and the copy and action fade up after them (`ScrollReveals`);
+ * `reveal={false}` keeps a heading still.
  */
 export function SectionHeading({
   id,
@@ -46,7 +48,7 @@ export function SectionHeading({
   action,
   align = "start",
   level: Level = "h2",
-  reveal = false,
+  reveal = true,
   className = "",
 }: {
   id: string;
@@ -56,19 +58,28 @@ export function SectionHeading({
   action?: ReactNode;
   align?: "start" | "center";
   level?: "h1" | "h2";
-  /** Marks the heading for a `Reveal` wrapper's line-by-line entrance. */
+  /** Marks an h2 for the line-by-line entrance and its copy and action for the fade after it. */
   reveal?: boolean;
   className?: string;
 }) {
   const centered = align === "center";
+  const marked = reveal && Level === "h2";
   return (
     <div className={`flex flex-col ${centered ? "mx-auto items-center text-center" : "items-start"} ${className}`}>
       {tag && <Tag>{tag}</Tag>}
-      <Level id={id} data-reveal={reveal ? "lines" : undefined} className={`${tag ? "mt-2" : ""} ${Level === "h1" ? "text-display tracking-display" : "text-h2"} max-w-[22ch]`}>
+      <Level id={id} data-reveal={marked ? "lines" : undefined} className={`${tag ? "mt-2" : ""} ${Level === "h1" ? "text-display tracking-display" : "text-h2"} max-w-[22ch]`}>
         <Accent {...heading} />
       </Level>
-      {intro && <p className="mt-4 max-w-[46ch] text-lead">{intro}</p>}
-      {action && <div className="mt-6">{action}</div>}
+      {intro && (
+        <p data-reveal={marked ? "fade" : undefined} className="mt-4 max-w-[46ch] text-lead">
+          {intro}
+        </p>
+      )}
+      {action && (
+        <div data-reveal={marked ? "fade" : undefined} className="mt-6">
+          {action}
+        </div>
+      )}
     </div>
   );
 }
@@ -87,8 +98,9 @@ export function IconChip({ className = "", children }: { className?: string; chi
  * highlighted phrase. No tag; at most a supporting paragraph and one quiet link beneath it.
  * A trail that starts with punctuation closes up against the highlight. `wide` loosens the
  * measure for a statement of several sentences; `size="h3"` is the reference's smaller statement
- * over a row of cards, which go in `children` (96px below from `lg`). `reveal` marks the heading
- * for a `Reveal` wrapper's line-by-line entrance.
+ * over a row of cards, which go in `children` (96px below from `lg`). The heading's lines rise into
+ * place as it scrolls in and the body and action fade up after them (`ScrollReveals`, or a `Reveal`
+ * wrapper around the whole statement); `reveal={false}` keeps it still.
  */
 export function Statement({
   id,
@@ -99,7 +111,7 @@ export function Statement({
   action,
   wide = false,
   size = "h2",
-  reveal = false,
+  reveal = true,
   children,
 }: {
   id: string;
@@ -121,8 +133,16 @@ export function Statement({
         {lead} <mark className="rounded-control bg-accent-soft px-2 text-ink">{highlight}</mark>
         {trail && (closeUp ? trail : ` ${trail}`)}
       </h2>
-      {body && <p className="mx-auto mt-6 max-w-[56ch] text-center text-lead">{body}</p>}
-      {action && <div className="mt-6 flex justify-center">{action}</div>}
+      {body && (
+        <p data-reveal={reveal ? "fade" : undefined} className="mx-auto mt-6 max-w-[56ch] text-center text-lead">
+          {body}
+        </p>
+      )}
+      {action && (
+        <div data-reveal={reveal ? "fade" : undefined} className="mt-6 flex justify-center">
+          {action}
+        </div>
+      )}
       {children && <div className="mt-16 lg:mt-24">{children}</div>}
     </Section>
   );

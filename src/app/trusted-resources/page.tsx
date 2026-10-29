@@ -24,7 +24,7 @@ export default function TrustedResourcesPage() {
         intro={trustedResources.intro}
         extra={<p className="mt-4 max-w-[60ch] text-caption text-text-secondary">{trustedResources.disclosure}</p>}
       >
-        <ul className="mt-12 flex flex-col gap-4 lg:gap-6">
+        <ul data-reveal="stagger" className="mt-12 flex flex-col gap-4 lg:gap-6">
           {trustedResources.offers.map((offer) => (
             <li key={offer.title} className="grid gap-6 rounded-card border border-border-decoration bg-surface-card p-6 lg:grid-cols-12 lg:gap-8 lg:p-8">
               <div className="lg:col-span-8">

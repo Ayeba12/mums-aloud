@@ -34,18 +34,20 @@ export function StoryPanel() {
     <div className="frame-x">
       <div className="surface-dark overflow-hidden rounded-panel">
         <section aria-labelledby="story-heading" className="relative flex min-h-[34rem] flex-col justify-end md:min-h-[40rem] lg:h-[45rem]">
-          <Image src={storyPhoto} alt="" fill placeholder="blur" sizes="100vw" className="object-cover object-[50%_40%]" />
+          <Image src={storyPhoto} alt="" fill placeholder="blur" sizes="100vw" data-reveal="parallax" className="object-cover object-[50%_40%]" />
           <div
             aria-hidden
             className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-berry-lipstick-700)_0%,var(--color-berry-lipstick-700)_16%,color-mix(in_srgb,var(--color-scrim)_90%,transparent)_40%,color-mix(in_srgb,var(--color-scrim)_86%,transparent)_66%,color-mix(in_srgb,var(--color-scrim)_30%,transparent)_86%,transparent_100%)]"
           />
           <div className="container-page relative pt-40 pb-16 lg:pb-24">
             <Tag className="bg-scrim text-on-photo">{story.eyebrow}</Tag>
-            <h2 id="story-heading" className="mt-2 max-w-[26ch] text-h2 text-on-photo">
+            <h2 id="story-heading" data-reveal="lines" className="mt-2 max-w-[26ch] text-h2 text-on-photo">
               <Accent {...story.heading} />
             </h2>
-            <p className="mt-4 max-w-[46ch] text-lead text-on-photo">{story.body}</p>
-            <div className="mt-6">
+            <p data-reveal="fade" className="mt-4 max-w-[46ch] text-lead text-on-photo">
+              {story.body}
+            </p>
+            <div data-reveal="fade" className="mt-6">
               <ButtonLink href={story.link.href} variant="inverse-outline">
                 {story.link.label}
               </ButtonLink>
@@ -57,7 +59,7 @@ export function StoryPanel() {
           <div className="container-page">
             <SectionHeading id="voices-heading" tag={story.voices.tag} heading={story.voices.heading} align="center" />
           </div>
-          <div className="mt-12">
+          <div data-reveal="fade" className="mt-12">
             <VoicesSlider portraits={portraits} label={story.voices.tag} />
           </div>
           <p className="container-page mt-8 text-center text-caption">{story.voices.note}</p>

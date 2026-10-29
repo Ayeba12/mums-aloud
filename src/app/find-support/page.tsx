@@ -64,7 +64,7 @@ export default function FindSupportPage() {
             {findSupport.urgent.heading}
           </h2>
           <p className="mt-2 text-lead">{findSupport.urgent.intro}</p>
-          <ul className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <ul data-reveal="stagger" className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {findSupport.urgent.entries.map((entry) => (
               <Entry key={entry.name} entry={entry} tone="urgent" />
             ))}
@@ -86,11 +86,13 @@ export default function FindSupportPage() {
 
       {findSupport.groups.map((group) => (
         <Section key={group.id} id={group.id} aria-labelledby={`${group.id}-heading`} className="scroll-mt-24 pt-0">
-          <h2 id={`${group.id}-heading`} className="text-h2">
+          <h2 id={`${group.id}-heading`} data-reveal="lines" className="text-h2">
             {group.title}
           </h2>
-          <p className="mt-2 max-w-[46ch] text-lead">{group.intro}</p>
-          <ul className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          <p data-reveal="fade" className="mt-2 max-w-[46ch] text-lead">
+            {group.intro}
+          </p>
+          <ul data-reveal="stagger" className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             {group.entries.map((entry) => (
               <Entry key={entry.name} entry={entry} />
             ))}

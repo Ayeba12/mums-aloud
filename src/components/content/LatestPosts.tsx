@@ -25,7 +25,7 @@ export async function LatestPosts({ collection, count = 3 }: { collection: Colle
   }
 
   return (
-    <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
+    <ul data-reveal="stagger" className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
       {posts.map((post) => (
         <li key={post.id} className="min-w-0">
           <PostTile post={post} label={tileLabel[collection] ?? label} sizes="(min-width: 64rem) 33vw, (min-width: 48rem) 50vw, 100vw" />

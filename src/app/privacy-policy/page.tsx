@@ -17,8 +17,8 @@ export default function PrivacyPolicyPage() {
     <main id="main">
       <Section aria-labelledby="page-heading">
         <div className="mx-auto max-w-reading">
-          <Tag>Policy</Tag>
-          <h1 id="page-heading" className="mt-2 text-h1 tracking-tight">
+          <Tag data-enter>Policy</Tag>
+          <h1 id="page-heading" data-enter className="mt-2 text-h1 tracking-tight [--enter-step:1]">
             {privacyPage.title}
           </h1>
           <Suspense fallback={<p className="mt-8 text-text-secondary">Loading…</p>}>

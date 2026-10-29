@@ -15,7 +15,7 @@ export function Impact() {
       className="bg-[linear-gradient(to_bottom,var(--color-surface),var(--color-surface-tinted))]"
     >
       <SectionHeading id="impact-heading" tag={impact.eyebrow} heading={impact.heading} className="[&_h2]:max-w-[30ch]" />
-      <ul className="mt-12 grid gap-4 md:grid-cols-3 md:gap-6 lg:gap-8">
+      <ul data-reveal="stagger" className="mt-12 grid gap-4 md:grid-cols-3 md:gap-6 lg:gap-8">
         {impact.stats.map((stat) => (
           <li key={stat.value} className="flex min-h-64 flex-col justify-between gap-8 rounded-panel bg-surface-card p-7">
             <p className="font-heading text-display text-ink">{stat.value}</p>
@@ -42,7 +42,7 @@ export function Partners() {
       className="bg-[linear-gradient(to_bottom,var(--color-surface-tinted),var(--color-surface))]"
     >
       <SectionHeading id="partners-heading" tag="Partners" heading={partners.heading} intro={partners.intro} />
-      <ul className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
+      <ul data-reveal="stagger" className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
         {partners.items.map((partner) => (
           <PartnerTile key={partner.slug} partner={partner} />
         ))}

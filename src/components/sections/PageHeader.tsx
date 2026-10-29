@@ -6,7 +6,8 @@ import { Accent, type AccentText } from "@/components/ui/Heading";
  * Inner-page header without a photo, as the reference's service and contact pages: the tint runs
  * from the very top of the page, behind the floating bar, and fades into the canvas by the end of
  * the header (never cut off, however short the copy), with the title centred on it. Anything the
- * page wants on the fading tint (cards, tiles, a form) comes as children.
+ * page wants on the fading tint (cards, tiles, a form) comes as children. The copy arrives with the
+ * CSS entrance (`data-enter`, a step apart) and the children fade up after it.
  */
 export function PageHeader({
   id = "page-heading",
@@ -38,16 +39,36 @@ export function PageHeader({
     >
       <div className="container-page">
         <div className="mx-auto flex max-w-[60rem] flex-col items-center text-center">
-          <Tag>{tag}</Tag>
-          <h1 id={id} className="mt-2 max-w-[18ch] text-h1 tracking-tight text-balance">
+          <Tag data-enter>{tag}</Tag>
+          <h1 id={id} data-enter className="mt-2 max-w-[18ch] text-h1 tracking-tight text-balance [--enter-step:1]">
             <Accent {...heading} />
           </h1>
-          {intro && <p className="mt-4 max-w-[46ch] text-lead text-pretty">{intro}</p>}
-          {extra}
-          {actions && <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">{actions}</div>}
-          {note}
+          {intro && (
+            <p data-enter className="mt-4 max-w-[46ch] text-lead text-pretty [--enter-step:2]">
+              {intro}
+            </p>
+          )}
+          {extra && (
+            <div data-enter className="[--enter-step:3]">
+              {extra}
+            </div>
+          )}
+          {actions && (
+            <div data-enter className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row [--enter-step:3]">
+              {actions}
+            </div>
+          )}
+          {note && (
+            <div data-enter className="[--enter-step:4]">
+              {note}
+            </div>
+          )}
         </div>
-        {children}
+        {children && (
+          <div data-enter className="[--enter-step:4]">
+            {children}
+          </div>
+        )}
       </div>
     </section>
   );

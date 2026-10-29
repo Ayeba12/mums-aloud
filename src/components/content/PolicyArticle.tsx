@@ -15,12 +15,18 @@ export function PolicyArticle({ policy, prefix, current }: { policy: PolicyPage;
     <main id="main">
       <Section aria-labelledby="page-heading">
         <article className="mx-auto max-w-reading">
-          <Tag>{policy.tag}</Tag>
-          <h1 id="page-heading" className="mt-2 text-h1 tracking-tight">
+          <Tag data-enter>{policy.tag}</Tag>
+          <h1 id="page-heading" data-enter className="mt-2 text-h1 tracking-tight [--enter-step:1]">
             <Accent {...policy.heading} />
           </h1>
-          <p className="mt-4 text-caption text-text-secondary">{policy.reviewed}</p>
-          {policy.intro && <p className="mt-6 text-lead">{policy.intro}</p>}
+          <p data-enter className="mt-4 text-caption text-text-secondary [--enter-step:2]">
+            {policy.reviewed}
+          </p>
+          {policy.intro && (
+            <p data-enter className="mt-6 text-lead [--enter-step:3]">
+              {policy.intro}
+            </p>
+          )}
 
           <nav aria-label="On this page" className="mt-8 rounded-card bg-surface-card p-6">
             <p className="text-caption font-semibold tracking-wide text-text-secondary uppercase">On this page</p>

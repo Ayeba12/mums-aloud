@@ -47,13 +47,13 @@ export default function AboutPage() {
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-6">
             <SectionHeading id="story-heading" tag={about.story.tag} heading={about.story.heading} />
-            <div className="mt-6 flex max-w-[52ch] flex-col gap-4">
+            <div data-reveal="fade" className="mt-6 flex max-w-[52ch] flex-col gap-4">
               {about.story.paragraphs.map((paragraph) => (
                 <p key={paragraph.slice(0, 24)}>{paragraph}</p>
               ))}
             </div>
           </div>
-          <div className="lg:col-span-5 lg:col-start-8">
+          <div data-reveal="fade" className="lg:col-span-5 lg:col-start-8">
             <Image
               src={storyPhoto}
               alt=""
@@ -110,7 +110,7 @@ export default function AboutPage() {
             {about.team.link.label}
           </ButtonLink>
         </div>
-        <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <ul data-reveal="stagger" className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {team.map((person) => (
             <li key={person.name}>
               <ProfileTile person={person} {...teamPortraits[person.id]} />

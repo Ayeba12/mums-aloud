@@ -40,12 +40,14 @@ export function PageHero({
             actions bottom-right (owner, 26 Oct 2026), both on the hero's lower edge. */}
         <div className="container-page relative grid gap-4 pt-40 pb-10 md:pb-12 lg:grid-cols-12 lg:items-end lg:gap-8 lg:pb-16">
           <div className="flex flex-col items-start lg:col-span-7">
-            <Tag className="border-transparent bg-scrim text-on-photo">{tag}</Tag>
-            <h1 id="page-heading" className="mt-4 max-w-[16ch] text-h1 tracking-tight text-on-photo">
+            <Tag data-enter className="border-transparent bg-scrim text-on-photo">
+              {tag}
+            </Tag>
+            <h1 id="page-heading" data-enter className="mt-4 max-w-[16ch] text-h1 tracking-tight text-on-photo [--enter-step:1]">
               <Accent {...heading} />
             </h1>
           </div>
-          <div className="flex flex-col items-start lg:col-span-5 lg:col-start-8">
+          <div data-enter className="flex flex-col items-start lg:col-span-5 lg:col-start-8 [--enter-step:2]">
             <p className="max-w-[44ch] text-lead text-on-photo">{intro}</p>
             {actions && <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row">{actions}</div>}
           </div>
