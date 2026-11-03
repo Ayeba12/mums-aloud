@@ -88,18 +88,25 @@ export type Button = { label: string; href: string; variant?: "primary" | "secon
  * outline for the secondary. Both keep a 48px height and read as plain links where styles are lost.
  */
 export function button({ label, href, variant = "primary" }: Button): string {
-  const common = `display:inline-block;${bodyFont}font-size:16px;line-height:24px;font-weight:700;text-decoration:none;border-radius:9999px;`;
+  // The label never breaks inside the pill; on phones the `btn` class makes the pill the full column width.
+  const common = `display:inline-block;${bodyFont}font-size:16px;line-height:24px;font-weight:700;text-decoration:none;border-radius:9999px;white-space:nowrap;`;
   if (variant === "secondary") {
-    return `<a href="${escape(href)}" style="${common}padding:10px 24px;border:2px solid ${palette.berry};color:${palette.berry};">${escape(label)}</a>`;
+    return `<a class="btn" href="${escape(href)}" style="${common}padding:10px 24px;border:2px solid ${palette.berry};color:${palette.berry};">${escape(label)}</a>`;
   }
   const arrow = `<span style="display:inline-block;width:32px;height:32px;line-height:32px;border-radius:9999px;background:${palette.marigold};color:${palette.ink};text-align:center;font-size:18px;margin-left:12px;vertical-align:middle;" aria-hidden="true">&rarr;</span>`;
-  return `<a href="${escape(href)}" style="${common}padding:8px 8px 8px 24px;background:${palette.berry};color:${palette.onAction};">${escape(label)}${arrow}</a>`;
+  return `<a class="btn" href="${escape(href)}" style="${common}padding:8px 8px 8px 24px;background:${palette.berry};color:${palette.onAction};">${escape(label)}${arrow}</a>`;
 }
 
-/** Buttons side by side, 12px apart, wrapping on narrow screens. */
+/**
+ * Buttons side by side, 12px apart. They are inline blocks rather than table cells, so where there is
+ * not room for both the second drops below the first in every inbox; on phones (the head's media
+ * query, which Gmail and Apple Mail honour) each takes a full-width row of its own.
+ */
 export function buttonRow(buttons: Button[]): string {
-  const cells = buttons.map((item) => `<td style="padding:0 12px 12px 0;">${button(item)}</td>`).join("");
-  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:8px 0 0;"><tr>${cells}</tr></table>`;
+  const items = buttons
+    .map((item) => `<div class="btn-wrap" style="display:inline-block;margin:0 12px 12px 0;vertical-align:top;">${button(item)}</div>`)
+    .join("");
+  return `<div style="margin:8px 0 0;">${items}</div>`;
 }
 
 export type DetailRow = { label: string; value: string; href?: string };
@@ -153,6 +160,7 @@ table{border-collapse:collapse;}
 img{border:0;outline:none;text-decoration:none;}
 a{color:${palette.berry};}
 @media (max-width:620px){.wrap{width:100% !important;}.pad{padding-left:8px !important;padding-right:8px !important;}}
+@media (max-width:480px){.btn-wrap{display:block !important;margin:0 0 12px !important;}.btn{display:block !important;text-align:center !important;white-space:normal !important;}}
 </style>
 </head>
 <body style="margin:0;padding:0;background:${palette.canvas};">
