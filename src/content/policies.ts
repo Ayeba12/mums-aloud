@@ -58,14 +58,14 @@ export const cookiePolicy: PolicyPage = {
   description: "What this website stores in your browser, what it does not, and the other services you can reach from it.",
   tag: "Cookie policy (UK)",
   heading: { lead: "What this site keeps", accent: "in your browser." },
-  reviewed: "Last reviewed 30 October 2026",
+  reviewed: "Last reviewed 3 November 2026",
   intro:
     "Cookies are small files a website can leave in your browser. Some help a site work; others follow you around the internet. This page explains, in plain words, what this site does and does not do.",
   sections: [
     {
       title: "Cookies we set",
       paragraphs: [
-        "None. This website sets no cookies for advertising, analytics or tracking, and it needs none to work. We checked every kind of page on 30 October 2026: none sets a cookie, and none loads anything from another company's servers. Our fonts and images are served by this site itself.",
+        "None. This website sets no cookies for advertising, analytics or tracking, and it needs none to work. We checked every kind of page on 3 November 2026: none sets a cookie, and none loads anything from another company's servers. Our fonts, images and visit counter are all served by this site itself.",
       ],
     },
     {
@@ -83,7 +83,8 @@ export const cookiePolicy: PolicyPage = {
     {
       title: "Analytics",
       paragraphs: [
-        "We do not use analytics tools such as Google Analytics, and we do not count or follow your visits. If that ever changes, we will update this page first and ask for your consent before any such cookie is set, with an equally easy way to say no.",
+        "We count visits with Vercel Web Analytics, from the company that hosts this site, so we can see which pages help mums most. It sets no cookies and stores nothing in your browser. It records the page you viewed, the page that sent you here, your country and your type of device and browser, and it recognises a visit only by a code that is reset every day, so it cannot follow you over time or across other websites.",
+        "We do not use Google Analytics or any advertising or tracking cookies. If that ever changes, we will update this page first and ask for your consent before any such cookie is set, with an equally easy way to say no.",
       ],
     },
     {

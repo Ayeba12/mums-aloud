@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Libre_Caslon_Text, Urbanist } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { JsonLd } from "@/components/content/JsonLd";
 import { ScrollReveals } from "@/components/motion/ScrollReveals";
 import { CookieNotice } from "@/components/navigation/CookieNotice";
@@ -67,6 +68,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <CookieNotice />
         <ScrollReveals />
         <JsonLd data={siteSchema()} />
+        {/* Vercel Web Analytics: page views without cookies or anything stored in the browser (see the cookie policy). */}
+        <Analytics />
       </body>
     </html>
   );
