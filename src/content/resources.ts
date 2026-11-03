@@ -27,7 +27,7 @@ export const guides: Guide[] = [
     published: "August 2025",
   },
   {
-    slug: "ativites-guide-for-babies",
+    slug: "activities-guide-for-babies",
     title: "Activities Guide for Babies",
     heading: { lead: "Activities guide", accent: "for babies." },
     intro: "Simple, low-cost ways to play, soothe and connect with your baby in the first year. A free PDF from Mums Aloud to download and keep.",

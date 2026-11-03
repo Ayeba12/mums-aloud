@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Libre_Caslon_Text, Urbanist } from "next/font/google";
+import { JsonLd } from "@/components/content/JsonLd";
 import { ScrollReveals } from "@/components/motion/ScrollReveals";
 import { CookieNotice } from "@/components/navigation/CookieNotice";
 import { SiteFooter } from "@/components/navigation/SiteFooter";
 import { SiteHeader } from "@/components/navigation/SiteHeader";
 import { NewsletterDialog } from "@/components/newsletter/NewsletterDialog";
+import { siteSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -38,6 +40,13 @@ export const metadata: Metadata = {
   // lib/og/post-card.tsx for posts); X reuses it, since no twitter-image is set. Icons: icon.png,
   // apple-icon.png and favicon.ico beside this layout.
   twitter: { card: "summary_large_image" },
+  // Search Console (Google) and Bing Webmaster Tools ownership tags: the code each one gives for the
+  // "HTML tag" method goes in the hosting settings; unset, no tag is printed. A Domain property
+  // verified by a DNS record needs neither.
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+    other: process.env.BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION } : undefined,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -57,6 +66,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <NewsletterDialog />
         <CookieNotice />
         <ScrollReveals />
+        <JsonLd data={siteSchema()} />
       </body>
     </html>
   );

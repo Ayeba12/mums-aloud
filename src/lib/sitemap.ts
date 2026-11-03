@@ -13,7 +13,7 @@ export const STATIC_ROUTES = [
   "/",
   "/about-mums-aloud/",
   "/article/",
-  "/ativites-guide-for-babies/",
+  "/activities-guide-for-babies/",
   "/blog/",
   "/contact/",
   "/cookie-policy-uk/",

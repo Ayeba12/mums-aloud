@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `/${guide.slug}/` },
 };
 
-/** Keeps the live site's URL (including its spelling) for the activities guide. */
+/** The activities guide. The live site spelled its address "ativites"; that address redirects here (next.config.ts). */
 export default function ActivitiesGuidePage() {
   return <GuidePage guide={guide} />;
 }

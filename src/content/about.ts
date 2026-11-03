@@ -99,7 +99,7 @@ export const teamPage = {
 export const founder = {
   title: "Meet Bokun",
   description:
-    "Bokun Imoukhuede, founder of MumsAloud, on how it all started: motherhood far from her village, the question no one asked, and the community she wished she had found.",
+    "Bokun Imoukhuede, founder of MumsAloud, on how it began: motherhood far from her village, the question no one asked, and the community she wished for.",
   hero: {
     tag: "Meet Bokun",
     heading: { lead: "Who looks after the woman who is", accent: "looking after everyone else?" } satisfies AccentText,

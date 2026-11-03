@@ -25,7 +25,7 @@ export type SupportGroup = { id: string; title: string; intro: string; entries: 
 
 export const findSupport = {
   title: "Find Support",
-  description: "Helplines and trusted UK organisations for mothers: urgent help, pregnancy and loss, mental health, feeding and the early years, your rights and money, and safety at home.",
+  description: "Helplines and trusted UK organisations for mothers: urgent help, pregnancy and loss, mental health, feeding, money and rights, and safety at home.",
   tag: "Find support",
   heading: { lead: "The right help,", accent: "when you need it." } satisfies AccentText,
   intro: "Trusted organisations across the UK, with the number to call and where to read more. Mums Aloud is not a crisis service, and these lines are free unless we say otherwise.",
@@ -83,7 +83,7 @@ export const findSupport = {
       intro: "Maternity rights, benefits, debt and advice on almost anything else.",
       entries: [
         { name: "Maternity Action", helps: "Free advice on your rights at work, maternity pay and benefits when pregnant or a new parent.", phone: "0808 802 0029", phoneHref: "tel:08088020029", hours: "Weekdays except Wednesday, 10am to 12pm", url: "https://maternityaction.org.uk/advice-line/" },
-        { name: "Citizens Advice", helps: "Free advice that connects you to your local Citizens Advice for help with benefits, debt, housing, work and more. England only.", phone: "0800 144 8848", phoneHref: "tel:08001448848", hours: "Monday to Friday, 9am to 5pm", url: "https://www.citizensadvice.org.uk/about-us/contact-us/contact-us/contact-us/" },
+        { name: "Citizens Advice", helps: "Free advice that connects you to your local Citizens Advice for help with benefits, debt, housing, work and more. England only.", phone: "0800 144 8848", phoneHref: "tel:08001448848", hours: "Monday to Friday, 9am to 5pm", url: "https://www.citizensadvice.org.uk/about-us/contact-us/" },
         { name: "Gingerbread", helps: "Information, local groups and an online forum for single parents. Their helpline has closed.", url: "https://www.gingerbread.org.uk/" },
       ],
     },

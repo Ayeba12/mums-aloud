@@ -134,7 +134,7 @@ const audiences: readonly Audience[] = [
 export const services = {
   title: "Our Services",
   description:
-    "Real support for mums at every stage of the journey: 1:1 support, group support and counselling, mentor mums, community, training, events and expert sessions from Mums Aloud.",
+    "Real support for mums at every stage: 1:1 and group support, mentor mums, community, training, events and expert sessions from Mums Aloud.",
   tag: "Our services",
   heading: { lead: "Our", accent: "Services" } satisfies AccentText,
   intro: "Real support for mums, at every stage of the journey, from pregnancy through the early years.",

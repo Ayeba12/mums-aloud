@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!page || (pages !== null && page > pages)) return { title: "Page not found" };
   return {
     title: `${storyLounge.title}, page ${page}`,
-    description: storyLounge.description,
+    description: `Page ${page}: ${storyLounge.description}`,
     alternates: { canonical: pageHref("/story-lounge/", page) },
   };
 }

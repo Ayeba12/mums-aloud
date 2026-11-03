@@ -9,7 +9,7 @@ import type { AccentText } from "@/components/ui/Heading";
 export const page = {
   title: "Volunteer With Us",
   description:
-    "Volunteer with Mums Aloud: mentor a mum, facilitate workshops, support events or help behind the scenes. Join a community of volunteers making a real difference in mums' lives.",
+    "Volunteer with Mums Aloud: mentor a mum, run workshops, support events or help behind the scenes, and make a real difference in mums' lives.",
 };
 
 export const hero = {

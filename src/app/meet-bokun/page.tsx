@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { QuotesIcon } from "@phosphor-icons/react/ssr";
 import { Section, SectionHeading, Tag } from "@/components/layout/Section";
+import { JsonLd } from "@/components/content/JsonLd";
 import { ClosingInvite } from "@/components/sections/ClosingInvite";
 import { ButtonLink } from "@/components/ui/Button";
 import { Accent } from "@/components/ui/Heading";
-import { founder } from "@/content/about";
+import { founder, team } from "@/content/about";
+import { profileSchema } from "@/lib/schema";
 import { joinForm } from "@/lib/site";
+
+const bokun = team.find((person) => person.id === "bokun")!;
 
 export const metadata: Metadata = {
   title: founder.title,
@@ -104,6 +108,15 @@ export default function MeetBokunPage() {
       </Section>
 
       <ClosingInvite id="founder-closing" heading={closing.heading} body={closing.body} primary={closing.primary} secondary={closing.secondary} />
+      <JsonLd
+        data={profileSchema({
+          name: bokun.name,
+          jobTitle: bokun.role,
+          path: "/meet-bokun/",
+          image: founder.hero.portrait.src,
+          description: founder.description,
+        })}
+      />
     </main>
   );
 }

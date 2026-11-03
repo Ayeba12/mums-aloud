@@ -12,7 +12,7 @@ import { dateFormat } from "@/lib/dates";
 import { joinForm, siteConfig } from "@/lib/site";
 import { getAll, getBySlug } from "@/lib/wordpress/client";
 import { collections, type CollectionKey } from "@/lib/wordpress/collections";
-import type { PostDetail, PostSummary } from "@/lib/wordpress/mapping";
+import { truncate, type PostDetail, type PostSummary } from "@/lib/wordpress/mapping";
 import { shareCardPath } from "@/lib/og/share-path";
 
 /**
@@ -36,13 +36,14 @@ export async function postMetadata(collection: CollectionKey, slug: string, copy
   }
   if (!post) return { title: "Page not found" };
   return {
-    title: post.title,
-    description: post.excerpt || copy.description,
+    // Long titles go out without the " | Mums Aloud" suffix, so search results show them whole.
+    title: post.title.length > 50 ? { absolute: post.title } : post.title,
+    description: metaDescription(post.excerpt || copy.description),
     alternates: { canonical: post.path },
     openGraph: {
       type: "article",
       title: post.title,
-      description: post.excerpt || copy.description,
+      description: metaDescription(post.excerpt || copy.description),
       publishedTime: post.date,
       modifiedTime: post.modified,
       // The route's opengraph-image card (title, excerpt and this feature photo), named here with its trailing
@@ -175,3 +176,7 @@ export async function PostArticle({ collection, slug, copy }: { collection: Coll
   );
 }
 
+/** A post's search description: its excerpt cut at a word to 155 characters, so results show it whole. */
+function metaDescription(text: string): string {
+  return truncate(text, 155);
+}

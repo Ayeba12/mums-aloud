@@ -131,7 +131,7 @@ export const mainNav: NavItem[] = [
         label: "Free guides",
         links: [
           { label: "Holiday Survival Guide", href: "/holiday-guide-for-school-kids/" },
-          { label: "Activities Guide for Babies", href: "/ativites-guide-for-babies/" },
+          { label: "Activities Guide for Babies", href: "/activities-guide-for-babies/" },
         ],
       },
     ],

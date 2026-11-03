@@ -26,7 +26,7 @@ export type PolicyPage = {
 
 export const privacyPage = {
   title: "Privacy policy",
-  description: "How Mums Aloud handles personal information.",
+  description: "How Mums Aloud collects, uses and protects your personal information, and the rights and choices you have under UK data protection law.",
   unavailable: "The privacy policy is unavailable right now. Please try again later.",
   updated: "Last updated",
 };

@@ -133,6 +133,23 @@ export function sanitiseHtml(html: string): string {
     .trim();
 }
 
+/**
+ * Re-levels a post body's headings under the page's own h1: the levels the post uses become h2, h3
+ * and so on in the same order, and no heading sits more than one level below the one before it.
+ * WordPress posts often start at h3 or jump from h2 to h4, which leaves gaps in the page outline.
+ */
+export function normaliseHeadings(html: string): string {
+  const used = [...new Set([...html.matchAll(/<h([1-6])\b/gi)].map((match) => Number(match[1])))].sort();
+  if (!used.length) return html;
+  const rank = new Map(used.map((level, index) => [level, Math.min(index + 2, 6)]));
+  let previous = 1;
+  return html.replace(/<h([1-6])\b([^>]*)>([\s\S]*?)<\/h\1\s*>/gi, (_, level: string, attributes: string, inner: string) => {
+    const next = Math.min(rank.get(Number(level)) ?? 2, previous + 1);
+    previous = next;
+    return `<h${next}${attributes}>${inner}</h${next}>`;
+  });
+}
+
 export function toPostDetail(post: WpPost): PostDetail {
   const categories = (post._embedded?.["wp:term"] ?? [])
     .flat()
@@ -141,7 +158,7 @@ export function toPostDetail(post: WpPost): PostDetail {
   return {
     ...toPostSummary(post),
     modified: post.modified,
-    html: sanitiseHtml(post.content?.rendered ?? ""),
+    html: normaliseHeadings(sanitiseHtml(post.content?.rendered ?? "")),
     categories,
   };
 }

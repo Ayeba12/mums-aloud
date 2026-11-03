@@ -21,6 +21,8 @@ export default function MeetTheTeamPage() {
   return (
     <main id="main">
       <PageHeader tag={teamPage.tag} heading={teamPage.heading} intro={teamPage.intro}>
+        {/* Keeps the heading order (h1, h2, then each person's h3) without a visible title over the tiles. */}
+        <h2 className="sr-only">The team</h2>
         <ul data-reveal="stagger" className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {team.map((person) => (
             <li key={person.name}>

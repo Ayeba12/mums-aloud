@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Statement } from "@/components/layout/Section";
 import { CoreAreas } from "@/components/sections/CoreAreas";
 import { Hero } from "@/components/sections/Hero";
@@ -7,6 +8,10 @@ import { ClosingInvite, NewsletterInvite } from "@/components/sections/Invitatio
 import { MamasEscapeFeature } from "@/components/sections/MamasEscapeFeature";
 import { StoryPanel } from "@/components/sections/StoryPanel";
 import { statement } from "@/content/home";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 /**
  * Homepage, following the client's Website Restructure Brief v2 (section 3), laid out

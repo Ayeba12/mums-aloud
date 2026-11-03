@@ -24,6 +24,8 @@ const nextConfig: NextConfig = {
       // Owner's notes (10 Aug 2026): training sits under Services; Affiliate Programs is now Trusted Resources.
       { source: "/training-and-events/", destination: "/services/", permanent: false },
       { source: "/affiliate-programs/", destination: "/trusted-resources/", permanent: true },
+      // The live site spelled this guide's address "ativites"; the new address is spelled right and the old one moves for good.
+      { source: "/ativites-guide-for-babies/", destination: "/activities-guide-for-babies/", permanent: true },
       // Once the domain points here, the old WordPress addresses live on at the CMS: media links shared
       // before the move keep working, and the admin habit (mumsaloud.com/wp-admin) lands in the right place.
       ...(new URL(wordpressOrigin).hostname === siteHost

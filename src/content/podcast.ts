@@ -8,7 +8,7 @@ import type { AccentText } from "@/components/ui/Heading";
 export const podcastPage = {
   title: "Podcast",
   description:
-    "The Mama's Escape Podcast: real conversations with real mothers about loss, mum guilt and the pressures Black mums carry, with connection and practical ways to thrive.",
+    "The Mama's Escape Podcast: real conversations with Black mothers about loss, mum guilt and the pressures we carry, with practical ways to thrive.",
   tag: "Mama's Escape Podcast",
   heading: { lead: "Your sanctuary for", accent: "empowered motherhood." } satisfies AccentText,
   intro: "Motherhood is beautiful, messy and overwhelming. For Black mums, the journey is layered with unspoken struggles, cultural expectations and societal pressures. Mama's Escape exists to break this cycle.",

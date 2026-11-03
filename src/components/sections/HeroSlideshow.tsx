@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -15,10 +15,25 @@ const FADE = 1.2; // seconds per crossfade
 /**
  * Decorative crossfade behind the hero copy. Opacity only, so it never fights the scrim.
  * Under prefers-reduced-motion the first photo stays and nothing moves; the loop also
- * pauses while the tab is hidden.
+ * pauses while the tab is hidden. Only the first photo loads with the page (it is the page's
+ * largest paint); the others are added once the page has loaded, well before the first
+ * crossfade at five seconds, and never under reduced motion, where they would not be seen.
  */
 export function HeroSlideshow({ photos }: { photos: HeroPhoto[] }) {
   const root = useRef<HTMLDivElement>(null);
+  const [rest, setRest] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const show = () => setRest(true);
+    if (document.readyState === "complete") {
+      const timer = setTimeout(show, 0);
+      return () => clearTimeout(timer);
+    }
+    window.addEventListener("load", show, { once: true });
+    return () => window.removeEventListener("load", show);
+  }, []);
+  const shown = rest ? photos : photos.slice(0, 1);
 
   useGSAP(
     () => {
@@ -40,12 +55,12 @@ export function HeroSlideshow({ photos }: { photos: HeroPhoto[] }) {
       });
       return () => mm.revert();
     },
-    { scope: root },
+    { scope: root, dependencies: [rest], revertOnUpdate: true },
   );
 
   return (
     <div ref={root} aria-hidden className="absolute inset-0">
-      {photos.map((photo, index) => (
+      {shown.map((photo, index) => (
         <Image
           key={index}
           data-slide
@@ -55,7 +70,7 @@ export function HeroSlideshow({ photos }: { photos: HeroPhoto[] }) {
           priority={index === 0}
           placeholder="blur"
           sizes="100vw"
-          className={`object-cover ${photo.position ?? "object-center"}`}
+          className={`object-cover ${index > 0 ? "opacity-0" : ""} ${photo.position ?? "object-center"}`}
         />
       ))}
     </div>

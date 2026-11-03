@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { decodeEntities, permalinkPath, sanitiseHtml, tidyTitle, toPlainText, toPostDetail, toPostSummary, truncate, type WpPost } from "./mapping";
+import { decodeEntities, normaliseHeadings, permalinkPath, sanitiseHtml, tidyTitle, toPlainText, toPostDetail, toPostSummary, truncate, type WpPost } from "./mapping";
 
 describe("decodeEntities", () => {
   it("decodes numeric and named entities from WordPress titles", () => {
@@ -113,5 +113,21 @@ describe("toPostDetail", () => {
     expect(detail.html).toBe('<p class="wp-block-paragraph">Once upon a time.</p>');
     expect(detail.modified).toBe("2024-11-02T09:00:00");
     expect(detail.categories).toEqual([{ name: "Story Lounge", slug: "story-lounge" }]);
+  });
+});
+
+describe("normaliseHeadings", () => {
+  it("starts a post's headings at h2 under the page title", () => {
+    expect(normaliseHeadings("<h3>Signs</h3><p>x</p><h3>Help</h3>")).toBe("<h2>Signs</h2><p>x</p><h2>Help</h2>");
+  });
+
+  it("closes gaps and never jumps more than one level, keeping attributes", () => {
+    expect(normaliseHeadings('<h2>A</h2><h4 class="wp-block-heading">B</h4><h2>C</h2>')).toBe('<h2>A</h2><h3 class="wp-block-heading">B</h3><h2>C</h2>');
+    expect(normaliseHeadings("<h2>A</h2><h3>B</h3><h2>C</h2><h4>D</h4>")).toBe("<h2>A</h2><h3>B</h3><h2>C</h2><h3>D</h3>");
+  });
+
+  it("demotes a stray h1 in the body and leaves text without headings alone", () => {
+    expect(normaliseHeadings("<h1>Title again</h1><h2>Part</h2>")).toBe("<h2>Title again</h2><h3>Part</h3>");
+    expect(normaliseHeadings("<p>Only words.</p>")).toBe("<p>Only words.</p>");
   });
 });

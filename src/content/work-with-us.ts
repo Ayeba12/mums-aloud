@@ -12,7 +12,7 @@ const calendly = "https://calendly.com/bokunimoukhuede/30min";
 export const page = {
   title: "Work With Bokun",
   description:
-    "Personalised one-to-one services from Mums Aloud's founder, Bokun: a free consultation call, Chaos to Calm coaching, assessments, postpartum support training and trusted resources.",
+    "One-to-one support from Mums Aloud's founder, Bokun: a free consultation call, Chaos to Calm coaching, assessments and postpartum support.",
 };
 
 export const hero = {

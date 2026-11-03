@@ -45,7 +45,7 @@ describe("Offers and resources content", () => {
   });
 
   it("keeps the guides at their live URLs with PDFs on the live site", () => {
-    expect(guides.map((guide) => guide.slug)).toEqual(["holiday-guide-for-school-kids", "ativites-guide-for-babies"]);
+    expect(guides.map((guide) => guide.slug)).toEqual(["holiday-guide-for-school-kids", "activities-guide-for-babies"]);
     expect(guides.every((guide) => guide.pdf.startsWith(uploadUrl("")) && guide.pdf.endsWith(".pdf"))).toBe(true);
   });
 
