@@ -33,8 +33,8 @@ describe("sitemap", () => {
     expect(urls).not.toContain("https://mumsaloud.com/blog/page/3/");
     expect(urls).toContain("https://mumsaloud.com/mum-story/story-3/");
     expect(urls).toContain("https://mumsaloud.com/emmanuella/");
-    expect(entries.find((entry) => entry.url.endsWith("/mum-story/story-3/"))?.lastModified).toBe("2024-11-01T09:00:00");
-    expect(entries.find((entry) => entry.url.endsWith("/emmanuella/"))?.lastModified).toBe("2024-10-31T14:13:14");
+    expect(entries.find((entry) => entry.url.endsWith("/mum-story/story-3/"))?.lastModified).toBe("2024-11-01");
+    expect(entries.find((entry) => entry.url.endsWith("/emmanuella/"))?.lastModified).toBe("2024-10-31");
     expect(urls.every((url) => url.endsWith("/"))).toBe(true);
     expect(new Set(urls).size).toBe(urls.length);
   });

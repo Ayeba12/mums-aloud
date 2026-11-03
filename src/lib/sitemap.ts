@@ -46,6 +46,14 @@ const LISTING_PATHS: Record<Exclude<CollectionKey, "mumTopics">, string> = {
 
 export type SitemapContent = Partial<Record<keyof typeof LISTING_PATHS, PostSummary[]>>;
 
+/**
+ * The day an item last changed, as YYYY-MM-DD. WordPress gives local times with no time zone
+ * ("2026-10-28T10:24:20"), which Google rejects in a sitemap ("Invalid date"); a date alone is valid.
+ */
+export function sitemapDate(value: string): string {
+  return value.slice(0, 10);
+}
+
 /** Absolute URLs on the site's origin: the static pages, the later listing pages, then every item, newest first. */
 export function buildSitemap(origin: string, content: SitemapContent): SitemapEntry[] {
   const base = origin.replace(/\/$/, "");
@@ -60,7 +68,7 @@ export function buildSitemap(origin: string, content: SitemapContent): SitemapEn
       entries.push({ url: `${base}${pageHref(listingPath, page)}`, changeFrequency: "weekly", priority: 0.4 });
     }
     for (const item of items) {
-      entries.push({ url: `${base}${item.path}`, lastModified: item.modified ?? item.date, changeFrequency: "monthly", priority: 0.6 });
+      entries.push({ url: `${base}${item.path}`, lastModified: sitemapDate(item.modified ?? item.date), changeFrequency: "monthly", priority: 0.6 });
     }
   }
   return entries;
