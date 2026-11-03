@@ -13,6 +13,7 @@ import { joinForm, siteConfig } from "@/lib/site";
 import { getAll, getBySlug } from "@/lib/wordpress/client";
 import { collections, type CollectionKey } from "@/lib/wordpress/collections";
 import type { PostDetail, PostSummary } from "@/lib/wordpress/mapping";
+import { shareCardPath } from "@/lib/og/share-path";
 
 /**
  * The label shown above a post. Story Lounge posts carry the collection's label; a legacy
@@ -44,8 +45,10 @@ export async function postMetadata(collection: CollectionKey, slug: string, copy
       description: post.excerpt || copy.description,
       publishedTime: post.date,
       modifiedTime: post.modified,
-      // No `images` here: the route's opengraph-image card (title, excerpt and this feature photo) is the share image,
-      // and Next only uses a file-based image when the page's own metadata names none.
+      // The route's opengraph-image card (title, excerpt and this feature photo), named here with its trailing
+      // slash: Next's own link to it has none, so the site answered crawlers with a 308, and WhatsApp does not
+      // follow redirects for preview images. X reuses this image.
+      images: [{ url: shareCardPath(post.path), width: 1200, height: 630, type: "image/jpeg", alt: post.title }],
     },
   };
 }
