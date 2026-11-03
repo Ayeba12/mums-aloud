@@ -1,4 +1,5 @@
 import { cacheLife, cacheTag } from "next/cache";
+import { fetchWithRetry } from "@/lib/fetch-retry";
 import { decodeEntities, toPlainText, truncate } from "@/lib/wordpress/mapping";
 
 /**
@@ -118,10 +119,11 @@ export async function getPodcast(): Promise<Podcast> {
   cacheLife("hours");
   cacheTag(PODCAST_TAG);
 
-  const response = await fetch(FEED_URL, {
-    headers: { Accept: "application/rss+xml, application/xml;q=0.9, */*;q=0.1" },
-    signal: AbortSignal.timeout(TIMEOUT_MS),
-  });
+  const response = await fetchWithRetry(
+    FEED_URL,
+    { headers: { Accept: "application/rss+xml, application/xml;q=0.9, */*;q=0.1" } },
+    { label: "Podcast feed", timeoutMs: TIMEOUT_MS },
+  );
   if (!response.ok) throw new Error(`Podcast feed returned ${response.status}`);
   return parseFeed(await response.text());
 }

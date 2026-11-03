@@ -8,6 +8,7 @@
  * the Mums Aloud Headless plugin (1.1.0+): `mumStory/mumStories`, `article/articles`,
  * `mumTopic/mumTopics`. WPGraphQL must stay installed and active on the CMS.
  */
+import { fetchWithRetry } from "@/lib/fetch-retry";
 import { collections, type CollectionKey } from "./collections";
 import type { WpPost } from "./mapping";
 
@@ -25,16 +26,22 @@ export class WordPressError extends Error {
 
 type GraphQLResponse<T> = { data?: T; errors?: Array<{ message: string }> };
 
-/** One GraphQL request. Transport failures, non-200 answers and GraphQL errors all become `WordPressError`. */
+/**
+ * One GraphQL request (read-only, so a momentary failure is retried twice; see `fetchWithRetry`).
+ * Transport failures, non-200 answers and GraphQL errors all become `WordPressError`.
+ */
 export async function gql<T>(query: string, variables: Record<string, unknown> = {}): Promise<T> {
   let response: Response;
   try {
-    response = await fetch(GRAPHQL_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ query, variables }),
-      signal: AbortSignal.timeout(TIMEOUT_MS),
-    });
+    response = await fetchWithRetry(
+      GRAPHQL_URL,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ query, variables }),
+      },
+      { label: "WordPress", timeoutMs: TIMEOUT_MS },
+    );
   } catch (error) {
     throw new WordPressError(`WordPress GraphQL request failed: ${(error as Error).message}`);
   }

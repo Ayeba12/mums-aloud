@@ -83,7 +83,29 @@ describe("gql", () => {
   it("turns GraphQL errors and bad statuses into WordPressError", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ errors: [{ message: "Cannot query field" }] }), { status: 200 })));
     await expect(gql("{ nope }")).rejects.toBeInstanceOf(WordPressError);
+    vi.useFakeTimers();
+    vi.spyOn(console, "warn").mockImplementation(() => {});
     vi.stubGlobal("fetch", vi.fn(async () => new Response("down", { status: 503 })));
-    await expect(gql("{ ok }")).rejects.toThrow(/503/);
+    const failed = expect(gql("{ ok }")).rejects.toThrow(/503/);
+    await vi.runAllTimersAsync();
+    await failed;
+    vi.useRealTimers();
+    vi.restoreAllMocks();
+  });
+
+  it("rides out a momentary WordPress error", async () => {
+    vi.useFakeTimers();
+    vi.spyOn(console, "warn").mockImplementation(() => {});
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(new Response("busy", { status: 500 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify({ data: { ok: true } }), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    const result = gql<{ ok: boolean }>("{ ok }");
+    await vi.runAllTimersAsync();
+    await expect(result).resolves.toEqual({ ok: true });
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    vi.useRealTimers();
+    vi.restoreAllMocks();
   });
 });
