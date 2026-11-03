@@ -1,5 +1,6 @@
 import { cards } from "@/content/share-cards.json";
 import { siteConfig } from "@/lib/site";
+import { truncate, type PostSummary } from "@/lib/wordpress/mapping";
 
 /**
  * /llms.txt: a plain summary of the site for AI assistants (llmstxt.org): who Mums Aloud is, then
@@ -20,17 +21,39 @@ export const GROUPS: Array<{ title: string; routes: string[] }> = [
   { title: "Optional", routes: ["/privacy-policy/", "/cookie-policy-uk/", "/terms-and-conditions/"] },
 ];
 
-export function llmsText(origin: string): string {
+/** The editorial collections, each listed item by item after the main pages. */
+export const POST_SECTIONS = [
+  { key: "storyLounge", title: "Story Lounge: stories from mothers in their own words" },
+  { key: "blog", title: "Blog: practical pieces, mum to mum" },
+  { key: "articles", title: "Articles: longer reads" },
+] as const;
+
+export type LlmsPosts = Partial<Record<(typeof POST_SECTIONS)[number]["key"], PostSummary[]>>;
+
+export function llmsText(origin: string, posts: LlmsPosts = {}): string {
   const base = origin.replace(/\/$/, "");
   const byRoute = new Map(cards.map((card) => [card.route, card]));
-  const sections = GROUPS.map(({ title, routes }) => {
+  const section = ({ title, routes }: (typeof GROUPS)[number]) => {
     const lines = routes.map((route) => {
       const card = byRoute.get(route)!;
       const name = route === "/" ? "Home" : card.tag ?? route;
       return `- [${name}](${base}${route}): ${card.line}`;
     });
     return `## ${title}\n\n${lines.join("\n")}`;
+  };
+  // Every story, post and article by title, so an assistant can find and cite each one; the
+  // "Optional" group (policies) stays last, as llmstxt.org intends.
+  const postSections = POST_SECTIONS.flatMap(({ key, title }) => {
+    const items = posts[key] ?? [];
+    if (!items.length) return [];
+    const lines = items.map((item) => `- [${item.title}](${base}${item.path})${item.excerpt ? `: ${truncate(item.excerpt, 150)}` : ""}`);
+    return [`## ${title}\n\n${lines.join("\n")}`];
   });
+  const sections = [
+    ...GROUPS.filter((group) => group.title !== "Optional").map(section),
+    ...postSections,
+    ...GROUPS.filter((group) => group.title === "Optional").map(section),
+  ];
   return [
     `# ${siteConfig.name}`,
     `> ${siteConfig.description}`,
