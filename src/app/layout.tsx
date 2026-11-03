@@ -34,8 +34,9 @@ export const metadata: Metadata = {
     locale: "en_GB",
     siteName: siteConfig.name,
   },
-  // The share image and icons are the files beside this layout: opengraph-image.png, twitter-image.png,
-  // icon.png, apple-icon.png and favicon.ico (Next's file conventions add the tags).
+  // Each page's share card is the opengraph-image beside it (scripts/share-cards.mjs for fixed pages,
+  // lib/og/post-card.tsx for posts); X reuses it, since no twitter-image is set. Icons: icon.png,
+  // apple-icon.png and favicon.ico beside this layout.
   twitter: { card: "summary_large_image" },
 };
 

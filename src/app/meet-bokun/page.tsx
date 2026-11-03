@@ -12,7 +12,6 @@ export const metadata: Metadata = {
   title: founder.title,
   description: founder.description,
   alternates: { canonical: "/meet-bokun/" },
-  openGraph: { images: [{ url: founder.hero.portrait.src, width: founder.hero.portrait.width, height: founder.hero.portrait.height, alt: founder.hero.portrait.alt }] },
 };
 
 /**

@@ -9,7 +9,8 @@
     "lint": "eslint",
     "plugin:zip": "node scripts/plugin-zip.mjs",
     "typecheck": "next typegen && tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "share-cards": "node scripts/share-cards.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -18,7 +19,8 @@
     "next": "16.4.2",
     "nodemailer": "^8.0.11",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",

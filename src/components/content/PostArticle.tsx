@@ -44,7 +44,8 @@ export async function postMetadata(collection: CollectionKey, slug: string, copy
       description: post.excerpt || copy.description,
       publishedTime: post.date,
       modifiedTime: post.modified,
-      images: post.image ? [{ url: post.image.src, width: post.image.width, height: post.image.height, alt: post.image.alt }] : undefined,
+      // No `images` here: the route's opengraph-image card (title, excerpt and this feature photo) is the share image,
+      // and Next only uses a file-based image when the page's own metadata names none.
     },
   };
 }

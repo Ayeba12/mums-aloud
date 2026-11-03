@@ -21,6 +21,7 @@ Open http://localhost:3000. The design system is at http://localhost:3000/style-
 | `npm run lint` | ESLint |
 | `npm run typecheck` | Generates route types, then runs TypeScript |
 | `npm test` | Unit tests (Vitest) |
+| `npm run share-cards` | Renders the link preview card of every fixed page from `src/content/share-cards.json` to `src/app/<route>/opengraph-image.jpg` (needs Chrome and a connection for the fonts; on Windows run it from PowerShell, since Git Bash rewrites `/route/` arguments). Run it after changing a card or a page's photo. Story, Blog and Article cards are drawn by `src/lib/og/post-card.tsx` on their own. |
 
 ## Where things live
 

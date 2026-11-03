@@ -1,0 +1,305 @@
+{
+  "$comment": "The link preview (Open Graph) card for each fixed page. npm run share-cards renders every card to src/app/<route>/opengraph-image.jpg with its .alt.txt. Headings are the page's own; no dashes in copy. Variants: photo (one photo), portraits (a grid of real portraits), panel (a berry panel with the pledge, for pages without a photo).",
+  "cards": [
+    {
+      "route": "/",
+      "lead": "Empowering Mums to",
+      "accent": "Thrive",
+      "line": "A community for Black mothers in the UK: to be understood without having to explain.",
+      "action": "Join Mama's Escape",
+      "variant": "photo",
+      "photos": ["src/assets/photos/two-women-laughing.jpg"],
+      "position": "50% 35%",
+      "alt": "Mums Aloud: Empowering Mums to Thrive. A community for Black mothers in the UK."
+    },
+    {
+      "route": "/mamas-escape/",
+      "tag": "Mama's Escape",
+      "lead": "There's a place for you",
+      "accent": "here.",
+      "line": "A community for Black mothers in the UK: to be understood without having to explain.",
+      "action": "Join Mama's Escape",
+      "variant": "photo",
+      "photos": ["src/assets/photos/mother-daughter-park.jpg"],
+      "position": "50% 30%",
+      "alt": "Mama's Escape by Mums Aloud: there's a place for you here."
+    },
+    {
+      "route": "/partnership/",
+      "tag": "Partnership",
+      "lead": "Creating partnerships that transform",
+      "accent": "Black maternal care.",
+      "line": "Work with Mums Aloud to reach, hear from and support Black mothers across the UK.",
+      "action": "Partner with us",
+      "variant": "photo",
+      "photos": ["src/assets/photos/mother-daughter-embrace.jpg"],
+      "position": "50% 30%",
+      "alt": "Partner with Mums Aloud: creating partnerships that transform Black maternal care."
+    },
+    {
+      "route": "/services/",
+      "tag": "Our Services",
+      "lead": "Pick the pathway that fits",
+      "accent": "where you are.",
+      "line": "Real support for mums, at every stage of the journey, from pregnancy through the early years.",
+      "action": "See our services",
+      "variant": "photo",
+      "photos": ["src/assets/photos/women-community-circle.jpg"],
+      "position": "50% 40%",
+      "alt": "Mums Aloud services: pick the pathway that fits where you are."
+    },
+    {
+      "route": "/work-with-us/",
+      "tag": "Work With Bokun",
+      "lead": "Support that is",
+      "accent": "just yours.",
+      "line": "One-to-one coaching, assessments and postpartum support with Bokun Imoukhuede.",
+      "action": "Book a free call",
+      "variant": "photo",
+      "photos": ["src/assets/photos/team/bokun-imoukhuede.webp"],
+      "position": "50% 20%",
+      "alt": "Work with Bokun Imoukhuede, founder of Mums Aloud: support that is just yours."
+    },
+    {
+      "route": "/meet-bokun/",
+      "tag": "Meet Bokun",
+      "lead": "Who looks after the woman who is",
+      "accent": "looking after everyone else?",
+      "line": "Bokun Imoukhuede, founder of Mums Aloud, on how it all started.",
+      "action": "Read her story",
+      "variant": "photo",
+      "photos": ["src/assets/photos/team/bokun-imoukhuede.webp"],
+      "position": "50% 20%",
+      "alt": "Meet Bokun Imoukhuede, founder of Mums Aloud: who looks after the woman who is looking after everyone else?"
+    },
+    {
+      "route": "/about-mums-aloud/",
+      "tag": "About us",
+      "lead": "A community for mums,",
+      "accent": "by mums.",
+      "line": "Support, shared knowledge and resources to make every step of motherhood easier.",
+      "action": "Our story",
+      "variant": "photo",
+      "photos": ["src/assets/photos/hero-mother-baby-golden-hour.jpg"],
+      "position": "50% 25%",
+      "alt": "About Mums Aloud: a community for mums, by mums."
+    },
+    {
+      "route": "/meet-the-team/",
+      "tag": "Meet the team",
+      "lead": "A driven team with",
+      "accent": "diverse skills.",
+      "line": "The people behind Mums Aloud, working with respect, integrity and a shared vision.",
+      "action": "Meet the team",
+      "variant": "portraits",
+      "photos": [
+        "src/assets/photos/team/bokun-imoukhuede.webp",
+        "src/assets/photos/team/oyindamola.jpg",
+        "src/assets/photos/team/dk-jonah.jpg",
+        "src/assets/photos/team/yemi-komolafe.jpg"
+      ],
+      "position": "50% 20%",
+      "alt": "Portraits of the Mums Aloud team: Bokun Imoukhuede, Gloria Odewumi, Dk Jonah and Yemi Komolafe."
+    },
+    {
+      "route": "/mums-council/",
+      "tag": "Mum's Council",
+      "lead": "The mothers",
+      "accent": "at the table.",
+      "line": "Five mothers who bring their experience to how Mums Aloud supports mums.",
+      "action": "Meet the council",
+      "variant": "portraits",
+      "photos": [
+        "src/assets/photos/council/bella-abidakun.jpg",
+        "src/assets/photos/council/temi-fagbo.jpg",
+        "src/assets/photos/council/bukunmi-ladeji.jpg",
+        "src/assets/photos/council/elizabeth-toluwani.jpg",
+        "src/assets/photos/council/abies-sonia.jpg"
+      ],
+      "position": "50% 25%",
+      "alt": "Portraits of the five members of the Mums Aloud Mum's Council."
+    },
+    {
+      "route": "/volunteer/",
+      "tag": "Volunteer with us",
+      "lead": "Empower. Support.",
+      "accent": "Inspire.",
+      "line": "Whether you're an expert in your field or simply want to give back, there's a place for you.",
+      "action": "Apply to volunteer",
+      "variant": "photo",
+      "photos": ["src/assets/photos/two-friends-smiling.jpg"],
+      "position": "55% 30%",
+      "alt": "Volunteer with Mums Aloud: empower, support, inspire."
+    },
+    {
+      "route": "/podcast/",
+      "tag": "Podcast",
+      "lead": "Your sanctuary for",
+      "accent": "empowered motherhood.",
+      "line": "Honest conversations for Black mums about the unspoken parts of motherhood. On Spotify.",
+      "action": "Listen now",
+      "variant": "photo",
+      "photos": ["src/assets/photos/mother-baby-smiling.jpg"],
+      "position": "65% 40%",
+      "alt": "The Mama's Escape podcast by Mums Aloud: your sanctuary for empowered motherhood."
+    },
+    {
+      "route": "/story-lounge/",
+      "tag": "Story Lounge",
+      "lead": "Stories from mothers,",
+      "accent": "in their own words.",
+      "line": "Accounts of motherhood from women in our community: the journey, the hard days and the small wins.",
+      "action": "Read the stories",
+      "variant": "photo",
+      "photos": ["src/assets/photos/mother-kissing-baby.jpg"],
+      "position": "50% 35%",
+      "alt": "The Mums Aloud Story Lounge: stories from mothers, in their own words."
+    },
+    {
+      "route": "/blog/",
+      "tag": "Blog",
+      "lead": "Straight talk,",
+      "accent": "mum to mum.",
+      "line": "Practical pieces on pregnancy, babies, toddlers and family life, written for mothers like us.",
+      "action": "Read the blog",
+      "variant": "photo",
+      "photos": ["src/assets/photos/two-friends-smiling.jpg"],
+      "position": "55% 30%",
+      "alt": "The Mums Aloud blog: straight talk, mum to mum."
+    },
+    {
+      "route": "/article/",
+      "tag": "Articles",
+      "lead": "Longer reads,",
+      "accent": "mum to mum.",
+      "line": "Longer pieces on motherhood, identity and finding the woman inside the mother.",
+      "action": "Read the articles",
+      "variant": "photo",
+      "photos": ["src/assets/photos/hero-mother-baby-golden-hour.jpg"],
+      "position": "50% 25%",
+      "alt": "Mums Aloud articles: longer reads, mum to mum."
+    },
+    {
+      "route": "/new-mums-circle/",
+      "tag": "New Mums Circle",
+      "lead": "The New",
+      "accent": "Mums Circle.",
+      "line": "A supportive community for new mums and mums with children aged 0 to 5.",
+      "action": "Join the circle",
+      "variant": "photo",
+      "photos": ["src/assets/photos/mother-baby-smiling.jpg"],
+      "position": "65% 40%",
+      "alt": "The Mums Aloud New Mums Circle, for new mums and mums with children aged 0 to 5."
+    },
+    {
+      "route": "/resources/",
+      "tag": "Resources",
+      "lead": "Guides and tools you can",
+      "accent": "actually use.",
+      "line": "Support contacts, trusted resources, free guides and calculators from Mums Aloud.",
+      "action": "Explore resources",
+      "variant": "panel",
+      "alt": "Mums Aloud resources: guides and tools you can actually use."
+    },
+    {
+      "route": "/find-support/",
+      "tag": "Find support",
+      "lead": "The right help,",
+      "accent": "when you need it.",
+      "line": "Helplines and trusted UK organisations for mothers. In an emergency, call 999.",
+      "action": "Find support",
+      "variant": "panel",
+      "alt": "Find support: helplines and trusted UK organisations for mothers."
+    },
+    {
+      "route": "/trusted-resources/",
+      "tag": "Trusted resources",
+      "lead": "Programmes and resources",
+      "accent": "we endorse.",
+      "line": "Chosen based on what has actually helped mums in this community.",
+      "action": "See what we recommend",
+      "variant": "panel",
+      "alt": "Programmes and resources Mums Aloud endorses."
+    },
+    {
+      "route": "/holiday-guide-for-school-kids/",
+      "tag": "Free guide",
+      "lead": "Holiday survival guide for",
+      "accent": "school-age kids.",
+      "line": "Ideas and gentle structure for the school holidays. A free PDF to download and keep.",
+      "action": "Download the guide",
+      "variant": "panel",
+      "alt": "A free Mums Aloud guide: holiday survival guide for school-age kids."
+    },
+    {
+      "route": "/ativites-guide-for-babies/",
+      "tag": "Free guide",
+      "lead": "Activities guide",
+      "accent": "for babies.",
+      "line": "Simple, low-cost ways to play, soothe and connect with your baby in the first year.",
+      "action": "Download the guide",
+      "variant": "panel",
+      "alt": "A free Mums Aloud guide: activities for babies in the first year."
+    },
+    {
+      "route": "/ovulation-calculator/",
+      "tag": "Ovulation calculator",
+      "lead": "Find your",
+      "accent": "fertile window.",
+      "line": "Estimate when you are most likely to conceive. An estimate only, not medical advice.",
+      "action": "Use the calculator",
+      "variant": "panel",
+      "alt": "The Mums Aloud ovulation calculator: find your fertile window."
+    },
+    {
+      "route": "/pregnancy-calculator/",
+      "tag": "Pregnancy calculator",
+      "lead": "How far along",
+      "accent": "are you?",
+      "line": "Estimate your due date, how many weeks pregnant you are and your trimester.",
+      "action": "Use the calculator",
+      "variant": "panel",
+      "alt": "The Mums Aloud pregnancy calculator: how far along are you?"
+    },
+    {
+      "route": "/contact/",
+      "tag": "Contact us",
+      "lead": "We'd love to",
+      "accent": "hear from you.",
+      "line": "Reach us the way that suits you, or send a message and we will get it to the right person.",
+      "action": "Get in touch",
+      "variant": "panel",
+      "alt": "Contact Mums Aloud: we'd love to hear from you."
+    },
+    {
+      "route": "/privacy-policy/",
+      "tag": "Privacy policy",
+      "lead": "How we look after",
+      "accent": "your information.",
+      "line": "What we collect, why we collect it and the choices you have.",
+      "action": "Read the policy",
+      "variant": "panel",
+      "alt": "The Mums Aloud privacy policy."
+    },
+    {
+      "route": "/cookie-policy-uk/",
+      "tag": "Cookie policy",
+      "lead": "What this site keeps",
+      "accent": "in your browser.",
+      "line": "No tracking, analytics or advertising cookies.",
+      "action": "Read the policy",
+      "variant": "panel",
+      "alt": "The Mums Aloud cookie policy: what this site keeps in your browser."
+    },
+    {
+      "route": "/terms-and-conditions/",
+      "tag": "Terms and conditions",
+      "lead": "The terms for using",
+      "accent": "this website.",
+      "line": "What you can expect from us, what we ask of you, and where the limits are.",
+      "action": "Read the terms",
+      "variant": "panel",
+      "alt": "The terms and conditions for using the Mums Aloud website."
+    }
+  ]
+}
