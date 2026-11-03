@@ -116,29 +116,28 @@ export default function PartnershipPage() {
             </p>
             <ul data-reveal="stagger" className="mt-12 grid gap-4 md:grid-cols-2 lg:gap-6">
               {routes.items.map((route, index) => (
-                <li key={route.title} className={`group relative aspect-[4/3] overflow-hidden rounded-card ${imageRing}`}>
-                  <Image
-                    src={routePhotos[index].photo}
-                    alt=""
-                    fill
-                    placeholder="blur"
-                    sizes="(min-width: 48rem) 50vw, 100vw"
-                    className={`object-cover transition-transform duration-500 ease-standard group-hover:scale-[1.03] motion-reduce:transition-none ${routePhotos[index].position}`}
-                  />
-                  <div aria-hidden className={`absolute inset-x-0 bottom-0 h-3/5 ${scrim}`} />
-                  <div className="absolute right-6 bottom-6 left-6 flex items-end justify-between gap-4">
-                    <div>
-                      <h3 className="font-body text-title font-semibold text-on-photo">
-                        <SmartLink href={route.href} className="text-on-photo no-underline after:absolute after:inset-0">
-                          {route.title}
-                        </SmartLink>
-                      </h3>
-                      <p className="mt-1 max-w-[36ch] text-on-photo">{route.text}</p>
+                <li key={route.title}>
+                  {/* The whole card is the link (photo, title, text and arrow), so a tap anywhere on it lands. */}
+                  <SmartLink href={route.href} className={`group relative block aspect-[4/3] overflow-hidden rounded-card no-underline ${imageRing}`}>
+                    <Image
+                      src={routePhotos[index].photo}
+                      alt=""
+                      fill
+                      placeholder="blur"
+                      sizes="(min-width: 48rem) 50vw, 100vw"
+                      className={`object-cover transition-transform duration-500 ease-standard group-hover:scale-[1.03] motion-reduce:transition-none ${routePhotos[index].position}`}
+                    />
+                    <div aria-hidden className={`absolute inset-x-0 bottom-0 h-3/5 ${scrim}`} />
+                    <div className="absolute right-6 bottom-6 left-6 flex items-end justify-between gap-4">
+                      <div>
+                        <h3 className="font-body text-title font-semibold text-on-photo">{route.title}</h3>
+                        <p className="mt-1 max-w-[36ch] text-on-photo">{route.text}</p>
+                      </div>
+                      <span aria-hidden className="inline-flex size-12 shrink-0 items-center justify-center rounded-pill bg-accent text-on-accent transition-transform duration-150 group-hover:translate-x-1 motion-reduce:transition-none">
+                        <ArrowRightIcon size={20} weight="bold" />
+                      </span>
                     </div>
-                    <span aria-hidden className="inline-flex size-12 shrink-0 items-center justify-center rounded-pill bg-accent text-on-accent transition-transform duration-150 group-hover:translate-x-1 motion-reduce:transition-none">
-                      <ArrowRightIcon size={20} weight="bold" />
-                    </span>
-                  </div>
+                  </SmartLink>
                 </li>
               ))}
             </ul>
