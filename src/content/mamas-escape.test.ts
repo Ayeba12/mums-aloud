@@ -74,4 +74,10 @@ describe("Mama's Escape content", () => {
     const { story } = await import("./home");
     for (const text of [experience.body, story.body]) expect(text.startsWith("Before we became mothers, we were women full of ideas, dreams and plans.")).toBe(true);
   });
+
+  it("keeps the privacy promise warm, not solemn", () => {
+    expect(hero.card.tag).toBe("Our promise to you");
+    const words = [hero.card.tag, hero.card.text, ...faq.items.map((item) => item.a)].join(" ").toLowerCase();
+    expect(words).not.toMatch(/covenant|anyone's story/);
+  });
 });

@@ -17,8 +17,9 @@ export const hero = {
   secondary: { label: "What to expect", href: "#what-to-expect" },
   /** Floating card over the hero portrait, as the reference's case-study card. */
   card: {
-    tag: "Our covenant",
-    text: "What is shared here stays here. No mother becomes anyone's story.",
+    // Owner, 4 Nov 2026: warmer than "Our covenant", which read as too solemn.
+    tag: "Our promise to you",
+    text: "What you share here stays here. Your story is yours to tell, whenever you're ready.",
     link: { label: "See what's inside", href: "#inside" },
   },
 };
@@ -133,7 +134,7 @@ export const faq = {
     },
     {
       q: "Is what I share private?",
-      a: "Yes. What is shared here stays here, and no mother becomes anyone's story. We keep the space protected, which is why you come in through a simple form.",
+      a: "Yes. What you share here stays between us, and your story is always yours to tell. We keep the space safe and private, which is why everyone joins through a short form.",
     },
     {
       q: "I'm not ready to join. Can I still stay close?",
