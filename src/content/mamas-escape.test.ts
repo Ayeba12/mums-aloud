@@ -32,7 +32,8 @@ describe("Mama's Escape content", () => {
 
   it("offers the three stay-close routes from the copy", () => {
     const linked = stayClose.body.filter((part) => typeof part !== "string").map((part) => part.label);
-    expect(linked).toEqual(["listen to the podcast", "Work With Bokun"]);
+    expect(linked).toEqual(["Listen to the podcast", "Work With Bokun"]);
+    expect(`${stayClose.heading.lead} ${stayClose.heading.accent}`).toBe("Take your time. Stay close.");
     expect(stayClose.newsletter).toBe("Get the newsletter");
   });
 

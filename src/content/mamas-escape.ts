@@ -149,14 +149,14 @@ export const faq = {
 
 export const stayClose = {
   tag: "Not ready to join yet?",
-  heading: { lead: "This is the place we wished we had.", accent: "Come in, Mama." },
+  // Owner, 4 Nov 2026: the heading now answers the tag ("Come in, Mama" did not suit someone not ready yet).
+  heading: { lead: "Take your time.", accent: "Stay close." },
   /** The sentence carries the two quieter routes as links; the pills below are Join and the newsletter. */
   body: [
-    "Or stay close: ",
-    { label: "listen to the podcast", href: "https://creators.spotify.com/pod/show/mamasescape", external: true },
+    { label: "Listen to the podcast", href: "https://creators.spotify.com/pod/show/mamasescape", external: true },
     ", get the newsletter, or reach out to ",
     { label: "Work With Bokun", href: "/work-with-us/" },
-    " for a closer conversation.",
+    " for a closer conversation. When you're ready, we'll be here.",
   ],
   newsletter: "Get the newsletter",
   closing: "You don't have to do it all alone.",
