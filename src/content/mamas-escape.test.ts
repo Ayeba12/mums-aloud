@@ -40,7 +40,10 @@ describe("Mama's Escape content", () => {
     expect(podcast.action.href).toBe(family.tiles[1].action.href);
     expect(podcast.statement.highlight).toBe("far more than loneliness");
     expect(podcast.statement.trail.startsWith(".")).toBe(true);
-    expect(podcast.body).toMatch(/masks come off/);
+    expect(podcast.statement.trail).toBe(".");
+    expect(podcast.body).toHaveLength(2);
+    expect(podcast.body[0]).toMatch(/^It also reflects maternal health disparities/);
+    expect(podcast.body[1]).toMatch(/masks come off/);
   });
 
   it("explains the closed joining form instead of promising it", () => {

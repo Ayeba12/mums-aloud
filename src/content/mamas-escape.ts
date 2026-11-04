@@ -31,13 +31,15 @@ export const hero = {
 export const podcast = {
   /** The reason leads as the statement (moved here from the berry panel at the owner's request, 22 Oct 2026). */
   statement: {
-    // Owner's wording, 4 Nov 2026.
+    // Owner's wording, 4 Nov 2026: the first sentence is the statement, the rest reads beneath it (owner chose the split).
     lead: "As Black mothers in the UK, we know this challenge is about",
     highlight: "far more than loneliness",
-    trail:
-      ". It also reflects maternal health disparities and the feeling of being unheard. We are about three times more likely to die during pregnancy and childbirth than white women, and our concerns are often ignored. Many of us were also raised in our own cultures not to talk about the struggle. Mama's Escape exists to change both by creating space for care, honesty, and community.",
+    trail: ".",
   },
-  body: "On the Mama's Escape Podcast the masks come off: real mothers talking about loss, mum guilt and the pressures we carry.",
+  body: [
+    "It also reflects maternal health disparities and the feeling of being unheard. We are about three times more likely to die during pregnancy and childbirth than white women, and our concerns are often ignored. Many of us were also raised in our own cultures not to talk about the struggle. Mama's Escape exists to change both by creating space for care, honesty, and community.",
+    "On the Mama's Escape Podcast the masks come off: real mothers talking about loss, mum guilt and the pressures we carry.",
+  ],
   action: { label: "Not ready to join yet? Listen on Spotify", href: "https://creators.spotify.com/pod/show/mamasescape" },
 };
 

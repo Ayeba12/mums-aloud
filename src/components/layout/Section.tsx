@@ -118,7 +118,8 @@ export function Statement({
   lead: string;
   highlight: string;
   trail?: string;
-  body?: string;
+  /** One paragraph, or several, beneath the statement. */
+  body?: string | readonly string[];
   action?: ReactNode;
   wide?: boolean;
   size?: "h2" | "h3";
@@ -134,9 +135,11 @@ export function Statement({
         {trail && (closeUp ? trail : ` ${trail}`)}
       </h2>
       {body && (
-        <p data-reveal={reveal ? "fade" : undefined} className="mx-auto mt-6 max-w-[56ch] text-center text-lead">
-          {body}
-        </p>
+        <div data-reveal={reveal ? "fade" : undefined} className="mx-auto mt-6 flex max-w-[56ch] flex-col gap-4 text-center text-lead">
+          {[body].flat().map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
       )}
       {action && (
         <div data-reveal={reveal ? "fade" : undefined} className="mt-6 flex justify-center">
