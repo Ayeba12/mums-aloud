@@ -40,10 +40,13 @@ export const policyLinks = [
 
 /**
  * The cookie notice bar (every page, until closed). This site sets no cookies and loads nothing
- * from other companies, so the bar tells the truth rather than asking for consent: under the UK's
- * PECR rules, remembering that the notice was closed is strictly necessary and needs no consent.
- * If analytics or embeds are ever added, this must become a consent banner that blocks them until
- * the visitor agrees.
+ * from other companies' servers (checked live on 4 November 2026: no cookies, no storage until the
+ * notice is closed, every request to www.mumsaloud.com), so the bar tells the truth rather than
+ * asking for consent: under the UK's PECR rules, remembering that the notice was closed is strictly
+ * necessary and needs no consent. Vercel Web Analytics (3 November 2026) sets no cookies and stores
+ * nothing, so it does not change this. If cookie-based analytics (Google Analytics), ad pixels or
+ * embeds (YouTube, Spotify players) are ever added, this must become a consent banner that blocks
+ * them until the visitor agrees.
  */
 export const cookieNotice = {
   label: "Cookie notice",
