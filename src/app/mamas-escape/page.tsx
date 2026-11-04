@@ -173,13 +173,14 @@ export default function MamasEscapePage() {
             {/* The bridge from the heading to the figure, then the figure with its subject, and the source on its own line. */}
             <div data-reveal="fade" className="max-w-[40ch] px-2 lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-start lg:pr-0 lg:pl-6">
               <p className="text-lead">{why.body}</p>
-              <p className="mt-6 flex items-start gap-4">
-                <span className="font-heading text-h2 leading-none">{why.stat.value}</span>
-                <span>{why.stat.label}</span>
-              </p>
-              <p className="mt-2 text-caption">
-                Source: <a href={why.stat.source.href}>{why.stat.source.label}</a>
-              </p>
+              {/* The figure as a stat card, as on the homepage's impact row: the number leads and the sentence reads on from it. */}
+              <div className="mt-8 rounded-card bg-surface-card p-6 md:p-7">
+                <p className="font-heading text-display leading-none text-ink">{why.stat.value}</p>
+                <p className="mt-4">{why.stat.label}</p>
+                <p className="mt-3 text-caption text-text-secondary">
+                  Source: <a href={why.stat.source.href}>{why.stat.source.label}</a>
+                </p>
+              </div>
             </div>
           </div>
 
