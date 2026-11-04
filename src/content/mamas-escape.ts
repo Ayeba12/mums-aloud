@@ -50,8 +50,8 @@ export const why = {
   body: "Too many Black mothers in the UK are not listened to when something feels wrong. Being heard is not a luxury. It can save a life.",
   stat: {
     value: "3×",
-    // Read after the figure, so "three times" is said once: "3x higher risk of dying ...".
-    label: "higher risk of dying during pregnancy or in the weeks after birth for Black women in the UK, compared with white women.",
+    // A whole sentence, subject first (owner, 4 Nov 2026: the fragment after the figure read as disjointed).
+    label: "Black women in the UK face around three times the risk of dying during pregnancy or in the weeks after birth, compared with white women.",
     source: { label: "MBRRACE-UK", href: "https://www.npeu.ox.ac.uk/mbrrace-uk" },
   },
   /** Statement above the four cards; the hero card's "See what's inside" lands on this panel. */

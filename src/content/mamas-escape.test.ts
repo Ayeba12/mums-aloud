@@ -62,7 +62,7 @@ describe("Mama's Escape content", () => {
 
   it("joins Why we exist's heading to its figure, and says who the figure is about", () => {
     expect(why.body).toMatch(/not listened to/);
-    expect(`${why.stat.value} ${why.stat.label}`).toMatch(/^3× higher risk of dying .* for Black women in the UK, compared with white women\.$/);
+    expect(why.stat.label).toMatch(/^Black women in the UK face around three times the risk of dying .* compared with white women\.$/);
     expect(why.stat.source.label).toBe("MBRRACE-UK");
   });
 
