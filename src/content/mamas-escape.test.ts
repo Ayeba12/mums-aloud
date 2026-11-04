@@ -62,4 +62,8 @@ describe("Mama's Escape content", () => {
     expect(why.stat.label).toMatch(/^Black women in the UK .* than white women/);
     expect(why.stat.source.label).toBe("MBRRACE-UK");
   });
+
+  it("says \"too\" only once in the pledge", () => {
+    expect(experience.pledge.match(/\btoo\b/gi)).toHaveLength(1);
+  });
 });
