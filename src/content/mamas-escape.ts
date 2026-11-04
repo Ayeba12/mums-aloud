@@ -79,8 +79,9 @@ export const family = {
 
 export const expect = {
   tag: "What to expect",
-  heading: { lead: "Not Mum. Not wife.", accent: "You." },
-  body: "Here is what stepping in feels like.",
+  // Owner, 4 Nov 2026: the two lines swapped, so the heading says what the section shows.
+  heading: { lead: "Here is what stepping in", accent: "feels like." },
+  body: "Not Mum. Not wife. You.",
   moments: [
     "Women who have lived what you are living.",
     "Honest conversation, and mentor mums a few steps ahead.",

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { experience, family, faq, hero, join, podcast, stayClose } from "./mamas-escape";
+import { experience, expect as whatToExpect, family, faq, hero, join, podcast, stayClose } from "./mamas-escape";
 
 describe("Mama's Escape content", () => {
   it("keeps the four ways the community holds each other, in the client's order", () => {
@@ -50,5 +50,10 @@ describe("Mama's Escape content", () => {
 
   it("names the Mama's Escape Community in the first question", () => {
     expect(faq.items[0].q).toBe("Who is the Mama's Escape Community for?");
+  });
+
+  it("heads What to expect with the line about stepping in, and keeps Not Mum. Not wife. You. beneath it", () => {
+    expect(`${whatToExpect.heading.lead} ${whatToExpect.heading.accent}`).toBe("Here is what stepping in feels like.");
+    expect(whatToExpect.body).toBe("Not Mum. Not wife. You.");
   });
 });
