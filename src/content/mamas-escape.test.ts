@@ -56,9 +56,9 @@ describe("Mama's Escape content", () => {
     expect(faq.items[0].q).toBe("Who is the Mama's Escape Community for?");
   });
 
-  it("heads What to expect with the line about stepping in, and keeps Not Mum. Not wife. You. beneath it", () => {
+  it("heads What to expect with the line about stepping in, and a line beneath it that reads on from it", () => {
     expect(`${whatToExpect.heading.lead} ${whatToExpect.heading.accent}`).toBe("Here is what stepping in feels like.");
-    expect(whatToExpect.body).toBe("Not Mum. Not wife. You.");
+    expect(whatToExpect.body).toBe("A place to be you again, not only Mum or wife.");
   });
 
   it("joins Why we exist's heading to its figure, and says who the figure is about", () => {

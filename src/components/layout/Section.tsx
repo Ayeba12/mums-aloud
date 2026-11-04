@@ -71,7 +71,7 @@ export function SectionHeading({
         <Accent {...heading} />
       </Level>
       {intro && (
-        <p data-reveal={marked ? "fade" : undefined} className="mt-4 max-w-[46ch] text-lead">
+        <p data-reveal={marked ? "fade" : undefined} className={`mt-4 max-w-[46ch] text-lead ${centered ? "text-balance" : "text-pretty"}`}>
           {intro}
         </p>
       )}

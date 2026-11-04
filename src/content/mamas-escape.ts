@@ -93,7 +93,8 @@ export const expect = {
   tag: "What to expect",
   // Owner, 4 Nov 2026: the two lines swapped, so the heading says what the section shows.
   heading: { lead: "Here is what stepping in", accent: "feels like." },
-  body: "Not Mum. Not wife. You.",
+  // Owner, 4 Nov 2026: "Not Mum. Not wife. You." did not flow from the heading; the same idea as a sentence that leads into the cards.
+  body: "A place to be you again, not only Mum or wife.",
   moments: [
     "Women who have lived what you are living.",
     "Honest conversation, and mentor mums a few steps ahead.",
