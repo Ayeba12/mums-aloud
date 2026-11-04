@@ -66,4 +66,9 @@ describe("Mama's Escape content", () => {
   it("says \"too\" only once in the pledge", () => {
     expect(experience.pledge.match(/\btoo\b/gi)).toHaveLength(1);
   });
+
+  it("opens the story with \"Before we became mothers\" here and on the homepage", async () => {
+    const { story } = await import("./home");
+    for (const text of [experience.body, story.body]) expect(text.startsWith("Before we became mothers, we were women full of ideas, dreams and plans.")).toBe(true);
+  });
 });

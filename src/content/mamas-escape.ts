@@ -57,7 +57,7 @@ export const why = {
 export const experience = {
   tag: "Inside the community",
   heading: { lead: "A mother deserves to be", accent: "looked after too." },
-  body: "Before we were mothers, we were women full of ideas, dreams, and plans. Then motherhood arrived, often far from home, far from the village that would have held us. Everyone gathered round the baby. Few asked how we were.",
+  body: "Before we became mothers, we were women full of ideas, dreams and plans. Then motherhood arrived, often far from home, far from the village that would have held us. Everyone gathered round the baby. Few asked how we were.",
   // Owner, 4 Nov 2026: "too" once, not three times.
   pledge: "We know, because we have lived it. When a baby is born, a mother is born too, and she deserves care of her own.",
   /** The community's four core areas, in the owner's words (notes of 10 Aug 2026). */
