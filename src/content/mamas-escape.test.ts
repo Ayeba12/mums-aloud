@@ -38,7 +38,7 @@ describe("Mama's Escape content", () => {
 
   it("sends podcast listeners to the same Spotify show as the podcast card, with one highlighted phrase", () => {
     expect(podcast.action.href).toBe(family.tiles[1].action.href);
-    expect(podcast.statement.highlight).toBe("not only loneliness");
+    expect(podcast.statement.highlight).toBe("far more than loneliness");
     expect(podcast.statement.trail.startsWith(".")).toBe(true);
     expect(podcast.body).toMatch(/masks come off/);
   });
