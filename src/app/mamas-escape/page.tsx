@@ -170,10 +170,17 @@ export default function MamasEscapePage() {
             <div className={`order-first overflow-hidden rounded-card lg:order-none lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 ${imageRing}`}>
               <Image src={embracePhoto} alt="" placeholder="blur" sizes="(min-width: 64rem) 50vw, 100vw" data-reveal="parallax" className="aspect-square w-full object-cover object-[50%_30%]" />
             </div>
-            <p data-reveal="fade" className="max-w-[36ch] px-2 lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-start lg:pr-0 lg:pl-6">
-              <span className="font-heading text-h3 leading-none">{why.stat.value}</span> {why.stat.label} ·{" "}
-              <a href={why.stat.source.href}>Source: {why.stat.source.label}</a>
-            </p>
+            {/* The bridge from the heading to the figure, then the figure with its subject, and the source on its own line. */}
+            <div data-reveal="fade" className="max-w-[40ch] px-2 lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-start lg:pr-0 lg:pl-6">
+              <p className="text-lead">{why.body}</p>
+              <p className="mt-6 flex items-start gap-4">
+                <span className="font-heading text-h2 leading-none">{why.stat.value}</span>
+                <span>{why.stat.label}</span>
+              </p>
+              <p className="mt-2 text-caption">
+                Source: <a href={why.stat.source.href}>{why.stat.source.label}</a>
+              </p>
+            </div>
           </div>
 
           <div className="container-page pb-12 md:pb-16 lg:pb-24">

@@ -43,7 +43,13 @@ export const podcast = {
 export const why = {
   tag: "Why we exist",
   heading: { lead: "To be understood without", accent: "having to explain." },
-  stat: { value: "3×", label: "more likely to die in and around pregnancy", source: { label: "MBRRACE-UK", href: "https://www.npeu.ox.ac.uk/mbrrace-uk" } },
+  /** Owner, 4 Nov 2026: the heading and the figure needed a bridge, and the figure a subject. */
+  body: "Too many Black mothers in the UK are not listened to when something feels wrong. Being heard is not a luxury. It can save a life.",
+  stat: {
+    value: "3×",
+    label: "Black women in the UK are around three times more likely than white women to die during pregnancy or in the weeks after birth.",
+    source: { label: "MBRRACE-UK", href: "https://www.npeu.ox.ac.uk/mbrrace-uk" },
+  },
   /** Statement above the four cards; the hero card's "See what's inside" lands on this panel. */
   inside: { lead: "Here is what's", accent: "inside." },
 };
