@@ -27,7 +27,10 @@ describe("Mama's Escape content", () => {
 
   it("lists the joining questions so a mother knows what to expect", () => {
     expect(join.asks).toHaveLength(4);
-    expect(join.asks.join(" ")).toMatch(/expecting, newborn, under five/);
+    // The form's own questions (checked against the live Google Form, 5 Nov 2026).
+    expect(join.asks.join(" ")).toMatch(/name, email and phone number/);
+    expect(join.asks.join(" ")).toMatch(/looking forward to/);
+    expect(join.asks.join(" ")).not.toMatch(/birthday/i);
   });
 
   it("offers the three stay-close routes from the copy", () => {

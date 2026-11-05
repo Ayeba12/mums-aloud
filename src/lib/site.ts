@@ -35,7 +35,10 @@ export const siteConfig = {
  * The joining form itself (owner decision: a Google Form). It is only linked when the
  * URL is set, so the site never shows a join button that leads to a closed form.
  */
+/** The Google Form for joining Mama's Escape (owner, 5 Nov 2026). A public address, so it lives here; NEXT_PUBLIC_JOIN_URL overrides it. */
+const JOIN_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfeTv9C-ztGltcVSaYLuZh7Ve1xOutzM6vj3_qzRdSIYvZinw/viewform";
+
 export const joinForm = {
-  open: Boolean(process.env.NEXT_PUBLIC_JOIN_URL),
-  href: process.env.NEXT_PUBLIC_JOIN_URL || "/mamas-escape/",
+  open: true,
+  href: process.env.NEXT_PUBLIC_JOIN_URL || JOIN_FORM_URL,
 } as const;

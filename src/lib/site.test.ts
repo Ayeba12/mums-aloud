@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { siteConfig } from "./site";
+import { joinForm, siteConfig } from "./site";
 
 /** Each network's own host, so a profile can never point at a look-alike domain. */
 const hosts: Record<keyof typeof siteConfig.social, string> = {
@@ -26,5 +26,12 @@ describe("siteConfig.social", () => {
     expect(siteConfig.social.instagram.href).toBe("https://www.instagram.com/mumsaloud/");
     expect(siteConfig.social.instagram.handle).toBe("@mumsaloud");
     expect(siteConfig.social.facebook.href).toBe("https://www.facebook.com/mumsaloud/");
+  });
+});
+
+describe("joinForm", () => {
+  it("opens the Mama's Escape Google Form", () => {
+    expect(joinForm.open).toBe(true);
+    expect(joinForm.href).toMatch(/^https:\/\/docs\.google\.com\/forms\/d\/e\/[\w-]+\/viewform$/);
   });
 });

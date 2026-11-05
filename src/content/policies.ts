@@ -61,7 +61,7 @@ export const cookiePolicy: PolicyPage = {
   description: "What this website stores in your browser, what it does not, and the other services you can reach from it.",
   tag: "Cookie policy (UK)",
   heading: { lead: "What this site keeps", accent: "in your browser." },
-  reviewed: "Last reviewed 3 November 2026",
+  reviewed: "Last reviewed 5 November 2026",
   intro:
     "Cookies are small files a website can leave in your browser. Some help a site work; others follow you around the internet. This page explains, in plain words, what this site does and does not do.",
   sections: [
@@ -98,7 +98,7 @@ export const cookiePolicy: PolicyPage = {
       items: [
         "Spotify: podcast episodes stream from Spotify's servers when you press play, and the Spotify links open the show there.",
         "Calendly: booking a free call with Bokun.",
-        "Google Forms: the form for joining Mama's Escape, once it is open.",
+        "Google Forms: the form for joining Mama's Escape.",
         "WhatsApp: the New Mums Circle group.",
         "Instagram and Facebook: our social profiles.",
         "Selar and the other programmes listed on our Trusted Resources page.",
