@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 /**
- * Meet Bokun: her own portrait from the live site beside the question at the heart of her story,
+ * Meet Bokun: her own portrait beside the question at the heart of her story,
  * then the founder letter in her words, her vision and voice, and her biography.
  */
 export default function MeetBokunPage() {
@@ -113,7 +113,7 @@ export default function MeetBokunPage() {
           name: bokun.name,
           jobTitle: bokun.role,
           path: "/meet-bokun/",
-          image: founder.hero.portrait.src,
+          image: founder.hero.portrait.src.src,
           description: founder.description,
         })}
       />

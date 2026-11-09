@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { about, council, founder, team } from "./about";
 import { teamPortraits } from "@/components/content/teamPortraits";
-import { uploadUrl } from "@/lib/wordpress/urls";
 
 describe("About content", () => {
   it("lists the four team members from the live site, Bokun first with a link to her page", () => {
@@ -17,8 +16,11 @@ describe("About content", () => {
     expect(founder.letter.signoff).toEqual({ name: "Bokun Imoukhuede", role: "Founder, MumsAloud" });
   });
 
-  it("uses Bokun's own portrait from the WordPress media library, not a stock photo", () => {
-    expect(founder.hero.portrait.src).toBe(uploadUrl("2024/10/Mrs-Bokun-1025x1536.jpeg"));
+  it("uses Bokun's own portrait (owner, 9 Nov 2026) on her pages and her team tile alike", () => {
+    // Next hands an image import over as { src, width, height }; Vitest as the plain path.
+    const image: unknown = founder.hero.portrait.src;
+    expect(typeof image === "string" ? image : (image as { src: string }).src).toMatch(/bokun-imoukhuede\.jpg/);
+    expect(teamPortraits.bokun?.photo).toBe(founder.hero.portrait.src);
   });
 
   it("carries the council's five roles and five members", () => {

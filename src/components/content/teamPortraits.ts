@@ -1,6 +1,6 @@
 import type { StaticImageData } from "next/image";
 import type { Profile } from "@/content/about";
-import bokun from "@/assets/photos/team/bokun-imoukhuede.webp";
+import bokun from "@/assets/photos/team/bokun-imoukhuede.jpg";
 import oyindamola from "@/assets/photos/team/oyindamola.jpg";
 import dkJonah from "@/assets/photos/team/dk-jonah.jpg";
 import yemi from "@/assets/photos/team/yemi-komolafe.jpg";

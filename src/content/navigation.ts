@@ -152,7 +152,7 @@ export const menuPromo: NavFeature = {
   action: { label: "Join Mama's Escape", href: siteConfig.joinUrl },
 };
 
-/** Bokun's own portrait for the About menu (the live site's image, as on her page). */
+/** Bokun's own portrait for the About menu (the same photo as on her page). */
 export const founderPortrait = founder.hero.portrait;
 
 export const footerGroups: NavGroup[] = [

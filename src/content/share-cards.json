@@ -56,7 +56,7 @@
       "line": "One-to-one coaching, assessments and postpartum support with Bokun Imoukhuede.",
       "action": "Book a free call",
       "variant": "photo",
-      "photos": ["src/assets/photos/team/bokun-imoukhuede.webp"],
+      "photos": ["src/assets/photos/team/bokun-imoukhuede.jpg"],
       "position": "50% 20%",
       "alt": "Work with Bokun Imoukhuede, founder of Mums Aloud: support that is just yours."
     },
@@ -78,7 +78,7 @@
       "line": "Bokun Imoukhuede, founder of Mums Aloud, on how it all started.",
       "action": "Read her story",
       "variant": "photo",
-      "photos": ["src/assets/photos/team/bokun-imoukhuede.webp"],
+      "photos": ["src/assets/photos/team/bokun-imoukhuede.jpg"],
       "position": "50% 20%",
       "alt": "Meet Bokun Imoukhuede, founder of Mums Aloud: who looks after the woman who is looking after everyone else?"
     },
@@ -103,7 +103,7 @@
       "action": "Meet the team",
       "variant": "portraits",
       "photos": [
-        "src/assets/photos/team/bokun-imoukhuede.webp",
+        "src/assets/photos/team/bokun-imoukhuede.jpg",
         "src/assets/photos/team/oyindamola.jpg",
         "src/assets/photos/team/dk-jonah.jpg",
         "src/assets/photos/team/yemi-komolafe.jpg"
