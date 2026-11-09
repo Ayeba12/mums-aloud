@@ -176,6 +176,17 @@ export const termsPage: PolicyPage = {
       ],
     },
     {
+      // Owner, 9 Nov 2026: the checkout's tick box links here (ASSESSMENT_TERMS_PATH in content/assessments.ts).
+      // Not legal advice. confirm: the cancellation wording.
+      title: "Assessments with Bokun",
+      paragraphs: [
+        "The Empowered Life Assessment costs £100, paid once on Stripe's secure payment page. One payment covers all three assessments: the assessment for married individuals, the Marital Rediscovery Assessment, and the assessment for single individuals.",
+        `After you pay, you receive the links to your assessments. The links are for you only, so please do not share them. If you have paid but have not received them, email us at ${siteConfig.email} with your Stripe receipt or proof of payment and we will send them.`,
+        "The assessments are a coaching and self-reflection tool. They are not medical, psychological or legal advice, a diagnosis, or a replacement for professional care. If you are struggling, our Find Support page lists people who can help now.",
+        "You can cancel within 14 days of paying. If you have not started any of your assessments, we will refund you in full. If you start an assessment within those 14 days, you agree that we begin straight away, and if you then cancel we may keep a fair amount for the work already done.",
+      ],
+    },
+    {
       title: "Links to other services",
       paragraphs: [
         "The site links to other websites and services, including Spotify, Calendly, Google Forms, WhatsApp, Instagram, Facebook and the organisations on our Find Support page. We link to them because we think they may help, but we do not control them and are not responsible for their content, availability or how they use your information.",

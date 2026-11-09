@@ -22,7 +22,7 @@ describe("core area pages", () => {
     const assessments = workWithUs.services.items.find((item) => item.id === "assessments");
     // Paid since 9 Nov 2026: the card names the three assessments and leads to the checkout, never straight to a form.
     expect(assessments?.action.href).toBe("/assessment-checkout/");
-    expect(assessments?.strap).toBe("£100 per assessment");
+    expect(assessments?.strap).toBe("£100 for all three assessments");
     expect(assessments?.options).toEqual(["For married individuals", "Marital Rediscovery Assessment", "For single individuals"]);
     expect(JSON.stringify(workWithUs)).not.toMatch(/forms\.gle|recently single/i);
     expect(JSON.stringify(workWithUs)).not.toMatch(/[–—]/);
