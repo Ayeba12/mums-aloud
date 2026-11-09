@@ -4,7 +4,8 @@ import { siteConfig } from "@/lib/site";
  * Structured data (schema.org JSON-LD) that tells search engines and AI assistants who Mums Aloud is.
  * The organisation and the website go on every page (root layout); pages add their own on top:
  * BlogPosting on stories and articles, PodcastSeries on the podcast, FAQPage on Mama's Escape, and
- * ProfilePage on Meet Bokun. Everything links back to the organisation by its `@id`.
+ * ProfilePage on Meet Bokun, Service with its price on the assessment checkout. Everything links back
+ * to the organisation by its `@id`.
  */
 
 type Json = Record<string, unknown>;
@@ -72,6 +73,26 @@ export function profileSchema(person: { name: string; jobTitle: string; path: st
       image: person.image ? absolute(person.image) : undefined,
       url: absolute(person.path),
       worksFor: { "@id": organizationId() },
+    },
+  };
+}
+
+/** A paid service and its price, as the page shows them (the assessment checkout). */
+export function serviceSchema(service: { name: string; description: string; path: string; price: number; currency: string }): Json {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.name,
+    description: service.description,
+    url: absolute(service.path),
+    provider: { "@id": organizationId() },
+    areaServed: { "@type": "Country", name: "United Kingdom" },
+    offers: {
+      "@type": "Offer",
+      price: service.price.toFixed(2),
+      priceCurrency: service.currency,
+      url: absolute(service.path),
+      availability: "https://schema.org/InStock",
     },
   };
 }

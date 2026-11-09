@@ -61,7 +61,7 @@ export const cookiePolicy: PolicyPage = {
   description: "What this website stores in your browser, what it does not, and the other services you can reach from it.",
   tag: "Cookie policy (UK)",
   heading: { lead: "What this site keeps", accent: "in your browser." },
-  reviewed: "Last reviewed 5 November 2026",
+  reviewed: "Last reviewed 9 November 2026",
   intro:
     "Cookies are small files a website can leave in your browser. Some help a site work; others follow you around the internet. This page explains, in plain words, what this site does and does not do.",
   sections: [
@@ -98,6 +98,7 @@ export const cookiePolicy: PolicyPage = {
       items: [
         "Spotify: podcast episodes stream from Spotify's servers when you press play, and the Spotify links open the show there.",
         "Calendly: booking a free call with Bokun.",
+        "Stripe: paying for an assessment with Bokun. Stripe hosts the payment page, so your card details go to Stripe, not to us.",
         "Google Forms: the form for joining Mama's Escape.",
         "WhatsApp: the New Mums Circle group.",
         "Instagram and Facebook: our social profiles.",
@@ -128,7 +129,7 @@ export const termsPage: PolicyPage = {
   description: "The terms for using the Mums Aloud website: what you can expect from us, what we ask of you, and where the limits are.",
   tag: "Terms and conditions",
   heading: { lead: "The terms for using", accent: "this website." },
-  reviewed: "Last updated 30 October 2026",
+  reviewed: "Last updated 9 November 2026",
   intro: "These terms apply to your use of the Mums Aloud website and the forms on it. By using the site you agree to them. If you do not agree, please do not use the site. They are written to be read, so please do.",
   sections: [
     {
@@ -171,7 +172,7 @@ export const termsPage: PolicyPage = {
     {
       title: "Mama's Escape, services and events",
       paragraphs: [
-        "Joining Mama's Escape, booking a call or session with Bokun, joining a programme or coming to an event may have its own terms, which we will share with you before you commit. Those terms apply alongside these. Where a booking or payment is handled by another service, such as Calendly or Selar, that service's own terms apply too.",
+        "Joining Mama's Escape, booking a call or session with Bokun, joining a programme or coming to an event may have its own terms, which we will share with you before you commit. Those terms apply alongside these. Where a booking or payment is handled by another service, such as Calendly, Selar or Stripe, that service's own terms apply too.",
       ],
     },
     {

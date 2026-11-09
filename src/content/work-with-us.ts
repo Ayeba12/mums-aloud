@@ -3,9 +3,11 @@
  * updates, maternal wellbeing direction" document (10 Aug 2026; `output/client-docs/`), which
  * replaced the earlier Chaos to Calm / Postpartum Transition Program / TELA outline; the owner then
  * kept Chaos to Calm as a fifth service (24 Oct 2026), with its copy from the live programme page.
- * The assessment forms are the live site's own links. Items marked `confirm` are drafted.
+ * The assessments are paid (owner, 9 Nov 2026): the card leads to the checkout page, which holds the
+ * Stripe link and the forms (`content/assessments.ts`). Items marked `confirm` are drafted.
  */
 import type { AccentText } from "@/components/ui/Heading";
+import { assessmentOffer, assessments, CHECKOUT_PATH } from "./assessments";
 
 const calendly = "https://calendly.com/bokunimoukhuede/30min";
 
@@ -32,9 +34,12 @@ export type BokunService = {
   strap?: string;
   summary: string;
   points: readonly string[];
-  action: { label: string; href: string; external?: boolean };
-  /** The three assessment forms: one per situation. */
-  options?: readonly { label: string; href: string }[];
+  /** `primary` gives an on-site action the filled button that outside links get. */
+  action: { label: string; href: string; external?: boolean; primary?: boolean };
+  /** A quieter second route under the button. */
+  secondary?: { label: string; href: string; external?: boolean };
+  /** A plain list under the points, such as the three assessments. */
+  options?: readonly string[];
   optionsLabel?: string;
 };
 
@@ -69,16 +74,13 @@ const items: readonly BokunService[] = [
     id: "assessments",
     icon: "assessment",
     title: "Assessments",
+    strap: `${assessmentOffer.price.label} per assessment`,
     summary: "Get clarity on where you are, and what support genuinely fits your stage of motherhood.",
     points: ["Personalised postpartum and family assessments", "Practical insight, not just a checklist", "A clear next step, whatever you decide to do with it"],
-    // confirm: the three assessment destinations (The Empowered Life Assessment forms on the live site).
-    optionsLabel: "Start an assessment",
-    options: [
-      { label: "For married individuals", href: "https://forms.gle/fVDtjGSJ3vRMmVeFA" },
-      { label: "For recently single individuals", href: "https://forms.gle/fnX1AvUgFSKSMCHg8" },
-      { label: "For single individuals", href: "https://forms.gle/zKQ18pUsgUev5Lof6" },
-    ],
-    action: { label: "Talk it through first", href: calendly, external: true },
+    optionsLabel: "Choose from three assessments",
+    options: assessments.map((item) => item.label),
+    action: { label: "Book an assessment", href: CHECKOUT_PATH, primary: true },
+    secondary: { label: "Talk it through first", href: calendly, external: true },
   },
   {
     id: "postpartum",

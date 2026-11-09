@@ -79,24 +79,32 @@ export default function WorkWithBokunPage() {
                 {item.options && (
                   <div className="mt-6 border-t border-border-decoration pt-6">
                     <p className="font-bold text-ink">{item.optionsLabel}</p>
-                    <ul className="mt-2 flex flex-col">
+                    <ul className="mt-3 flex flex-col gap-2">
                       {item.options.map((option) => (
-                        <li key={option.href}>
-                          <a href={option.href} className="inline-flex min-h-12 items-center gap-1 font-semibold">
-                            {option.label}
-                            <ArrowUpRightIcon aria-hidden size={16} />
-                            <span className="sr-only">(opens a Google Form)</span>
-                          </a>
+                        <li key={option} className="flex items-start gap-3">
+                          <span aria-hidden className="mt-2.5 size-1.5 shrink-0 rounded-pill bg-accent" />
+                          {option}
                         </li>
                       ))}
                     </ul>
                   </div>
                 )}
-                <div className="mt-auto pt-8">
-                  <ButtonLink href={item.action.href} variant={external ? "primary" : "secondary"} arrow={external}>
+                <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-2 pt-8">
+                  <ButtonLink href={item.action.href} variant={external || item.action.primary ? "primary" : "secondary"} arrow={external || item.action.primary}>
                     {item.action.label}
                     {external && <span className="sr-only">(opens Calendly)</span>}
                   </ButtonLink>
+                  {item.secondary && (
+                    <a href={item.secondary.href} className="inline-flex min-h-12 items-center gap-1 font-semibold">
+                      {item.secondary.label}
+                      {item.secondary.external && (
+                        <>
+                          <ArrowUpRightIcon aria-hidden size={16} />
+                          <span className="sr-only">(opens Calendly)</span>
+                        </>
+                      )}
+                    </a>
+                  )}
                 </div>
               </li>
             );

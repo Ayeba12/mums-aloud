@@ -11,7 +11,7 @@ import { truncate, type PostSummary } from "@/lib/wordpress/mapping";
 
 export const GROUPS: Array<{ title: string; routes: string[] }> = [
   { title: "Start here", routes: ["/", "/mamas-escape/", "/about-mums-aloud/", "/contact/"] },
-  { title: "Support and services", routes: ["/services/", "/work-with-us/", "/find-support/", "/new-mums-circle/", "/partnership/", "/volunteer/"] },
+  { title: "Support and services", routes: ["/services/", "/work-with-us/", "/assessment-checkout/", "/find-support/", "/new-mums-circle/", "/partnership/", "/volunteer/"] },
   { title: "Stories and listening", routes: ["/story-lounge/", "/blog/", "/article/", "/podcast/"] },
   {
     title: "Resources",

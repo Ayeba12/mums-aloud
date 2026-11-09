@@ -61,6 +61,16 @@
       "alt": "Work with Bokun Imoukhuede, founder of Mums Aloud: support that is just yours."
     },
     {
+      "route": "/assessment-checkout/",
+      "tag": "The Empowered Life Assessment",
+      "lead": "Book your",
+      "accent": "assessment.",
+      "line": "One price of £100 for any of our three assessments with Bokun. Pay securely, then complete your form.",
+      "action": "Book for £100",
+      "variant": "panel",
+      "alt": "Book The Empowered Life Assessment with Mums Aloud: £100 for any of three assessments."
+    },
+    {
       "route": "/meet-bokun/",
       "tag": "Meet Bokun",
       "lead": "Who looks after the woman who is",

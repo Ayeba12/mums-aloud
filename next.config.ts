@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/chaos-to-calm/", destination: "/work-with-us/", permanent: false },
       { source: "/postpartum-transition-program/", destination: "/work-with-us/", permanent: false },
-      { source: "/the-empowered-life-assessment-tela/", destination: "/work-with-us/", permanent: false },
+      { source: "/the-empowered-life-assessment-tela/", destination: "/assessment-checkout/", permanent: false },
       // Owner's notes (10 Aug 2026): training sits under Services; Affiliate Programs is now Trusted Resources.
       { source: "/training-and-events/", destination: "/services/", permanent: false },
       { source: "/affiliate-programs/", destination: "/trusted-resources/", permanent: true },
