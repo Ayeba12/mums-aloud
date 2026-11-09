@@ -25,8 +25,9 @@ export default function WorkWithBokunPage() {
   const { portrait } = founder.hero;
   return (
     <main id="main">
-      {/* Hero: Bokun's portrait left, copy right, pulled up under the floating header like the other heroes. */}
-      <section aria-labelledby="page-heading" className="frame-x -mt-(--header-offset) pt-2 md:pt-4">
+      {/* Hero: Bokun's portrait left, copy right, pulled up under the floating header like the other heroes.
+          From lg the photo would sit flush on the tinted services band, so the frame gap repeats below it (owner, 9 Nov 2026). */}
+      <section aria-labelledby="page-heading" className="frame-x -mt-(--header-offset) pt-2 md:pt-4 lg:pb-4">
         <div className="grid gap-2 lg:grid-cols-2 lg:gap-4">
           <div className="relative min-h-[30rem] overflow-hidden rounded-panel ring-1 ring-black-950/10 ring-inset md:min-h-[36rem] lg:h-[calc(100svh-2rem)] lg:min-h-[44rem] lg:max-h-[56rem]">
             <Image src={portrait.src} alt={portrait.alt} fill priority sizes="(min-width: 64rem) 50vw, 100vw" className="object-cover object-[50%_10%]" />
