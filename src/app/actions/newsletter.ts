@@ -12,7 +12,7 @@ export type NewsletterState = {
 
 /**
  * Newsletter sign-up for the footer pill and the dialog. Sends to the configured provider
- * (MailerLite, Mailchimp or a webhook) and never pretends: with no provider it says so.
+ * (SendFox, MailerLite, Mailchimp or a webhook) and never pretends: with no provider it says so.
  */
 export async function subscribeToNewsletter(_previous: NewsletterState, formData: FormData): Promise<NewsletterState> {
   const email = String(formData.get("email") ?? "").trim();

@@ -1,6 +1,6 @@
 # The forms: the Google Sheet and the emails
 
-Three forms on the site deliver through one Google Sheet in your Google account: **Volunteer With Us**, **Contact** and the **Partnership** enquiry. (The newsletter is separate: it goes to MailerLite.) When someone sends one of them, three things happen:
+Three forms on the site deliver through one Google Sheet in your Google account: **Volunteer With Us**, **Contact** and the **Partnership** enquiry. (The newsletter is separate: it goes to SendFox.) When someone sends one of them, three things happen:
 
 1. A new row appears on the form's own tab of the sheet: Applications, Contact or Partnership.
 2. The sender gets a confirmation email in the site's design, with a photo and a copy of what they sent.
@@ -86,7 +86,7 @@ Edits do not go live until you make a new version: **Deploy > Manage deployments
 
 ## Good to know
 
-- **Limits.** Titan Email allows a few hundred outgoing emails a day per mailbox. Each submission sends two. The newsletter stays on MailerLite; never send a mailing through this route.
+- **Limits.** Titan Email allows a few hundred outgoing emails a day per mailbox. Each submission sends two. The newsletter stays on SendFox; never send a mailing through this route.
 - **Personal data.** The sheet holds names, email addresses, phone numbers and messages. Share it only with the team, and delete rows in line with the privacy notice.
 - **What the emails look like.** Previews, with made-up details, on the site: `/style-guide/emails/volunteer-applicant/`, `volunteer-admin`, `contact-sender`, `contact-team`, `partnership-sender`, `partnership-team`. Gmail and Outlook show Georgia and Arial in place of the site's fonts; Apple Mail shows the real ones. The logo and photo load from the site, so some inboxes ask before showing images.
 - **Fallbacks.** A submission counts as delivered when the row is saved or the team was emailed. Until either is set up, the forms go to `CONTACT_WEBHOOK_URL` if that is set, and otherwise the visitor is offered a prefilled email to info@mumsaloud.com. Nothing is lost silently.

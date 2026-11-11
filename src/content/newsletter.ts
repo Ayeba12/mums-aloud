@@ -1,6 +1,6 @@
 /**
- * The newsletter dialog and footer form. The owner will send the newsletter through an emailing
- * service (MailerLite or Mailchimp); every "Get the newsletter" button opens this dialog.
+ * The newsletter dialog and footer form. The owner sends the newsletter with SendFox (11 Nov 2026);
+ * every "Get the newsletter" button opens this dialog.
  */
 import type { AccentText } from "@/components/ui/Heading";
 

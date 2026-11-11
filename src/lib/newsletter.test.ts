@@ -4,12 +4,39 @@ import { buildSubscribeRequest, detectProvider, subscribe } from "./newsletter";
 const subscriber = { email: "ama@example.com", firstName: "Ama", source: "footer" };
 
 describe("newsletter providers", () => {
-  it("picks MailerLite first, then Mailchimp, then the webhook, else nothing", () => {
+  it("picks SendFox first (the owner's service since 11 Nov 2026), then MailerLite, Mailchimp, the webhook, else nothing", () => {
+    expect(detectProvider({ SENDFOX_API_KEY: "sf", MAILERLITE_API_KEY: "ml" })).toBe("sendfox");
     expect(detectProvider({})).toBeNull();
     expect(detectProvider({ NEWSLETTER_WEBHOOK_URL: "https://hooks.example/x" })).toBe("webhook");
     expect(detectProvider({ MAILCHIMP_API_KEY: "k-us21", MAILCHIMP_AUDIENCE_ID: "abc" })).toBe("mailchimp");
     expect(detectProvider({ MAILCHIMP_API_KEY: "k-us21" })).toBeNull();
     expect(detectProvider({ MAILERLITE_API_KEY: "ml", MAILCHIMP_API_KEY: "k-us21", MAILCHIMP_AUDIENCE_ID: "abc" })).toBe("mailerlite");
+  });
+
+  it("builds a SendFox request as form fields with the token, the first name and the list", () => {
+    const { url, init } = buildSubscribeRequest("sendfox", subscriber, { SENDFOX_API_KEY: "sf-token", SENDFOX_LIST_ID: "123" });
+    expect(url).toBe("https://api.sendfox.com/contacts");
+    expect(init.method).toBe("POST");
+    const headers = init.headers as Record<string, string>;
+    expect(headers.Authorization).toBe("Bearer sf-token");
+    expect(headers["Content-Type"]).toBe("application/x-www-form-urlencoded");
+    expect(headers.Accept).toBe("application/json");
+    const body = new URLSearchParams(String(init.body));
+    expect(body.get("email")).toBe("ama@example.com");
+    expect(body.get("first_name")).toBe("Ama");
+    expect(body.getAll("lists[]")).toEqual(["123"]);
+  });
+
+  it("leaves out the first name and the list when they are not given", () => {
+    const { init } = buildSubscribeRequest("sendfox", { email: "ama@example.com", source: "footer" }, { SENDFOX_API_KEY: "sf-token" });
+    expect(String(init.body)).toBe("email=ama%40example.com");
+  });
+
+  it("reports a SendFox refusal (for example a revoked token) as failed, never as signed up", async () => {
+    const refused = (async () => new Response(JSON.stringify({ message: "Unauthenticated." }), { status: 401 })) as unknown as typeof fetch;
+    expect(await subscribe(subscriber, { SENDFOX_API_KEY: "old" }, refused)).toEqual({ ok: false, reason: "failed" });
+    const ok = (async () => new Response(JSON.stringify({ id: 1, email: "ama@example.com" }), { status: 200 })) as unknown as typeof fetch;
+    expect(await subscribe(subscriber, { SENDFOX_API_KEY: "sf", SENDFOX_LIST_ID: "123" }, ok)).toEqual({ ok: true });
   });
 
   it("builds a MailerLite request with the group and the name", () => {

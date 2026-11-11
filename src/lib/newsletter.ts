@@ -1,14 +1,15 @@
 /**
- * Newsletter sign-up, provider-aware. The owner will use an emailing service (MailerLite or
- * Mailchimp); the first one configured in the environment wins, a generic JSON webhook is the
- * fallback, and with nothing set the forms say plainly that sign-up is not open yet.
+ * Newsletter sign-up, provider-aware. The owner sends the newsletter with SendFox (11 Nov 2026; it
+ * replaced MailerLite). The first service configured in the environment wins, a generic JSON
+ * webhook is the fallback, and with nothing set the forms say plainly that sign-up is not open yet.
  *
+ *   SENDFOX_API_KEY (+ SENDFOX_LIST_ID)               → api.sendfox.com/contacts (form fields, as SendFox's docs show)
  *   MAILERLITE_API_KEY (+ MAILERLITE_GROUP_ID)        → connect.mailerlite.com/api/subscribers
  *   MAILCHIMP_API_KEY (ends "-<dc>") + MAILCHIMP_AUDIENCE_ID → <dc>.api.mailchimp.com/3.0/lists/<id>/members
  *   NEWSLETTER_WEBHOOK_URL                             → POST {email, firstName, source}
  */
 
-export type NewsletterProvider = "mailerlite" | "mailchimp" | "webhook";
+export type NewsletterProvider = "sendfox" | "mailerlite" | "mailchimp" | "webhook";
 export type Subscriber = { email: string; firstName?: string; source: string };
 export type Env = Record<string, string | undefined>;
 
@@ -16,6 +17,7 @@ export const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export const NEWSLETTER_LIMITS = { firstName: 80, email: 254 } as const;
 
 export function detectProvider(env: Env = process.env): NewsletterProvider | null {
+  if (env.SENDFOX_API_KEY) return "sendfox";
   if (env.MAILERLITE_API_KEY) return "mailerlite";
   if (env.MAILCHIMP_API_KEY && env.MAILCHIMP_AUDIENCE_ID) return "mailchimp";
   if (env.NEWSLETTER_WEBHOOK_URL) return "webhook";
@@ -25,6 +27,21 @@ export function detectProvider(env: Env = process.env): NewsletterProvider | nul
 /** The request for a provider, kept pure so it can be tested without sending anything. */
 export function buildSubscribeRequest(provider: NewsletterProvider, subscriber: Subscriber, env: Env = process.env): { url: string; init: RequestInit } {
   const { email, firstName, source } = subscriber;
+  if (provider === "sendfox") {
+    // SendFox's docs give the fields form-style (`lists[]=123`). An address it already knows is kept
+    // and added to the list (no duplicate); someone who unsubscribed stays unsubscribed.
+    const body = new URLSearchParams({ email });
+    if (firstName) body.set("first_name", firstName);
+    if (env.SENDFOX_LIST_ID) body.append("lists[]", env.SENDFOX_LIST_ID);
+    return {
+      url: "https://api.sendfox.com/contacts",
+      init: {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded", Accept: "application/json", Authorization: `Bearer ${env.SENDFOX_API_KEY}` },
+        body: body.toString(),
+      },
+    };
+  }
   if (provider === "mailerlite") {
     const groups = env.MAILERLITE_GROUP_ID ? [env.MAILERLITE_GROUP_ID] : [];
     return {
