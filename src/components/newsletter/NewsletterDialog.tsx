@@ -8,7 +8,9 @@ import { Tag } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { Accent } from "@/components/ui/Heading";
 import { newsletterDialog as copy } from "@/content/newsletter";
-import photo from "@/assets/photos/hero-mother-baby-golden-hour.jpg";
+// The two free magazines a sign-up brings (owner, 11 Nov 2026), in place of the stock photo.
+import edition1 from "@/assets/newsletter/edition-1-cover.jpg";
+import edition2 from "@/assets/newsletter/edition-2-cover.jpg";
 
 const initial: NewsletterState = { status: "idle" };
 const fieldClasses = (invalid: boolean) =>
@@ -56,9 +58,12 @@ export function NewsletterDialog() {
       className="m-auto w-[calc(100%-2rem)] max-w-[56rem] translate-y-2 rounded-panel bg-surface p-0 text-text opacity-0 shadow-raised transition-[opacity,translate,overlay,display] transition-discrete duration-200 ease-standard backdrop:bg-scrim/40 backdrop:opacity-0 backdrop:backdrop-blur-sm backdrop:transition-[opacity,overlay,display] backdrop:transition-discrete backdrop:duration-200 open:translate-y-0 open:opacity-100 open:backdrop:opacity-100 starting:open:translate-y-2 starting:open:opacity-0 starting:open:backdrop:opacity-0 motion-reduce:transition-none"
     >
       <div className="grid overflow-hidden rounded-panel md:grid-cols-[2fr_3fr]">
-        <div className="relative hidden min-h-full md:block">
-          <Image src={photo} alt="" fill placeholder="blur" sizes="(min-width: 48rem) 22rem, 0px" className="object-cover object-[50%_30%]" />
-          <span aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,color-mix(in_srgb,var(--color-scrim)_55%,transparent),transparent_60%)]" />
+        <div className="relative hidden min-h-full flex-col items-center justify-center gap-8 bg-surface-tinted px-6 py-10 md:flex">
+          <div aria-hidden className="relative h-[13.5rem] w-full max-w-[17rem] lg:h-[15rem] lg:max-w-[19rem]">
+            <Image src={edition1} alt="" placeholder="blur" sizes="10rem" className="absolute top-8 left-0 h-auto w-[8.5rem] -rotate-6 rounded-control shadow-raised ring-1 ring-black-950/10 lg:w-[9.5rem]" />
+            <Image src={edition2} alt="" placeholder="blur" sizes="10rem" className="absolute top-0 right-0 h-auto w-[9rem] rotate-3 rounded-control shadow-raised ring-1 ring-black-950/10 lg:w-[10rem]" />
+          </div>
+          <p className="max-w-[18ch] text-center font-heading text-h4 text-balance text-ink">{copy.giftCaption}</p>
         </div>
         <div className="relative p-6 md:p-8 lg:p-10">
           <button

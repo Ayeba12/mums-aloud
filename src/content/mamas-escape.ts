@@ -85,7 +85,7 @@ export const family = {
   tiles: [
     { icon: "community", title: "The Community", text: "Mentor mums, expert sessions and training, shared resources and events, for mothers who support one another.", action: { label: "How to join", href: "#join" } },
     { icon: "podcast", title: "The Podcast", text: "Mama's Escape Podcast. Real conversations, real mothers.", action: { label: "Listen on Spotify", href: "https://creators.spotify.com/pod/show/mamasescape", external: true } },
-    { icon: "newsletter", title: "The Newsletter", text: "Real stories and real support, straight to your inbox.", action: { label: "Get the newsletter", href: "newsletter" } },
+    { icon: "newsletter", title: "The Newsletter", text: "Two free Mama's Escape magazines when you join, then real stories and real support in your inbox.", action: { label: "Get the newsletter", href: "newsletter" } },
   ],
 } as const;
 

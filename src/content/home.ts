@@ -125,7 +125,7 @@ export const partners = {
 export const newsletter = {
   eyebrow: "Stay close",
   heading: { lead: "Not ready to join yet?", accent: "Stay close." },
-  body: "Ask for the Mama's Escape newsletter and we will send real stories and real support straight to your inbox. Or listen to the podcast, wherever you are on the journey.",
+  body: "Get the Mama's Escape newsletter and we will send you two free editions of our magazine straight away, then real stories and real support in your inbox. Or listen to the podcast, wherever you are on the journey.",
   newsletterLabel: "Get the newsletter",
   podcast: { label: "Listen to the podcast", href: "https://creators.spotify.com/pod/show/mamasescape" },
 };

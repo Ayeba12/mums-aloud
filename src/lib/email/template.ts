@@ -160,7 +160,7 @@ table{border-collapse:collapse;}
 img{border:0;outline:none;text-decoration:none;}
 a{color:${palette.berry};}
 @media (max-width:620px){.wrap{width:100% !important;}.pad{padding-left:8px !important;padding-right:8px !important;}}
-@media (max-width:480px){.btn-wrap{display:block !important;margin:0 0 12px !important;}.btn{display:block !important;text-align:center !important;white-space:normal !important;}}
+@media (max-width:480px){.btn-wrap{display:block !important;margin:0 0 12px !important;}.btn{display:block !important;text-align:center !important;white-space:normal !important;}.stack{display:block !important;width:auto !important;}.stack-top{padding:20px 20px 0 !important;}.stack-body{padding:16px 20px 12px !important;}}
 </style>
 </head>
 <body style="margin:0;padding:0;background:${palette.canvas};">

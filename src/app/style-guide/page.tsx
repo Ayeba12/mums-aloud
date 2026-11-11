@@ -48,6 +48,7 @@ const emailPreviews = [
   { name: "contact-team", label: "Contact: team notification" },
   { name: "partnership-sender", label: "Partnership: sender confirmation" },
   { name: "partnership-team", label: "Partnership: team notification" },
+  { name: "newsletter-welcome", label: "Newsletter: welcome with the two free magazines" },
 ];
 
 export default function StyleGuide() {

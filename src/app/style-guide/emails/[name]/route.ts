@@ -1,6 +1,7 @@
 import type { ContactFields } from "@/lib/contact";
 import { senderEmail, teamEmail } from "@/lib/email/contact";
 import type { EmailMessage } from "@/lib/email/message";
+import { newsletterWelcomeEmail } from "@/lib/email/newsletter";
 import { emailOrigin } from "@/lib/email/template";
 import { adminEmail, applicantEmail } from "@/lib/email/volunteer";
 import { siteConfig } from "@/lib/site";
@@ -45,6 +46,7 @@ const previews: Record<string, () => EmailMessage> = {
   "contact-team": () => teamEmail(message, "contact", { origin: emailOrigin(), submittedAt, teamTo: siteConfig.email }),
   "partnership-sender": () => senderEmail(partnership, "partnership", { origin: emailOrigin(), submittedAt, teamTo: siteConfig.email }),
   "partnership-team": () => teamEmail(partnership, "partnership", { origin: emailOrigin(), submittedAt, teamTo: siteConfig.email }),
+  "newsletter-welcome": () => newsletterWelcomeEmail({ email: "amara@example.com", firstName: "Amara" }, { origin: emailOrigin() }),
 };
 
 export const previewNames = Object.keys(previews);

@@ -1,5 +1,8 @@
 "use server";
 
+import { newsletterWelcomeEmail } from "@/lib/email/newsletter";
+import { sendEmails } from "@/lib/email/send";
+import { emailOrigin } from "@/lib/email/template";
 import { EMAIL, NEWSLETTER_LIMITS, subscribe } from "@/lib/newsletter";
 
 export type NewsletterState = {
@@ -13,6 +16,8 @@ export type NewsletterState = {
 /**
  * Newsletter sign-up for the footer pill and the dialog. Sends to the configured provider
  * (SendFox, MailerLite, Mailchimp or a webhook) and never pretends: with no provider it says so.
+ * Once the provider has the sign-up, the welcome email with the two free magazines goes out from
+ * the team mailbox; the message only promises it when it was sent.
  */
 export async function subscribeToNewsletter(_previous: NewsletterState, formData: FormData): Promise<NewsletterState> {
   const email = String(formData.get("email") ?? "").trim();
@@ -28,9 +33,14 @@ export async function subscribeToNewsletter(_previous: NewsletterState, formData
 
   const result = await subscribe({ email, firstName: firstName || undefined, source });
   if (result.ok) {
+    const welcome = await sendEmails([newsletterWelcomeEmail({ email, firstName: firstName || undefined }, { origin: emailOrigin() })]);
+    const sent = welcome.results[0] === true;
+    const gifts = "Your two free Mama's Escape magazines are on their way to your inbox.";
     return {
       status: "success",
-      message: result.already ? "You are already on the list. Thank you for staying close." : "Thank you. Please check your inbox to confirm, and welcome in.",
+      message: result.already
+        ? `You are already on the list. Thank you for staying close.${sent ? ` ${gifts}` : ""}`
+        : `Thank you, you are on the list.${sent ? ` ${gifts}` : " Welcome in."}`,
     };
   }
   if (result.reason === "unavailable") {
